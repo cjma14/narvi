@@ -124,6 +124,7 @@ This guide will provide you with the necessary steps to set up and familiarize y
 ### Installation
 
 Start by installing the project dependencies. Open your terminal, navigate to the project's root directory, and execute:
+Use node 20.3.0 or higther:
 
 ```bash
 npm install
