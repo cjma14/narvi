@@ -1,12 +1,12 @@
 import ogImageSrc from "@images/social.png";
 
 export const SITE = {
-  title: "ScrewFast",
-  tagline: "Top-quality Hardware Tools",
-  description: "ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs. Start exploring and contact our sales team for superior quality and reliability.",
-  description_short: "ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs.",
-  url: "https://screwfast.uk",
-  author: "Emil Gulamov",
+  title: "Centro de Estudios Psicométricos y del Aprendizaje",
+  tagline: "Evaluaciones precisas, futuro prometedor.",
+  description: "El Test Básico de Aprendizaje (TBA) es la solución definitiva para conocer tu potencial de aprendizaje. Gracias a su avanzada tecnología, el TBA ofrece evaluaciones personalizadas y precisas en tiempo récord. Descubre tus fortalezas, identifica áreas de mejora y recibe recomendaciones personalizadas para alcanzar tus metas. ¿Listo para dar el siguiente paso en tu desarrollo?",
+  description_short: "Evaluación rápida y precisa de tus habilidades cognitivas",
+  url: "https://cepaonline.cl",
+  author: "Pablo Martin",
 };
 
 export const SEO = {
@@ -15,7 +15,7 @@ export const SEO = {
   structuredData: {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    inLanguage: "en-US",
+    inLanguage: "es-CL",
     "@id": SITE.url,
     url: SITE.url,
     name: SITE.title,
@@ -30,10 +30,10 @@ export const SEO = {
 };
 
 export const OG = {
-  locale: "en_US",
+  locale: "es_CL",
   type: "website",
   url: SITE.url,
-  title: `${SITE.title}: : Hardware Tools & Construction Services`,
-  description: "Equip your projects with ScrewFast's top-quality hardware tools and expert construction services. Trusted by industry leaders, ScrewFast offers simplicity, affordability, and reliability. Experience the difference with user-centric design and cutting-edge tools. Start exploring now!",
+  title:`${SITE.title}: Evaluaciones Psicométricas y del Aprendizaje`,
+  description: "El Test Básico de Aprendizaje (TBA) es la solución definitiva para conocer tu potencial de aprendizaje. Gracias a su avanzada tecnología, el TBA ofrece evaluaciones personalizadas y precisas en tiempo récord. Descubre tus fortalezas, identifica áreas de mejora y recibe recomendaciones personalizadas para alcanzar tus metas. ¿Listo para dar el siguiente paso en tu desarrollo?",
   image: ogImageSrc,
 };
