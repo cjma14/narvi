@@ -1,17 +1,32 @@
 [
   {
+    "heading": "TBA herramienta psicopedagógica integral",
+    "content": "es una batería informatizada, lo que permite automatizar procesos evaluativos y generar análisis cuantitativos y cualitativos para cada variable evaluada. Esta característica no solo agiliza el proceso de evaluación, sino que también proporciona resultados más detallados y precisos.",
+    "svg": "question",
+    "src": "/img/profecional-tba.png",
+    "alt": "Profecional reallizando prueba TBA",
+    "first": true
+  },
+  {
     "heading": "Metodología de trabajo",
     "content": "El programa consta de 4 módulos que cubren desde la comprensión de los fundamentos teóricos y clínicos de las Dificultades Específicas de Aprendizaje (DEA), hasta los fundamentos teóricos, técnicos y propiedades psicométricas del Test Básico de Aprendizaje (TBA), incluyendo el análisis de reactivos y el manejo de datos e informe de resultados.",
-    "svg": "verified"
+    "svg": "verified",
+    "src": "/img/tba-book.png",
+    "alt": "Libro digital: Test Básico de Aprendizaje (TBA)",
+    "second": true
   },
   {
     "heading": "Certificación",
     "content": "Los estudiantes podrán obtener un certificado de aprobación del curso otorgado por el Centro de Estudios Psicométricos y del Aprendizaje (CEPA). El requisito es aprobar el examen con nota igual o superior a 4.0 con 60% de exigencia.",
-    "svg": "books"
+    "svg": "books",
+    "src": "/img/cetificacion-tba.png",
+    "alt": "Estudiante completando certificación TBA"
   },
   {
     "heading": "Destinatarios",
     "content": "El curso está dirigido a psicopedagogos/as, estudiantes de Psicopedagogía y profesionales afines.",
-    "svg": "groups"
+    "svg": "groups",
+    "src": "/img/team.png",
+    "alt": "test"
   }
 ]

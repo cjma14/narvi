@@ -1,38 +1,38 @@
 {
-  "title": "Simple, Transparent Pricing",
-  "subTitle": "Boost efficiency with ScrewFast's clear, value-driven plans.",
-  "badge": "Best value",
-  "thirdOption": "Enterprise Solutions?",
-  "btnText": "Get a Custom Quote",
+  "title": "Invierte en tu éxito",
+  "subTitle": "Nuestros planes están diseñados para ofrecerte el máximo valor",
+  "badge": "",
+  "thirdOption": "¿Quiere algo más específico?",
+  "btnText": "Obtener Cotización",
 
   "starterKit": {
-    "name": "Starter Kit",
-    "description": "Best option for DIY projects",
-    "price": "49",
+    "name": "Especialista",
+    "description": "La mejor opción para profeciones independientes",
+    "price": "13.000",
     "cents": ".00",
-    "billingFrequency": "USD / monthly",
+    "billingFrequency": "CLP / Mensuales",
     "features": [
       "Key hardware tools",
       "Access to guides & tutorials",
       "Standard support"
     ],
-    "purchaseBtnTitle": "Get the Starter Kit",
+    "purchaseBtnTitle": "Obtner el plan especialista",
     "purchaseLink": "#"
   },
 
   "professionalToolbox": {
-    "name": "Professional Toolbox",
-    "description": "Best for large scale uses",
-    "price": "89",
+    "name": "Institucional",
+    "description": "Dirigido a esas instituciones que deseen mejorar sus procesos",
+    "price": "350.000",
     "cents": ".00",
-    "billingFrequency": "USD / monthly",
+    "billingFrequency": "CLP / Anual",
     "features": [
       "Premium tool selection",
       "Priority support",
       "Exclusive content & deals",
       "Bulk order discounts"
     ],
-    "purchaseBtnTitle": "Get the Professional Toolbox",
+    "purchaseBtnTitle": "Obtner el plan institucional",
     "purchaseLink": "#"
   }
 }

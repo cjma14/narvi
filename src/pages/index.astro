@@ -13,11 +13,8 @@ import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro"
 import heroImage from "@images/hero-image.png";
 import faqs from "@data/faqs.json";
 import features from "@data/features.json";
+import featuresTabs from "@data/featuresTabs.json";
 import pricing from "@data/pricing.json";
-import featureImage from "@images/features-image.avif";
-import construction from "@images/construction-image.avif";
-import tools from "@images/automated-tools.avif";
-import dashboard from "@images/dashboard-image.avif";
 import avatar from "@images/avatar.png";
 
 const avatarSrcs: Array<string> = [
@@ -49,58 +46,31 @@ const avatarSrcs: Array<string> = [
   />
 
   <ClientsSection
-    title="Trusted by Industry Leaders"
-    subTitle="Experience the reliability chosen by industry giants."
+    title="Instituciones líderes nos prefieren"
+    subTitle="Confianza de líderes en nuestras evaluaciones"
   />
 
-  <FeaturesGeneral
-    title="Meeting Industry Demands"
-    subTitle="At ScrewFast, we tackle the unique challenges encountered in the hardware and construction sectors. From cutting-edge tools to expert services, we're dedicated to helping you overcome obstacles and achieve your goals."
-    src={featureImage}
+  <!-- <FeaturesGeneral
+    title="Capacitar a profesionales y estudiantes de las ciencias cognitivas"
+    subTitle="Curso intensivo en diagnóstico de Dificultades Específicas de Aprendizaje (DEA) utilizando el Test Básico de Aprendizaje (TBA). Dirigido a profesionales de la educación, el programa abarca teoría, práctica y análisis de datos. Al finalizar, obtendrás un certificado CEPA."
+    src={tbaBook}
     alt="ScrewFast products in floating boxes"
     features={features}
-  />
+  /> -->
 
   <FeaturesNavs
-    title=`Customize <span class="text-yellow-500 dark:text-yellow-400">ScrewFast</span>'s offerings to perfectly suit your hardware and construction needs.`
-    tabs={[
-      {
-        heading: "Cutting-Edge Tools",
-        content:
-          "Empower your projects with ScrewFast's cutting-edge tools. Experience enhanced efficiency in construction management with our sophisticated automated solutions.",
-        svg: "tools",
-        src: tools,
-        alt: "Yellow and black heavy equipment on brown grass field",
-        first: true,
-      },
-      {
-        heading: "Intuitive Dashboards",
-        content:
-          "Navigate with ease using ScrewFast's intuitive dashboards. Set up and oversee your projects seamlessly, with user-friendly interfaces designed for quick and effective workflow management.",
-        svg: "dashboard",
-        src: dashboard,
-        alt: "A screenshot or graphic representation of the intuitive dashboard",
-        second: true,
-      },
-      {
-        heading: "Robust Features",
-        content:
-          "Minimize complexity, maximize productivity. ScrewFast's robust features are engineered to streamline your construction process, delivering results that stand out for their excellence.",
-        svg: "house",
-        src: construction,
-        alt: "Gray metal building frame near tower crane during daytime",
-      },
-    ]}
+    title=`<span class="text-primary-500 dark:text-primary-400">TBA</span> Batería informatizada para evaluaciones automatizadas y análisis profundos.`
+    tabs={featuresTabs}
   />
 
   <TestimonialsSection
-    title="Fast-Track Your Projects"
-    subTitle="At ScrewFast, we ensure a swift start with instant account setup. Experience the speed of construction redefined."
+    title="Resultados reales con TBA"
+    subTitle="En CEPA demostramos nuestra valia, Inspírate con historias reales de superación. Descubre cómo nuestros usuarios han transformado sus vidas gracias a TBA."
     ;
     testimonials={[
       {
         content:
-          "ScrewFast dramatically boosted our project efficiency. Setup was instant, and their rapid response times are phenomenal. Truly a game-changer in hardware and construction support!",
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dignissim nunc tellus, sed placerat mauris maximus a. Pellentesque congue odio eget quam fringilla iaculis. Sed purus nisi, faucibus sit amet orci sit amet, ullamcorper maximus orci. ",
         author: "Samantha Ruiz",
         role: "Chief Operating Officer | ConstructIt Inc.",
         avatarSrc:
@@ -109,23 +79,23 @@ const avatarSrcs: Array<string> = [
     ]}
     statistics={[
       {
-        count: "70k+",
+        count: "1 Mil+",
         description:
-          "customers equipped — from DIY to major construction firms",
+          "Resultados precisos en chile, descubre cómo TBA ha transformado la evaluación educativa.",
       },
       {
-        count: "35%",
+        count: "100+",
         description:
-          "uptick in project efficiency with ScrewFast tools and services",
+          "Profesionales de la educación confían en TBA para optimizar sus evaluaciones.",
       },
       {
-        count: "15.3%",
+        count: "98.4%",
         description:
-          "reduction in maintenance costs reported by long-term clients",
+          "En Test-Retest. La estabilidad de las puntuaciones del TBA demuestra su alta confiabilidad en la evaluación de habilidades.",
       },
       {
         count: "2x",
-        description: "quicker assembly using innovative fastening solutions",
+        description: "Mayor velocidad al momento de cuantificar resultados reales.",
       },
     ]}
   />
