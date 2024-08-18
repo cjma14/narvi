@@ -1,29 +1,21 @@
 {
-  "subTitle": "Ask us anything about our brand and products, and get factual responses.",
+  "subTitle": "¿Tienes dudas? ¡Aquí están las respuestas! Una guía completa para resolver tus preguntas.",
   "faqs": [
     {
-      "question": "What types of tools are included in the Starter Kit?",
-      "answer": "The Starter Kit features essential hand and power tools for diverse DIY projects, including hammers, drills, screwdrivers, and a variety of fasteners. It's a curated selection to help beginners and experienced DIYers alike tackle most home improvement tasks."
+      "question": "¿Qué es TBA y para qué sirve?",
+      "answer": "TBA es una herramienta de análisis de aprendizaje que permite evaluar de manera precisa y eficiente las habilidades de los estudiantes. A través de un análisis detallado, TBA identifica las fortalezas y áreas de oportunidad de cada alumno, proporcionando información valiosa para personalizar el proceso de enseñanza."
     },
     {
-      "question": "Can I upgrade from the Starter Kit to the Professional Toolbox?",
-      "answer": "Absolutely! You can upgrade to the Professional Toolbox at any time to access a wider range of high-quality tools, enjoy priority customer support, and receive exclusive content. Contact our support team for a seamless transition."
+      "question": "¿Qué soporte técnico ofrecen?",
+      "answer": "Ofrecemos un soporte técnico completo a través de nuestros canales de 'Contactanos'. Nuestro equipo de expertos está disponible para resolver cualquier duda o incidencia que puedas tener"
     },
     {
-      "question": "What discounts are available for bulk orders through the Professional Toolbox plan?",
-      "answer": "Professional Toolbox members are entitled to exclusive discounts on bulk orders, the percentage of which may vary depending on the order volume. Get in touch with us to discuss your needs, and we'll provide a tailored discount structure."
+      "question": "¿Qué tipo de dispositivos y sistemas operativos son compatibles con TBA?",
+      "answer": "TBA es compatible con una amplia variedad de dispositivos y sistemas operativos, incluyendo computadoras de escritorio, portátiles, tablets y smartphones. Puedes acceder a TBA desde cualquier dispositivo con conexión a internet y un navegador web moderno."
     },
     {
-      "question": "What kind of customer support can I expect?",
-      "answer": "All our customers receive dedicated email support. With the Starter Kit, you'll receive our standard support, while the Professional Toolbox plan upgrades you to priority support, meaning faster response times and specialized assistance."
-    },
-    {
-      "question": "How current are the online resources and tutorials?",
-      "answer": "We regularly update our online resources and tutorials to reflect the latest trends in DIY and construction, as well as introductions to new tools and techniques. Our material aims to be comprehensive and user-friendly for all skill levels."
-    },
-    {
-      "question": "Does ScrewFast offer services for large-scale construction projects?",
-      "answer": "Yes, our Enterprise Solutions are designed for larger companies requiring comprehensive services. We provide consultation, planning, and supply of high-grade tools and materials, as well as staffing solutions for substantial construction needs. Contact us for a customized quote."
+      "question": "¿Qué tipo de capacitación se ofrece para utilizar TBA?",
+      "answer": "Ofrecemos una certificación dada por el Doctor Pablo San Martín Catalán, la cual templa todo aspecto teórico y práctico para usar TBA."
     }
   ]
 }

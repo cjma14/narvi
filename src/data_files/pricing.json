@@ -7,17 +7,17 @@
 
   "starterKit": {
     "name": "Especialista",
-    "description": "La mejor opción para profeciones independientes",
+    "description": "La mejor opción para profecionales independientes",
     "price": "13.000",
     "cents": ".00",
     "billingFrequency": "CLP / Mensuales",
     "features": [
-      "Key hardware tools",
-      "Access to guides & tutorials",
-      "Standard support"
+      "Asesoría técnica",
+      "Soporte técnico",
+      "Evaluaciones ilimitadas"
     ],
-    "purchaseBtnTitle": "Obtner el plan especialista",
-    "purchaseLink": "#"
+    "purchaseBtnTitle": "Obtener el plan especialista",
+    "purchaseLink": "/contact"
   },
 
   "professionalToolbox": {
@@ -27,12 +27,12 @@
     "cents": ".00",
     "billingFrequency": "CLP / Anual",
     "features": [
-      "Premium tool selection",
-      "Priority support",
-      "Exclusive content & deals",
-      "Bulk order discounts"
+      "Asesoría técnica",
+      "Soporte técnico",
+      "Evaluaciones ilimitadas",
+      "Cuenta de administrador institucional"
     ],
-    "purchaseBtnTitle": "Obtner el plan institucional",
-    "purchaseLink": "#"
+    "purchaseBtnTitle": "Obtener el plan institucional",
+    "purchaseLink": "/contact"
   }
 }
