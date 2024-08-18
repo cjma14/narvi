@@ -1,9 +1,21 @@
 ---
 // Import PrimaryCTA component
+import { Image } from "astro:assets";
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
 
 // Destructure the props passed to the Astro component
-const { title, subTitle, btnExists, btnTitle, btnURL } = Astro.props;
+const { 
+    title, 
+    subTitle, 
+    btnExists, 
+    btnTitle, 
+    btnURL,
+    single,
+    imgOne,
+    imgOneAlt,
+    imgTwo,
+    imgTwoAlt,
+  } = Astro.props;
 // Define TypeScript interface for props
 interface Props {
   title: string;
@@ -11,14 +23,19 @@ interface Props {
   btnExists?: boolean;
   btnTitle?: string;
   btnURL?: string;
+  single?: boolean;
+  imgOne?: any;
+  imgOneAlt?: any;
+  imgTwo?: any;
+  imgTwoAlt?: any;
 }
 ---
 
 <!-- Root section of the component -->
 <section
-  class="mx-auto mt-10 max-w-[85rem] px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-14 2xl:max-w-full"
+  class="mx-auto max-w-[85rem] items-center gap-16 px-4 py-10 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8 lg:py-14 2xl:max-w-full"
 >
-  <div class="max-w-screen-md">
+  <div class="">
     <!-- Section title -->
     <h1
       class="mb-4 text-balance text-4xl font-extrabold tracking-tight text-neutral-800 dark:text-neutral-200"
@@ -40,4 +57,36 @@ interface Props {
       ) : null
     }
   </div>
+
+   <!-- Conditionally render one or two images based on 'single' property -->
+   {
+    single ? (
+      <div class="mt-8">
+        <!-- Single image -->
+        <img
+          class="w-full rounded-lg"
+          src={imgOne}
+          alt={imgOneAlt}
+        />
+      </div>
+    ) : (
+      <div class="mt-8 grid grid-cols-2 gap-4">
+        <!-- First image in a two-image layout -->
+        <img
+          class="w-full rounded-xl"
+          src={imgOne}
+          alt={imgOneAlt}
+          draggable={"false"}
+        />
+        <!-- Second image in a two-image layout -->
+        <img
+          class="mt-4 w-full rounded-xl lg:mt-10"
+          src={imgTwo}
+          alt={imgTwoAlt}
+          draggable={"false"}
+        />
+      </div>
+    )
+  }
+  
 </section>

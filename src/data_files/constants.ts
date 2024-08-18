@@ -1,7 +1,7 @@
 import ogImageSrc from "@images/social.png";
 
 export const SITE = {
-  title: "Centro de Estudios Psicométricos y del Aprendizaje",
+  title: "CEPA - Centro de Estudios Psicométricos y del Aprendizaje",
   tagline: "Evaluaciones precisas, futuro prometedor.",
   description: "El Test Básico de Aprendizaje (TBA) es la solución definitiva para conocer tu potencial de aprendizaje. Gracias a su avanzada tecnología, el TBA ofrece evaluaciones personalizadas y precisas en tiempo récord. Descubre tus fortalezas, identifica áreas de mejora y recibe recomendaciones personalizadas para alcanzar tus metas. ¿Listo para dar el siguiente paso en tu desarrollo?",
   description_short: "Evaluación rápida y precisa de tus habilidades cognitivas",
