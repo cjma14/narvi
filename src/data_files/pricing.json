@@ -34,5 +34,18 @@
     ],
     "purchaseBtnTitle": "Obtener el plan institucional",
     "purchaseLink": "/contact"
+  },
+  "certification": {
+    "name": "Certificación",
+    "description": "Certificación online de la mano del autor de TBA. Doctor Pablo San Martín Catalán",
+    "price": "18.000",
+    "cents": ".00",
+    "billingFrequency": "CLP / Unicos",
+    "features": [
+      "3 Horas de preparación",
+      "Libro del TBA en versión digital"
+    ],
+    "purchaseBtnTitle": "Obtener certificación TBA",
+    "purchaseLink": "/contact"
   }
 }

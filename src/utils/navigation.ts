@@ -1,36 +1,24 @@
 // An array of links for navigation bar
 const navBarLinks = [
   { name: "Inicio", url: "/" },
-  { name: "Products", url: "/products" },
+  { name: "TBA", url: "/tba" },
   { name: "Sobre nosotros", url: "/about" },
-  { name: "Blog", url: "/blog" },
   { name: "Contacto", url: "/contact" },
 ];
 // An array of links for footer
 const footerLinks = [
-  { 
-    section: "Ecosystem",
-    links: [
-      { name: "Documentation", url: "/welcome-to-docs/" },
-      { name: "Tools & Equipment", url: "/products" },
-      { name: "Construction Services", url: "/services" },
-    ],
-  },
   {
-    section: "Company",
+    section: "Empresa",
     links: [
-      { name: "About us", url: "#" },
-      { name: "Blog", url: "/blog" },
-      { name: "Careers", url: "#" },
-      { name: "Customers", url: "#" },
+      { name: "Sobre nosotros", url: "/about" },
+      { name: "TBA", url: "/tba" },,
     ],
   },
 ];
 // An object of links for social icons
 const socialLinks = {
-  facebook: "https://www.facebook.com/",
+  facebook: "https://www.instagram.com/cepaonline/",
   x: "https://twitter.com/",
-  github: "https://github.com/mearashadowfax/ScrewFast",
   google: "https://www.google.com/",
   slack: "https://slack.com/",
 };
