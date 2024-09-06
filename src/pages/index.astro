@@ -1,8 +1,7 @@
 ---
 // Import the necessary components
 import MainLayout from "@/layouts/MainLayout.astro";
-import HeroSection from "@components/sections/landing/HeroSection.astro";
-import Slider from "@/components/ui/Slider.astro";
+import HeroSection from "@components/sections/landing/HeroSection.astro";;
 import HeroSectionAlt from "@components/sections/landing/HeroSectionAlt.astro";
 import ClientsSection from "@components/sections/landing/ClientsSection.astro";
 import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
@@ -31,7 +30,7 @@ const avatarSrcs: Array<string> = [
   /> -->
 
   <HeroSection
-    title=`Evaluaciones precisas, futuro prometedor.`
+    title=`Evaluaciones precisas con el TBA. La mejor tecnología para los estudios cognitivos`
     subTitle="TBA: Tu guía para el éxito. Evalúa y automatizar procesos evaluativos"
     primaryBtn="¡Empecemos!"
     primaryBtnURL="/products"
@@ -51,45 +50,40 @@ const avatarSrcs: Array<string> = [
     subTitle="Confianza de líderes en nuestras evaluaciones"
   />
 
-  <!-- <FeaturesGeneral
-    title="Capacitar a profesionales y estudiantes de las ciencias cognitivas"
-    subTitle="Curso intensivo en diagnóstico de Dificultades Específicas de Aprendizaje (DEA) utilizando el Test Básico de Aprendizaje (TBA). Dirigido a profesionales de la educación, el programa abarca teoría, práctica y análisis de datos. Al finalizar, obtendrás un certificado CEPA."
-    src={tbaBook}
-    alt="ScrewFast products in floating boxes"
-    features={features}
-  /> -->
-
   <FeaturesNavs
     title=`<span class="text-primary-500 dark:text-primary-400">TBA</span> Batería informatizada para evaluaciones automatizadas y análisis profundos.`
     tabs={featuresTabs}
   />
 
-  <div>
-    <Slider/>
-  </div>
   <TestimonialsSection
     title="Resultados reales con TBA"
-    subTitle="En CEPA demostramos nuestra valia, Inspírate con historias reales de superación. Descubre cómo nuestros usuarios han transformado sus vidas gracias a TBA.";
+    subTitle="En CEPA destacamos nuestro compromiso con la excelencia. Inspírate con historias reales de mejora continua. Descubre cómo nuestros usuarios han optimizado sus procesos de evaluación estandarizada gracias al TBA.";
     testimonials={[
-      // {
-      //   content:
-      //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dignissim nunc tellus, sed placerat mauris maximus a. Pellentesque congue odio eget quam fringilla iaculis. Sed purus nisi, faucibus sit amet orci sit amet, ullamcorper maximus orci. ",
-      //   author: "Samantha Ruiz",
-      //   role: "Chief Operating Officer | ConstructIt Inc.",
-      //   avatarSrc:
-      //     "https://images.unsplash.com/photo-1593104547489-5cfb3839a3b5?q=80&w=1453&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
-      // },
+      {
+        content:
+          'Me encanta el test básico de aprendizaje, ya que su aplicación es accesible y dinámica. A las niñas y niños les encanta, ya que lo encuentran "bonito y divertido". Además, encuentro tremendo que sea un test chileno, estandarizado, con una alta validez y confiabilidad. Este test representa gran avance de la Psicopedagogia en Chile, abre nuevas puertas de investigación y nos invita a confiar en nuestros científicos chilenos.',
+        author: "Nathalie Araya",
+        role: "Psicopedagoga",
+        avatarSrc:"/img/profile.webp",
+      },
+      {
+        content:
+          'La batería TBA es una herramienta completa y versátil que facilita la evaluación integral de las habilidades de aprendizaje en un amplio rango de edades. Su fácil aplicación y el detallado informe que genera, tanto cuantitativo como cualitativo, la convierten en un recurso invaluable en la práctica psicopedagógica, complementando eficazmente otros instrumentos de evaluación.',
+        author: "Katherine Martínez ",
+        role: "Psicopedagoga",
+        avatarSrc:"/img/profile.webp",
+      },
     ]}
     statistics={[
       {
         count: "1 Mil+",
         description:
-          "Resultados precisos en chile, descubre cómo TBA ha transformado la evaluación educativa.",
+          "Resultados precisos en chile, descubre cómo TBA ha transformado la evaluación psicopedagógica.",
       },
       {
         count: "100+",
         description:
-          "Profesionales de la educación confían en TBA para optimizar sus evaluaciones.",
+          "profesionales de las Ciencias Cognitiva confían en TBA para optimizar sus evaluaciones.",
       },
       {
         count: "98.4%",
@@ -109,7 +103,7 @@ const avatarSrcs: Array<string> = [
 
   <HeroSectionAlt
     title="¡Trabajemos juntos!"
-    subTitle="TBA está para facilitar tus análisis y evaluaciones. El futuro es hoy el futuro es TBA."
+    subTitle="TBA está para facilitar tus análisis y evaluaciones."
     url="/contact"
   />
 </MainLayout>

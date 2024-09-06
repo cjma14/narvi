@@ -7,7 +7,7 @@
 
   "starterKit": {
     "name": "Especialista",
-    "description": "La mejor opción para profecionales independientes",
+    "description": "La mejor opción para profesionales independientes",
     "price": "13.000",
     "cents": ".00",
     "billingFrequency": "CLP / Mensuales",
@@ -22,7 +22,7 @@
 
   "professionalToolbox": {
     "name": "Institucional",
-    "description": "Dirigido a esas instituciones que deseen mejorar sus procesos",
+    "description": "Dirigido a instituciones que deseen mejorar su procesos de evaluación psicopedagógica",
     "price": "350.000",
     "cents": ".00",
     "billingFrequency": "CLP / Anual",
@@ -37,7 +37,7 @@
   },
   "certification": {
     "name": "Certificación",
-    "description": "Certificación online de la mano del autor de TBA. Doctor Pablo San Martín Catalán",
+    "description": "Certificación online de la mano del autor de TBA.",
     "price": "18.000",
     "cents": ".00",
     "billingFrequency": "CLP / Unicos",

@@ -54,11 +54,19 @@ type StatProps = {
       </div>
 
       <!-- Generate a blockquote for each testimonial in the testimonials array by mapping over the array. -->
-      { testimonials &&
-        testimonials.map((testimonial) => (
-        <TestimonialItem content={testimonial.content} author={testimonial.author} role={testimonial.role} avatarSrc={testimonial.avatarSrc} />
-        ))
-      }
+
+      <div class="swiper swiperTestimonial absolute h-full md:h-96">
+        <div class="swiper-wrapper">
+          { testimonials.map((testimonial) => (
+
+            <div class="swiper-slide">
+              <TestimonialItem content={testimonial.content} author={testimonial.author} role={testimonial.role} avatarSrc={testimonial.avatarSrc} />
+            </div>
+          
+          ))}
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
     </div>
 { statistics &&
     <div class="mt-10 lg:col-span-6 lg:col-end-13 lg:mt-0">
@@ -78,3 +86,42 @@ type StatProps = {
   }
   </div>
 </section>
+
+<style>
+  .swiper-pagination {
+    position: absolute !important;
+  }
+
+  @media screen and (max-width: 480px) {
+    .swiper-pagination {
+      position: relative !important;
+      margin-top: 25px;
+    }
+  }
+
+  .swiper-slide {
+    display: flex !important;
+    justify-content: center;
+  }
+</style>
+<script>
+  import Swiper from "swiper";
+  import "swiper/css";
+  import "swiper/css/pagination";
+  import { Pagination, Autoplay } from "swiper/modules";
+
+  var swiper = new Swiper(".swiperTestimonial", {
+      modules: [Pagination],
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      grabCursor: true,
+      autoplay: {
+          delay: 5000
+      },
+      pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+      },
+  });
+</script>

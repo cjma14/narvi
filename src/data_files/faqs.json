@@ -3,11 +3,11 @@
   "faqs": [
     {
       "question": "¿Qué es TBA y para qué sirve?",
-      "answer": "TBA es una herramienta de análisis de aprendizaje que permite evaluar de manera precisa y eficiente las habilidades de los estudiantes. A través de un análisis detallado, TBA identifica las fortalezas y áreas de oportunidad de cada alumno, proporcionando información valiosa para personalizar el proceso de enseñanza."
+      "answer": "TBA es una herramienta de análisis de aprendizaje que permite evaluar de manera precisa y eficiente las habilidades de los estudiantes. A través de un análisis detallado, TBA identifica las fortalezas y áreas de oportunidad de cada alumno, proporcionando información valiosa para personalizar el proceso de atención especializada."
     },
     {
       "question": "¿Qué soporte técnico ofrecen?",
-      "answer": "Ofrecemos un soporte técnico completo a través de nuestros canales de 'Contactanos'. Nuestro equipo de expertos está disponible para resolver cualquier duda o incidencia que puedas tener"
+      "answer": "Ofrecemos un soporte técnico completo a través de nuestros canales de 'Contáctanos'. Nuestro equipo de expertos está disponible para resolver cualquier duda o incidencia que puedas tener."
     },
     {
       "question": "¿Qué tipo de dispositivos y sistemas operativos son compatibles con TBA?",
@@ -15,7 +15,7 @@
     },
     {
       "question": "¿Qué tipo de capacitación se ofrece para utilizar TBA?",
-      "answer": "Ofrecemos una certificación dada por el Doctor Pablo San Martín Catalán, la cual templa todo aspecto teórico y práctico para usar TBA."
+      "answer": "Ofrecemos una certificación dada por el autor Pablo San Martín Catalán, la cual abarca todo aspecto teórico y práctico para usar TBA."
     }
   ]
 }
