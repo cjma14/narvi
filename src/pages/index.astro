@@ -2,6 +2,7 @@
 // Import the necessary components
 import MainLayout from "@/layouts/MainLayout.astro";
 import HeroSection from "@components/sections/landing/HeroSection.astro";
+import Slider from "@/components/ui/Slider.astro";
 import HeroSectionAlt from "@components/sections/landing/HeroSectionAlt.astro";
 import ClientsSection from "@components/sections/landing/ClientsSection.astro";
 import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
@@ -63,6 +64,9 @@ const avatarSrcs: Array<string> = [
     tabs={featuresTabs}
   />
 
+  <div>
+    <Slider/>
+  </div>
   <TestimonialsSection
     title="Resultados reales con TBA"
     subTitle="En CEPA demostramos nuestra valia, Inspírate con historias reales de superación. Descubre cómo nuestros usuarios han transformado sus vidas gracias a TBA.";
