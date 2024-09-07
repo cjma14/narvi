@@ -2,7 +2,7 @@
 // Import the necessary modules
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
 // Destructure the props passed to the Astro component
-const { title, subTitle, btnExists, btnTitle, btnURL, img, imgAlt } =
+const { title, subTitle, btnExists, btnTitle, btnURL, img, imgAlt, listExists, items } =
   Astro.props;
 // Define TypeScript interface for props
 interface Props {
@@ -13,6 +13,8 @@ interface Props {
   btnURL?: string;
   img: any;
   imgAlt: any;
+  listExists?: boolean;
+  items?: Array<any>;
 }
 ---
 
@@ -41,6 +43,21 @@ interface Props {
     >
       {subTitle}
     </p>
+
+    {listExists && (
+      <div class="mt-6 max-w-md space-y-6 mb-10">
+        {items?.map((item) => (
+          <div>
+            <h3 class="block font-bold text-neutral-800 dark:text-neutral-200">
+              {item.title}
+            </h3>
+            <p class="text-neutral-600 dark:text-neutral-400">
+              {item.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    )}
     <!-- Conditionally render the Primary CTA button if btnExists is true -->
     {btnExists ? <PrimaryCTA title={btnTitle} url={btnURL} /> : null}
   </div>

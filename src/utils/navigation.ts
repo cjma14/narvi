@@ -1,9 +1,24 @@
 // An array of links for navigation bar
 const navBarLinks = [
-  { name: "Inicio", url: "/" },
-  { name: "Conoce TBA", url: "/tba" },
+  { name: "Inicio", type: "basic", url: "/" },
+  { 
+    name: "TBA", 
+    type: "dropdown",
+    childrens: [
+      { name: "¿Que es?", type: "basic", url: "/tba" },
+      { name: "Formación TBA", type: "basic", url: "/course" },
+    ]
+  },
+  { 
+    name: "Certificados y Cursos", 
+    type: "dropdown",
+    childrens: [
+      { name: "Cursos y diplomados", type: "basic", url: "/tba" },
+      { name: "Certificados TBA", type: "basic", url: "/tba" },
+    ]
+  },
   { name: "Sobre nosotros", url: "/about" },
-  { name: "Contacto", url: "/contact" },
+  { name: "Contacto", url: "/contact" }
 ];
 // An array of links for footer
 const footerLinks = [
@@ -11,7 +26,7 @@ const footerLinks = [
     section: "Empresa",
     links: [
       { name: "Sobre nosotros", url: "/about" },
-      { name: "TBA", url: "/tba" },,
+      { name: "TBA", url: "/tba" }, ,
     ],
   },
 ];

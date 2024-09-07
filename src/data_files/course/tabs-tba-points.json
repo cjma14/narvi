@@ -1,0 +1,67 @@
+{
+  "tabs": [
+    {
+      "name": "Descripción del curso", 
+      "id": "tabs-1",
+      "dataTab": "#tabs-content-1" 
+    },
+    {
+      "name": "Objetivo", 
+      "id": "tabs-2",
+      "dataTab": "#tabs-content-2" 
+    },
+    {
+      "name": "Destinatarios", 
+      "id": "tabs-3",
+      "dataTab": "#tabs-content-3" 
+    },
+    {
+      "name": "Metodología de trabajo", 
+      "id": "tabs-4",
+      "dataTab": "#tabs-content-4" 
+    },
+    {
+      "name": "Certificación", 
+      "id": "tabs-5",
+      "dataTab": "#tabs-content-5" 
+    }
+  ],
+  "contents": [
+    { 
+      "id": "tabs-content-1",
+      "title": "Capacitación en Diagnóstico de DEA con TBA", 
+      "description": "Este curso ofrece una capacitación especializada en la Aproximación Clínica para el Diagnóstico de Dificultades Específicas de Aprendizaje (DEA) mediante el uso del Test Básico de Aprendizaje (TBA). Dirigido a psicopedagogos/as, estudiantes y profesiones afines, el programa abarca desde los fundamentos teóricos y clínicos de las DEA hasta el análisis de datos e informe de resultados, en un formato intensivo de cuatro módulos. Al finalizar con éxito, los participantes obtendrán un certificado otorgado por el Centro de Estudios Psicométricos y del Aprendizaje (CEPA)", 
+      "imgUrl": "/img/course-1.jpg", 
+      "imgAlt": "Estudiante TBA presenciando clase TBA"
+    },
+    { 
+      "id": "tabs-content-2",
+      "title": "Especialización en Evaluación Neuropsicológica de DEA con TBA", 
+      "description": "Capacitar a profesionales y estudiantes de las ciencias cognitivas en el análisis complejo necesario para el diagnóstico de DEA. Este análisis se basa en criterios clínicos, teóricos y estadísticos, en consonancia con el uso de las pruebas estandarizadas de la batería de evaluación TBA (versión chilena).", 
+      "imgUrl": "/img/course-2.jpg", 
+      "imgAlt": "Estudiante tomando notas del curso TBA"
+    },
+    { 
+      "id": "tabs-content-3",
+      "title": "La Formación Continua para Psicopedagogos y estudiantes", 
+      "description": " Este curso está dirigido a un público amplio y diverso, incluyendo psicopedagogos, estudiantes de Psicopedagogía y profesionales de áreas afines como la educación especial, la neuropsicología y la logopedia. La formación adquirida será de gran utilidad para aquellos que trabajan en el ámbito educativo, clínico y de investigación.", 
+      "imgUrl": "/img/course-3.jpg", 
+      "imgAlt": "Psicopedagogo realizando su clase diaria"
+    },
+    { 
+      "id": "tabs-content-4",
+      "title": "De la Teoría a la Práctica: Dominio Completo del Diagnóstico de DEA con TBA", 
+      "description": "El programa consta de 4 módulos que cubren desde la comprensión de los fundamentos teóricos y clínicos de las Dificultades Específicas de Aprendizaje (DEA), hasta los fundamentos teóricos, técnicos y propiedades psicométricas del Test Básico de Aprendizaje (TBA), incluyendo el análisis de reactivos y el manejo de datos e informe de resultados. Cada módulo académico tiene una duración de una semana consecutiva, con clases intensivas de 3 horas cronológicas.", 
+      "imgUrl": "/img/course-4.jpg", 
+      "imgAlt": "Dados representando la enseñanza"
+    },
+    { 
+      "id": "tabs-content-5",
+      "title": "Certificación Oficial", 
+      "description": "Los estudiantes podrán obtener un certificado de aprobación del curso otorgado por el Centro de Estudios Psicométricos y del Aprendizaje (CEPA). El requisito es aprobar el examen con nota igual o superior a 4.0 con 60% de exigencia. Incluye: Libro académico del Test Básico de Aprendizaje TBA en versión digital.", 
+      "imgUrl": "/img/course-5.jpg", 
+      "imgAlt": "Certificado digital TBA"
+    }
+  ]
+  
+}

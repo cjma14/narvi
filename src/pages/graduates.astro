@@ -1,0 +1,213 @@
+---
+// Import section components
+import MainLayout from "@/layouts/MainLayout.astro";
+import { SITE } from "@data/constants";
+import TabBtn from "@/components/ui/tabs/TabBtn.astro";
+import TabsContent from "@/components/ui/tabs/TabsContent.astro";
+import MainSection from "@/components/ui/blocks/MainSection.astro";
+import CardImgBasic from "@/components/ui/cards/CardImgBasic.astro";
+import LeftSection from "@/components/ui/blocks/LeftSection.astro";
+import tabsTbaPoint from "@/data_files/course/tabs-tba-points.json";
+import StudyProgramTba from "@/data_files/course/study-program-tba.json";
+
+const pageTitle: string = `Formación TBA​ | ${SITE.title}`;
+const title: string = `Diagnóstico Certero de DEA con el TBA: Una Aproximación Clínica`;
+---
+
+<MainLayout title={pageTitle}>
+    <MainSection
+        title={title}
+        subTitle="A través de una aproximación clínica integral, empleamos el Test Básico de Aprendizaje (TBA) como herramienta fundamental para evaluar de manera precisa y confiable las dificultades específicas de aprendizaje (DEA). Este instrumento nos permite identificar los patrones de desempeño únicos de cada individuo."
+        btnExists={true}
+        btnTitle="¡Quiero inscribirme!"
+        btnURL="https://forms.gle/JFdKgUhvmUEiQa9A8"
+        single={true}
+        imgOne="img/tba-web.jpeg"
+        imgOneAlt={"Profecional realizando curso de certificación TBA"}
+    />
+
+    <div class="mx-auto max-w-[85rem] px-4 pt-10 sm:px-6 lg:px-8 lg:pt-14">
+        <nav
+            class="mx-auto grid max-w-6xl gap-y-px sm:flex sm:gap-x-4 sm:gap-y-0"
+            aria-label="Tabs"
+            role="tablist"
+        >
+
+            {
+                tabsTbaPoint.tabs.map((tab, index) => (
+                    <TabBtn
+                        title={tab.name}
+                        id={tab.id}
+                        dataTab={tab.dataTab}
+                        first={index === 0}
+                    />
+                ))
+            }
+          
+        </nav>
+
+        <div class="mt-12 md:mt-16">
+            {
+                tabsTbaPoint.contents.map((content, index) => (
+                  <TabsContent
+                    title={content.title}
+                    id={content.id}
+                    description={content.description}
+                    imgUrl={content.imgUrl}
+                    imgAlt={content.imgAlt}
+                    index={index}
+                  />
+                ))
+              }
+        </div>
+    </div>
+
+    <section
+    class="mx-auto items-center gap-8 px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-14 xl:gap-16 2xl:max-w-full">
+    <!-- The container for title, subtitle, and optional CTA button -->
+    <div class="mt-4 md:mt-0">
+      <!-- The title of the section -->
+      <h2
+        id="fadeText"
+        class="mb-4 text-balance text-4xl font-extrabold tracking-tight text-neutral-800 dark:text-neutral-200"
+      >
+        Programa de estudio
+      </h2>
+      <!-- The subtitle of the section -->
+      <p
+        class="mb-4 max-w-prose text-pretty font-light text-neutral-600 dark:text-neutral-400 sm:text-lg"
+      >
+        Conjunto de asignaturas, actividades y evaluaciones diseñadas para alcanzar los objetivos de aprendizaje establecidos.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-1 md:grid-cols-2 mt-10 gap-y-8">
+
+        {
+            StudyProgramTba.modules.map((module, index) => (
+                <div
+                    class="flex justify-center">
+                     <CardImgBasic
+                        title={module.title}
+                        description={module.description}
+                        imgUrl={module.imgUrl}
+                        imgAlt={module.imgAlt}
+                    />
+                </div>
+            ))
+          }
+
+    </div>
+  </section>
+
+  <LeftSection
+    title="Domina el Diagnóstico de DEA: Certificado CEPA y Libro Digital TBA"
+    subTitle="Este curso te proporcionará las herramientas y conocimientos necesarios para tu capacitación para el Diagnóstico de Dificultades Específicas de Aprendizaje (DEA). Perfecto para profecionales y estudiantes. Impertado por su autor: Pablo San Martín Catalán "
+    img="/img/tba-book.png"
+    imgAlt="Libro digital TBA"
+    btnExists={true}
+    btnTitle="¡Contacta con un ejecutico!"
+    btnURL="/contact"
+    listExists={true}
+    items={[
+        { 
+          title: "Modalidad",
+          description: "Online, sincrónico. Plataforma Meet."
+        },
+        { 
+          title: "Duración del curso",
+          description: "12 horas cronológicas."
+        },
+        { 
+          title: "Valor del curso",
+          description: "10.000 CLP."
+        },
+        { 
+          title: "Promoción activa",
+          description: "50% de descuento para los/as profesionales certificados en TBA."
+        },
+    ]}/>
+
+
+</MainLayout>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        function setButtonInactive(btn: any, activeButton: any) {
+            if (btn !== activeButton) {
+                btn.classList.remove(
+                    "active",
+                    "bg-neutral-100",
+                    "hover:border-transparent",
+                    "dark:bg-white/[.05]",
+                );
+
+                const tabId = btn.getAttribute("data-target");
+                if (tabId) {
+                    const contentElement = document.querySelector(tabId);
+                    if (contentElement) {
+                        contentElement.classList.add("hidden");
+                    }
+                }
+
+                changeHeadingStyle(
+                    btn,
+                    ["text-neutral-800", "dark:text-neutral-200"],
+                    ["text-primary-400", "dark:text-primary-300"],
+                );
+            }
+        }
+
+        function activateButton(button: any) {
+            button.classList.add(
+                "active",
+                "bg-neutral-100",
+                ",hover:border-transparent",
+                "dark:bg-white/[.05]",
+            );
+
+            const tabId = button.getAttribute("data-target");
+            if (tabId) {
+                const contentElementToShow = document.querySelector(tabId);
+                if (contentElementToShow) {
+                    contentElementToShow.classList.remove("hidden");
+                }
+            }
+
+            changeHeadingStyle(
+                button,
+                ["text-primary-400", "dark:text-primary-300"],
+                ["text-neutral-800", "dark:text-neutral-200"],
+            );
+        }
+
+        function changeHeadingStyle(
+            button: any,
+            addClasses: any,
+            removeClasses: any,
+        ) {
+            let heading = button.querySelector("span");
+            if (heading) {
+                heading.classList.remove(...removeClasses);
+                heading.classList.add(...addClasses);
+            }
+        }
+
+        const tabButtons = document.querySelectorAll("[data-target]");
+
+        if (tabButtons.length > 0) {
+            changeHeadingStyle(
+                tabButtons[0],
+                ["text-primary-400", "dark:text-primary-300"],
+                [],
+            );
+        }
+
+        tabButtons.forEach((button) => {
+            button.addEventListener("click", (e) => {
+                e.preventDefault();
+                tabButtons.forEach((btn) => setButtonInactive(btn, button));
+                activateButton(button);
+            });
+        });
+    });
+</script>
