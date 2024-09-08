@@ -1,0 +1,158 @@
+---
+// Import section components
+import PrimaryCTA from "@/components/ui/buttons/PrimaryCTA.astro";
+import SecondaryCTA from "@/components/ui/buttons/SecondaryCTA.astro";
+import TextInput from "@/components/ui/forms/input/TextInput.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { SITE } from "@data/constants";
+
+const pageTitle: string = `Cursos y Diplomados​ | ${SITE.title}`;
+const title: string = `Cursos y Diplomados`;
+---
+
+<MainLayout title={pageTitle}>
+    <div class="min-h-[70vh]">
+        <section class="mx-auto max-w-[85rem] items-center  px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full text-center">
+            <div class="flex items-center flex-col mt-10 md:mt-20">
+                <!-- Section title -->
+                <h1 class="mb-4 text-balance text-4xl font-extrabold tracking-tight text-neutral-700 dark:text-neutral-200">{title}</h1>
+                <!-- Section subtitle -->
+                <p class="mb-8 max-w-prose text-pretty font-light text-neutral-600 dark:text-neutral-400 sm:text-xl">
+                    Verifica la autenticidad del certificado emitido por el Centro de Estudios Psicométricos y del Aprendizaje SpA buscando los últimos cuatro dígitos del número de identidad del profesional o estudiante.
+                </p>
+            </div>
+    
+            <div>
+                <form id="form-search" class="max-w-sm mx-auto">   
+                    <div class="flex items-center">
+                        <label for="search-code" class="sr-only">Buscar</label>
+                        <div class="relative w-full">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2"/>
+                                </svg>
+                            </div>
+                            <input 
+                                type="text" 
+                                id="search-code" 
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full ps-10 p-3  dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                                placeholder="xxx-x" 
+                                maxlength="5"
+                                required />
+                        </div>
+                        <button type="submit" class="p-3 ms-2 text-sm font-medium text-white bg-primary-500 rounded-lg border border-blue-500 hover:bg-primary-400 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-primary-600 dark:hover:bg-primary-500 dark:focus:ring-blue-700">
+                            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                            </svg>
+                            <span class="sr-only">Buscar</span>
+                        </button>
+                    </div>
+                    <span id="error-label" class="text-red-600 text-xs"></span>
+                </form>
+    
+            </div>
+    
+            <div class="mt-8 flex flex-col">
+                <small class="text-neutral-600">Si tienes problemás por favor <a href="/contact" class="text-primary-500">Contactanos</a></small>
+                <small class="text-neutral-600">El código debe ser 3 digitos seguidos y el último número separado por un guión: xxx-x</small>
+            </div>
+        </section>
+        <section id="code-success" class="mb-20 mt-5 hidden opacity-0 transition-all ease-in-out delay-150 duration-300">
+            <div class="flex items-center flex-col">
+                <!-- Section title -->
+                <h3 id="code" class="mb-4 text-balance text-4xl font-extrabold tracking-tight text-primary-700 dark:text-neutral-200">xxx-x</h3>
+                <h4 id="course" class="mb-4 text-balance text-4xl font-extrabold tracking-tight text-neutral-700 dark:text-neutral-200 text-center">---</h4>
+                <!-- Section subtitle -->
+                <p class="mb-8 max-w-prose text-pretty font-light text-neutral-600 dark:text-neutral-400 sm:text-xl">Este código está validado por CEPA y confirmamos su valides</p>
+            </div>
+    
+        </section>
+        <section id="not-found" class="mb-20 mt-5 hidden opacity-0 transition-all ease-in-out delay-150 duration-300">
+            <div class="flex items-center flex-col justify-center">
+                <!-- Section title -->
+                <h3 id="code" class="mb-4 text-balance text-4xl font-extrabold tracking-tight text-red-500 dark:text-neutral-200">xxx-x</h3>
+                <h4 class="mb-4 text-balance text-4xl font-extrabold tracking-tight text-neutral-700 dark:text-neutral-200">Código no encontrado</h4>
+                <!-- Section subtitle -->
+                <p class="mb-8 max-w-prose text-pretty font-light text-neutral-600 dark:text-neutral-400 sm:text-xl">Este código no encuentra registrado en nuestra base de datos.</p>
+                <div class="grid w-full gap-3 sm:inline-flex justify-center">
+                    <PrimaryCTA title="Contactar con soporte" url="/contact" />
+                    <SecondaryCTA title="Ir al inicio" url="/" />
+                  </div>
+            </div>
+    
+        </section>
+    </div>
+   
+
+</MainLayout>
+<script>
+    import coursesDiplomas from "@data/codes-certificates/courses-diplomas.json";
+
+    const formSearch = document.querySelector("#form-search")
+    const inputSerach =(document.querySelector("#search-code")  as HTMLInputElement)
+    const notFoundSection = document.querySelector("#not-found")
+    const codeSuccessSection = document.querySelector("#code-success")
+    const errorLabel = document.querySelector("#error-label")
+
+    formSearch.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const searchCodeValue = inputSerach.value 
+        inputSerach.value = "";
+
+        if(isInvalidFormat(searchCodeValue)) {
+            return
+        }
+
+        const certificateFound = findCode(searchCodeValue)
+
+        if(!certificateFound) {
+            setCodeNotFound(searchCodeValue)
+        } else {
+            setCodeSuccess(searchCodeValue, certificateFound)
+        }
+    })
+
+
+    const isInvalidFormat = (searchCodeValue) => {
+        const regex = /^[a-zA-Z0-9]{3}-[a-zA-Z0-9]$/;
+
+        if(!regex.test(searchCodeValue)) {
+            errorLabel.innerHTML = "El código que ingreso no comple con el formato solicitado. Rectifiqué y vuelva a intentar"
+            return true
+        }
+        errorLabel.innerHTML = ""
+        return false
+    }
+
+    const findCode = (searchCodeValue) => {
+        return coursesDiplomas.certificates.find((certificate) => certificate.codes.includes(searchCodeValue))
+    }
+
+    const setCodeNotFound = (searchCodeValue) => {
+       
+        notFoundSection.classList.remove(...['hidden'])
+        codeSuccessSection.classList.add(...["opacity-0","hidden"])
+
+        setTimeout(() => {
+            notFoundSection.classList.remove(...['opacity-0'])
+            notFoundSection.classList.add('opacity-100')
+        }, 100)
+        
+        notFoundSection.querySelector("#code").innerHTML = searchCodeValue
+    }
+
+    const setCodeSuccess = (searchCodeValue, certificateFound) => {
+
+        codeSuccessSection.classList.remove(...['hidden'])
+        notFoundSection.classList.add(...["opacity-0","hidden"])
+
+        setTimeout(() => {
+            codeSuccessSection.classList.remove(...['opacity-0'])
+            codeSuccessSection.classList.add('opacity-100')
+        }, 100)
+        
+        codeSuccessSection.querySelector("#code").innerHTML = searchCodeValue
+        codeSuccessSection.querySelector("#course").innerHTML = certificateFound.title
+    }
+
+</script>

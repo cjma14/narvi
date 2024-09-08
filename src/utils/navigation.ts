@@ -13,8 +13,8 @@ const navBarLinks = [
     name: "Certificados y Cursos", 
     type: "dropdown",
     childrens: [
-      { name: "Cursos y diplomados", type: "basic", url: "/tba" },
-      { name: "Certificados TBA", type: "basic", url: "/tba" },
+      { name: "Cursos y diplomas", type: "basic", url: "/courses-diplomas" },
+      { name: "Certificados TBA", type: "basic", url: "/tba-certificates" },
     ]
   },
   { name: "Sobre nosotros", url: "/about" },

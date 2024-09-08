@@ -5,7 +5,7 @@ import Btn404 from "@components/ui/buttons/Btn404.astro";
 import { SITE } from "@data/constants";
 
 // Define types for translations
-type TranslationKeys = 'en' | 'fr';
+type TranslationKeys = 'es' | 'fr';
 type Translations = {
   [key in TranslationKeys]: {
     pageTitle: string;
@@ -16,13 +16,13 @@ type Translations = {
 };
 
 // Define variables for page content
-const defaultLang: TranslationKeys = "en";
+const defaultLang: TranslationKeys = "es";
 const translations: Translations = {
-  en: {
-    pageTitle: `Page Not Found | ${SITE.title}`,
-    subTitle: "Oops, this isn't the tool you were looking for!",
-    content: "Don't let this hiccup slow you down. Let's get you back to building your masterpiece.",
-    btnTitle: "Go Back",
+  es: {
+    pageTitle: `Página no encontrada | ${SITE.title}`,
+    subTitle: "Oops, no hemos encontrado lo que buscas",
+    content: "No dejes que este contratiempo te detenga. Vamos a ayudarte a volver.",
+    btnTitle: "Volver",
   },
   fr: {
     pageTitle: `Page Non Trouvée | ${SITE.title}`,
@@ -34,7 +34,7 @@ const translations: Translations = {
 
 // Determine language from the URL
 const urlPath = Astro.url.pathname;
-const langCodeMatch = urlPath.match(/^\/(en|fr)\//);
+const langCodeMatch = urlPath.match(/^\/(es|fr)\//);
 const lang: TranslationKeys = langCodeMatch ? langCodeMatch[1] as TranslationKeys : defaultLang;
 
 const { pageTitle, subTitle, content, btnTitle } = translations[lang];
@@ -44,7 +44,7 @@ const { pageTitle, subTitle, content, btnTitle } = translations[lang];
   <section class="grid h-svh place-content-center">
     <div class="mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16">
       <div class="mx-auto max-w-screen-sm text-center">
-        <h1 class="text-dark mb-4 text-7xl font-extrabold text-yellow-500 dark:text-yellow-400 lg:text-9xl">
+        <h1 class="text-dark mb-4 text-7xl font-extrabold text-cyan-500 dark:text-cyan-400 lg:text-9xl">
           404
         </h1>
         <p id="subtitle" class="mb-4 text-balance text-3xl font-bold tracking-tight text-neutral-700 dark:text-neutral-300 md:text-4xl">
