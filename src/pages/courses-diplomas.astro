@@ -53,7 +53,7 @@ const title: string = `Cursos y Diplomados`;
             </div>
     
             <div class="mt-8 flex flex-col">
-                <small class="text-neutral-600">Si tienes problemás por favor <a href="/contact" class="text-primary-500">Contactanos</a></small>
+                <small class="text-neutral-600">Si tienes problemas, por favor <a href="/contact" class="text-primary-500">Contactanos</a></small>
                 <small class="text-neutral-600">El código debe ser 3 digitos seguidos y el último número separado por un guión: xxx-x</small>
             </div>
         </section>
@@ -117,7 +117,7 @@ const title: string = `Cursos y Diplomados`;
         const regex = /^[a-zA-Z0-9]{3}-[a-zA-Z0-9]$/;
 
         if(!regex.test(searchCodeValue)) {
-            errorLabel.innerHTML = "El código que ingreso no comple con el formato solicitado. Rectifiqué y vuelva a intentar"
+            errorLabel.innerHTML = "El código que ingresó no cumple con el formato solicitado. Rectifique e intente nuevamente."
             return true
         }
         errorLabel.innerHTML = ""

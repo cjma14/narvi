@@ -117,7 +117,7 @@ const title: string = `Certificación oficial en la batería psicopedagógica TB
         const regex = /^[a-zA-Z0-9]{3}-[a-zA-Z0-9]$/;
 
         if(!regex.test(searchCodeValue)) {
-            errorLabel.innerHTML = "El código que ingreso no comple con el formato solicitado. Rectifiqué y vuelva a intentar"
+            errorLabel.innerHTML = " El código que ingresó no cumple con el formato solicitado. Rectifique e intente nuevamente."
             return true
         }
         errorLabel.innerHTML = ""
