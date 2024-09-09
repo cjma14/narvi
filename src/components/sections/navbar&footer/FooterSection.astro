@@ -9,12 +9,15 @@ import BrandLogo from "@components/BrandLogo.astro";
 import { SITE } from "@data/constants";
 
 // Select the correct translation based on the page's lang prop:
-const strings = Astro.currentLocale === "fr" ? frStrings : enStrings;
+const strings =  enStrings;
 
 // Define the variables that will be used in this component
-const sectionThreeTitle: string = Astro.currentLocale === "fr" ? "Rester à jour" : "Stay up to date";
-const sectionThreeContent: string = Astro.currentLocale === "fr" ? "Restez informé des derniers outils et des offres exclusives." :
-  "Stay updated with the latest tools and exclusive deals.";
+const sectionThreeTitle: string =
+  Astro.currentLocale === "fr" ? "Rester à jour" : "Stay up to date";
+const sectionThreeContent: string =
+  Astro.currentLocale === "fr"
+    ? "Restez informé des derniers outils et des offres exclusives."
+    : "Stay updated with the latest tools and exclusive deals.";
 ---
 
 <footer class="w-full bg-neutral-300 dark:bg-neutral-900">
@@ -71,19 +74,35 @@ const sectionThreeContent: string = Astro.currentLocale === "fr" ? "Restez infor
     <div
       class="mt-9 grid gap-y-2 sm:mt-12 sm:flex sm:items-center sm:justify-between sm:gap-y-0"
     >
-      <div class="flex items-center justify-between">
+      <div class="flex justify-between flex-col gap-1">
         <p class="text-sm text-neutral-600 dark:text-neutral-400">
-          © <span id="current-year"></span> {SITE.title}.
+          © <span id="current-year"></span>
+          {SITE.title}. 
         </p>
+
+       
+        
       </div>
 
       <!-- Social Brands -->
-      <div>
-        <FooterSocialLink url={strings.socialLinks.facebook}
-          ><Icon name="facebookFooter" />
-        </FooterSocialLink>
+      <div class="flex flex-col items-center">
+        <div>
+          <FooterSocialLink url={strings.socialLinks.instagram}>
+            <Icon name="instagram" />
+          </FooterSocialLink>
+  
+          <FooterSocialLink url={strings.socialLinks.linkedin}>
+            <Icon name="linkedin" />
+          </FooterSocialLink>
+  
+          <FooterSocialLink url={strings.socialLinks.cepa}>
+            <Icon name="cepa" />
+          </FooterSocialLink>
+        </div>
+        
+        <p class="text-[13px] text-neutral-600 dark:text-neutral-400">Sitio creado por <a class="text-primary-600 font-bold" target="_blank" href="https://www.linkedin.com/in/carlos-morales-89855019b/">Carlos Morales</a></p>
 
-        <FooterSocialLink url={strings.socialLinks.x}
+        <!-- <FooterSocialLink url={strings.socialLinks.x}
           ><Icon name="xFooter" /></FooterSocialLink
         >
 
@@ -93,7 +112,7 @@ const sectionThreeContent: string = Astro.currentLocale === "fr" ? "Restez infor
 
         <FooterSocialLink url={strings.socialLinks.slack}
           ><Icon name="slackFooter" />
-        </FooterSocialLink>
+        </FooterSocialLink> -->
       </div>
     </div>
 

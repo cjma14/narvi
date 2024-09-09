@@ -26,16 +26,29 @@ const footerLinks = [
     section: "Empresa",
     links: [
       { name: "Sobre nosotros", url: "/about" },
-      { name: "TBA", url: "/tba" }, ,
+      { name: "Contacto", url: "/contact" }, ,
+    ],
+  },
+  {
+    section: "Test Básico de Aprendizaje",
+    links: [
+      { name: "TBA", url: "/tba" },
+      { name: "Formación TBA", url: "/course" },
+      { name: "Certificados", url: "/tba-certificates" },
+    ],
+  },
+  {
+    section: "Cursos y Diplomas",
+    links: [
+      { name: "Certificados SPA", url: "/courses-diplomas" }
     ],
   },
 ];
 // An object of links for social icons
 const socialLinks = {
-  facebook: "https://www.instagram.com/cepaonline/",
-  x: "https://twitter.com/",
-  google: "https://www.google.com/",
-  slack: "https://slack.com/",
+  instagram: "https://www.instagram.com/cepaonline/",
+  linkedin: "https://www.linkedin.com/in/pablo-jes%C3%BAs-san-mart%C3%ADn-catal%C3%A1n-2743b6256/?trk=people-guest_people_search-card&originalSubdomain=cl",
+  cepa: "https://app.cepaonline.cl/login",
 };
 
 export default {
