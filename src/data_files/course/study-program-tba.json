@@ -2,7 +2,7 @@
   "modules": [
     { 
       "title": "Primer módulo", 
-      "description": "Fundamentos teóricos y clínicos de las Dificultades Específicas de Aprendizaje (DEA)", 
+      "description": "Fundamentos teóricos y clínicos de las Dificultades Específicas de Aprendizaje (DEA).", 
       "imgUrl": "/img/module-1.jpg", 
       "imgAlt": "Estudiante realizando modulo uno de tba"
     },

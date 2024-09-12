@@ -5,7 +5,7 @@ const navBarLinks = [
     name: "TBA", 
     type: "dropdown",
     childrens: [
-      { name: "¿Que es?", type: "basic", url: "/tba" },
+      { name: "¿Qué es?", type: "basic", url: "/tba" },
       { name: "Formación TBA", type: "basic", url: "/course" },
     ]
   },
@@ -40,7 +40,7 @@ const footerLinks = [
   {
     section: "Cursos y Diplomas",
     links: [
-      { name: "Certificados SPA", url: "/courses-diplomas" }
+      { name: "Certificados", url: "/courses-diplomas" }
     ],
   },
 ];
