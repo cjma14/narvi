@@ -7,15 +7,15 @@ import starlight from "@astrojs/starlight";
 // https://astro.build/config
 export default defineConfig({
   // https://docs.astro.build/en/guides/images/#authorizing-remote-images
-  site: "https://cepaonline.cl",
+  site: "https://narvi-ec.com",
   image: {
     domains: ["images.unsplash.com"],
   },
   i18n: {
     defaultLocale: "en",
-    locales: ["en", "fr"],
+    locales: ["en", "es"],
     fallback: {
-      fr: "en",
+      es: "en",
     },
     routing: {
       prefixDefaultLocale: false,
@@ -26,10 +26,10 @@ export default defineConfig({
     tailwind(),
     sitemap({
       i18n: {
-        defaultLocale: "en", // All urls that don't contain `fr` after `https://screwfast.uk/` will be treated as default locale, i.e. `en`
+        defaultLocale: "en", // All urls that don't contain `es` after `https://screwfast.uk/` will be treated as default locale, i.e. `en`
         locales: {
           en: "en", // The `defaultLocale` value must present in `locales` keys
-          fr: "fr",
+          es: "es",
         },
       },
     }),
