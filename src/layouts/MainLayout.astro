@@ -23,16 +23,12 @@ We set the language of the page to English and add classes for scrollbar and scr
 -->
 <html lang={lang} class="scrollbar-hide lenis lenis-smooth scroll-pt-16">
   <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     <style>
       html {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "DM Sans", sans-serif;;
       }
     </style>
     <!-- Adding metadata to the HTML document -->
@@ -52,13 +48,13 @@ We set the language of the page to English and add classes for scrollbar and scr
     </script>
   </head>
   <body
-    class="bg-neutral-50 selection:bg-primary-400 selection:text-neutral-700 dark:bg-neutral-800"
+    class="bg-[#172c27] selection:bg-primary-400 selection:text-neutral-700 dark:bg-neutral-800"
   >
     <!--
     Setting up the main structure of the page.
     The Navbar is placed at the top, with a slot for the main content and FooterSection at the bottom.
     -->
-    <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+    <div class="">
       <Navbar />
       <main>
         <slot />

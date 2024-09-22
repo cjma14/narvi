@@ -1,7 +1,7 @@
 ---
 // Import the necessary components
 import MainLayout from "@/layouts/MainLayout.astro";
-import HeroSection from "@components/sections/landing/HeroSection.astro";;
+import HeroSection from "@components/sections/landing/HeroSection.astro";
 import HeroSectionAlt from "@components/sections/landing/HeroSectionAlt.astro";
 import ClientsSection from "@components/sections/landing/ClientsSection.astro";
 import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
@@ -17,9 +17,7 @@ import featuresTabs from "@data/featuresTabs.json";
 import pricing from "@data/pricing.json";
 import avatar from "@images/avatar.jpg";
 
-const avatarSrcs: Array<string> = [
-    avatar.src
-];
+const avatarSrcs: Array<string> = [avatar.src];
 ---
 
 <MainLayout>
@@ -30,9 +28,9 @@ const avatarSrcs: Array<string> = [
   /> -->
 
   <HeroSection
-    title=`Evaluaciones precisas con el TBA. La mejor tecnología para los estudios cognitivos`
-    subTitle="Con TBA puedes agilizar los procesos de evaluación estandarizada."
-    primaryBtn="¡Empecemos!"
+    title=`We supply energy equipment.`
+    subTitle="Boost your business. Innovate your operations"
+    primaryBtn="Let's get started!    "
     primaryBtnURL="/products"
     secondaryBtn="Contactar con ventas"
     secondaryBtnURL="/contact"
@@ -41,69 +39,70 @@ const avatarSrcs: Array<string> = [
     rating=`<span class="font-bold">4.8</span> / 5`
     starCount={4}
     reviews=`From Over <span class="font-bold">12.8k</span> Reviews`
-    src={heroImage}
-    alt="El Test Básico de Aprendizaje (TBA) es una herramienta psicopedagógica integral diseñada para evaluar un amplio espectro de variables cognitivas"
   />
+  <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+    <ClientsSection
+      title="Algunas de las instituciones que trabajan activamente con TBA"
+      subTitle="Confianza de líderes en nuestras evaluaciones"
+    />
 
-  <ClientsSection
-    title="Algunas de las instituciones que trabajan activamente con TBA"
-    subTitle="Confianza de líderes en nuestras evaluaciones"
-  />
+    <FeaturesNavs
+      title=`<span class="text-primary-500 dark:text-primary-400">TBA</span> Batería informatizada para evaluaciones automatizadas y análisis profundos.`
+      tabs={featuresTabs}
+    />
 
-  <FeaturesNavs
-    title=`<span class="text-primary-500 dark:text-primary-400">TBA</span> Batería informatizada para evaluaciones automatizadas y análisis profundos.`
-    tabs={featuresTabs}
-  />
+    <TestimonialsSection
+      title="Resultados reales con TBA"
+      subTitle="En CEPA destacamos nuestro compromiso con la excelencia. Inspírate con historias reales de mejora continua. Descubre cómo nuestros usuarios han optimizado sus procesos de evaluación estandarizada gracias al TBA."
+      ;
+      testimonials={[
+        {
+          content:
+            'Me encanta el test básico de aprendizaje, ya que su aplicación es accesible y dinámica. A las niñas y niños les encanta, ya que lo encuentran "bonito y divertido". Además, encuentro tremendo que sea un test chileno, estandarizado, con una alta validez y confiabilidad. Este test representa gran avance de la Psicopedagogia en Chile, abre nuevas puertas de investigación y nos invita a confiar en nuestros científicos chilenos.',
+          author: "Nathalie Araya",
+          role: "Psicopedagoga",
+          avatarSrc: "/img/profile.webp",
+        },
+        {
+          content:
+            "La batería TBA es una herramienta completa y versátil que facilita la evaluación integral de las habilidades de aprendizaje en un amplio rango de edades. Su fácil aplicación y el detallado informe que genera, tanto cuantitativo como cualitativo, la convierten en un recurso invaluable en la práctica psicopedagógica, complementando eficazmente otros instrumentos de evaluación.",
+          author: "Katherine Martínez ",
+          role: "Psicopedagoga",
+          avatarSrc: "/img/profile.webp",
+        },
+      ]}
+      statistics={[
+        {
+          count: "1 Mil+",
+          description:
+            "Resultados precisos en chile. Descubre cómo TBA ha transformado la evaluación psicopedagógica.",
+        },
+        {
+          count: "300+",
+          description:
+            "profesionales de las Ciencias Cognitiva confían en TBA para optimizar sus evaluaciones.",
+        },
+        {
+          count: "98.4%",
+          description:
+            "En Test-Retest. La estabilidad de las puntuaciones del TBA demuestra su alta confiabilidad en la evaluación de habilidades.",
+        },
+        {
+          count: "2x",
+          description:
+            "Mayor velocidad al momento de cuantificar resultados reales.",
+        },
+      ]}
+    />
 
-  <TestimonialsSection
-    title="Resultados reales con TBA"
-    subTitle="En CEPA destacamos nuestro compromiso con la excelencia. Inspírate con historias reales de mejora continua. Descubre cómo nuestros usuarios han optimizado sus procesos de evaluación estandarizada gracias al TBA.";
-    testimonials={[
-      {
-        content:
-          'Me encanta el test básico de aprendizaje, ya que su aplicación es accesible y dinámica. A las niñas y niños les encanta, ya que lo encuentran "bonito y divertido". Además, encuentro tremendo que sea un test chileno, estandarizado, con una alta validez y confiabilidad. Este test representa gran avance de la Psicopedagogia en Chile, abre nuevas puertas de investigación y nos invita a confiar en nuestros científicos chilenos.',
-        author: "Nathalie Araya",
-        role: "Psicopedagoga",
-        avatarSrc:"/img/profile.webp",
-      },
-      {
-        content:
-          'La batería TBA es una herramienta completa y versátil que facilita la evaluación integral de las habilidades de aprendizaje en un amplio rango de edades. Su fácil aplicación y el detallado informe que genera, tanto cuantitativo como cualitativo, la convierten en un recurso invaluable en la práctica psicopedagógica, complementando eficazmente otros instrumentos de evaluación.',
-        author: "Katherine Martínez ",
-        role: "Psicopedagoga",
-        avatarSrc:"/img/profile.webp",
-      },
-    ]}
-    statistics={[
-      {
-        count: "1 Mil+",
-        description:
-          "Resultados precisos en chile. Descubre cómo TBA ha transformado la evaluación psicopedagógica.",
-      },
-      {
-        count: "300+",
-        description:
-          "profesionales de las Ciencias Cognitiva confían en TBA para optimizar sus evaluaciones.",
-      },
-      {
-        count: "98.4%",
-        description:
-          "En Test-Retest. La estabilidad de las puntuaciones del TBA demuestra su alta confiabilidad en la evaluación de habilidades.",
-      },
-      {
-        count: "2x",
-        description: "Mayor velocidad al momento de cuantificar resultados reales.",
-      },
-    ]}
-  />
+    <PricingSection pricing={pricing} />
 
-  <PricingSection pricing={pricing} />
+    <FAQ title="Preguntas<br />Frecuentes" faqs={faqs} />
 
-  <FAQ title="Preguntas<br />Frecuentes" faqs={faqs} />
-
-  <HeroSectionAlt
-    title="¡Trabajemos juntos!"
-    subTitle="TBA está para facilitar tus análisis y evaluaciones."
-    url="/contact"
-  />
+    <HeroSectionAlt
+      title="¡Trabajemos juntos!"
+      subTitle="TBA está para facilitar tus análisis y evaluaciones."
+      url="/contact"
+    />
+  </div>
 </MainLayout>

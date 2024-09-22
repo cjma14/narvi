@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import colors from 'tailwindcss/colors';
+
 export default {
   content: [
     "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
@@ -12,9 +13,22 @@ export default {
       current: "currentColor",
       black: "#000000",
       white: "#ffffff",
+      pearl: "#f5efe0",
       gray: colors.gray,
       cyan: colors.cyan,
-      primary: colors.teal,
+      primary: {
+        '50': '#f5faeb',
+        '100': '#e7f5d2',
+        '200': '#d2ebab',
+        '300': '#b3dc7a',
+        '400': '#8cc63f',
+        '500': '#78b032',
+        '600': '#5c8c24',
+        '700': '#476b20',
+        '800': '#3a561e',
+        '900': '#33491e',
+        '950': '#19280b',
+      },
       indigo: colors.indigo,
       neutral: colors.neutral,  // Used mainly for text color
       yellow: {
