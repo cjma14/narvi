@@ -42,20 +42,20 @@ interface Props {
 
 <!-- Defining a grid container that holds all the content -->
 <section
-  class="mx-auto grid max-w-[85rem] gap-4 px-4 py-14 sm:px-6 md:grid-cols-2 md:items-center md:gap-8 lg:px-[10rem] 2xl:max-w-full bg-[url('/img/hero2.jpg')] bg-cover bg-center bg-no-repeat bg-fixed h-screen"
+  class="grid gap-4 grid-cols-1 md:grid-cols-2 px-4 py-14 sm:px-6 md:items-center md:gap-8 lg:px-[10rem] 2xl:max-w-full bg-image-hero"
 >
   <!-- Title and description -->
   <div class="animate__animated animate__fadeIn">
     <!-- Each h1 and p tag renders a portion of the title and subTitle defined above -->
     <h1
-      class="block text-balance text-3xl font-bold tracking-tight text-pearl sm:text-4xl lg:text-[7rem] lg:leading-none"
+      class="block text-balance font-bold tracking-tight text-pearl-100 text-4xl md:lg:text-5xl lg:text-[7rem] lg:leading-none"
     >
       <!-- About Fragment: https://docs.astro.build/en/basics/astro-syntax/#fragments -->
       <Fragment set:html={title} />
     </h1>
     {subTitle &&
     <p
-      class="mt-3 text-pretty text-lg leading-relaxed text-pearl lg:w-4/5"
+      class="mt-3 text-pretty text-lg leading-relaxed text-pearl-100 lg:w-4/5"
     >
       {subTitle}
     </p>
@@ -77,19 +77,11 @@ interface Props {
 
   </div>
   <!-- Hero Image Section -->
-  <div class="flex w-full">
-      <div class="top-12 overflow-hidden">
-	{src && alt &&
-	<Image
-        src={src}
-        alt={alt}
-        class="h-full w-full"
-        draggable={"false"}
-        loading={"eager"}
-        format={"avif"}
-	 />
-	}
-    </div>
-  </div>
+ 
 </section>
 
+<style>
+  .bg-image-hero {
+    @apply bg-[url('/img/hero2.jpg')] bg-cover bg-right lg:bg-center bg-no-repeat bg-fixed h-screen items-center 
+  }
+</style>

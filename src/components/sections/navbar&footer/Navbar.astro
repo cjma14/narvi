@@ -21,10 +21,10 @@ const homeUrl = Astro.currentLocale === "es" ? "/es" : "/";
 >
   <!-- Navigation container -->
   <nav
-    class="relative w-full bg-transparent md:flex md:items-center md:justify-between"
+    class="relative w-full md:flex md:items-center md:justify-between"
     aria-label="Global"
   >
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between px-5 md:px-0">
       <!-- Brand logo -->
       <a
         class="flex-none rounded-lg text-xl font-bold outline-none ring-zinc-500 focus-visible:ring dark:ring-zinc-200 dark:focus:outline-none py-5"
@@ -81,7 +81,7 @@ const homeUrl = Astro.currentLocale === "es" ? "/es" : "/";
     <!-- Contains navigation links -->
     <div
       id="navbar-collapse-with-animation"
-      class="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 md:block"
+      class="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 md:block bg-white md:bg-transparent relative z-10 px-5 pb-5 md:p-0 rounded-xl"
     >
       <!-- Navigation links container -->
       <div

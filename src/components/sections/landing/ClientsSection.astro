@@ -4,14 +4,12 @@ const { title, subTitle } = Astro.props;
 
 // Define TypeScript interface for props
 interface Props {
-  title: string;
+  title?: string;
   subTitle?: string;
 }
 ---
 
-<section
-  class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
->
+<section class="mx-auto max-w-[85rem] 2xl:max-w-full">
   <!-- Title and description -->
   <div class="mx-auto mb-6 w-full space-y-1 text-center sm:w-1/2 lg:w-1/3">
     <h2
@@ -27,28 +25,78 @@ interface Props {
       )
     }
   </div>
-  <div class="flex flex-col items-center justify-center gap-y-2 sm:flex-row sm:gap-x-12 sm:gap-y-0 lg:gap-x-24 py-4">
+  <div
+    class="flex flex-col items-center justify-center gap-y-2 pb-4 sm:flex-row sm:gap-x-12 sm:gap-y-0 lg:gap-x-24"
+  >
+    <div class="swiper swiperClients">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img
+            class="aspect-[4/3] w-[300px] object-contain"
+            src="/img/clients/pasma.png"
+            alt="pasma"
+          />
+        </div>
 
+        <div class="swiper-slide">
+          <img
+            class="aspect-[4/3] w-[300px] object-contain"
+            src="/img/clients/petromex-no-chroma.png"
+            alt="petromex"
+          />
+        </div>
 
-  <div class="swiper swiperClients">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img class="w-[200px] aspect-[4/3] object-contain" src="/img/atacama.png" alt="atcama" >
+        <div class="swiper-slide">
+          <img
+            class="aspect-[4/3] w-[300px] object-contain"
+            src="/img/clients/pasma.png"
+            alt="pasma"
+          />
+        </div>
+
+        <div class="swiper-slide">
+          <img
+            class="aspect-[4/3] w-[300px] object-contain"
+            src="/img/clients/petromex-no-chroma.png"
+            alt="petromex"
+          />
+        </div>
+
+        <div class="swiper-slide">
+          <img
+            class="aspect-[4/3] w-[300px] object-contain"
+            src="/img/clients/pasma.png"
+            alt="pasma"
+          />
+        </div>
+
+        <div class="swiper-slide">
+          <img
+            class="aspect-[4/3] w-[300px] object-contain"
+            src="/img/clients/petromex-no-chroma.png"
+            alt="petromex"
+          />
+        </div>
+
+        <div class="swiper-slide">
+          <img
+            class="aspect-[4/3] w-[300px] object-contain"
+            src="/img/clients/pasma.png"
+            alt="pasma"
+          />
+        </div>
+
+        <div class="swiper-slide">
+          <img
+            class="aspect-[4/3] w-[300px] object-contain"
+            src="/img/clients/petromex-no-chroma.png"
+            alt="petromex"
+          />
+        </div>
       </div>
-      <div class="swiper-slide">
-        <img class="w-[200px] aspect-[4/3] object-contain" src="/img/incluye-terapia.png" alt="atcama">
-      </div>
-      <div class="swiper-slide">
-        <img class="w-[200px] aspect-[4/3] object-contain" src="/img/cmds.png" alt="cmds">
-      </div>
-      <div class="swiper-slide">
-        <img class="w-[200px] aspect-[4/3] object-contain" src="/img/psicopedagogia.png" alt="psicopedagogia">
-      </div>
+      <!-- <div class="swiper-pagination"></div> -->
     </div>
-    <div class="swiper-pagination"></div>
-  </div>
     <!-- Clients Group SVGs -->
-   
   </div>
 </section>
 
@@ -61,6 +109,17 @@ interface Props {
     display: flex !important;
     justify-content: center;
   }
+
+  .swiperClients {
+    -webkit-transition-timing-function: linear !important;
+    -o-transition-timing-function: linear !important;
+    transition-timing-function: linear !important;
+    background: linear-gradient(
+      to right,
+      #172c27 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
 </style>
 
 <script>
@@ -70,13 +129,21 @@ interface Props {
   import { Pagination, Autoplay } from "swiper/modules";
 
   var swiper = new Swiper(".swiperClients", {
-      modules: [Pagination, Autoplay],
-      slidesPerView: "auto",
-      spaceBetween: 20,
-      breakpoints: {
+    modules: [Pagination, Autoplay],
+    spaceBetween: 40,
+    grabCursor: true,
+    freeMode: true,
+    speed: 11000,
+    loop: true,
+    slidesPerView: "auto",
+    autoplay: {
+      delay: 0.5,
+      disableOnInteraction: false,
+    },
+    breakpoints: {
         // Cuando la pantalla es >= 768px
         768: {
-          slidesPerView: 1,
+          slidesPerView: "auto",
           spaceBetween: 30
         },
         // Cuando la pantalla es >= 1024px
@@ -84,13 +151,30 @@ interface Props {
           slidesPerView: 4,
           spaceBetween: 40
         }
-      },
-      autoplay: {
-          delay: 5000
-      },
-      pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-      },
+    },
   });
+  // var swiper = new Swiper(".swiperClients", {
+  //     modules: [Pagination, Autoplay],
+  //     slidesPerView: "auto",
+  //     spaceBetween: 20,
+  //     breakpoints: {
+  //       // Cuando la pantalla es >= 768px
+  //       768: {
+  //         slidesPerView: 1,
+  //         spaceBetween: 30
+  //       },
+  //       // Cuando la pantalla es >= 1024px
+  //       1024: {
+  //         slidesPerView: 4,
+  //         spaceBetween: 40
+  //       }
+  //     },
+  //     autoplay: {
+  //         delay: 5000
+  //     },
+  //     pagination: {
+  //         el: ".swiper-pagination",
+  //         clickable: true,
+  //     },
+  // });
 </script>

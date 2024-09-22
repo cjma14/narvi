@@ -16,6 +16,7 @@ import features from "@data/features.json";
 import featuresTabs from "@data/featuresTabs.json";
 import pricing from "@data/pricing.json";
 import avatar from "@images/avatar.jpg";
+import WhoWeAreSection from "@/components/ui/blocks/WhoWeAreSection.astro";
 
 const avatarSrcs: Array<string> = [avatar.src];
 ---
@@ -40,17 +41,23 @@ const avatarSrcs: Array<string> = [avatar.src];
     starCount={4}
     reviews=`From Over <span class="font-bold">12.8k</span> Reviews`
   />
-  <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-    <ClientsSection
-      title="Algunas de las instituciones que trabajan activamente con TBA"
-      subTitle="Confianza de líderes en nuestras evaluaciones"
-    />
+  
+  <ClientsSection/>
 
-    <FeaturesNavs
+  <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+    <!-- <FeaturesNavs
       title=`<span class="text-primary-500 dark:text-primary-400">TBA</span> Batería informatizada para evaluaciones automatizadas y análisis profundos.`
       tabs={featuresTabs}
+    /> -->
+    <WhoWeAreSection
+      title="Lorem ipsum dolor sit ame"
+      subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam commodo  neque sit amet massa fermentum tristique. Nullam sit amet urna dui.  Curabitur placerat vulputate sem eget hendrerit. Duis id erat vulputate,  venenatis purus iaculis, consectetur ex. Nam vel rhoncus sapien,  posuere ornare libero. Integer pretium, neque sit amet congue porttitor"
+      label="Who we are?"
+      imgOne="/img/machine-1.jpg"
+      imgOneAlt="Maquina pesda"
+      imgTwo="/img/machine-2.jpg"
+      imgTwoAlt="Maquina pesda"
     />
-
     <TestimonialsSection
       title="Resultados reales con TBA"
       subTitle="En CEPA destacamos nuestro compromiso con la excelencia. Inspírate con historias reales de mejora continua. Descubre cómo nuestros usuarios han optimizado sus procesos de evaluación estandarizada gracias al TBA."
