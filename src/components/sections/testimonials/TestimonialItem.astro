@@ -9,16 +9,16 @@ interface Props {
 }
 ---
 
-<blockquote class="relative">
+<blockquote class="relative max-w-[70rem]">
 
   <div class="relative z-10">
-    <p class="text-lg italic text-neutral-800 dark:text-neutral-200">
+    <p class="text-lg italic text-pearl-100 dark:text-neutral-200">
       {content}
     </p>
   </div>
 
   <div class="mt-6">
-    <div class="flex items-center">
+    <div class="flex items-center justify-center">
       <div class="flex-shrink-0">
         <img
           class="h-10 w-10 rounded-full"
@@ -27,12 +27,15 @@ interface Props {
           loading={"eager"}
         />
       </div>
-      <div class="ms-4 grow">
-        <div class="font-bold text-neutral-800 dark:text-neutral-200">
-          {author}
+      <div>
+        <div class="ms-4 grow w-full">
+          <div class="font-bold text-pearl-100 dark:text-neutral-200">
+            {author}
+          </div>
+          <div class="text-xs text-neutral-500">{role}</div>
         </div>
-        <div class="text-xs text-neutral-500">{role}</div>
       </div>
+     
     </div>
   </div>
 </blockquote>

@@ -74,7 +74,7 @@ export const Icons = {
       },
     ],
     class:
-      "h-6 w-6 flex-shrink-0 text-neutral-700 hs-tab-active:text-primary-400 dark:text-neutral-300 dark:hs-tab-active:text-primary-300 md:h-7 md:w-7",
+      "h-6 w-6 flex-shrink-0 text-pearl-100 hs-tab-active:text-primary-400 dark:text-neutral-300 dark:hs-tab-active:text-primary-300 md:h-7 md:w-7",
     width: 24,
     height: 24,
     viewBox: "0 0 24 24",
@@ -186,7 +186,7 @@ export const Icons = {
         d: "M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z",
       },
     ],
-    class: "h-4 w-4 group-hover:text-neutral-700",
+    class: "h-4 w-4 group-hover:text-pearl-100",
     width: 24,
     height: 24,
     viewBox: "0 0 24 24",
@@ -203,7 +203,7 @@ export const Icons = {
       },
     ],
     class:
-      "w-4.5 h-4.5 transition flex-shrink-0 text-neutral-700 duration-300 group-hover:-translate-y-1",
+      "w-4.5 h-4.5 transition flex-shrink-0 text-pearl-100 duration-300 group-hover:-translate-y-1",
     width: 16,
     height: 16,
     viewBox: "0 0 16 16",
@@ -216,7 +216,7 @@ export const Icons = {
       },
     ],
     class:
-      "w-4.5 h-4.5 transition flex-shrink-0 text-neutral-700 duration-300 group-hover:-translate-y-1",
+      "w-4.5 h-4.5 transition flex-shrink-0 text-pearl-100 duration-300 group-hover:-translate-y-1",
     width: 16,
     height: 16,
     viewBox: "0 0 24 24",
@@ -229,7 +229,7 @@ export const Icons = {
       },
     ],
     class:
-      "w-4.5 h-4.5 transition flex-shrink-0 text-neutral-700 duration-300 group-hover:-translate-y-1",
+      "w-4.5 h-4.5 transition flex-shrink-0 text-pearl-100 duration-300 group-hover:-translate-y-1",
     width: 16,
     height: 16,
     viewBox: "0 0 24 24",
@@ -242,10 +242,23 @@ export const Icons = {
       },
     ],
     class:
-      "w-4.5 h-4.5 transition flex-shrink-0 text-neutral-700 duration-300 group-hover:-translate-y-1",
+      "w-4.5 h-4.5 transition flex-shrink-0 text-pearl-100 duration-300 group-hover:-translate-y-1",
     width: 16,
     height: 16,
     viewBox: "0 0 511.89355 512.07239",
+    fill: "currentColor",
+  },
+  translate: {
+    paths: [
+      {
+        d: "m476-80 182-480h84L924-80h-84l-43-122H603L560-80h-84ZM160-200l-56-56 202-202q-35-35-63.5-80T190-640h84q20 39 40 68t48 58q33-33 68.5-92.5T484-720H40v-80h280v-80h80v80h280v80H564q-21 72-63 148t-83 116l96 98-30 82-122-125-202 201Zm468-72h144l-72-204-72 204Z",
+      },
+    ],
+    class:
+      "w-4.5 h-4.5 transition flex-shrink-0 duration-300 group-hover:-translate-y-1",
+    width: 16,
+    height: 16,
+    viewBox: "0 -960 960 960",
     fill: "currentColor",
   },
   arrowRightStatic: {
@@ -321,7 +334,7 @@ export const Icons = {
       },
     ],
     class:
-      "h-4 w-4 flex-shrink-0 fill-current text-neutral-700 dark:text-neutral-400",
+      "h-4 w-4 flex-shrink-0 fill-current text-pearl-100 dark:text-neutral-400",
     viewBox: "0 0 24 24",
     fill: "currentColor",
     title: "Twitter",
@@ -333,7 +346,7 @@ export const Icons = {
       },
     ],
     class:
-      "h-4 w-4 flex-shrink-0 fill-current text-neutral-700 dark:text-neutral-400",
+      "h-4 w-4 flex-shrink-0 fill-current text-pearl-100 dark:text-neutral-400",
     viewBox: "0 0 24 24",
     fill: "currentColor",
     title: "Facebook",
@@ -345,7 +358,7 @@ export const Icons = {
       },
     ],
     class:
-      "h-4 w-4 flex-shrink-0 fill-current text-neutral-700 dark:text-neutral-400",
+      "h-4 w-4 flex-shrink-0 fill-current text-pearl-100 dark:text-neutral-400",
     viewBox: "0 0 24 24",
     fill: "currentColor",
     title: "GitHub",
@@ -357,7 +370,7 @@ export const Icons = {
       },
     ],
     class:
-      "h-4 w-4 flex-shrink-0 fill-current text-neutral-700 dark:text-neutral-400",
+      "h-4 w-4 flex-shrink-0 fill-current text-pearl-100 dark:text-neutral-400",
     viewBox: "0 0 24 24",
     fill: "currentColor",
     title: "Google",
@@ -369,7 +382,7 @@ export const Icons = {
       },
     ],
     class:
-      "h-4 w-4 flex-shrink-0 fill-current text-neutral-700 dark:text-neutral-400",
+      "h-4 w-4 flex-shrink-0 fill-current text-pearl-100 dark:text-neutral-400",
     viewBox: "0 0 24 24",
     fill: "currentColor",
     title: "Slack",
@@ -381,7 +394,7 @@ export const Icons = {
       },
     ],
     class:
-      "absolute start-0 top-0 h-16 w-16 -translate-x-6 -translate-y-8 transform text-neutral-300 dark:text-neutral-700",
+      "absolute start-0 top-0 h-16 w-16 -translate-x-6 -translate-y-8 transform text-neutral-300 dark:text-pearl-100",
     width: 16,
     height: 16,
     viewBox: "0 0 16 16",

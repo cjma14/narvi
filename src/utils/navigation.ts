@@ -1,53 +1,64 @@
 // An array of links for navigation bar
 const navBarLinks = [
-  { name: "Inicio", type: "basic", url: "/" },
   { 
-    name: "TBA", 
-    type: "dropdown",
-    childrens: [
-      { name: "¿Qué es?", type: "basic", url: "/tba" },
-      { name: "Formación TBA", type: "basic", url: "/course" },
-    ]
+    name: "Home", 
+    type: "basic", 
+    url: "/" 
   },
   { 
-    name: "Certificados y Cursos", 
-    type: "dropdown",
-    childrens: [
-      { name: "Cursos y diplomas", type: "basic", url: "/courses-diplomas" },
-      { name: "Certificados TBA", type: "basic", url: "/tba-certificates" },
-    ]
+    name: "Produtcs and services",
+    type: "basic", 
+    url: "/" 
   },
-  { name: "Sobre nosotros", url: "/about" },
-  { name: "Contacto", url: "/contact" }
+  { 
+    name: "Equipment for sale", 
+    type: "basic",
+    url: "/" 
+  },
+  {
+     name: "Contact", 
+     type: "basic",
+     url: "/"
+  }
+  // { 
+  //   name: "TBA", 
+  //   type: "dropdown",
+  //   childrens: [
+  //     { name: "¿Qué es?", type: "basic", url: "/tba" },
+  //     { name: "Formación TBA", type: "basic", url: "/course" },
+  //   ]
+  // },
 ];
 // An array of links for footer
 const footerLinks = [
   {
-    section: "Empresa",
+    section: "Contact",
     links: [
-      { name: "Sobre nosotros", url: "/about" },
-      { name: "Contacto", url: "/contact" }, ,
+      { name: "(xxx) xxx-xxx", url: "#" },
+      { name: "lorem@test.com", url: "#" }, ,
     ],
   },
   {
-    section: "Test Básico de Aprendizaje",
+    section: "About us",
     links: [
-      { name: "TBA", url: "/tba" },
-      { name: "Formación TBA", url: "/course" },
-      { name: "Certificados", url: "/tba-certificates" },
+      { name: "link", url: "/" },
+      { name: "link", url: "/" },
+      { name: "link", url: "/" },
     ],
   },
   {
-    section: "Cursos y Diplomas",
+    section: "Services",
     links: [
-      { name: "Certificados", url: "/courses-diplomas" }
+      { name: "link", url: "/" },
+      { name: "link", url: "/" },
+      { name: "link", url: "/" },
     ],
   },
 ];
 // An object of links for social icons
 const socialLinks = {
-  instagram: "https://www.instagram.com/cepaonline/",
-  linkedin: "https://www.linkedin.com/in/pablo-jes%C3%BAs-san-mart%C3%ADn-catal%C3%A1n-2743b6256/?trk=people-guest_people_search-card&originalSubdomain=cl",
+  instagram: "/",
+  linkedin: "/",
   cepa: "https://app.cepaonline.cl/login",
 };
 

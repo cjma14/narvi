@@ -90,15 +90,15 @@ const homeUrl = Astro.currentLocale === "es" ? "/es" : "/";
         <!-- Navigation links and Authentication component -->
         {strings.navBarLinks.map(link => {
 
-          if(link.type == "dropdown") {
+          if(link?.type == "dropdown") {
             return <Dropdown link={link}/>
           }
 
           return <NavLink url={link.url} name={link.name} />
         })}
 
-        <Authentication />
-        <!-- <LanguagePicker/> -->
+        <!-- <Authentication /> -->
+        <LanguagePicker/>
         
         <!-- ThemeIcon component specifically for larger screens -->
         <span class="hidden md:inline-block">

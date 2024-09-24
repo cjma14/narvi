@@ -51,12 +51,12 @@ interface Props {
       {subTitle}
     </p>
 
-    <div class="flex gap-2">
+    <div class="flex gap-10 mt-16 mb-16">
       <div class="">
         <p class="text-5xl font-bold sm:text-5xl mb-3">30+</p>
         <p class="text-xl">Clientes</p>
       </div>
-      <div class="">
+      <div class="md:pl-10 md:border-l">
         <p class="text-5xl font-bold sm:text-5xl mb-3 border-l-primary-400">300+</p>
         <p class="text-xl">Proyectos</p>
       </div>
@@ -69,14 +69,14 @@ interface Props {
     <div class="mt-8 grid grid-cols-2 gap-4">
       <!-- First image in a two-image layout -->
       <img
-          class="w-full rounded-md"
+          class="w-full rounded-md h-full"
           src={imgOne}
           alt={imgOneAlt}
           draggable={"false"}
       />
       <!-- Second image in a two-image layout -->
       <img
-          class="mt-4 w-full lg:mt-10 rounded-md"
+          class="mt-4 w-full lg:mt-10 rounded-md h-full"
           src={imgTwo}
           alt={imgTwoAlt}
           draggable={"false"}

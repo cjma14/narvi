@@ -1,38 +1,57 @@
 
 const navBarLinks = [
-  { name: "Accueil", url: "/es" },
-  { name: "Produits", url: "/es/products" },
-  { name: "Services", url: "/es/services" },
-  { name: "Blog", url: "/es/blog" },
-  { name: "Contact", url: "/es/contact" },
+  {
+    name: "Inicio", 
+    type: "basic",
+    url: "/es" 
+  },
+  { 
+    name: "Productios y servicios", 
+    type: "basic",
+    url: "/es/" 
+  },
+  {
+    name: "Equipos para venta",
+    type: "basic", 
+    url: "/es/" 
+  },
+  { 
+    name: "Contacto", 
+    type: "basic",
+    url: "/es/" 
+  },
 ];
 
 const footerLinks = [
   {
-    section: "Écosystème",
+    section: "Contacto",
     links: [
-      { name: "Documentation", url: "/es/welcome-to-docs/" },
-      { name: "Outils et Équipements", url: "/es/products" },
-      { name: "Services de Construction", url: "/es/services" },
+      { name: "(xxx) xxx-xxx", url: "#" },
+      { name: "lorem@test.com", url: "#" }, ,
     ],
   },
   {
-    section: "Société",
+    section: "Sobre nosotros",
     links: [
-      { name: "À propos de nous", url: "#" },
-      { name: "Blog", url: "/es/blog" },
-      { name: "Carrières", url: "#" },
-      { name: "Clients", url: "#" },
+      { name: "link", url: "/" },
+      { name: "link", url: "/" },
+      { name: "link", url: "/" },
+    ],
+  },
+  {
+    section: "Servicios",
+    links: [
+      { name: "link", url: "/" },
+      { name: "link", url: "/" },
+      { name: "link", url: "/" },
     ],
   },
 ];
 
 const socialLinks = {
-  facebook: "#",
-  x: "#",
-  github: "https://github.com/mearashadowfax/ScrewFast",
-  google: "#",
-  slack: "#",
+  instagram: "/",
+  linkedin: "/",
+  cepa: "https://app.cepaonline.cl/login",
 };
 
 export default {

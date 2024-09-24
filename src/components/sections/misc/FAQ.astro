@@ -3,7 +3,7 @@
 import AccordionItem from "@components/ui/blocks/AccordionItem.astro";
 
 // Define props from Astro
-const { title, faqs } = Astro.props;
+const { title, subTitle, faqs , label} = Astro.props;
 
 // Define TypeScript interface for props
 interface Faq {
@@ -18,6 +18,8 @@ interface FaqGroup {
 
 interface Props {
   title: string;
+  subTitle: string;
+  label: string;
   faqs: FaqGroup;
 }
 // Define a helper function to generate ids dynamically.
@@ -26,25 +28,29 @@ const makeId = (base: any, index: any) => `${base}${index + 1}`;
 
 <!-- Main container that holds all content. Customized for different viewport sizes. -->
 <section
-  class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
+  class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full text-pearl-100"
 >
   <div class="grid gap-10 md:grid-cols-5">
     <div class="md:col-span-2">
-      <div class="max-w-xs">
+      <div class="max-w-md">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="flex bg-primary-500 h-[10px] w-[10px] rounded-full"></span>
+          <h3 class="text-pearl-100">{label}</h3>
+        </div>
         <h2
-          class="text-2xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight"
+          class="text-2xl font-bold md:text-4xl md:leading-tight"
         >
           <Fragment set:html={title} />
         </h2>
-        <p class="mt-1 hidden text-neutral-600 dark:text-neutral-400 md:block">
-          {faqs.subTitle}
+        <p class="mt-1 hiddenmd:block">
+          {subTitle}
         </p>
       </div>
     </div>
     <!-- FAQ accordion items -->
     <div class="md:col-span-3">
       <div
-        class="hs-accordion-group divide-y divide-neutral-200 dark:divide-neutral-700"
+        class="hs-accordion-group divide-y divide-[#2C574D]"
       >
         {
           faqs.faqs.map((question, i) => {

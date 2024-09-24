@@ -6,10 +6,11 @@ const {
   title,
   subTitle,
   testimonials,
-  statistics
+  label
 } = Astro.props;
 
 interface Props {
+  label: string;
   title: string;
   subTitle?: string;
   testimonials?: Testimonial[];
@@ -32,58 +33,49 @@ type StatProps = {
 ---
 
 <section
-  class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
+  class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full text-pearl-100 mb-20"
 >
   <!-- Container for the testimonials -->
   <div
-    class="lg:grid lg:grid-cols-12 lg:items-center lg:justify-between lg:gap-16"
+    class="lg:grid lg:grid-cols-1 lg:items-center lg:justify-between lg:gap-5"
   >
-    <div class="lg:col-span-5 lg:col-start-1">
+    <div class="">
       <!-- Title and Subtitle -->
+
+      <div class="flex items-center gap-3 mb-4">
+        <span class="flex bg-primary-500 h-[10px] w-[10px] rounded-full"></span>
+        <h3 class="text-pearl-100">{label}</h3>
+      </div>
+
       <div class="mb-8">
         <h2
-          class="mb-2 text-3xl font-bold text-neutral-800 dark:text-neutral-200 lg:text-4xl"
+          class="mb-2 text-3xl font-bold  lg:text-4xl"
         >
           {title}
         </h2>
         {subTitle &&
-        <p class="text-neutral-600 dark:text-neutral-400">
+        <p class="">
           {subTitle}
         </p>
       }
       </div>
-
-      <!-- Generate a blockquote for each testimonial in the testimonials array by mapping over the array. -->
-
-      <div class="swiper swiperTestimonial h-full md:h-96">
-        <div class="swiper-wrapper">
-          { testimonials.map((testimonial) => (
-
-            <div class="swiper-slide">
-              <TestimonialItem content={testimonial.content} author={testimonial.author} role={testimonial.role} avatarSrc={testimonial.avatarSrc} />
-            </div>
-          
-          ))}
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
     </div>
-{ statistics &&
-    <div class="mt-10 lg:col-span-6 lg:col-end-13 lg:mt-0">
-      <div class="space-y-6 sm:space-y-8">
-        <ul
-          class="grid grid-cols-2 divide-x-2 divide-y-2 divide-neutral-300 overflow-hidden dark:divide-neutral-700"
-        >
-          <!-- Generate a list item for each stat in the statistics array by mapping over the array. -->
-          {
-            statistics.map((stat, index) => (
-            <StatsGrid count={stat.count} description={stat.description} index={index}/>
-            ))
-          }
-        </ul>
+
+     <!-- Generate a blockquote for each testimonial in the testimonials array by mapping over the array. -->
+
+     <div class="swiper swiperTestimonial h-full w-full">
+      <div class="swiper-wrapper">
+        { testimonials.map((testimonial) => (
+
+          <div class="swiper-slide">
+            <TestimonialItem content={testimonial.content} author={testimonial.author} role={testimonial.role} avatarSrc={testimonial.avatarSrc} />
+          </div>
+        
+        ))}
       </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
-  }
   </div>
 </section>
 
@@ -108,14 +100,15 @@ type StatProps = {
   import Swiper from "swiper";
   import "swiper/css";
   import "swiper/css/pagination";
-  import { Pagination, Autoplay } from "swiper/modules";
+  import "swiper/css/navigation";
+  import { Pagination, Autoplay, Navigation } from "swiper/modules";
 
   var swiper = new Swiper(".swiperTestimonial", {
-      modules: [Pagination],
+      modules: [Pagination, Navigation, Autoplay],
       slidesPerView: 1,
       spaceBetween: 30,
       loop: true,
-      grabCursor: true,
+    
       autoplay: {
           delay: 5000
       },
@@ -123,5 +116,9 @@ type StatProps = {
           el: ".swiper-pagination",
           clickable: true,
       },
+      navigation: {          // definir botones next y prev para el módulo Navigation
+        prevEl: ".swiper-button-prev",
+        nextEl: ".swiper-button-next",
+      }
   });
 </script>

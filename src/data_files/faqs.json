@@ -1,21 +1,20 @@
 {
-  "subTitle": "¿Tienes dudas? ¡Aquí están las respuestas! Una guía completa para resolver tus preguntas.",
   "faqs": [
     {
-      "question": "¿Qué es TBA y para qué sirve?",
-      "answer": "TBA es una herramienta de análisis de aprendizaje que permite evaluar de manera precisa y eficiente las habilidades de los estudiantes. A través de un análisis detallado, TBA identifica las fortalezas y áreas de oportunidad de cada alumno, proporcionando información valiosa para personalizar el proceso de atención especializada."
+      "question": "Lorem ipsum dolor, sit amet consectetur",
+      "answer": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto aspernatur vel adipisci ipsa ducimus quisquam ex aut reprehenderit corrupti incidunt! Esse impedit non sed libero! Porro cum unde nulla quasi!"
     },
     {
-      "question": "¿Qué soporte técnico ofrecen?",
-      "answer": "Ofrecemos un soporte técnico completo a través de nuestros canales de 'Contáctanos'. Nuestro equipo de expertos está disponible para resolver cualquier duda o incidencia que puedas tener."
+      "question": "Lorem ipsum dolor, sit amet consectetur",
+      "answer": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto aspernatur vel adipisci ipsa ducimus quisquam ex aut reprehenderit corrupti incidunt! Esse impedit non sed libero! Porro cum unde nulla quasi!"
     },
     {
-      "question": "¿Qué tipo de dispositivos y sistemas operativos son compatibles con TBA?",
-      "answer": "TBA es compatible con una amplia variedad de dispositivos y sistemas operativos, incluyendo computadoras de escritorio, portátiles, tablets y smartphones. Puedes acceder a TBA desde cualquier dispositivo con conexión a internet y un navegador web moderno."
+      "question": "Lorem ipsum dolor, sit amet consectetur",
+      "answer": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto aspernatur vel adipisci ipsa ducimus quisquam ex aut reprehenderit corrupti incidunt! Esse impedit non sed libero! Porro cum unde nulla quasi!"
     },
     {
-      "question": "¿Qué tipo de capacitación se ofrece para utilizar TBA?",
-      "answer": "Ofrecemos una certificación dada por el autor Pablo San Martín Catalán, la cual abarca todo aspecto teórico y práctico para usar TBA."
+      "question": "Lorem ipsum dolor, sit amet consectetur",
+      "answer": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto aspernatur vel adipisci ipsa ducimus quisquam ex aut reprehenderit corrupti incidunt! Esse impedit non sed libero! Porro cum unde nulla quasi!"
     }
   ]
 }

@@ -1,12 +1,12 @@
 import ogImageSrc from "@images/social.png";
 
 export const SITE = {
-  title: "CEPA - Centro de Estudios Psicométricos y del Aprendizaje",
-  tagline: "Evaluaciones precisas, futuro prometedor.",
-  description: "El Test Básico de Aprendizaje (TBA) es la solución definitiva para conocer tu potencial de aprendizaje. Gracias a su avanzada tecnología, el TBA ofrece evaluaciones personalizadas y precisas en tiempo récord. Descubre tus fortalezas, identifica áreas de mejora y recibe recomendaciones personalizadas para alcanzar tus metas. ¿Listo para dar el siguiente paso en tu desarrollo?",
-  description_short: "Evaluación rápida y precisa de tus habilidades cognitivas",
-  url: "https://cepaonline.cl",
-  author: "Pablo Martin",
+  title: "Narvi EC",
+  tagline: "Boost your business. Innovate your operations.",
+  description: "Narvi leaders in Oil & Gas in North America and Latin America. Professional services in project engineering, asset management and equipment maintenance. Increase the efficiency and profitability of your operations.",
+  description_short: "Oil & Gas Experts. Comprehensive solutions for your business.",
+  url: "https://narvi-ec.com",
+  author: "Miguel Mogollón",
 };
 
 export const SEO = {
@@ -15,7 +15,7 @@ export const SEO = {
   structuredData: {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    inLanguage: "es-CL",
+    inLanguage: "en_US",
     "@id": SITE.url,
     url: SITE.url,
     name: SITE.title,
@@ -30,10 +30,10 @@ export const SEO = {
 };
 
 export const OG = {
-  locale: "es_CL",
+  locale: "en_US",
   type: "website",
   url: SITE.url,
-  title:`${SITE.title}: Evaluaciones Psicométricas y del Aprendizaje`,
-  description: "El Test Básico de Aprendizaje (TBA) es la solución definitiva para conocer tu potencial de aprendizaje. Gracias a su avanzada tecnología, el TBA ofrece evaluaciones personalizadas y precisas en tiempo récord. Descubre tus fortalezas, identifica áreas de mejora y recibe recomendaciones personalizadas para alcanzar tus metas. ¿Listo para dar el siguiente paso en tu desarrollo?",
+  title:`${SITE.title}: Oil & Gas Experts. Comprehensive solutions for your business.`,
+  description: "Professional services in project engineering, asset management and equipment maintenance. Increase the efficiency and profitability of your operations.",
   image: ogImageSrc,
 };

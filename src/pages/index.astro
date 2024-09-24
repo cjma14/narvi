@@ -5,18 +5,13 @@ import HeroSection from "@components/sections/landing/HeroSection.astro";
 import HeroSectionAlt from "@components/sections/landing/HeroSectionAlt.astro";
 import ClientsSection from "@components/sections/landing/ClientsSection.astro";
 import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
-import FeaturesNavs from "@components/sections/features/FeaturesNavs.astro";
 import TestimonialsSection from "@components/sections/testimonials/TestimonialsSection.astro";
-import PricingSection from "@components/sections/pricing/PricingSection.astro";
 import FAQ from "@components/sections/misc/FAQ.astro";
-import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
-import heroImage from "@images/hero-image.png";
 import faqs from "@data/faqs.json";
-import features from "@data/features.json";
-import featuresTabs from "@data/featuresTabs.json";
-import pricing from "@data/pricing.json";
 import avatar from "@images/avatar.jpg";
-import WhoWeAreSection from "@/components/ui/blocks/WhoWeAreSection.astro";
+import AboutUsSection from "@/components/sections/AboutUsSection.astro";
+import BannerSection from "@/components/sections/BannerSection.astro";
+
 
 const avatarSrcs: Array<string> = [avatar.src];
 ---
@@ -32,84 +27,79 @@ const avatarSrcs: Array<string> = [avatar.src];
     title=`We supply energy equipment.`
     subTitle="Boost your business. Innovate your operations"
     primaryBtn="Let's get started!    "
-    primaryBtnURL="/products"
-    secondaryBtn="Contactar con ventas"
-    secondaryBtnURL="/contact"
-    withReview={false}
+    primaryBtnURL="/"
+    secondaryBtn="Contact Sales Team"
+    secondaryBtnURL="/"
+    withReview={true}
     avatars={avatarSrcs}
     rating=`<span class="font-bold">4.8</span> / 5`
     starCount={4}
     reviews=`From Over <span class="font-bold">12.8k</span> Reviews`
   />
-  
-  <ClientsSection/>
+
+  <ClientsSection />
 
   <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-    <!-- <FeaturesNavs
-      title=`<span class="text-primary-500 dark:text-primary-400">TBA</span> Batería informatizada para evaluaciones automatizadas y análisis profundos.`
-      tabs={featuresTabs}
-    /> -->
-    <WhoWeAreSection
-      title="Lorem ipsum dolor sit ame"
-      subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam commodo  neque sit amet massa fermentum tristique. Nullam sit amet urna dui.  Curabitur placerat vulputate sem eget hendrerit. Duis id erat vulputate,  venenatis purus iaculis, consectetur ex. Nam vel rhoncus sapien,  posuere ornare libero. Integer pretium, neque sit amet congue porttitor"
-      label="Who we are?"
+
+    <AboutUsSection
+      label="About Us"
+      title="Your reliable partner in Oil & Gas"
+      subTitle="With over 25 years of experience in the Oil and Gas sector, asset management, maintenance, and equipment reliability at an international level, spanning North America and Latin America, we have focused on providing professional services in project engineering for equipment, as well as its commercialization and supply. Our priority is efficiency in every project, supporting your business goals with innovation and sustainability. Thanks to the dedication and professionalism of our team, we can position ourselves in the market as a reliable choice for your projects. We are a responsible and committed company, at the forefront of new technologies that guarantee the efficiency of our results. Best regards from Narvi Enterprise Corporation."
       imgOne="/img/machine-1.jpg"
-      imgOneAlt="Maquina pesda"
+      imgOneAlt="Oil Driller"
       imgTwo="/img/machine-2.jpg"
-      imgTwoAlt="Maquina pesda"
+      imgTwoAlt="Oil and gas plant"
+      btnExists={true}
+      btnTitle="Read more"
+      btnURL="/"
     />
+    
+    <FeaturesGeneral 
+      label="Products and services"
+      title="Innovation and efficiency in every project"
+      subTitle="Discover our extensive range of products and services designed to optimize your operations in the Oil & Gas sector. From project engineering to preventive maintenance, we have the expertise and resources to help you achieve your business objectives. We offer customized solutions tailored to your specific needs."/>
+      
     <TestimonialsSection
-      title="Resultados reales con TBA"
-      subTitle="En CEPA destacamos nuestro compromiso con la excelencia. Inspírate con historias reales de mejora continua. Descubre cómo nuestros usuarios han optimizado sus procesos de evaluación estandarizada gracias al TBA."
-      ;
+      label="Customer testimonials"
+      title="Discover why our clients choose us"
+      subTitle="Want to know why so many companies trust us? Discover the benefits of working with Narvi through our customer testimonials.";
       testimonials={[
         {
           content:
-            'Me encanta el test básico de aprendizaje, ya que su aplicación es accesible y dinámica. A las niñas y niños les encanta, ya que lo encuentran "bonito y divertido". Además, encuentro tremendo que sea un test chileno, estandarizado, con una alta validez y confiabilidad. Este test representa gran avance de la Psicopedagogia en Chile, abre nuevas puertas de investigación y nos invita a confiar en nuestros científicos chilenos.',
-          author: "Nathalie Araya",
-          role: "Psicopedagoga",
+            '"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit officia labore enim aspernatur distinctio expedita asperiores consectetur odit, deleniti delectus earum eligendi inventore, aut officiis voluptatem iure obcaecati tenetur aperiam!"',
+          author: "Lorem Isum",
+          role: "Lorem",
           avatarSrc: "/img/profile.webp",
         },
         {
           content:
-            "La batería TBA es una herramienta completa y versátil que facilita la evaluación integral de las habilidades de aprendizaje en un amplio rango de edades. Su fácil aplicación y el detallado informe que genera, tanto cuantitativo como cualitativo, la convierten en un recurso invaluable en la práctica psicopedagógica, complementando eficazmente otros instrumentos de evaluación.",
-          author: "Katherine Martínez ",
-          role: "Psicopedagoga",
+            '"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit officia labore enim aspernatur distinctio expedita asperiores consectetur odit, deleniti delectus earum eligendi inventore, aut officiis voluptatem iure obcaecati tenetur aperiam!"',
+          author: "Lorem Isum",
+          role: "Lorem",
+          avatarSrc: "/img/profile.webp",
+        },
+        {
+          content:
+            '"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit officia labore enim aspernatur distinctio expedita asperiores consectetur odit, deleniti delectus earum eligendi inventore, aut officiis voluptatem iure obcaecati tenetur aperiam!"',
+          author: "Lorem Isum",
+          role: "Lorem",
           avatarSrc: "/img/profile.webp",
         },
       ]}
-      statistics={[
-        {
-          count: "1 Mil+",
-          description:
-            "Resultados precisos en chile. Descubre cómo TBA ha transformado la evaluación psicopedagógica.",
-        },
-        {
-          count: "300+",
-          description:
-            "profesionales de las Ciencias Cognitiva confían en TBA para optimizar sus evaluaciones.",
-        },
-        {
-          count: "98.4%",
-          description:
-            "En Test-Retest. La estabilidad de las puntuaciones del TBA demuestra su alta confiabilidad en la evaluación de habilidades.",
-        },
-        {
-          count: "2x",
-          description:
-            "Mayor velocidad al momento de cuantificar resultados reales.",
-        },
-      ]}
     />
+    
+  </div>
 
-    <PricingSection pricing={pricing} />
+  <BannerSection
+    imgUrl="/img/woker-1.jpg" 
+    imgAlt="Worker 1"
+  />
 
-    <FAQ title="Preguntas<br />Frecuentes" faqs={faqs} />
-
-    <HeroSectionAlt
-      title="¡Trabajemos juntos!"
-      subTitle="TBA está para facilitar tus análisis y evaluaciones."
-      url="/contact"
-    />
+  <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 mt-5">
+    <FAQ 
+      title="Quick answers to your <br /> questions" 
+      subTitle="Do you have questions about our services? Here you will find answers to the most frequently asked questions from our clients. If you cannot find what you are looking for, please contact us."
+      faqs={faqs} 
+      label="FAQ"/>
   </div>
 </MainLayout>

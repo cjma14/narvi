@@ -1,17 +1,44 @@
 [
   {
-    "heading": "Metodología de trabajo",
-    "content": "El programa consta de 4 módulos que cubren desde la comprensión de los fundamentos teóricos y clínicos de las Dificultades Específicas de Aprendizaje (DEA), hasta los fundamentos teóricos, técnicos y propiedades psicométricas del Test Básico de Aprendizaje (TBA), incluyendo el análisis de reactivos y el manejo de datos e informe de resultados.",
-    "svg": "verified"
+    "title": "Lorem Ipsum",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam ad id perferendis accusantium ut facere magni voluptatibus, molestias, odit, ex hic quibusdam ipsa minus nisi quasi sit officia corporis deleniti.",
+    "imgUrl": "/img/plant-1.jpg",
+    "imgAlt": "Test",
+    "url": "/"
   },
   {
-    "heading": "Certificación",
-    "content": "Los estudiantes podrán obtener un certificado de aprobación del curso otorgado por el Centro de Estudios Psicométricos y del Aprendizaje (CEPA). El requisito es aprobar el examen con nota igual o superior a 4.0 con 60% de exigencia.",
-    "svg": "books"
+    "title": "Lorem Ipsum",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam ad id perferendis accusantium ut facere magni voluptatibus, molestias, odit, ex hic quibusdam ipsa minus nisi quasi sit officia corporis deleniti.",
+    "imgUrl": "/img/plant-1.jpg",
+    "imgAlt": "Test",
+    "url": "/"
   },
   {
-    "heading": "Destinatarios",
-    "content": "El curso está dirigido a psicopedagogos/as, estudiantes de Psicopedagogía y profesionales afines.",
-    "svg": "groups"
+    "title": "Lorem Ipsum",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam ad id perferendis accusantium ut facere magni voluptatibus, molestias, odit, ex hic quibusdam ipsa minus nisi quasi sit officia corporis deleniti.",
+    "imgUrl": "/img/plant-1.jpg",
+    "imgAlt": "Test",
+    "url": "/"
+  },
+  {
+    "title": "Lorem Ipsum",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam ad id perferendis accusantium ut facere magni voluptatibus, molestias, odit, ex hic quibusdam ipsa minus nisi quasi sit officia corporis deleniti.",
+    "imgUrl": "/img/plant-1.jpg",
+    "imgAlt": "Test",
+    "url": "/"
+  },
+  {
+    "title": "Lorem Ipsum",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam ad id perferendis accusantium ut facere magni voluptatibus, molestias, odit, ex hic quibusdam ipsa minus nisi quasi sit officia corporis deleniti.",
+    "imgUrl": "/img/plant-1.jpg",
+    "imgAlt": "Test",
+    "url": "/"
+  },
+  {
+    "title": "Lorem Ipsum",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam ad id perferendis accusantium ut facere magni voluptatibus, molestias, odit, ex hic quibusdam ipsa minus nisi quasi sit officia corporis deleniti.",
+    "imgUrl": "/img/plant-1.jpg",
+    "imgAlt": "Test",
+    "url": "/"
   }
 ]

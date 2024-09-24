@@ -1,0 +1,19 @@
+---
+const {
+  imgUrl,
+  imgAlt,
+} = Astro.props;
+
+interface Props {
+    imgUrl: string;
+    imgAlt: string;
+}
+
+---
+
+<section>
+    <img 
+        class="object-cover w-full min-h-[20rem] max-h-[40rem]"
+        src={imgUrl} 
+        alt={imgAlt}>
+</section>

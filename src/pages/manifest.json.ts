@@ -44,8 +44,8 @@ export const GET: APIRoute = async () => {
   );
 
   const manifest = {
-    short_name: "cepa",
-    name: "cepa",
+    short_name: "Narvi",
+    name: "Narvi",
     icons,
     display: "minimal-ui",
     id: "/",
