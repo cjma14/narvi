@@ -15,7 +15,7 @@ export default {
       white: "#ffffff",
       pearl: {
         '50': '#faf7f0',
-        '100': '#f5efe0',
+        '100': '#F5EFE0',
         '200': '#e2d1a5',
         '300': '#d3b576',
         '400': '#c99f56',
