@@ -1,47 +1,62 @@
 ---
 // Import the necessary dependencies
 import CardLink from "@/components/ui/cards/CardLink.astro";
-import features from "@data/features.json";
+import CardSmall from "@/components/ui/cards/CardSmall.astro";
+import CardWide from "@/components/ui/cards/CardWide.astro";
+
 
 interface Props {
   label?: string;
   title?: string;
   subTitle?: string;
+  features: Array<any>;
 }
 // Define props from Astro
-const { title, subTitle, label } = Astro.props;
+const { title, subTitle, label, features } = Astro.props;
 ---
 
 <section
-    class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full text-pearl-100"
-  >
-    <div class="mx-auto mb-10 max-w-5xl text-center lg:mb-14">
-      
-      <div class="flex items-center gap-3 mb-4 justify-center">
-        <span class="flex bg-primary-500 h-[10px] w-[10px] rounded-full"></span>
-        <h3 class="text-pearl-100">{label}</h3>
-      </div>
+  class="mx-auto max-w-[85rem] px-4 py-10 text-pearl-100 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
+>
+  <div class="mx-auto mb-10 max-w-5xl text-center lg:mb-14">
+    <div class="mb-4 flex items-center justify-center gap-3">
+      <span class="flex h-[10px] w-[10px] rounded-full bg-primary-500"></span>
+      <h3 class="text-pearl-100">{label}</h3>
+    </div>
 
-      <h2
-        class="text-2xl font-bold   md:text-4xl md:leading-tight"
-      >
-        {title}
-      </h2>
-      <p class="mt-1 text-pretty">
-        {subTitle}
-      </p>
-    </div>
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        features.map((feature) => (
-          <CardLink 
-            title={feature.title}
-            description={feature.description}
-            url={feature.url}
-            imgUrl={feature.imgUrl}
-            imgAlt={feature.imgAlt}
-          />
-        ))
+    <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">
+      {title}
+    </h2>
+    <p class="mt-1 text-pretty">
+      {subTitle}
+    </p>
+  </div>
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 box">
+    {
+      features.map((feature, index) => {
+      const position = index % 4;
+      if(position === 0 || position === 3) {
+        return <CardSmall
+                index={index}
+                title={feature.title}
+                description={feature.description}
+                url={feature.url}
+                imgUrl={feature.imgUrl}
+                imgAlt={feature.imgAlt}/>
+      } else {
+        return <CardWide 
+              index={index}
+              title={feature.title}
+              description={feature.description}
+              url={feature.url}
+              imgUrl={feature.imgUrl}
+              imgAlt={feature.imgAlt} />;
       }
-    </div>
-  </section>
+      
+        // <CardLink
+        
+        // />
+    })
+    }
+  </div>
+</section>

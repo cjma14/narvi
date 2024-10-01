@@ -84,19 +84,12 @@ type StatProps = {
     position: absolute !important;
   }
 
-  @media screen and (max-width: 480px) {
-    .swiper-pagination {
-      position: relative !important;
-      margin-top: 25px;
-    }
-  }
-
   .swiper-slide {
     display: flex !important;
     justify-content: center;
     background-color: #244840;
     border-radius: 10px;
-    padding: 5rem 5rem;
+    padding: 5rem;
   }
   .swiper-button-prev {
     left: 45px;
@@ -104,7 +97,25 @@ type StatProps = {
   .swiper-button-next {
     right: 45px;
   }
+
+  @media screen and (max-width: 480px) {
+    .swiper-pagination {
+      position: relative !important;
+      margin-top: 25px;
+    }
+
+    .swiper-slide {
+      padding: 2rem;
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+      display: none;
+    }
+  }
+
+ 
 </style>
+
 <script>
   import Swiper from "swiper";
   import "swiper/css";
@@ -119,7 +130,7 @@ type StatProps = {
       loop: true,
     
       autoplay: {
-          delay: 5000
+          delay: 10000
       },
       pagination: {
           el: ".swiper-pagination",

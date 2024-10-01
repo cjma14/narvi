@@ -11,6 +11,8 @@ import faqs from "@data/faqs.json";
 import avatar from "@images/avatar.jpg";
 import AboutUsSection from "@/components/sections/AboutUsSection.astro";
 import BannerSection from "@/components/sections/BannerSection.astro";
+import TeleprompterSection from "@/components/sections/landing/TeleprompterSection.astro";
+import features from "@data/features.json";
 
 
 const avatarSrcs: Array<string> = [avatar.src];
@@ -37,7 +39,12 @@ const avatarSrcs: Array<string> = [avatar.src];
     reviews=`From Over <span class="font-bold">12.8k</span> Reviews`
   />
 
-  <ClientsSection />
+  <TeleprompterSection
+    text="With over 25 years of experience in the Oil and Gas sector, asset management, maintenance, and equipment reliability at an international level, in North American and Latin American countries. We have focused on providing professional services in the engineering of equipment projects, their commercialization, and supply. Our priority is efficiency in every project, we accompany your business goals with innovation and sustainability."
+    title="Miguel Mogollón"
+    subTitle="CEO and Founder"
+  />
+  <!-- <ClientsSection /> -->
 
   <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
 
@@ -57,7 +64,8 @@ const avatarSrcs: Array<string> = [avatar.src];
     <FeaturesGeneral 
       label="Products and services"
       title="Innovation and efficiency in every project"
-      subTitle="Discover our extensive range of products and services designed to optimize your operations in the Oil & Gas sector. From project engineering to preventive maintenance, we have the expertise and resources to help you achieve your business objectives. We offer customized solutions tailored to your specific needs."/>
+      subTitle="In Narvi Enterprise Corporation, our team of seasoned professionals and industry leaders are committed to surpassing the expectations of our worldwide clientele. With a keen focus on enhancing efficiency and trimming operational expenses, we empower businesses to attain enduring Operational Excellence outcomes. Our team is on hand round-the-clock to assess your unique requirements and partner with you on your journey to success."
+      features={features}/>
       
     <TestimonialsSection
       label="Customer testimonials"
@@ -93,6 +101,9 @@ const avatarSrcs: Array<string> = [avatar.src];
   <BannerSection
     imgUrl="/img/woker-1.jpg" 
     imgAlt="Worker 1"
+    icon="trophy"
+    title="25+"
+    subtitle="Years of <br> experience"
   />
 
   <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 py-20">
@@ -103,3 +114,40 @@ const avatarSrcs: Array<string> = [avatar.src];
       label="FAQ"/>
   </div>
 </MainLayout>
+
+<script>
+// import { gsap } from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// gsap.registerPlugin(ScrollTrigger);
+
+//   gsap.set('.fade-text', {
+//     opacity: 0
+//   })
+
+//   const tl = gsap.timeline( { 
+   
+//    scrollTrigger: {
+//      trigger: ".fade-text",
+//      markers: true
+//    }
+   
+//  });
+ 
+//  tl.to('.fade-text', { opacity: 1, duration: 0.5 })
+  //  timeline.to(".box1", { duration: 2, x: 100 }) //notice that there's no semicolon!
+  //   .to(".box2", { duration: 1, y: 200 })
+  //   .to(".box3", { duration: 3, rotation: 360 });
+
+  // timeline.to(
+  //   "#fadeInUp",
+  //   { duration: 1.5, autoAlpha: 1, y: 0, ease: "power2.out" },
+  //   "-=1.2"
+  // );
+
+  // timeline.to(
+  //   "#fadeInMoveRight",
+  //   { duration: 1.5, autoAlpha: 1, x: 0, ease: "power2.inOut" },
+  //   "-=1.4"
+  // );
+</script>

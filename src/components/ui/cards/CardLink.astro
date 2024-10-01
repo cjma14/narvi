@@ -8,6 +8,7 @@ const {
   title,
   description,
   url,
+  index,
   label = Astro.currentLocale === "es" ? "Saber más" : "Read more",
 } = Astro.props;
 
@@ -18,11 +19,13 @@ interface Props {
   url: string;
   description: string;
   label?: string;
+  index?: number;
 }
 ---
 
 <!-- The anchor tag is the root container for the "Insight" card. It links to the insight detail page. -->
 <a
+  class:list={[{ 'col-span-3': index == 3 }]}
   class="group relative block outline-none ring-zinc-500 transition duration-500 focus-visible:ring dark:ring-zinc-200 dark:focus:outline-none"
   href={url}
 >
@@ -32,7 +35,7 @@ interface Props {
       class="absolute start-0 top-0 size-full object-cover transition duration-500 ease-in-out group-hover:scale-105 z-0"
       src={imgUrl}
       alt={imgAlt}
-      draggable={"false"}
+      draggable="false"
     />
   </div>
 

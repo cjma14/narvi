@@ -10,6 +10,8 @@ import faqs from "@data/faqs.json";
 import avatar from "@images/avatar.jpg";
 import AboutUsSection from "@/components/sections/AboutUsSection.astro";
 import BannerSection from "@/components/sections/BannerSection.astro";
+import features from "@data/es/features.json";
+import TeleprompterSection from "@/components/sections/landing/TeleprompterSection.astro";
 
 
 const avatarSrcs: Array<string> = [avatar.src];
@@ -36,7 +38,11 @@ const avatarSrcs: Array<string> = [avatar.src];
     reviews=`Desde <span class="font-bold">12.8k</span> comentarios`
   />
 
-  <ClientsSection />
+  <TeleprompterSection
+    text="Con más de 25 años de experiencia en el sector del Oil and Gas, manejo y administración de activos, mantenimiento y confiabilidad de equipos, anivel internacional, en países de Norteamérica y Latinoamérica. Nos hemos enfocado en ofrecer servicios profesionales en la ingeniería de proyectos de equipos, su comercialización y suministro. Nuestra prioridad es la eficacia en cada proyecto, acompañamos tus metas de negocio con innovación y sostenibilidad."
+    title="Miguel Mogollón"
+    subTitle="Director Ejecutivo y Fundador"
+  />
 
   <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
 
@@ -56,7 +62,8 @@ const avatarSrcs: Array<string> = [avatar.src];
     <FeaturesGeneral 
       label="Productos y servicios"
       title="Innovación y eficiencia en cada proyecto"
-      subTitle="Descubre nuestra amplia gama de productos y servicios diseñados para optimizar tus operaciones en el sector de petróleo y gas. Desde ingeniería de proyectos hasta mantenimiento preventivo, contamos con la experiencia y los recursos necesarios para ayudarte a alcanzar tus objetivos comerciales. Ofrecemos soluciones personalizadas adaptadas a tus necesidades específicas."/>
+      subTitle="En Narvi Enterprise Corporation, nuestro equipo de expertos y líderes en cada área, se dedican a superar las expectativas de nuestros clientes globales.Enfocándonos en la eficiencia, reducir los costos operativos, ayudando a las empresas a lograr sostenibles resultados de Excelencia Operacional.Nuestro equipo está disponible 24 horas al día, 7 días a la semana para analizar sus necesidades y acompañarlo hacia el éxito."
+      features={features}/>
       
     <TestimonialsSection
       label="Testimonios"
@@ -92,6 +99,9 @@ const avatarSrcs: Array<string> = [avatar.src];
   <BannerSection
     imgUrl="/img/woker-1.jpg" 
     imgAlt="Worker 1"
+    icon="trophy"
+    title="25+"
+    subtitle="Años de <br> experiencia"
   />
 
   <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 mt-5">

@@ -1,22 +1,30 @@
 [
   {
-    "heading": "Équipes dédiées",
-    "content": "Bénéficiez de nos équipes engagées qui veillent à ce que votre réussite soit personnelle. Comptez sur un accompagnement expert et des résultats exceptionnels tout au long de votre parcours de projet.",
-    "svg": "groups"
+    "title": "Gestión de activos",
+    "description": "En NARVI la gestión de activos implica la administración eficiente de maquinarias, equipos e infraestructura, para maximizar su valor y rendimiento durante su vida útil. Esto incluye una buena planificación, correcta adquisición, excelencia en la operación, confiabilidad en el mantenimiento y disponibilidad de activos.",
+    "imgUrl": "/img/asset-magnament.jpg",
+    "imgAlt": "Test",
+    "url": "/"
   },
   {
-    "heading": "Simplicité et accessibilité",
-    "content": "Trouvez des solutions faciles à utiliser et abordables avec la gamme d'outils et d'équipements de ScrewFast. Nos produits simplifient l'approvisionnement et permettent de respecter les budgets de projet.",
-    "svg": "verified"
+    "title": "Servicio técnico",
+    "description": "Somos expertos en equipos y maquinarias del sector Industrial y Energético, con sólidos conocimientos para la mejora de su producción y desempeño. Contamos con un equipo capacitado para ofrecer el asesoramiento requerido en cada proceso.",
+    "imgUrl": "/img/Oil-and-Gas-Consultancy-Services.jpg",
+    "imgAlt": "Test",
+    "url": "/"
   },
   {
-    "heading": "Documentation complète",
-    "content": "Intégrez facilement grâce aux guides exhaustifs et aux bibliothèques de ScrewFast. Réalisez une adoption de produit sans faille avec notre ensemble complet de documentation conçu pour votre succès.",
-    "svg": "books"
+    "title": "Análisis de negocios",
+    "description": "La pericia en el análisis e identificación de puntos de mejora en las empresas, nos permite una visión detallada de las tendencias y estadísticas de los resultados. Nuestro equipo de trabajo está orientado a la optimización de recursos, procesos y soluciones de ingeniería, permitiendo una evaluación del rendimiento y desempeño de la empresa.",
+    "imgUrl": "/img/expert-services.jpeg",
+    "imgAlt": "Test",
+    "url": "/"
   },
   {
-    "heading": "Conception centrée sur l'utilisateur",
-    "content": "Faites l'expérience de la différence avec la conception axée sur l'utilisateur de ScrewFast, où la fonctionnalité rencontre la praticité pour une expérience de travail améliorée.",
-    "svg": "frame"
+    "title": "Comercialización de equipos ",
+    "description": "NARVI Enterprise Corporation, es una empresa líder con experiencia en adquisiciones de equipos, repuestos, accesorios en maquinarias del Sector Industrial y Energía, brindando nuestros clientes una amplia gama de opciones para comercializar equipos individuales, nuevos o usados, así como también aquellos equipos necesarios para el desarrollo de proyectos.",
+    "imgUrl": "/img/oil-and-gas-plant.jpg",
+    "imgAlt": "Test",
+    "url": "/"
   }
 ]
