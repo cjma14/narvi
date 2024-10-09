@@ -1,44 +1,44 @@
 {
   "faqs": [
     {
-      "question": "What services does your company offer in the oil and gas supply chain?",
-      "answer": "Our company offers equipment procurement services for the energy sector, inventory management, material transportation, and storage solutions, among others."
+      "question": "¿Qué servicios ofrece su empresa en la cadena de suministro de oil and gas?",
+      "answer": "Nuestra empresa ofrece servicios de procura de equipos para el sector de energia, gestión de inventarios, transporte de materiales, y soluciones de almacenamiento, entre otros."
     },
     {
-      "question": "How does your company manage supply chain risks?",
-      "answer": "We implement risk mitigation strategies such as supplier diversification, the use of advanced technology for shipment tracking, and contingency planning."
+      "question": "¿Cómo maneja su empresa los riesgos en la cadena de suministro?",
+      "answer": "Implementamos estrategias de mitigación de riesgos, como la diversificación de proveedores, el uso de tecnología avanzada para el seguimiento de envíos y la planificación de contingencias."
     },
     {
-      "question": "How do you ensure the quality and safety of the transported equipment?",
-      "answer": "We follow strict safety and quality protocols, including regular inspections and compliance with international standards."
+      "question": "¿Cómo asegura la calidad y la seguridad de los equipos transportados?",
+      "answer": "Seguimos estrictos protocolos de seguridad y calidad, incluyendo inspecciones regulares y el cumplimiento de normativas internacionales."
     },
     {
-      "question": "What services does Narvi-EC offer?",
-      "answer": "Narvi-EC specializes in the supply of equipment for the Oil&Gas industry, as well as in maintenance management, handling, and administration of engineering projects in the energy sector."
+      "question": "¿Qué servicios ofrece Narvi-EC?",
+      "answer": "Narvi-EC se especializa en el suministro de equipos para la industria del Oil&Gas, así como en la gestión de mantenimiento, manejo y administracion de proyectos de ingenieria en el sector energetico."
     },
     {
-      "question": "How can I request a quote?",
-      "answer": "You can request a quote through the contact form on our website or by sending an email to our sales team."
+      "question": "¿Cómo puedo solicitar una cotización?",
+      "answer": "Puedes solicitar una cotización a través del formulario de contacto en nuestra página web o enviando un correo electrónico a nuestro equipo de ventas."
     },
     {
-      "question": "What type of equipment does Narvi-EC supply?",
-      "answer": "We supply a wide range of equipment in the area of drilling and production, as well as equipment in the areas of processing, refining, and transportation, including valves, pumps, compressors, and control systems, among others."
+      "question": "¿Qué tipo de equipos suministra Narvi-EC?",
+      "answer": "Suministramos una amplia gama de equipos en el area de perforacion y produccion, tambien equipos que estan en el area de procesamiento, refinacion y transporte, incluyendo válvulas, bombas, compresores y sistemas de control, entre otros."
     },
     {
-      "question": "How can I get technical support?",
-      "answer": "You can get technical support by contacting our customer service team at +1(346) 504 9060 or our email info@narvi-ec.com."
+      "question": "¿Cómo puedo obtener soporte técnico?",
+      "answer": "Puedes obtener soporte técnico contactando a nuestro equipo de atención al cliente a través del teléfono +1(346) 504 9060 o nuestro correo electrónico info@narvi-ec.com."
     },
     {
-      "question": "In which regions and countries does your company have a presence?",
-      "answer": "This question seeks to know the geographical extent of the company's operations and in which specific markets it is present."
+      "question": "¿En qué regiones y países tiene presencia su empresa?",
+      "answer": "Esta pregunta busca conocer la extensión geográfica de las operaciones de la empresa y en qué mercados específicos está presente."
     },
     {
-      "question": "How do you guarantee the quality of your services?",
-      "answer": "We use quality control methodologies according to service management, and we also have a team of experts to ensure excellence in each project."
+      "question": "¿Cómo garantizan la calidad de sus servicios?",
+      "answer": "Utilizamos metodologías de control de calidad acorde a la gestion del servicio, ademas contamos con un equipo de expertos para asegurar la excelencia en cada proyecto."
     },
     {
-      "question": "Where are your offices located?",
-      "answer": "Our offices are located in Caracas, DC. VEN, but we also offer services nationally and internationally."
+      "question": "¿Dónde están ubicadas sus oficinas?",
+      "answer": "Nuestras oficinas están ubicadas en Caracas, DC. VEN, pero también ofrecemos servicios a nivel nacional e internacional."
     }
   ]
 }
