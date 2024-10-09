@@ -1,20 +1,44 @@
 {
   "faqs": [
     {
-      "question": "Lorem ipsum dolor, sit amet consectetur",
-      "answer": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto aspernatur vel adipisci ipsa ducimus quisquam ex aut reprehenderit corrupti incidunt! Esse impedit non sed libero! Porro cum unde nulla quasi!"
+      "question": "What services does your company offer in the oil and gas supply chain?",
+      "answer": "Our company offers equipment procurement services for the energy sector, inventory management, material transportation, and storage solutions, among others."
     },
     {
-      "question": "Lorem ipsum dolor, sit amet consectetur",
-      "answer": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto aspernatur vel adipisci ipsa ducimus quisquam ex aut reprehenderit corrupti incidunt! Esse impedit non sed libero! Porro cum unde nulla quasi!"
+      "question": "How does your company manage supply chain risks?",
+      "answer": "We implement risk mitigation strategies such as supplier diversification, the use of advanced technology for shipment tracking, and contingency planning."
     },
     {
-      "question": "Lorem ipsum dolor, sit amet consectetur",
-      "answer": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto aspernatur vel adipisci ipsa ducimus quisquam ex aut reprehenderit corrupti incidunt! Esse impedit non sed libero! Porro cum unde nulla quasi!"
+      "question": "How do you ensure the quality and safety of the transported equipment?",
+      "answer": "We follow strict safety and quality protocols, including regular inspections and compliance with international standards."
     },
     {
-      "question": "Lorem ipsum dolor, sit amet consectetur",
-      "answer": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto aspernatur vel adipisci ipsa ducimus quisquam ex aut reprehenderit corrupti incidunt! Esse impedit non sed libero! Porro cum unde nulla quasi!"
+      "question": "What services does Narvi-EC offer?",
+      "answer": "Narvi-EC specializes in the supply of equipment for the Oil&Gas industry, as well as in maintenance management, handling, and administration of engineering projects in the energy sector."
+    },
+    {
+      "question": "How can I request a quote?",
+      "answer": "You can request a quote through the contact form on our website or by sending an email to our sales team."
+    },
+    {
+      "question": "What type of equipment does Narvi-EC supply?",
+      "answer": "We supply a wide range of equipment in the area of drilling and production, as well as equipment in the areas of processing, refining, and transportation, including valves, pumps, compressors, and control systems, among others."
+    },
+    {
+      "question": "How can I get technical support?",
+      "answer": "You can get technical support by contacting our customer service team at +1(346) 504 9060 or our email info@narvi-ec.com."
+    },
+    {
+      "question": "In which regions and countries does your company have a presence?",
+      "answer": "This question seeks to know the geographical extent of the company's operations and in which specific markets it is present."
+    },
+    {
+      "question": "How do you guarantee the quality of your services?",
+      "answer": "We use quality control methodologies according to service management, and we also have a team of experts to ensure excellence in each project."
+    },
+    {
+      "question": "Where are your offices located?",
+      "answer": "Our offices are located in Caracas, DC. VEN, but we also offer services nationally and internationally."
     }
   ]
 }

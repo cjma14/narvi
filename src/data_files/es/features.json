@@ -2,28 +2,28 @@
   {
     "title": "Gestión de activos",
     "description": "En NARVI la gestión de activos implica la administración eficiente de maquinarias, equipos e infraestructura, para maximizar su valor y rendimiento durante su vida útil. Esto incluye una buena planificación, correcta adquisición, excelencia en la operación, confiabilidad en el mantenimiento y disponibilidad de activos.",
-    "imgUrl": "/img/asset-magnament.jpg",
+    "imgUrl": "/img/service1.jpeg",
     "imgAlt": "Test",
     "url": "/"
   },
   {
     "title": "Servicio técnico",
     "description": "Somos expertos en equipos y maquinarias del sector Industrial y Energético, con sólidos conocimientos para la mejora de su producción y desempeño. Contamos con un equipo capacitado para ofrecer el asesoramiento requerido en cada proceso.",
-    "imgUrl": "/img/Oil-and-Gas-Consultancy-Services.jpg",
+    "imgUrl": "/img/service2.jpeg",
     "imgAlt": "Test",
     "url": "/"
   },
   {
     "title": "Análisis de negocios",
     "description": "La pericia en el análisis e identificación de puntos de mejora en las empresas, nos permite una visión detallada de las tendencias y estadísticas de los resultados. Nuestro equipo de trabajo está orientado a la optimización de recursos, procesos y soluciones de ingeniería, permitiendo una evaluación del rendimiento y desempeño de la empresa.",
-    "imgUrl": "/img/expert-services.jpeg",
+    "imgUrl": "/img/service7.jpeg",
     "imgAlt": "Test",
     "url": "/"
   },
   {
     "title": "Comercialización de equipos ",
     "description": "NARVI Enterprise Corporation, es una empresa líder con experiencia en adquisiciones de equipos, repuestos, accesorios en maquinarias del Sector Industrial y Energía, brindando nuestros clientes una amplia gama de opciones para comercializar equipos individuales, nuevos o usados, así como también aquellos equipos necesarios para el desarrollo de proyectos.",
-    "imgUrl": "/img/oil-and-gas-plant.jpg",
+    "imgUrl": "/img/service6.jpeg",
     "imgAlt": "Test",
     "url": "/"
   }

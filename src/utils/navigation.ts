@@ -34,32 +34,33 @@ const footerLinks = [
   {
     section: "Contact",
     links: [
-      { name: "(xxx) xxx-xxx", url: "#" },
-      { name: "lorem@test.com", url: "#" }, ,
+      { name: "+1 346-508-9060", type: 'basic'},
+      { name: "info@narvi-ec.com", type: 'basic'}, ,
     ],
   },
   {
     section: "About us",
     links: [
-      { name: "link", url: "/" },
-      { name: "link", url: "/" },
-      { name: "link", url: "/" },
+      { name: "Mision", type: 'url', url: "/" },
+      { name: "Vision", type: 'url', url: "/" },
+      { name: "Contact", type: 'url', url: "/" },
     ],
   },
   {
-    section: "Services",
+    section: "Services & Products",
     links: [
-      { name: "link", url: "/" },
-      { name: "link", url: "/" },
-      { name: "link", url: "/" },
+      { name: "Parts & tools", type: 'url', url: "/" },
+      { name: "Equipment", type: 'url', url: "/" },
+      { name: "Trucks & tractors", type: 'url', url: "/" },
+      { name: "Energy transition", type: 'url', url: "/" },
     ],
   },
 ];
 // An object of links for social icons
 const socialLinks = {
-  instagram: "/",
+  instagram: "https://www.instagram.com/narvienterprise/",
+  facebook: "https://www.facebook.com/narvi.enterprise",
   linkedin: "/",
-  cepa: "https://app.cepaonline.cl/login",
 };
 
 export default {

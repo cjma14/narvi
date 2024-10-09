@@ -1,29 +1,44 @@
 {
-  "subTitle": "Posez-nous toutes vos questions sur notre marque et nos produits, et obtenez des réponses factuelles.",
   "faqs": [
     {
-      "question": "Quels types d'outils sont inclus dans le Kit de Démarrage?",
-      "answer": "Le Kit de Démarrage comprend des outils à main et électriques essentiels pour différents projets de bricolage, notamment des marteaux, des perceuses, des tournevis et une variété de fixations. C'est une sélection soigneusement élaborée pour aider les débutants et les bricoleurs expérimentés à aborder la plupart des tâches d'amélioration de l'habitat."
+      "question": "What services does your company offer in the oil and gas supply chain?",
+      "answer": "Our company offers equipment procurement services for the energy sector, inventory management, material transportation, and storage solutions, among others."
     },
     {
-      "question": "Puis-je passer du Kit de Démarrage à la Boîte à Outils Professionnelle?",
-      "answer": "Absolument ! Vous pouvez passer à la Boîte à Outils Professionnelle à tout moment pour accéder à une gamme plus large d'outils de haute qualité, bénéficier d'un support client prioritaire et recevoir un contenu exclusif. Contactez notre équipe de support pour une transition sans problème."
+      "question": "How does your company manage supply chain risks?",
+      "answer": "We implement risk mitigation strategies such as supplier diversification, the use of advanced technology for shipment tracking, and contingency planning."
     },
     {
-      "question": "Quels sont les rabais disponibles pour les commandes en gros via le plan Boîte à Outils Professionnelle?",
-      "answer": "Les membres de la Boîte à Outils Professionnelle ont droit à des rabais exclusifs sur les commandes en gros, dont le pourcentage peut varier en fonction du volume de la commande. Contactez-nous pour discuter de vos besoins, et nous vous fournirons une structure de rabais personnalisée."
+      "question": "How do you ensure the quality and safety of the transported equipment?",
+      "answer": "We follow strict safety and quality protocols, including regular inspections and compliance with international standards."
     },
     {
-      "question": "À quoi puis-je m'attendre en termes de support client?",
-      "answer": "Tous nos clients bénéficient d'un support par e-mail dédié. Avec le Kit de Démarrage, vous recevrez notre support standard, tandis que le plan Boîte à Outils Professionnelle vous mettra à niveau vers un support prioritaire, ce qui signifie des temps de réponse plus rapides et une assistance spécialisée."
+      "question": "What services does Narvi-EC offer?",
+      "answer": "Narvi-EC specializes in the supply of equipment for the Oil&Gas industry, as well as in maintenance management, handling, and administration of engineering projects in the energy sector."
     },
     {
-      "question": "À quelle fréquence sont mises à jour les ressources en ligne et les tutoriels?",
-      "answer": "Nous mettons régulièrement à jour nos ressources en ligne et nos tutoriels pour refléter les dernières tendances en matière de bricolage et de construction, ainsi que les introductions de nouveaux outils et techniques. Notre matériel vise à être complet et convivial pour tous les niveaux de compétence."
+      "question": "How can I request a quote?",
+      "answer": "You can request a quote through the contact form on our website or by sending an email to our sales team."
     },
     {
-      "question": "ScrewFast propose-t-il des services pour les grands projets de construction?",
-      "answer": "Oui, nos Solutions Entreprise sont conçues pour les grandes entreprises ayant besoin de services complets. Nous fournissons des consultations, de la planification et de l'approvisionnement en outils et matériaux de haute qualité, ainsi que des solutions de personnel pour des besoins de construction importants. Contactez-nous pour un devis personnalisé."
+      "question": "What type of equipment does Narvi-EC supply?",
+      "answer": "We supply a wide range of equipment in the area of drilling and production, as well as equipment in the areas of processing, refining, and transportation, including valves, pumps, compressors, and control systems, among others."
+    },
+    {
+      "question": "How can I get technical support?",
+      "answer": "You can get technical support by contacting our customer service team at +1(346) 504 9060 or our email info@narvi-ec.com."
+    },
+    {
+      "question": "In which regions and countries does your company have a presence?",
+      "answer": "This question seeks to know the geographical extent of the company's operations and in which specific markets it is present."
+    },
+    {
+      "question": "How do you guarantee the quality of your services?",
+      "answer": "We use quality control methodologies according to service management, and we also have a team of experts to ensure excellence in each project."
+    },
+    {
+      "question": "Where are your offices located?",
+      "answer": "Our offices are located in Caracas, DC. VEN, but we also offer services nationally and internationally."
     }
   ]
 }

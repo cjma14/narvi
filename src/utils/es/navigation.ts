@@ -24,34 +24,36 @@ const navBarLinks = [
 
 const footerLinks = [
   {
-    section: "Contacto",
+    section: "Contact",
     links: [
-      { name: "(xxx) xxx-xxx", url: "#" },
-      { name: "lorem@test.com", url: "#" }, ,
+      { name: "US +1 346-508-9060 Houston, Tx. USA", type: 'basic'},
+      { name: "VE +58 412-783-2848 Caracas, DC. VEN", type: 'basic'},
+      { name: "info@narvi-ec.com", type: 'basic'}, ,
     ],
   },
   {
-    section: "Sobre nosotros",
+    section: "Sobre nostros",
     links: [
-      { name: "link", url: "/" },
-      { name: "link", url: "/" },
-      { name: "link", url: "/" },
+      { name: "Misión", type: 'url', url: "/" },
+      { name: "Visión", type: 'url', url: "/" },
+      { name: "Contácto", type: 'url', url: "/" },
     ],
   },
   {
-    section: "Servicios",
+    section: "Servicios y Productos",
     links: [
-      { name: "link", url: "/" },
-      { name: "link", url: "/" },
-      { name: "link", url: "/" },
+      { name: "Partes y herramientas", type: 'url', url: "/" },
+      { name: "Equipos", type: 'url', url: "/" },
+      { name: "Camiones y tractores", type: 'url', url: "/" },
+      { name: "Transición energética", type: 'url', url: "/" },
     ],
   },
 ];
 
 const socialLinks = {
-  instagram: "/",
+  instagram: "https://www.instagram.com/narvienterprise/",
   linkedin: "/",
-  cepa: "https://app.cepaonline.cl/login",
+  facebook: "https://www.facebook.com/narvi.enterprise",
 };
 
 export default {

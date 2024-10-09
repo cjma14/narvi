@@ -1,29 +1,29 @@
 [
   {
-    "title": "NARVI's Asset Management",
+    "title": "Asset Management",
     "description": "encompasses the strategic management of machinery, equipment, and infrastructure assets to optimize their value and performance over their entire lifespan. Our approach involves meticulous planning, sound acquisition practices, operational excellence, robust maintenance procedures, and ensuring maximum asset availability.",
-    "imgUrl": "/img/asset-magnament.jpg",
+    "imgUrl": "/img/service1.jpeg",
     "imgAlt": "Test",
     "url": "/"
   },
   {
-    "title": "Expert Technical Services",
+    "title": "Technical Services",
     "description": " As experts in industrial and energy equipment and machinery, we offer comprehensive technical services designed to enhance your production and performance. Our highly skilled team provides tailored advice to meet your specific needs.",
-    "imgUrl": "/img/Oil-and-Gas-Consultancy-Services.jpg",
+    "imgUrl": "/img/service2.jpeg",
     "imgAlt": "Test",
     "url": "/"
   },
   {
     "title": "Business Analysis",
-    "description": " Our expertise in analyzing and identifying areas for improvement in businesses provides us with a detailed view of trends and performance statistics. Our team is dedicated to optimizing resources, processes, and engineering solutions, enabling us to evaluate a company's performance and efficiency.",
-    "imgUrl": "/img/expert-services.jpeg",
+    "description": "Expertise in analyzing and identifying areas for improvement in businesses provides us with a detailed view of trends and performance statistics. Our team is dedicated to optimizing resources, processes, and engineering solutions, enabling us to evaluate a company's performance and efficiency.",
+    "imgUrl": "/img/service7.jpeg",
     "imgAlt": "Test",
     "url": "/"
   },
   {
-    "title": "Equipment Commercialization ",
-    "description": "NARVI Enterprise Corporation is a leading company with expertise in the procurement of equipment, spare parts, and accessories for industrial and energy machinery. We offer our clients a wide range of options for commercializing individual equipment items, both new and used, as well as equipment required for project development.",
-    "imgUrl": "/img/oil-and-gas-plant.jpg",
+    "title": "Equipment trading",
+    "description": "NARVI Enterprise Corporation is a leading company specializing in the procurement of equipment, spare parts, and accessories for industrial and energy machinery. We provide our clients with a broad selection of options for marketing individual pieces of equipment, both new and pre-owned, in addition to supplying the essential equipment required for project development.",
+    "imgUrl": "/img/service6.jpeg",
     "imgAlt": "Test",
     "url": "/"
   }

@@ -6,7 +6,7 @@ import ClientsSection from "@components/sections/landing/ClientsSection.astro";
 import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
 import TestimonialsSection from "@components/sections/testimonials/TestimonialsSection.astro";
 import FAQ from "@components/sections/misc/FAQ.astro";
-import faqs from "@data/faqs.json";
+import faqs from "@data/es/faqs.json";
 import avatar from "@images/avatar.jpg";
 import AboutUsSection from "@/components/sections/AboutUsSection.astro";
 import BannerSection from "@/components/sections/BannerSection.astro";
@@ -38,13 +38,18 @@ const avatarSrcs: Array<string> = [avatar.src];
     reviews=`Desde <span class="font-bold">12.8k</span> comentarios`
   />
 
-  <TeleprompterSection
+  <!-- <TeleprompterSection
     text="Con más de 25 años de experiencia en el sector del Oil and Gas, manejo y administración de activos, mantenimiento y confiabilidad de equipos, anivel internacional, en países de Norteamérica y Latinoamérica. Nos hemos enfocado en ofrecer servicios profesionales en la ingeniería de proyectos de equipos, su comercialización y suministro. Nuestra prioridad es la eficacia en cada proyecto, acompañamos tus metas de negocio con innovación y sostenibilidad."
     title="Miguel Mogollón"
     subTitle="Director Ejecutivo y Fundador"
-  />
-
+  /> -->
+  
   <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+
+    <ClientsSection 
+      label="Nuestros clientes"
+      title="Algunas de las empresas que confían en nosotros"
+      subTitle="Los líderes confían en nuestros productos y servicios"/>
 
     <AboutUsSection
       label="Sobre nosotros"
@@ -101,7 +106,7 @@ const avatarSrcs: Array<string> = [avatar.src];
     imgAlt="Worker 1"
     icon="trophy"
     title="25+"
-    subtitle="Años de <br> experiencia"
+    subtitle="Años de experiencia"
   />
 
   <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 mt-5">
