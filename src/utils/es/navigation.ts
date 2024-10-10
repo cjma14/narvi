@@ -52,7 +52,7 @@ const footerLinks = [
 
 const socialLinks = {
   instagram: "https://www.instagram.com/narvienterprise/",
-  linkedin: "/",
+  linkedin: "https://www.linkedin.com/in/miguel-mogollon-4b5277314?trk=profile-badge",
   facebook: "https://www.facebook.com/narvi.enterprise",
 };
 

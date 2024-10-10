@@ -6,7 +6,12 @@ const navBarLinks = [
     url: "/" 
   },
   { 
-    name: "Produtcs and services",
+    name: "Produtcs",
+    type: "basic", 
+    url: "/products" 
+  },
+  { 
+    name: "Services",
     type: "basic", 
     url: "/" 
   },
@@ -20,14 +25,6 @@ const navBarLinks = [
      type: "basic",
      url: "/"
   }
-  // { 
-  //   name: "TBA", 
-  //   type: "dropdown",
-  //   childrens: [
-  //     { name: "¿Qué es?", type: "basic", url: "/tba" },
-  //     { name: "Formación TBA", type: "basic", url: "/course" },
-  //   ]
-  // },
 ];
 // An array of links for footer
 const footerLinks = [
@@ -60,7 +57,7 @@ const footerLinks = [
 const socialLinks = {
   instagram: "https://www.instagram.com/narvienterprise/",
   facebook: "https://www.facebook.com/narvi.enterprise",
-  linkedin: "/",
+  linkedin: "https://www.linkedin.com/in/miguel-mogollon-4b5277314?trk=profile-badge",
 };
 
 export default {
