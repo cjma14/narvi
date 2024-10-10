@@ -4,7 +4,8 @@ import Meta from "@components/Meta.astro";
 import Navbar from "@components/sections/navbar&footer/Navbar.astro";
 import FooterSection from "@components/sections/navbar&footer/FooterSection.astro";
 import { SITE } from "@data/constants";
-import 'animate.css';
+
+import '@styles/main.css';
 
 // Setting expected props
 const { title = SITE.title, meta, structuredData, lang = "en" } = Astro.props;
@@ -24,14 +25,12 @@ We set the language of the page to English and add classes for scrollbar and scr
 -->
 <html lang={lang} class="scrollbar-hide lenis lenis-smooth scroll-pt-16">
   <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-    <style>
-      html {
-        font-family: "DM Sans", sans-serif;;
-      }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
     <!-- Adding metadata to the HTML document -->
     <Meta meta={meta} structuredData={structuredData} />
     <!-- Define the title of the page -->
@@ -62,35 +61,44 @@ We set the language of the page to English and add classes for scrollbar and scr
       </main>
     </div>
     <FooterSection />
-    <style>
-      /* CSS rules for the page scrollbar */
-      /* .scrollbar-hide::-webkit-scrollbar {
-        display: none;
-      }
 
-      .scrollbar-hide {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      } */
+    <script>
+      import { gsap } from "gsap";
+      import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-      :root {
-        --swiper-theme-color: #78b032 !important;
-        --swiper-preloader-color: #78b032 !important;
-      }
+      gsap.registerPlugin(ScrollTrigger);
 
-      .swiper {
-        width: 100%;
-        height: 100%;
-      }
+      gsap.from(".brand-logo", {
+        opacity: 0,
+        delay: 0.9,
+        x: 20,
+      });
 
-      .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    </style>
+      const navbarLinks = document.querySelector(".navbar")
+      gsap.from(navbarLinks.children, {
+        opacity: 0,
+        x: 0,
+        duration: 1,
+        delay: 1.5,
+        stagger: {
+          amount: 1
+        }
+      });
+
+      gsap.utils.toArray('.fade-up').forEach((element: any) =>{
+        gsap.fromTo(element, {
+            opacity:0,
+            y:150,
+        },{
+            opacity:1,
+            y:0,
+            duration:1,
+            delay:.5,
+            scrollTrigger: element
+
+        })
+    })
+
+    </script>
   </body>
 </html>

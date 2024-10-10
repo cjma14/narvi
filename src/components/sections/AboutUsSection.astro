@@ -32,7 +32,7 @@ interface Props {
 <section
   class="mx-auto max-w-[85rem] items-center gap-16 px-4 py-10 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8 lg:py-14 2xl:max-w-full text-pearl-100"
 >
-  <div>
+  <div class="fade-up">
     <!-- Title of the section -->
     <div class="flex items-center gap-3 mb-4">
       <span class="flex bg-primary-500 h-[10px] w-[10px] rounded-full"></span>
@@ -40,7 +40,7 @@ interface Props {
     </div>
    
     <h2
-      class="mb-4 text-balance text-4xl font-extrabold tracking-tight dark:text-neutral-200 fade-text"
+      class="mb-4 text-balance text-4xl font-extrabold tracking-tight dark:text-neutral-200 fade-animation"
     >
       {title}
     </h2>
@@ -69,14 +69,14 @@ interface Props {
     <div class="mt-8 grid grid-cols-2 gap-4">
       <!-- First image in a two-image layout -->
       <img
-          class="w-full rounded-md h-full"
+          class="w-full rounded-md h-full fade-up"
           src={imgOne}
           alt={imgOneAlt}
           draggable={"false"}
       />
       <!-- Second image in a two-image layout -->
       <img
-          class="mt-4 w-full lg:mt-10 rounded-md h-full"
+          class="mt-4 w-full lg:mt-10 rounded-md h-full fade-up"
           src={imgTwo}
           alt={imgTwoAlt}
           draggable={"false"}

@@ -1,0 +1,8 @@
+:root {
+    --swiper-theme-color: #78b032 !important;
+    --swiper-preloader-color: #78b032 !important;
+}
+
+html {
+    font-family: "DM Sans", sans-serif;
+}
