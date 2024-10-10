@@ -74,8 +74,9 @@ We set the language of the page to English and add classes for scrollbar and scr
         x: 20,
       });
 
-      const navbarLinks = document.querySelector(".navbar")
-      gsap.from(navbarLinks.children, {
+      const navbarLinks = document.querySelectorAll(".navbar .navbar-link")
+
+      gsap.from(navbarLinks, {
         opacity: 0,
         x: 0,
         duration: 1,
