@@ -1,13 +1,9 @@
 ---
 import TestimonialItem from "./TestimonialItem.astro";
 import StatsGrid from "../../ui/blocks/StatsGrid.astro";
+import { Image } from "astro:assets";
 
-const {
-  title,
-  subTitle,
-  testimonials,
-  label
-} = Astro.props;
+const { title, subTitle, testimonials, label } = Astro.props;
 
 interface Props {
   label: string;
@@ -30,115 +26,146 @@ type StatProps = {
   count: string;
   description: string;
 };
+
+const brandTitle = Astro.currentLocale === "es" ? "Proporcionamos los mejores servicios" : "We provide the best service"
+const infoTitle1 =  Astro.currentLocale === "es" ? "Testimonios" : "Testimonies"
+const infoTitle2 = Astro.currentLocale === "es" ? "Empresas sastifechas" : "Satisfied companies"
 ---
 
-<section
-  class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full text-pearl-100 mb-20"
->
+<section class="mb-20 px-4 py-10 text-pearl-100 sm:px-6 lg:px-8 lg:py-14">
   <!-- Container for the testimonials -->
-  <div
-    class="lg:grid lg:grid-cols-1 lg:items-center lg:justify-between lg:gap-5"
-  >
-    <div class="fade-up">
+  <div class="grid grid-cols-2 gap-5">
+    <div class="flex flex-col gap-5">
       <!-- Title and Subtitle -->
+      <div class="fade-up">
+        <div class="mb-4 flex items-center gap-3">
+          <span class="flex h-[10px] w-[10px] rounded-full bg-primary-500"
+          ></span>
+          <h3 class="text-pearl-100">{label}</h3>
+        </div>
 
-      <div class="flex items-center gap-3 mb-4">
-        <span class="flex bg-primary-500 h-[10px] w-[10px] rounded-full"></span>
-        <h3 class="text-pearl-100">{label}</h3>
+        <div class="mb-8">
+          <h2 class="mb-2 text-3xl font-bold lg:text-4xl">
+            {title}
+          </h2>
+          {subTitle && <p class="">{subTitle}</p>}
+        </div>
       </div>
 
-      <div class="mb-8">
-        <h2
-          class="mb-2 text-3xl font-bold  lg:text-4xl"
-        >
-          {title}
-        </h2>
-        {subTitle &&
-        <p class="">
-          {subTitle}
-        </p>
-      }
+      <!-- Testimonials -->
+      <div class="swiper swiperTestimonial fade-up h-full w-full">
+        <div class="swiper-wrapper">
+          {
+            testimonials.map((testimonial) => (
+              <div class="swiper-slide">
+                <TestimonialItem
+                  content={testimonial.content}
+                  author={testimonial.author}
+                  role={testimonial.role}
+                  avatarSrc={testimonial.avatarSrc}
+                />
+              </div>
+            ))
+          }
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
     </div>
 
-     <!-- Generate a blockquote for each testimonial in the testimonials array by mapping over the array. -->
-
-     <div class="swiper swiperTestimonial h-full w-full fade-up">
-      <div class="swiper-wrapper">
-        { testimonials.map((testimonial) => (
-
-          <div class="swiper-slide">
-            <TestimonialItem content={testimonial.content} author={testimonial.author} role={testimonial.role} avatarSrc={testimonial.avatarSrc} />
-          </div>
-        
-        ))}
+    <div class="flex flex-col gap-5">
+      <div class="rounded-xl">
+        <Image
+          width="50"
+          height="50"
+          src="/img/service9.png"
+          alt="test"
+          draggable={"false"}
+          class="size-full h-full object-cover rounded-xl fade-up"
+        />
       </div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
+
+      <div class="bg-primary-500 p-12 text-pearl-100 rounded-xl fade-up">
+        <h3 class="text-4xl max-w-80 font-bold">{ brandTitle }</h3>
+        <div class="mb-16 mt-10 flex gap-x-20">
+          <div class="">
+            <p class="mb-3 text-5xl font-bold sm:text-5xl">
+              100+
+            </p>
+            <p class="text-xl">{infoTitle1}</p>
+          </div>
+          <div class="md:border-l md:pl-10">
+            <p class="mb-3 border-l-primary-400 text-5xl font-bold sm:text-5xl">15+</p>
+            <p class="text-xl">{infoTitle2}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
 
-<style>
-  .swiper-pagination {
-    position: absolute !important;
-  }
-
-  .swiper-slide {
-    display: flex !important;
-    justify-content: center;
-    background-color: #244840;
-    border-radius: 10px;
-    padding: 5rem;
-  }
-  .swiper-button-prev {
-    left: 45px;
-  }
-  .swiper-button-next {
-    right: 45px;
-  }
-
-  @media screen and (max-width: 480px) {
+  <style>
     .swiper-pagination {
-      position: relative !important;
-      margin-top: 25px;
+      position: absolute !important;
     }
 
     .swiper-slide {
-      padding: 2rem;
+      display: flex !important;
+      justify-content: center;
+      background-color: #244840;
+      border-radius: 10px;
+      padding: 5rem;
+    }
+    .swiper-button-prev {
+      left: 184px;
+      top: 124px;
+    }
+    .swiper-button-next {
+      right: 184px;
+      top: 124px;
     }
 
-    .swiper-button-prev, .swiper-button-next {
-      display: none;
+    @media screen and (max-width: 480px) {
+      .swiper-pagination {
+        position: relative !important;
+        margin-top: 25px;
+      }
+
+      .swiper-slide {
+        padding: 2rem;
+      }
+
+      .swiper-button-prev,
+      .swiper-button-next {
+        display: none;
+      }
     }
-  }
+  </style>
 
- 
-</style>
+  <script>
+    import Swiper from "swiper";
+    import "swiper/css";
+    import "swiper/css/pagination";
+    import "swiper/css/navigation";
+    import { Pagination, Autoplay, Navigation } from "swiper/modules";
 
-<script>
-  import Swiper from "swiper";
-  import "swiper/css";
-  import "swiper/css/pagination";
-  import "swiper/css/navigation";
-  import { Pagination, Autoplay, Navigation } from "swiper/modules";
-
-  var swiper = new Swiper(".swiperTestimonial", {
+    var swiper = new Swiper(".swiperTestimonial", {
       modules: [Pagination, Navigation, Autoplay],
       slidesPerView: 1,
       spaceBetween: 30,
       loop: true,
-    
+
       autoplay: {
-          delay: 10000
+        delay: 10000,
       },
       pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
+        el: ".swiper-pagination",
+        clickable: true,
       },
-      navigation: {          // definir botones next y prev para el módulo Navigation
+      navigation: {
+        // definir botones next y prev para el módulo Navigation
         prevEl: ".swiper-button-prev",
         nextEl: ".swiper-button-next",
-      }
-  });
-</script>
+      },
+    });
+  </script>
+</section>

@@ -86,6 +86,19 @@ We set the language of the page to English and add classes for scrollbar and scr
         }
       });
 
+      const slidesBrands = document.querySelectorAll(".slide-brand")
+
+      gsap.from(slidesBrands, {
+        opacity: 0,
+        x: 0,
+        duration: 1,
+        delay: 1.5,
+        stagger: {
+          amount: 1
+        },
+        scrollTrigger: slidesBrands
+      });
+
       gsap.utils.toArray('.fade-up').forEach((element: any) =>{
         gsap.fromTo(element, {
             opacity:0,

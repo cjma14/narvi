@@ -9,21 +9,23 @@
   {
     "title": "Servicio técnico",
     "description": "Somos expertos en equipos y maquinarias del sector Industrial y Energético, con sólidos conocimientos para la mejora de su producción y desempeño. Contamos con un equipo capacitado para ofrecer el asesoramiento requerido en cada proceso.",
-    "imgUrl": "/img/service2.jpeg",
+    "imgUrl": "/img/service9.png",
     "imgAlt": "Test",
-    "url": "/"
+    "url": "/",
+    "footer": "Siempre a tu disposición"
   },
   {
     "title": "Análisis de negocios",
     "description": "La pericia en el análisis e identificación de puntos de mejora en las empresas, nos permite una visión detallada de las tendencias y estadísticas de los resultados. Nuestro equipo de trabajo está orientado a la optimización de recursos, procesos y soluciones de ingeniería, permitiendo una evaluación del rendimiento y desempeño de la empresa.",
     "imgUrl": "/img/service7.jpeg",
     "imgAlt": "Test",
-    "url": "/"
+    "url": "/",
+    "footer": "Resultados confiables"
   },
   {
     "title": "Comercialización de equipos ",
     "description": "NARVI Enterprise Corporation, es una empresa líder con experiencia en adquisiciones de equipos, repuestos, accesorios en maquinarias del Sector Industrial y Energía, brindando nuestros clientes una amplia gama de opciones para comercializar equipos individuales, nuevos o usados, así como también aquellos equipos necesarios para el desarrollo de proyectos.",
-    "imgUrl": "/img/service6.jpeg",
+    "imgUrl": "/img/service10.png",
     "imgAlt": "Test",
     "url": "/"
   }

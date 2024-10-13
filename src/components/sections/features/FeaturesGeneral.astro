@@ -31,7 +31,7 @@ const { title, subTitle, label, features } = Astro.props;
       {subTitle}
     </p>
   </div>
-  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 box">
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
     {
       features.map((feature, index) => {
       const position = index % 4;
@@ -50,12 +50,9 @@ const { title, subTitle, label, features } = Astro.props;
               description={feature.description}
               url={feature.url}
               imgUrl={feature.imgUrl}
-              imgAlt={feature.imgAlt} />;
+              imgAlt={feature.imgAlt}
+              footer={feature?.footer} />;
       }
-      
-        // <CardLink
-        
-        // />
     })
     }
   </div>

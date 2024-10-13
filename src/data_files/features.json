@@ -9,21 +9,23 @@
   {
     "title": "Technical Services",
     "description": " As experts in industrial and energy equipment and machinery, we offer comprehensive technical services designed to enhance your production and performance. Our highly skilled team provides tailored advice to meet your specific needs.",
-    "imgUrl": "/img/service2.jpeg",
+    "imgUrl": "/img/service9.png",
     "imgAlt": "Test",
-    "url": "/"
+    "url": "/",
+    "footer": "Always at your disposal"
   },
   {
     "title": "Business Analysis",
     "description": "Expertise in analyzing and identifying areas for improvement in businesses provides us with a detailed view of trends and performance statistics. Our team is dedicated to optimizing resources, processes, and engineering solutions, enabling us to evaluate a company's performance and efficiency.",
     "imgUrl": "/img/service7.jpeg",
     "imgAlt": "Test",
-    "url": "/"
+    "url": "/",
+    "footer": "Reliable results"
   },
   {
     "title": "Equipment trading",
     "description": "NARVI Enterprise Corporation is a leading company specializing in the procurement of equipment, spare parts, and accessories for industrial and energy machinery. We provide our clients with a broad selection of options for marketing individual pieces of equipment, both new and pre-owned, in addition to supplying the essential equipment required for project development.",
-    "imgUrl": "/img/service6.jpeg",
+    "imgUrl": "/img/service10.png",
     "imgAlt": "Test",
     "url": "/"
   }

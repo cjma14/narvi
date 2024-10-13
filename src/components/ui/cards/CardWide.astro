@@ -11,7 +11,7 @@ const {
   description,
   url,
   index,
-  label = Astro.currentLocale === "es" ? "Saber más" : "Read more",
+  footer,
 } = Astro.props;
 
 interface Props {
@@ -20,44 +20,47 @@ interface Props {
   title: string;
   url: string;
   description: string;
-  label?: string;
+  footer?: string;
   index?: number;
 }
-
-
-// Define classes to be used with the Image component
-const imageClass =
-  "absolute inset-0 h-full w-full object-cover object-center transition duration-[600ms] ease-[cubic-bezier(0.45,0,0.55,1)] group-hover:scale-110";
 ---
 
-<!-- The anchor tag is the main container for the product card. When clicked, this leads to the details of the product. -->
-<a
-  href={"/"}
-  data-astro-prefetch
-  class="group relative flex h-[28rem] items-end overflow-hidden rounded-lg shadow-xl outline-none ring-zinc-500 focus-visible:ring dark:ring-zinc-200 dark:focus:outline-none md:col-span-2"
->
-  <!-- The product's main image -->
-  <Image
-    width="50" height="50"
-    src={imgUrl}
-    alt={imgAlt}
-    draggable={"false"}
-    class={imageClass}
-  />
-  <!-- This container includes a gradient overlay over the product's image -->
+<a href={url} data-astro-prefetch class="md:col-span-2 group">
   <div
-    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-800 via-transparent to-transparent opacity-50"
+    class="rounded-xl border border-[#244840] shadow-sm sm:flex h-full"
   >
+    <div
+      class="relative w-full shrink-0 overflow-hidden rounded-t-xl pt-[40%] sm:max-w-60 sm:rounded-s-xl md:max-w-xs md:rounded-se-none">
+      <Image
+        width="50"
+        height="50"
+        src={imgUrl}
+        alt={imgAlt}
+        draggable={"false"}
+        class="absolute start-0 top-0 size-full object-cover transition duration-[600ms] ease-[cubic-bezier(0.45,0,0.55,1)] group-hover:scale-110"
+      />
+    </div>
+    <div class="flex flex-wrap items-center p-4 sm:p-7 text-pearl-100">
+      <div class="">
+        <div class="flex h-full flex-col md:gap-4">
+          <h3 class="text-lg md:text-2xl font-bold">
+            {title}
+          </h3>
+          <p class="mt-1 md:text-xl">
+            {description}
+            <Icon name="openInNew" classCustom="transition duration-[200ms] group-hover:text-primary-500" />
+          </p>
+        </div>
+      </div>
+      { footer && 
+        <div class="mt-5 sm:mt-auto">
+          <p class="text-xs">
+            {footer}
+          </p>
+        </div>
+      }
+      
+      
+    </div>
   </div>
-  <!-- This container includes product's subtitle and an SVG icon-->
-  <div class="ml-4 relative">
-    <h3 class="text-xl font-bold text-primary-400 dark:text-neutral-200 dark:group-hover:text-neutral-400">
-      {title}
-    </h3>
-    <span
-      class="mb-3 inline-block font-bold text-md"
-      >{description} <Icon name="openInNew" /></span
-    >
-  </div>
-  
 </a>

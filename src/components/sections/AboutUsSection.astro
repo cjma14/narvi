@@ -27,6 +27,9 @@ interface Props {
   imgTwo?: any;
   imgTwoAlt?: any;
 }
+
+const infoTitle1 =  Astro.currentLocale === "es" ? "Clientes" : "Clients"
+const infoTitle2 = Astro.currentLocale === "es" ? "Proyectos" : "Projects"
 ---
 <!-- Root section of the component -->
 <section
@@ -40,7 +43,7 @@ interface Props {
     </div>
    
     <h2
-      class="mb-4 text-balance text-4xl font-extrabold tracking-tight dark:text-neutral-200 fade-animation"
+      class="mb-4 text-balance text-4xl font-extrabold tracking-tight fade-animation"
     >
       {title}
     </h2>
@@ -54,11 +57,11 @@ interface Props {
     <div class="flex gap-10 mt-16 mb-16">
       <div class="">
         <p class="text-5xl font-bold sm:text-5xl mb-3">30+</p>
-        <p class="text-xl">Clientes</p>
+        <p class="text-xl">{infoTitle1}</p>
       </div>
       <div class="md:pl-10 md:border-l">
         <p class="text-5xl font-bold sm:text-5xl mb-3 border-l-primary-400">300+</p>
-        <p class="text-xl">Proyectos</p>
+        <p class="text-xl">{infoTitle2}</p>
       </div>
     </div>
     <!-- Conditional rendering of the Primary Call-To-Action button if 'btnExists' is true -->
