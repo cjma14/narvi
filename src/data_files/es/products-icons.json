@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Producción",
+    "imgUrl": "/img/icons/oil-pump.png",
+    "imgAlt": "Maquinas de Producción"
+  },
+  {
+    "title": "Apoyo",
+    "imgUrl": "/img/icons/boom-lift.png",
+    "imgAlt": "Maquinas de apoyo"
+  },
+  {
+    "title": "Camiones",
+    "imgUrl": "/img/icons/frontal-truck.png",
+    "imgAlt": "Camiones"
+  },
+  {
+    "title": "Equipos eléctricos",
+    "imgUrl": "/img/icons/electricity.png",
+    "imgAlt": "Equipos eléctricos"
+  },
+  {
+    "title": "Equipos de perforación",
+    "imgUrl": "/img/icons/oil.png",
+    "imgAlt": "Equipos de perforación"
+  },
+  {
+    "title": "Plataformas de perforación",
+    "imgUrl": "/img/icons/drilling-rig.png",
+    "imgAlt": "Plataformas de perforación"
+  },
+  {
+    "title": "Pesca en el fondo del pozo",
+    "imgUrl": "/img/icons/pick.png",
+    "imgAlt": "Pesca en el fondo del pozo"
+  },
+  {
+    "title": "Válvulas",
+    "imgUrl": "/img/icons/valve.png",
+    "imgAlt": "Válvulas"
+  },
+  {
+    "title": "Productos tubulares",
+    "imgUrl": "/img/icons/plumbing.png",
+    "imgAlt": "Productos tubulares"
+  },
+  {
+    "title": "Brocas",
+    "imgUrl": "/img/icons/drill.png",
+    "imgAlt": "Brocas"
+  }
+]

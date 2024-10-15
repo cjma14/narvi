@@ -12,6 +12,8 @@ import AboutUsSection from "@/components/sections/AboutUsSection.astro";
 import BannerSection from "@/components/sections/BannerSection.astro";
 import features from "@data/es/features.json";
 import TeleprompterSection from "@/components/sections/landing/TeleprompterSection.astro";
+import ProductsSection from "@/components/sections/landing/ProductsSection.astro";
+import productsIcons from "@data/es/products-icons.json";
 
 
 const avatarSrcs: Array<string> = [avatar.src];
@@ -25,7 +27,7 @@ const avatarSrcs: Array<string> = [avatar.src];
   /> -->
 
   <HeroSection
-    title=`Suministramos equipos energéticos.`
+    title=`Suministramos equipos energéticos`
     subTitle="Impulsa tu negocio. Innova tus operaciones."
     primaryBtn="¡Comencemos!"
     primaryBtnURL="/"
@@ -69,7 +71,16 @@ const avatarSrcs: Array<string> = [avatar.src];
       title="Innovación y eficiencia en cada proyecto"
       subTitle="En Narvi Enterprise Corporation, nuestro equipo de expertos y líderes en cada área, se dedican a superar las expectativas de nuestros clientes globales.Enfocándonos en la eficiencia, reducir los costos operativos, ayudando a las empresas a lograr sostenibles resultados de Excelencia Operacional.Nuestro equipo está disponible 24 horas al día, 7 días a la semana para analizar sus necesidades y acompañarlo hacia el éxito."
       features={features}/>
-      
+
+  </div>
+
+  <ProductsSection 
+    title="Equipamiento de última generación para la industria petrolera" 
+    subTitle="Mantén tu operación a la vanguardia con nuestros equipos de última generación. Mayor eficiencia, menor costo de operación y mayor seguridad."
+    productsIcons={productsIcons}/>
+
+  <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+
     <TestimonialsSection
       label="Testimonios"
       title="Descubre por qué los clientes nos escogen"

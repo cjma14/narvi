@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Production",
+    "imgUrl": "/img/icons/oil-pump.png",
+    "imgAlt": "Production Machines"
+  },
+  {
+    "title": "Support",
+    "imgUrl": "/img/icons/boom-lift.png",
+    "imgAlt": "Support Machines"
+  },
+  {
+    "title": "Trucks",
+    "imgUrl": "/img/icons/frontal-truck.png",
+    "imgAlt": "Trucks"
+  },
+  {
+    "title": "Electrical Equipment",
+    "imgUrl": "/img/icons/electricity.png",
+    "imgAlt": "Electrical Equipment"
+  },
+  {
+    "title": "Drilling Equipment",
+    "imgUrl": "/img/icons/oil.png",
+    "imgAlt": "Drilling Equipment"
+  },
+  {
+    "title": "Drilling Rigs",
+    "imgUrl": "/img/icons/drilling-rig.png",
+    "imgAlt": "Drilling Rigs"
+  },
+  {
+    "title": "Fishing in the well bottom",
+    "imgUrl": "/img/icons/pick.png",
+    "imgAlt": "Fishing in the well bottom"
+  },
+  {
+    "title": "Valves",
+    "imgUrl": "/img/icons/valve.png",
+    "imgAlt": "Valves"
+  },
+  {
+    "title": "Tubular Products",
+    "imgUrl": "/img/icons/plumbing.png",
+    "imgAlt": "Tubular Products"
+  },
+  {
+    "title": "Drill Bits",
+    "imgUrl": "/img/icons/drill.png",
+    "imgAlt": "Drill Bits"
+  }
+]
