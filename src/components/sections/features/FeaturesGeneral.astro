@@ -16,9 +16,10 @@ const { title, subTitle, label, features } = Astro.props;
 ---
 
 <section
-  class="mx-auto max-w-[85rem] px-4 py-10 text-pearl-100 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full fade-up"
+  class="mx-auto max-w-[85rem] px-4 py-10 text-pearl-100 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
 >
-  <div class="mx-auto mb-10 max-w-5xl text-center lg:mb-14">
+
+  <div class="mx-auto mb-10 max-w-5xl text-center lg:mb-14 fade-up">
     <div class="mb-4 flex items-center justify-center gap-3">
       <span class="flex h-[10px] w-[10px] rounded-full bg-primary-500"></span>
       <h3 class="text-pearl-100">{label}</h3>
@@ -31,7 +32,7 @@ const { title, subTitle, label, features } = Astro.props;
       {subTitle}
     </p>
   </div>
-  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 fade-up">
     {
       features.map((feature, index) => {
       const position = index % 4;

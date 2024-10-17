@@ -43,7 +43,7 @@ const infoTitle2 = Astro.currentLocale === "es" ? "Proyectos" : "Projects"
     </div>
    
     <h2
-      class="mb-4 text-balance text-4xl font-extrabold tracking-tight fade-animation"
+      class="mb-4 text-balance text-4xl font-extrabold tracking-tight"
     >
       {title}
     </h2>
@@ -69,20 +69,25 @@ const infoTitle2 = Astro.currentLocale === "es" ? "Proyectos" : "Projects"
   </div>
   <!-- Conditionally render one or two images based on 'single' property -->
 
-    <div class="mt-8 grid grid-cols-2 gap-4">
-      <!-- First image in a two-image layout -->
+  <div class="mt-8 grid grid-cols-2 gap-4">
+    <!-- First image in a two-image layout -->
+    <picture>
       <img
-          class="w-full rounded-md h-full fade-up"
-          src={imgOne}
-          alt={imgOneAlt}
-          draggable={"false"}
-      />
-      <!-- Second image in a two-image layout -->
+      class="w-full rounded-md h-full fade-up"
+      src={imgOne}
+      alt={imgOneAlt}
+      draggable={"false"}/>
+    </picture>
+   
+    <!-- Second image in a two-image layout -->
+    <picture>
       <img
           class="mt-4 w-full lg:mt-10 rounded-md h-full fade-up"
           src={imgTwo}
           alt={imgTwoAlt}
           draggable={"false"}
       />
-    </div>
+    </picture>
+   
+  </div>
 </section>

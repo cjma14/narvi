@@ -35,72 +35,78 @@ const infoTitle2 = Astro.currentLocale === "es" ? "Empresas sastifechas" : "Sati
 <section class="mb-20 px-4 py-10 text-pearl-100 sm:px-6 lg:px-8 lg:py-14">
   <!-- Container for the testimonials -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-    <div class="flex flex-col gap-5 fade-up">
-      <!-- Title and Subtitle -->
-      <div class="">
-        <div class="mb-4 flex items-center gap-3">
-          <span class="flex h-[10px] w-[10px] rounded-full bg-primary-500"
-          ></span>
-          <h3 class="text-pearl-100">{label}</h3>
-        </div>
 
-        <div class="mb-8">
-          <h2 class="mb-2 text-3xl font-bold lg:text-4xl">
-            {title}
-          </h2>
-          {subTitle && <p class="">{subTitle}</p>}
-        </div>
-      </div>
-
-      <!-- Testimonials -->
-      <div class="swiper swiperTestimonial h-full w-full">
-        <div class="swiper-wrapper">
-          {
-            testimonials.map((testimonial) => (
-              <div class="swiper-slide">
-                <TestimonialItem
-                  content={testimonial.content}
-                  author={testimonial.author}
-                  role={testimonial.role}
-                  avatarSrc={testimonial.avatarSrc}
-                />
-              </div>
-            ))
-          }
-        </div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
-    </div>
-
-    <div class="flex flex-col gap-5">
-      <div class="rounded-xl fade-up">
-        <Image
-          width="50"
-          height="50"
-          src="/img/service11.png"
-          alt="test"
-          draggable={"false"}
-          class="size-full h-full object-cover rounded-xl"
-        />
-      </div>
-
-      <div class="bg-primary-500 p-12 text-pearl-100 rounded-xl fade-up">
-        <h3 class="text-4xl max-w-80 font-bold">{ brandTitle }</h3>
-        <div class="mb-16 mt-10 flex gap-y-5 gap-x-20 flex-col md:flex-row">
-          <div class="">
-            <p class="mb-3 text-5xl font-bold sm:text-5xl">
-              100+
-            </p>
-            <p class="text-xl">{infoTitle1}</p>
+    <div class="">
+      <div class="flex flex-col gap-5 fade-up">
+        <!-- Title and Subtitle -->
+        <div class="">
+          <div class="mb-4 flex items-center gap-3">
+            <span class="flex h-[10px] w-[10px] rounded-full bg-primary-500"
+            ></span>
+            <h3 class="text-pearl-100">{label}</h3>
           </div>
-          <div class="md:border-l md:pl-10">
-            <p class="mb-3 border-l-primary-400 text-5xl font-bold sm:text-5xl">15+</p>
-            <p class="text-xl">{infoTitle2}</p>
+  
+          <div class="mb-8">
+            <h2 class="mb-2 text-3xl font-bold lg:text-4xl">
+              {title}
+            </h2>
+            {subTitle && <p class="">{subTitle}</p>}
           </div>
+        </div>
+  
+        <!-- Testimonials -->
+        <div class="swiper swiperTestimonial h-full w-full">
+          <div class="swiper-wrapper">
+            {
+              testimonials.map((testimonial) => (
+                <div class="swiper-slide">
+                  <TestimonialItem
+                    content={testimonial.content}
+                    author={testimonial.author}
+                    role={testimonial.role}
+                    avatarSrc={testimonial.avatarSrc}
+                  />
+                </div>
+              ))
+            }
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
       </div>
     </div>
+   
+    <div>
+      <div class="flex flex-col gap-5 fade-up">
+        <div class="rounded-xl">
+          <Image
+            width="50"
+            height="50"
+            src="/img/service11.png"
+            alt="test"
+            draggable={"false"}
+            class="size-full h-full object-cover rounded-xl"
+          />
+        </div>
+  
+        <div class="bg-primary-500 p-12 text-pearl-100 rounded-xl">
+          <h3 class="text-4xl max-w-80 font-bold">{ brandTitle }</h3>
+          <div class="mb-16 mt-10 flex gap-y-5 gap-x-20 flex-col md:flex-row">
+            <div class="">
+              <p class="mb-3 text-5xl font-bold sm:text-5xl">
+                100+
+              </p>
+              <p class="text-xl">{infoTitle1}</p>
+            </div>
+            <div class="md:border-l md:pl-10">
+              <p class="mb-3 border-l-primary-400 text-5xl font-bold sm:text-5xl">15+</p>
+              <p class="text-xl">{infoTitle2}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </div>
 
   <style>

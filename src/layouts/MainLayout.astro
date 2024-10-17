@@ -100,6 +100,7 @@ We set the language of the page to English and add classes for scrollbar and scr
       });
 
       gsap.utils.toArray('.fade-up').forEach((element: any) =>{
+        console.log(element);
         gsap.fromTo(element, {
             opacity:0,
             y:150,
@@ -108,11 +109,26 @@ We set the language of the page to English and add classes for scrollbar and scr
             y:0,
             duration: .7,
             scrollTrigger: {
-              trigger: element,
+              trigger: element.parentElement,
             }
 
         })
-    })
+      })
+
+      const hsAccordions = document.querySelectorAll(".hs-accordion")
+
+      gsap.from(hsAccordions, {
+        opacity: 0,
+        y: 0,
+        duration: 1,
+        delay: .4,
+        stagger: {
+          amount: 1
+        },
+        scrollTrigger: {
+          trigger: hsAccordions[0].parentElement,
+        }
+      });
 
     </script>
   </body>
