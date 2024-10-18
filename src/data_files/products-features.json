@@ -1,0 +1,35 @@
+{
+    "exploration-production": {
+        "items": [
+           "Drilling & Workover Rigs",
+           "Triplex Pumps, Centrifugal and Multi stage pumps",
+           "Pipes, augers, control valves",
+           "Components for drills and platforms",
+           "Well control equipment",
+           "Well services units",
+           "Gas compressor units for artificial Lift Wellheads"
+        ]
+    },
+    "transportation-processes": {
+        "items": [
+           "Equipment for refinery and treatment plants",
+           "Valves and actuators",
+           "Piping system",
+           "Instrumentation and flowmeters",
+           "Heaters and Heater Exchanger",
+           "Cargo transports units",
+           "Cooling box devices and equipment"
+        ]
+    },
+    "equipment-support": {
+        "items": [
+           "Electrical Plants and power generators",
+           "Diesel Engines",
+           "Hydraulic pumps",
+           "Cranes and Hoists Units",
+           "Security and Lighting equipment",
+           "Hydraulic power Pack",
+           "Electric motors"
+        ]
+    }
+}

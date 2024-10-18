@@ -2,8 +2,17 @@
 // Import the necessary modules
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
 // Destructure the props passed to the Astro component
-const { title, subTitle, btnExists, btnTitle, btnURL, img, imgAlt, listExists, items } =
-  Astro.props;
+const {
+  title,
+  subTitle,
+  btnExists,
+  btnTitle,
+  btnURL,
+  img,
+  imgAlt,
+  listExists,
+  items,
+} = Astro.props;
 // Define TypeScript interface for props
 interface Props {
   title: string;
@@ -20,45 +29,43 @@ interface Props {
 
 <!-- The root section of the component -->
 <section
-  class="mx-auto max-w-[85rem] items-center gap-8 px-4 py-10 sm:px-6 sm:py-16 md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 lg:px-8 lg:py-14 xl:gap-16 2xl:max-w-full"
+  class="mx-auto max-w-[85rem] px-4 py-10 text-pearl-100 sm:px-6 sm:py-16 lg:px-8 lg:py-14 2xl:max-w-full"
 >
-  <!-- The Image component which renders the image -->
-  <img
-    class="w-full rounded-xl"
-    src={img}
-    alt={imgAlt}
-    draggable={"false"}
-  />
-  <!-- The container for title, subtitle, and optional CTA button -->
-  <div class="mt-4 md:mt-0">
-    <!-- The title of the section -->
-    <h2
-      class="mb-4 text-balance text-4xl font-extrabold tracking-tight text-neutral-800 dark:text-neutral-200"
-    >
-      {title}
-    </h2>
-    <!-- The subtitle of the section -->
-    <p
-      class="mb-4 max-w-prose text-pretty font-light text-neutral-600 dark:text-neutral-400 sm:text-lg"
-    >
-      {subTitle}
-    </p>
+  <div class="gap-8 md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 xl:gap-16 items-center">
+    <!-- The Image component which renders the image -->
+    <picture class="">
+      <img class="w-full rounded-xl fade-left" src={img} alt={imgAlt} draggable={"false"} />
+    </picture>
+    
+    <!-- The container for title, subtitle, and optional CTA button -->
+    <div class="mt-4 md:mt-0 fade-right">
+      <!-- The title of the section -->
+      <h2 class="mb-4 text-balance text-4xl font-extrabold tracking-tight">
+        {title}
+      </h2>
+      <!-- The subtitle of the section -->
+      <p class="mb-4 max-w-prose text-pretty font-light sm:text-lg">
+        {subTitle}
+      </p>
 
-    {listExists && (
-      <div class="mt-6 max-w-md space-y-6 mb-10">
-        {items?.map((item) => (
-          <div>
-            <h3 class="block font-bold text-neutral-800 dark:text-neutral-200">
-              {item.title}
-            </h3>
-            <p class="text-neutral-600 dark:text-neutral-400">
-              {item.description}
-            </p>
-          </div>
-        ))}
+      { items && (
+        <div class="grid grid-cols-1 md:grid-cols-2  rounded-lg pb-5 pt-2">
+          {items?.map((item, index) => (
+            <div class="text-white px-6 py-[34px] font-medium border-b border-[#33524A] text-sm md:text-md flex items-center gap-4">
+                <span class="">0{index + 1 }.</span> 
+                <div class="font-bold">{item}</div> 
+            </div>
+          ))}
+        </div> 
+        )
+
+      }
+    
+      <!-- Conditionally render the Primary CTA button if btnExists is true -->
+      <div class="mt-5">
+        {btnExists ? <PrimaryCTA title={btnTitle} url={btnURL} /> : null}
       </div>
-    )}
-    <!-- Conditionally render the Primary CTA button if btnExists is true -->
-    {btnExists ? <PrimaryCTA title={btnTitle} url={btnURL} /> : null}
+     
+    </div>
   </div>
 </section>

@@ -13,6 +13,7 @@ const {
   imgOneAlt,
   imgTwo,
   imgTwoAlt,
+  items,
 } = Astro.props;
 // Define TypeScript interface for the properties
 interface Props {
@@ -26,27 +27,44 @@ interface Props {
   imgOneAlt?: any;
   imgTwo?: any;
   imgTwoAlt?: any;
+  items?: Array<any>;
 }
 ---
 <!-- Root section of the component -->
 <section
-  class="mx-auto max-w-[85rem] items-center gap-16 px-4 py-10 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8 lg:py-14 2xl:max-w-full"
+  class="mx-auto max-w-[85rem] items-center gap-16 px-4 py-10 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8 lg:py-14 2xl:max-w-full text-pearl-100"
 >
-  <div>
+  <div class="fade-left">
     <!-- Title of the section -->
     <h2
-      class="mb-4 text-balance text-4xl font-extrabold tracking-tight text-neutral-800 dark:text-neutral-200"
+      class="mb-4 text-balance text-4xl font-extrabold tracking-tight"
     >
       {title}
     </h2>
     <!-- Subtitle of the section -->
     <p
-      class="mb-4 max-w-prose text-pretty font-light text-neutral-600 dark:text-neutral-400 sm:text-lg"
+      class="mb-4 max-w-prose text-pretty font-light sm:text-lg"
     >
       {subTitle}
     </p>
-    <!-- Conditional rendering of the Primary Call-To-Action button if 'btnExists' is true -->
-    {btnExists ? <PrimaryCTA title={btnTitle} url={btnURL} /> : null}
+
+    { items && (
+      <div class="grid grid-cols-1 md:grid-cols-2  rounded-lg pb-5 pt-2">
+        {items?.map((item, index) => (
+          <div class="text-white px-6 py-[34px] font-medium border-b border-[#33524A] text-sm md:text-md flex items-center gap-4">
+              <span class="">0{index + 1 }.</span> 
+              <div class="font-bold">{item}</div> 
+          </div>
+        ))}
+      </div> 
+      )
+
+    }
+    <div class="mt-5">
+      <!-- Conditional rendering of the Primary Call-To-Action button if 'btnExists' is true -->
+      {btnExists ? <PrimaryCTA title={btnTitle} url={btnURL} /> : null}
+    </div>
+   
   </div>
   <!-- Conditionally render one or two images based on 'single' property -->
   {
@@ -54,7 +72,7 @@ interface Props {
       <div class="mt-8">
         <!-- Single image -->
         <img
-          class="w-full rounded-lg"
+          class="w-full rounded-lg fade-right"
           src={imgOne}
           alt={imgOneAlt}
         />
@@ -63,14 +81,14 @@ interface Props {
       <div class="mt-8 grid grid-cols-2 gap-4">
         <!-- First image in a two-image layout -->
         <img
-          class="w-full rounded-xl"
+          class="w-full rounded-xl fade-right"
           src={imgOne}
           alt={imgOneAlt}
           draggable={"false"}
         />
         <!-- Second image in a two-image layout -->
         <img
-          class="mt-4 w-full rounded-xl lg:mt-10"
+          class="mt-4 w-full rounded-xl lg:mt-10 fade-right"
           src={imgTwo}
           alt={imgTwoAlt}
           draggable={"false"}

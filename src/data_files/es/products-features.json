@@ -1,0 +1,35 @@
+{
+    "exploration-production": {
+        "items": [
+            "Taladros y equipos de reacondicionamiento",
+            "Bombas tríplex, centrífugas y multietapa",
+            "Tuberías, barrena, válvulas de control",
+            "Componentes para taladros y plataformas",
+            "Equipo de control de pozos",
+            "Unidades de servicios de pozos",
+            "Unidades compresoras de gas para elevación artificial de cabezales de pozo"
+        ]
+    },
+    "transportation-processes": {
+        "items": [
+            "Equipo para refinerías y plantas de tratamiento",
+            "Válvulas y actuadores",
+            "Sistema de tuberías",
+            "Instrumentación y caudalímetros",
+            "Calentadores e intercambiadores de calor",
+            "Unidades de transporte de carga",
+            "Dispositivos y equipos de cajas de enfriamiento"
+        ]
+    },
+    "equipment-support": {
+        "items": [
+            "Plantas eléctricas y generadores de energía",
+            "Motores diésel",
+            "Bombas hidráulicas",
+            "Grúas y equipos de elevación",
+            "Equipo de seguridad e iluminación",
+            "Paquete de potencia hidráulica",
+            "Motores eléctricos"
+        ]
+    }
+}

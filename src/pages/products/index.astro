@@ -3,6 +3,9 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import MainSection from "@/components/ui/blocks/MainSection.astro";
 
 import { SITE } from "@data/constants";
+import LeftSection from "@/components/ui/blocks/LeftSection.astro";
+import RightSection from "@/components/ui/blocks/RightSection.astro";
+import productsFeatures from "@data/products-features.json";
 
 const pageTitle: string = `Products | ${SITE.title}`
 ---
@@ -31,4 +34,51 @@ const pageTitle: string = `Products | ${SITE.title}`
         backgroundImg="/img/background2.jpg"
        
     />
+
+    <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+      <div class="mt-10">
+        <LeftSection
+          title="Exploration and Production"
+          subTitle="Our exploration services allow you to discover and develop new oil and gas deposits, maximizing your production potential. We have the latest technologies and an expert team to guarantee the success of your projects.."
+          img="/img/service14.jpg"
+          imgAlt="Oil drill"
+          btnExists={true}
+          btnTitle="Read more"
+          btnURL="/contact"
+          items={productsFeatures["exploration-production"].items}
+        />
+      </div>
+
+      <RightSection
+        title="Transportation and processes"
+        subTitle="We offer customized transportation and logistics solutions, ensuring the safe and efficient delivery of your equipment and materials worldwide."
+        single={true}
+        imgOne="/img/product1.jpg"
+        imgOneAlt="truck for transporting oil"
+        imgTwo="/img/product2.jpg"
+        imgTwoAlt="Pipeline for transporting oil or gas"
+        items={productsFeatures["transportation-processes"].items}
+        btnExists={true}
+        btnTitle="Read more"
+        btnURL="/contact"
+      />
+
+      <div class="mb-20">
+        <LeftSection
+          title="Equipment Support"
+          subTitle="Our exploration services allow you to discover and develop new oil and gas deposits, maximizing your production potential. We have the latest technologies and an expert team to guarantee the success of your projects.."
+          img="/img/product4.jpg"
+          imgAlt="Oil drill"
+          btnExists={true}
+          btnTitle="Read more"
+          btnURL="/contact"
+          items={productsFeatures["equipment-support"].items}
+        />
+      </div>
+      
+
+      
+     
+
+    </div>
 </MainLayout>
