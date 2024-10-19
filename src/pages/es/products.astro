@@ -1,0 +1,80 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import MainSection from "@/components/ui/blocks/MainSection.astro";
+
+import { SITE } from "@data/constants";
+import LeftSection from "@/components/ui/blocks/LeftSection.astro";
+import RightSection from "@/components/ui/blocks/RightSection.astro";
+import productsFeatures from "@data/es/products-features.json";
+
+const pageTitle: string = `Products | ${SITE.title}`
+---
+
+<MainLayout
+  title={pageTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://narvi-ec.com/es/products",
+    "url": "https://narvi-ec.com/es/products",
+    "name": "Productos | Narvi EC",
+    "description": "Soluciones integrales para la industria del petróleo y el gas.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "url": "https://narvi-ec.com",
+      "name": "Narvi Enterprise Corporation",
+      "description": "Narvi EC ofrece servicios de ingeniería y mantenimiento en todo el continente americano, optimizando sus operaciones en el sector energético."
+    },
+    "inLanguage": "es"
+  }}
+>
+    <MainSection
+        label="Productos"
+        title="Soluciones integrales para la industria del petróleo y el gas"
+        backgroundImg="/img/background2.jpg"
+       
+    />
+
+    <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+      <div class="mt-10">
+        <LeftSection
+          title="Exploración y producción"
+          subTitle="Nuestros servicios de exploración le permiten descubrir y desarrollar nuevos yacimientos de petróleo y gas, maximizando su potencial de producción. Contamos con las últimas tecnologías y un equipo experto para garantizar el éxito de sus proyectos."
+          img="/img/service14.jpg"
+          imgAlt="Perforación petrolera"
+          btnExists={true}
+          btnTitle="Contactar con ventas"
+          btnURL="/contact"
+          items={productsFeatures["exploration-production"].items}
+        />
+      </div>
+
+      <RightSection
+        title="Transporte y procesos"
+        subTitle="Ofrecemos soluciones de transporte y logística personalizadas, garantizando la entrega segura y eficiente de sus equipos y materiales en todo el mundo."
+        single={true}
+        imgOne="/img/product1.jpg"
+        imgOneAlt="Camión para transporte de petróleo"
+        imgTwo="/img/product2.jpg"
+        imgTwoAlt="Oleoducto para transportar petróleo o gas"
+        items={productsFeatures["transportation-processes"].items}
+        btnExists={true}
+        btnTitle="Contactar con ventas"
+        btnURL="/contact"
+      />
+
+      <div class="mb-20">
+        <LeftSection
+          title="Equipos de soporte"
+          subTitle="Nuestro equipo de técnicos altamente capacitados le brinda soluciones personalizadas para mantener sus equipos en óptimas condiciones."
+          img="/img/product4.jpg"
+          imgAlt="Oil drill"
+          btnExists={true}
+          btnTitle="Contactar con ventas"
+          btnURL="/contact"
+          items={productsFeatures["equipment-support"].items}
+        />
+      </div>
+      
+    </div>
+</MainLayout>

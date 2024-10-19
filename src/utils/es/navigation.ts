@@ -6,12 +6,22 @@ const navBarLinks = [
     url: "/es" 
   },
   { 
-    name: "Productios y servicios", 
+    name: "Productos", 
     type: "basic",
-    url: "/es/" 
+    url: "/es/products" 
+  },
+  { 
+    name: "Servicios", 
+    type: "basic",
+    url: "/es/services" 
   },
   {
     name: "Equipos para venta",
+    type: "basic", 
+    url: "/es/" 
+  },
+  {
+    name: "Sobre nosotros",
     type: "basic", 
     url: "/es/" 
   },

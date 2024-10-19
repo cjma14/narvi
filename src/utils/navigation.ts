@@ -13,6 +13,11 @@ const navBarLinks = [
   { 
     name: "Services",
     type: "basic", 
+    url: "/services" 
+  },
+  { 
+    name: "About us",
+    type: "basic", 
     url: "/" 
   },
   { 
