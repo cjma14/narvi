@@ -1,89 +1,11 @@
 ---
-// Import necessary components
 import MainLayout from "@/layouts/MainLayout.astro";
-import MainSection from "@components/ui/blocks/MainSection.astro";
-import LeftSection from "@components/ui/blocks/LeftSection.astro";
-import RightSection from "@components/ui/blocks/RightSection.astro";
-import FeaturesStats from "@components/sections/features/FeaturesStats.astro";
-
-// Import necessary images
+import MainSection from "@/components/ui/blocks/MainSection.astro";
 
 import { SITE } from "@data/constants";
-
-interface Article {
-  isRightSection: boolean;
-  title: string;
-  subTitle: string;
-  btnExists?: boolean;
-  btnTitle?: string;
-  btnURL?: string;
-  single?: boolean;
-  img?: any;
-  imgAlt?: string;
-  imgOne?: any;
-  imgOneAlt?: string;
-  imgTwo?: any;
-  imgTwoAlt?: string;
-}
-
-const articles: Article[] = [
-  // {
-  //   isRightSection: true,
-  //   title: "Delivering Expert Guidance",
-  //   subTitle:
-  //     "Embarking on a construction project can be overwhelming. With our professional consultation services, we guide you through every stage, ensuring you make informed decisions. Whether you are a DIY enthusiast or a skilled contractor, our experts are on hand to offer tailored advice on product selection, project scope, and compliance with local regulations.",
-  //   single: false,
-  //   imgOne: blueprints,
-  //   imgOneAlt: "Blueprints and digital tablet with construction plans.",
-  //   imgTwo: personWorking,
-  //   imgTwoAlt: "Person working in the office",
-  // },
-  // {
-  //   isRightSection: false,
-  //   title: "Transforming Designs into Reality",
-  //   subTitle:
-  //     "Our skilled craftsmen bring precision and excellence to every construction project. From minor installations to substantial structural work, ScrewFast offers reliable construction services to turn your plans into tangible outcomes. We ensure the highest standards of safety and workmanship, utilizing top-quality tools and materials from our extensive inventory.",
-  //   img: beforeAfter,
-  //   imgAlt: "Construction site before and after",
-  //   btnExists: true,
-  //   btnTitle: "Learn More",
-  //   btnURL: "#",
-  // },
-  // {
-  //   isRightSection: true,
-  //   title: "Navigating Projects with Professional Oversight",
-  //   subTitle:
-  //     "Effective project management is at the heart of any successful build. ScrewFast provides thorough planning and robust management services that keep your project on time and within budget. Let us handle the complexities of workflow coordination, resource allocation, and stakeholder communication while you focus on your vision.",
-  //   single: false,
-  //   imgOne: constructionWorkers,
-  //   imgOneAlt: "Construction workers orchestrating a project",
-  //   imgTwo: aerialView,
-  //   imgTwoAlt: "Aerial view of managed construction",
-  // },
-  // {
-  //   isRightSection: false,
-  //   title: "Ensuring Long-lasting Performance",
-  //   subTitle:
-  //     "Our commitment to your project doesn't end at completion. ScrewFast offers ongoing maintenance and support services to ensure your construction's longevity and performance. From regular check-ups to emergency assistance, our responsive team is there to provide seamless support.",
-  //   img: usingTools,
-  //   imgAlt:
-  //     "Man in orange and black vest wearing white helmet holding yellow and black power tool",
-  // },
-  // {
-  //   isRightSection: true,
-  //   title: "Crafting Bespoke Strategies for Unique Challenges",
-  //   subTitle:
-  //     "For our larger enterprise clients, ScrewFast offers custom solutions designed to meet specific industry challenges. By understanding your unique needs, we engineer tailored strategies aimed at optimizing your operations, enhancing efficiency, and driving your business forward.",
-  //   single: false,
-  //   imgOne: progressBuilding,
-  //   imgOneAlt: "In progress building structure",
-  //   imgTwo: underConstruction,
-  //   imgTwoAlt: "Brown and gray building under construction",
-  //   btnExists: true,
-  //   btnTitle: "Read more",
-  //   btnURL: "#",
-  // },
-];
+import LeftSection from "@/components/ui/blocks/LeftSection.astro";
+import RightSection from "@/components/ui/blocks/RightSection.astro";
+import FeaturesStats from "@/components/sections/features/FeaturesStats.astro";
 
 const pageTitle: string = `Services | ${SITE.title}`;
 ---
@@ -93,82 +15,134 @@ const pageTitle: string = `Services | ${SITE.title}`;
   structuredData={{
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://screwfast.uk/services",
-    "url": "https://screwfast.uk/services",
-    "name": "Expert Consultation Services | ScrewFast",
-    "description": "Uniting expertise with your vision, ScrewFast provides exceptional service and comprehensive solutions in the hardware and construction industry, from consultation to project completion.",
-    "isPartOf": {
-        "@type": "WebSite",
-        "url": "https://screwfast.uk",
-        "name": "ScrewFast",
-        "description": "ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs."
+    "@id": "https://narvi-ec.com/services",
+    url: "https://narvi-ec.com/services",
+    name: "Services | Narvi EC",
+    description: "Innovative Solutions for Sustainable Business Growth.",
+    isPartOf: {
+      "@type": "WebSite",
+      url: "https://narvi-ec.com",
+      name: "Narvi Enterprise Corporation",
+      description:
+        "Narvi EC offers engineering and maintenance services throughout the Americas, optimizing your operations in the energy sector.",
     },
-    "inLanguage": "en-US"
+    inLanguage: "en-US",
   }}
 >
-  <!--MainSection is the introductory section of the page, it also contains a CTA button-->
-  <!-- <MainSection
-    title="Uniting Expertise with Your Vision"
-    subTitle="At ScrewFast, we take pride in providing comprehensive solutions and exceptional service in the hardware and construction industry. Our experienced team is dedicated to supporting your project from inception to completion with a range of specialized services."
-    btnExists={true}
-    btnTitle="Schedule a Consultation"
-    btnURL="#"
-  /> -->
-  <!-- RightSection and LeftSection contain details about various services along with pertinent imagery.
-  They alternate for variety in design.
-  The 'btnExists' property is used to toggle the display of a button in these sections.
-  When btnExists={true}, a button is displayed.
-  This can be used to link to more detailed information or related resources.
-  RightSection can also conditionally render one or two images based on the 'single' property.
-  If 'single' is true, it displays one image, otherwise it displays two.
-  -->
-  {
-    articles.map(article => {
-      return article.isRightSection ? (
-        <RightSection
-          title={article.title}
-          subTitle={article.subTitle}
-          single={article.single}
-          imgOne={article.imgOne}
-          imgOneAlt={article.imgOneAlt}
-          imgTwo={article.imgTwo}
-          imgTwoAlt={article.imgTwoAlt}
-          btnExists={article.btnExists}
-          btnTitle={article.btnTitle}
-          btnURL={article.btnURL}
-        />
-      ) : (
-        <LeftSection
-          title={article.title}
-          subTitle={article.subTitle}
-          img={article.img}
-          imgAlt={article.imgAlt}
-          btnExists={article.btnExists}
-          btnTitle={article.btnTitle}
-          btnURL={article.btnURL}
-        />
-      );
-    })
-  }
-  <!--FeaturesStats section showcases essential stats valuable to users-->
-  <FeaturesStats
-    title="By the Numbers"
-    subTitle="Our commitment to quality and reliability is evident in every project we undertake. At ScrewFast, we are dedicated to delivering industry-leading services that ensure your construction projects are built to last."
-    mainStatTitle="96%"
-    mainStatSubTitle="of our clients rate their experience with ScrewFast as exceptional"
-    stats={[
-      {
-        stat: "99.8%",
-        description: "project completion rate",
-      },
-      {
-        stat: "5,000+",
-        description: "successful installations",
-      },
-      {
-        stat: "85%",
-        description: "client growth year-over-year",
-      },
-    ]}
+  <MainSection
+    label="Services"
+    title="Innovative Solutions for Sustainable Business Growth"
+    backgroundImg="/img/service15.png"
   />
+
+  <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+    <section class="fade-up mx-auto mt-10 max-w-[85rem] px-4 py-10 text-pearl-100 sm:px-6 sm:py-16 lg:px-8 lg:py-14 2xl:max-w-full">
+      <div class="fade-up ">
+        <div class="flex items-center gap-3">
+          <span class="flex h-[10px] w-[10px] rounded-full bg-primary-500"></span>
+          <h3 class="text-pearl-100">Description</h3>
+        </div>
+        <h2 class="mb-4 mt-4 text-balance text-3xl md:text-4xl font-extrabold tracking-tight">
+          Narvi EC's Commitment to Operational Efficiency
+        </h2>
+        <p class="mt-3 mb-4 text-pretty font-light sm:text-lg">
+          At Narvi Enterprise Corporation, where our commitment to Operational
+          Excellence is at the heart of everything we do. Our seasoned
+          professionals lead the industry in innovation, aiming to surpass our
+          worldwide clientele's expectations by enhancing efficiency and
+          diminishing operational costs. Partner with us for enduring and
+          sustainable business solutions.
+        </p>
+      </div>
+
+    </section>
+
+    <LeftSection
+      title="Equipment Trading"
+      subTitle="NARVI Enterprise Corporation is a leading company with expertise in the procurement of equipment, spare parts, and accessories for machinery in the Industrial and Energy sectors. We offer our clients a wide range of options to trade individual equipment, both new and used, as well as the necessary equipment for the development and growth of their fleet of machinery."
+      img="/img/service16.png"
+      imgAlt="Narvis Enterprise company trading team doing market research"
+      btnExists={true}
+      btnTitle="Contact Sales Team"
+      btnURL="/contact"
+    />
+
+    <RightSection
+      title="Technical Services"
+      subTitle="Our team boasts expertise in the industrial and energy sectors' equipment and machinery, possessing robust knowledge to enhance production and efficiency. We are equipped with a professionally trained team ready to provide necessary guidance throughout each procedure."
+      single={true}
+      imgOne="/img/servcie17.jpg"
+      imgOneAlt="Narvis ec technician performing preventive support"
+      items={[
+        "Installation and Configuration",
+        "Preventive Maintenance",
+        "Diagnosis and Repair",
+        "Update and Improvement",
+        "Technical Support",
+        "Training",
+      ]}
+      btnExists={true}
+      btnTitle="Contact Sales Team"
+      btnURL="/contact"
+    />
+
+    <LeftSection
+      title="Asset Management"
+      subTitle="At NARVI, we redefine asset management by meticulously overseeing the lifecycle of your machinery, equipment, and infrastructure. Our approach ensures peak performance and maximized value from acquisition to disposition. Through strategic planning, precise procurement, operational excellence, and steadfast maintenance, we empower your assets to contribute to your success. Trust NARVI to elevate your asset management experience."
+      img="/img/service20.jpg"
+      imgAlt="Narvis staff conducting an Asset Management study"
+      btnExists={true}
+      btnTitle="Contact Sales Team"
+      btnURL="/contact"
+      items={[
+        "Asset value and performance consulting",
+        "Acquisition of reliable assets",
+        "Assurance and control in the acquisition of your fleet assets",
+        "Assistance in asset administration and management",
+      ]}
+    />
+
+    <RightSection
+      title="Bussines Analysis"
+      subTitle="We support your business plan through our expertise in analysis and identification of improvement points in companies, which allows us a detailed view of the trends and statistics of the results."
+      single={true}
+      imgOne="/img/service21.png"
+      imgOneAlt="Narvi marketing specialist holding a meeting"
+      imgTwo="/img/product2.jpg"
+      imgTwoAlt="Pipeline for transporting oil or gas"
+      items={[
+        "Identification of areas for improvement",
+        "Performance evaluation",
+        "Analysis of trends and data",
+        "Resource optimization",
+        "Implementation of engineering solutions",
+      ]}
+      btnExists={true}
+      btnTitle="Contact Sales Team"
+      btnURL="/contact"
+    />
+
+    <div class="mb-20">
+      <FeaturesStats
+        title="By the Numbers"
+        subTitle="Our commitment to quality and reliability is evident in every services we provide. At Narvi EC, we are dedicated to delivering industry-leading services that ensure your construction projects are built to last."
+        mainStatTitle="96%"
+        mainStatSubTitle="of our clients rate their experience with ScrewFast as exceptional"
+        stats={[
+          {
+            stat: "99.8%",
+            description: "project completion rate",
+          },
+          {
+            stat: "5,000+",
+            description: "successful installations",
+          },
+          {
+            stat: "85%",
+            description: "client growth year-over-year",
+          },
+        ]}
+      />
+    </div>
+  </div>
 </MainLayout>

@@ -17,7 +17,7 @@ interface Props {
 }
 ---
 
-<section class="mx-auto max-w-[85rem] 2xl:max-w-full my-[6rem] bg-primary-500 py-12">
+<section class="mx-auto max-w-[85rem] 2xl:max-w-full  my-5 md:my-[6rem] bg-primary-500 py-12">
   <!-- Title and description -->
   <div class="mx-auto  flex w-full flex-col items-center text-center mb-20" >
     <h2
@@ -34,7 +34,7 @@ interface Props {
   <div
     class="flex flex-col items-center justify-center gap-y-2 pb-4 sm:flex-row sm:gap-x-12 sm:gap-y-0 lg:gap-x-24"
   >
-    <div class="swiper swiperProducts">
+    <div class="swiper swiperProducts w-full">
       <div class="swiper-wrapper">
 
         {
@@ -114,7 +114,7 @@ interface Props {
         // Cuando la pantalla es >= 768px
         768: {
           slidesPerView: 1,
-          spaceBetween: 30
+          spaceBetween: 0
         },
         // Cuando la pantalla es >= 1024px
         1024: {
