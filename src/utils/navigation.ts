@@ -18,7 +18,7 @@ const navBarLinks = [
   { 
     name: "About us",
     type: "basic", 
-    url: "/" 
+    url: "/about" 
   },
   { 
     name: "Equipment for sale", 
