@@ -36,7 +36,7 @@ const footerLinks = [
   {
     section: "Contact",
     links: [
-      { name: "+1 346-508-9060", type: 'basic'},
+      { name: "+1 346 504 9060", type: 'basic'},
       { name: "info@narvi-ec.com", type: 'basic'}, ,
     ],
   },
