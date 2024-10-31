@@ -9,14 +9,14 @@ import PrimaryCTA from "@/components/ui/buttons/PrimaryCTA.astro";
 import SecondaryCTA from "@/components/ui/buttons/SecondaryCTA.astro";
 import CardSales from "@/components/ui/cards/CardSales.astro";
 
-const pageTitle: string = `Equipment for sale | ${SITE.title}`;
-
-const product: CollectionEntry<"products">[] = (
+const products: CollectionEntry<"products">[] = (
   await getCollection("products")
 ).sort(
   (a: CollectionEntry<"products">, b: CollectionEntry<"products">) =>
     a.data.id - b.data.id,
 );
+
+const pageTitle: string = `Equipment for sale | ${SITE.title}`;
 ---
 
 <MainLayout
@@ -46,7 +46,7 @@ const product: CollectionEntry<"products">[] = (
 
   <div class="">
     <section
-      class="mx-auto max-w-[85rem] items-center px-4 py-10 text-center text-pearl-100 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
+      class="mx-auto max-w-[85rem] items-center px-4 pt-10 text-center text-pearl-100 sm:px-6 lg:px-8 lg:pt-14 2xl:max-w-full"
     >
       <div class="flex flex-col items-center">
         <!-- Section subtitle -->
@@ -58,7 +58,9 @@ const product: CollectionEntry<"products">[] = (
       </div>
     </section>
 
-    <section class="mx-auto max-w-[85rem] items-center px-4 pb-10 text-center text-pearl-100 sm:px-6 lg:px-8 lg:pb-14 2xl:max-w-full">
+    <section
+      class="mx-auto max-w-[85rem] items-center px-4 pb-10 text-pearl-100 sm:px-6 lg:px-8 lg:pb-14 2xl:max-w-full"
+    >
       <form id="form-search" class="mx-auto max-w-sm">
         <div class="flex items-center">
           <label for="search-code" class="sr-only">Buscar</label>
@@ -71,7 +73,7 @@ const product: CollectionEntry<"products">[] = (
               required
             />
           </div>
-          <button
+          <!-- <button
             type="submit"
             class="border-blue-500 focus:ring-blue-300 dark:focus:ring-blue-700 ms-2 rounded-lg border bg-primary-500 p-3 text-sm font-medium text-white hover:bg-primary-400 focus:outline-none focus:ring-4 dark:bg-primary-600 dark:hover:bg-primary-500"
           >
@@ -90,19 +92,26 @@ const product: CollectionEntry<"products">[] = (
                 d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
             </svg>
             <span class="sr-only">Buscar</span>
-          </button>
+          </button> -->
         </div>
         <span id="error-label" class="text-xs text-red-600"></span>
       </form>
 
       <div class="max-w-screen-3xl mx-auto px-5 md:px-20">
         <p id="searchReadout"></p>
-        <div class="list mb-10 grid grid-cols-1 gap-4 md:grid-cols-2">
-          <!-- {
-            product.map((product, index) => {
-              return <CardSales product={product} />;
+        <div
+          id="list"
+          class="list mb-10 mt-10 grid grid-cols-1 gap-4 md:grid-cols-2"
+        >
+          {
+            products.map((product, index) => {
+              return (
+                <div id={product.slug}>
+                  <CardSales product={product} />
+                </div>
+              );
             })
-          } -->
+          }
         </div>
       </div>
     </section>
@@ -113,24 +122,58 @@ const product: CollectionEntry<"products">[] = (
   import DOMPurify from "dompurify";
 
   //Selectors
-  const search = (document.querySelector("#search") as HTMLInputElement);
+  const search = document.querySelector("#search") as HTMLInputElement;
   const searchReadout = document.querySelector("#searchReadout");
-
+  const list = document.querySelector("#list") as HTMLElement;
+  let SEARCH_DATA;
   //functions
 
-  function updateSearchReadout(search) {
+  // Función para filtrar los datos
 
+  function filter(search, data) {
+    return data.filter((item) =>
+      item.data.title.toLowerCase().includes(search.toLowerCase()),
+    );
+  }
+
+  function showCards(filterData) {
+    for (const child of list.children) {
+      const slugCard = child.id
+
+      if (!filterData.find((product) => product.slug == slugCard)) {
+        child.classList.add("hidden");
+      } else {
+        child.classList.remove("hidden");
+      }
+    }
+  }
+
+  async function fetchSearchData() {
+    try {
+      const res = await fetch("../api/sales_equipment.json");
+
+      if (!res.ok) {
+        throw new Error("Something went wrong... Please try again");
+      }
+
+      const data = await res.json();
+      SEARCH_DATA = data
+     
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   //Event listeners
   window.addEventListener("DOMContentLoaded", () => {
-    const urlParams = DOMPurify.sanitize(new URLSearchParams(window.location.search).get("q")); 
-    search.value = urlParams
+    // const urlParams = DOMPurify.sanitize(new URLSearchParams(window.location.search).get("q"));
+    // search.value = urlParams
+    fetchSearchData()
   })
 
   search.addEventListener("input", () => {
-    const searchTerm = DOMPurify.sanitize(search.value); 
-    // search.value = urlParams
-  })
-
+    const searchTerm = DOMPurify.sanitize(search.value);
+    const filterData = filter(searchTerm, SEARCH_DATA);
+    showCards(filterData);
+  });
 </script>

@@ -12,18 +12,15 @@ const productsCollection = defineCollection({
     imgCard: image(),
     imgAlt: z.string(),
     starCount: z.number(),
-    longDescription: z.object({
-      title: z.string(),
-      subTitle: z.string(),
-    }),
     btnTitle: z.string(),
     btnURL: z.string(),
     btnSaleTitle: z.string(),
     btnSaleURL: z.string(),
+    gallery: z.array(z.string()),
     tableData: z.array(
       z.object({
-        feature: z.array(z.string()),
-        description: z.array(z.array(z.string())),
+        title: z.string(),
+        specifications: z.array( z.string()),
       })
     ).optional()
   }),

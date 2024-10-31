@@ -18,7 +18,7 @@ interface Props {
 ---
 
 
-<div class="rounded-xl border border-[#244840] shadow-sm sm:flex group">
+<div class="rounded-xl border border-[#244840] shadow-sm sm:flex">
   <div
     class="relative w-full shrink-0 overflow-hidden rounded-t-xl pt-[40%] sm:max-w-60 sm:rounded-s-xl md:max-w-xs md:rounded-se-none">
     <Image
@@ -45,7 +45,7 @@ interface Props {
       <h3 class="font-bold text-xl">
         {product.data.title}
       </h3>
-      <p class="">
+      <p class="text-left">
         {product.data.shortDescription}
         <Icon name="openInNew" classCustom="transition duration-[200ms] group-hover:text-primary-500" />
       </p>
