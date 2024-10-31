@@ -50,7 +50,7 @@ export const Icons = {
       },
     ],
     class:
-      "mt-2 h-6 w-6 flex-shrink-0 fill-neutral-700 hs-tab-active:fill-primary-400 dark:fill-neutral-300 dark:hs-tab-active:fill-primary-300 md:h-7 md:w-7",
+      "mt-2 h-6 w-6 flex-shrink-0 fill-neutral-700 hs-tab-active:fill-primary-400 dark:fill-neutral-300 dark:hs-tab-active:fill-primary-300",
     width: 48,
     height: 48,
     viewBox: "0 -960 960 960",
@@ -259,6 +259,19 @@ export const Icons = {
     width: 16,
     height: 16,
     viewBox: "0 -960 960 960",
+    fill: "currentColor",
+  },
+  search: {
+    paths: [
+      {
+        d: "m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+      },
+    ],
+    class:
+      "w-4.5 h-4.5 transition flex-shrink-0 duration-300",
+    width: 24,
+    height: 24,
+    viewBox: "0 0 20 20",
     fill: "currentColor",
   },
   trophy: {

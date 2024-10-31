@@ -1,0 +1,159 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import MainSection from "@/components/ui/blocks/MainSection.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+import { SITE } from "@data/constants";
+import PrimaryCTA from "@/components/ui/buttons/PrimaryCTA.astro";
+import SecondaryCTA from "@/components/ui/buttons/SecondaryCTA.astro";
+import CardSales from "@/components/ui/cards/CardSales.astro";
+
+const pageTitle: string = `Equipment for sale | ${SITE.title}`;
+
+const product: CollectionEntry<"products">[] = (
+  await getCollection("products")
+).sort(
+  (a: CollectionEntry<"products">, b: CollectionEntry<"products">) =>
+    a.data.id - b.data.id,
+);
+---
+
+<MainLayout
+  title={pageTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://narvi-ec.com/sales",
+    url: "https://narvi-ec.com/sales",
+    name: "Equipment for sale | Narvi EC",
+    description: "Tailor-made solutions for the oil industry.",
+    isPartOf: {
+      "@type": "WebSite",
+      url: "https://narvi-ec.com",
+      name: "Narvi Enterprise Corporation",
+      description:
+        "Narvi EC offers engineering and maintenance services throughout the Americas, optimizing your operations in the energy sector.",
+    },
+    inLanguage: "en-US",
+  }}
+>
+  <MainSection
+    label="Equipment for sale"
+    title="Tailor-made solutions for the oil industry"
+    backgroundImg="/img/background4.jpg"
+  />
+
+  <div class="">
+    <section
+      class="mx-auto max-w-[85rem] items-center px-4 py-10 text-center text-pearl-100 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
+    >
+      <div class="flex flex-col items-center">
+        <!-- Section subtitle -->
+        <p class="mb-8 max-w-prose text-pretty font-light sm:text-xl">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
+          eveniet iusto mollitia eos enim odit reiciendis quis nostrum, nemo
+          fugiat aperiam tempora id ad voluptatem minima. Eum ipsam sunt magnam!
+        </p>
+      </div>
+
+      <div>
+        <form id="form-search" class="mx-auto max-w-sm">
+          <div class="flex items-center">
+            <label for="search-code" class="sr-only">Buscar</label>
+            <div class="relative w-full text-neutral-500">
+              <input
+                type="text"
+                id="search-code"
+                class="dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-3 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-500 dark:text-white dark:placeholder-gray-400"
+                placeholder="Search"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              class="border-blue-500 focus:ring-blue-300 dark:focus:ring-blue-700 ms-2 rounded-lg border bg-primary-500 p-3 text-sm font-medium text-white hover:bg-primary-400 focus:outline-none focus:ring-4 dark:bg-primary-600 dark:hover:bg-primary-500"
+            >
+              <svg
+                class="h-4 w-4"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
+              </svg>
+              <span class="sr-only">Buscar</span>
+            </button>
+          </div>
+          <span id="error-label" class="text-xs text-red-600"></span>
+        </form>
+      </div>
+    </section>
+
+    <div class="max-w-screen-3xl mx-auto px-5 md:px-20">
+      <section class="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2 list">
+        <!-- {
+          product.map((product, index) => {
+            return <CardSales product={product} />;
+          })
+        } -->
+      </section>
+    </div>
+
+    <section
+      id="code-success"
+      class="mb-20 mt-5 hidden opacity-0 transition-all delay-150 duration-300 ease-in-out"
+    >
+      <div class="flex flex-col items-center">
+        <!-- Section title -->
+        <h3
+          id="code"
+          class="mb-4 text-balance text-4xl font-extrabold tracking-tight text-primary-700"
+        >
+          xxx-x
+        </h3>
+        <h4
+          id="course"
+          class="mb-4 text-balance text-center text-4xl font-extrabold tracking-tight"
+        >
+          ---
+        </h4>
+        <!-- Section subtitle -->
+        <p class="mb-8 max-w-prose text-pretty font-light sm:text-xl">
+          Este código está validado por CEPA y confirmamos su valides
+        </p>
+      </div>
+    </section>
+    <section
+      id="not-found"
+      class="mb-20 mt-5 hidden opacity-0 transition-all delay-150 duration-300 ease-in-out"
+    >
+      <div class="flex flex-col items-center justify-center">
+        <!-- Section title -->
+        <h3
+          id="code"
+          class="mb-4 text-balance text-4xl font-extrabold tracking-tight text-red-500"
+        >
+          xxx-x
+        </h3>
+        <h4 class="mb-4 text-balance text-4xl font-extrabold tracking-tight">
+          Código no encontrado
+        </h4>
+        <!-- Section subtitle -->
+        <p class="mb-8 max-w-prose text-pretty font-light sm:text-xl">
+          Este código se no encuentra registrado en nuestra base de datos.
+        </p>
+        <div class="grid w-full justify-center gap-3 sm:inline-flex">
+          <PrimaryCTA title="Contactar con soporte" url="/contact" />
+          <SecondaryCTA title="Ir al inicio" url="/" />
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>

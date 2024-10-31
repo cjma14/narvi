@@ -1,0 +1,59 @@
+---
+// Import necessary modules and utilities
+import { Image } from "astro:assets";
+import Icon from "@components/ui/icons/Icon.astro";
+import FullStar from "@components/ui/stars/FullStar.astro";
+import HalfStar from "@components/ui/stars/HalfStar.astro";
+import type { CollectionEntry } from "astro:content";
+import PrimaryCTA from "../buttons/PrimaryCTA.astro";
+import SecondaryCTA from "../buttons/SecondaryCTA.astro";
+
+const {
+  product
+} = Astro.props;
+
+interface Props {
+  product: any;
+}
+---
+
+
+<div class="rounded-xl border border-[#244840] shadow-sm sm:flex group">
+  <div
+    class="relative w-full shrink-0 overflow-hidden rounded-t-xl pt-[40%] sm:max-w-60 sm:rounded-s-xl md:max-w-xs md:rounded-se-none">
+    <Image
+      src={product.data.imgCard}
+      alt={product.data.imgAlt}
+      draggable={"false"}
+      class="absolute start-0 top-0 size-full transition duration-[600ms] ease-[cubic-bezier(0.45,0,0.55,1)] group-hover:scale-110"
+    />
+  </div>
+  <div class="flex flex-wrap items-center p-4 sm:p-7 text-pearl-100">
+    <!-- content -->
+    <div class="flex flex-col gap-2">
+      <div class="flex space-x-1">
+        <!-- Your star ratings -->
+        {
+          Array(product.data.starCount)
+            .fill(0)
+            .map((_, i) => <FullStar key={i} />)
+        }
+        <!-- Adding additional half-star -->
+        <HalfStar />
+      </div>
+    
+      <h3 class="font-bold text-xl">
+        {product.data.title}
+      </h3>
+      <p class="">
+        {product.data.shortDescription}
+        <Icon name="openInNew" classCustom="transition duration-[200ms] group-hover:text-primary-500" />
+      </p>
+
+      <div class="mt-5">
+        <PrimaryCTA title={product.data.btnTitle} url={product.url} />
+        <SecondaryCTA title={product.data.btnSaleTitle} url={product.data.btnSaleURL} />
+      </div>
+    </div>
+  </div>
+</div>

@@ -23,7 +23,7 @@ const navBarLinks = [
   { 
     name: "Equipment for sale", 
     type: "basic",
-    url: "/" 
+    url: "/sales" 
   },
   {
      name: "Contact", 
