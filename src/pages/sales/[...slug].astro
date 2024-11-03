@@ -4,6 +4,9 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import { SITE } from "@data/constants";
+import PrimaryCTA from "@/components/ui/buttons/PrimaryCTA.astro";
+import SecondaryCTA from "@/components/ui/buttons/SecondaryCTA.astro";
+import AccordionTableItem from "@/components/ui/blocks/AccordionTableItem.astro";
 
 // This gets the static paths for all the unique products
 export async function getStaticPaths() {
@@ -14,15 +17,32 @@ export async function getStaticPaths() {
   }));
 }
 
+const makeId = (base: any, index: any) => `${base}${index + 1}`;
+
+function getSpecification(name: any) {
+  const fragments = name.split(":")
+
+  if(fragments.length == 1){
+    return fragments[0] 
+  }
+
+  const [title, value] = fragments;
+  return `<span class="font-bold">${title}:</span> ${value}`
+  
+}
 const { product } = Astro.props;
 
 const pageTitle: string = `${product.data.title} | ${SITE.title}`;
+
 ---
 
 <MainLayout title={pageTitle}>
   <section class="mx-auto max-w-screen-2xl px-4 text-pearl-100 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-2 gap-10 pt-[10rem]">
-      <div class="rounded p-4 bg-pearl-100">
+    <div
+      class="grid grid-cols-1 gap-4 pt-[6rem] md:grid-cols-2 md:gap-10 md:pt-[10rem]"
+    >
+      <!-- Gallery -->
+      <div class="fade-left rounded border border-[#244840] p-4">
         <div class="swiper swiperProduct">
           <div class="swiper-wrapper">
             {
@@ -30,10 +50,10 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
                 <div class="swiper-slide">
                   <div class="swiper-zoom-container">
                     <Image
-                      src={(imageUrl as any)}
+                      src={imageUrl as any}
                       alt={"asdas"}
                       draggable={"false"}
-                      class="rounded cursor-zoom-in"
+                      class="cursor-zoom-in rounded aspect-[4/3] w-[40rem] object-contain"
                     />
                   </div>
                 </div>
@@ -45,33 +65,85 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
         <div class="swiper thumbsSlider mt-4">
           <div class="swiper-wrapper">
             {
-              product.data.gallery.map((imageUrl, index ) => (
-                <div 
+              product.data.gallery.map((imageUrl, index) => (
+                <div
                   class:list={[{ active: index == 0 }]}
-                  class="swiper-slide cursor-pointer border border-2 rounded">
-                    <Image
-                      src={(imageUrl as any)}
-                      alt={"asdas"}
-                      draggable={"false"}
-                    />
+                  class="swiper-slide cursor-pointer rounded border border-2"
+                >
+                  <Image
+                    src={imageUrl as any}
+                    alt={"asdas"}
+                    draggable={"false"}
+                    class="aspect-[4/3] w-[40rem] object-contain"
+                  />
                 </div>
               ))
             }
           </div>
         </div>
       </div>
-      <div class="fadeInUp">
+
+      <!-- info -->
+      <div class="fade-right flex flex-col justify-center gap-y-2">
         <h1
-          class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
+          class="text-xl font-bold tracking-tighter sm:text-5xl md:text-4xl md:text-6xl lg:text-7xl"
         >
           {product.data.title}
         </h1>
-        <p class="text-lg">
+        <p class="text-md md:mt-5 md:text-xl">
           {product.data.shortDescription}
         </p>
+        <div class="mt-5">
+          <PrimaryCTA
+            title={product.data.btnSaleTitle}
+            url={product.data.btnSaleURL}
+          />
+        </div>
       </div>
     </div>
   </section>
+  <div class="mx-auto max-w-screen-2xl px-4 text-pearl-100 sm:px-6 lg:px-8 mt-[4rem] mb-[4rem]">
+    {
+      product.data.tableData.length == 1 ? (
+        <h3 class="text-center text-xl font-bold">{product.data.tableData[0]?.title}</h3>
+        <div class="grid grid-cols-1 rounded-lg pb-5 pt-2 md:grid-cols-2">
+          {product.data.tableData[0]?.specifications.map((item, index) => (
+            <div class="md:text-md flex items-center gap-4 border-b border-[#33524A] px-6 py-[34px] text-sm font-medium text-white">
+              <div set:html={getSpecification(item)}></div>
+            </div>
+          ))}
+        </div>
+      ) : (
+      <div
+        class="hs-accordion-group grid grid-cols-2 gap-4"
+      >
+        {
+          product.data.tableData.map((table, i) => {
+            // Generate ids dynamically for each FAQ accordion item.
+
+            let id = makeId(
+              "hs-basic-with-title-and-arrow-stretched-heading-",
+              i
+            );
+            let collapseId = makeId(
+              "hs-basic-with-title-and-arrow-stretched-collapse",
+              i
+            );
+
+            return (
+              <AccordionTableItem
+                dataTable={table}
+                id={id}
+                collapseId={collapseId}
+                first={false}
+              />
+            );
+          })
+        }
+      </div>
+      )
+    }
+  </div>
 </MainLayout>
 
 <style>
@@ -82,11 +154,11 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
   .thumbsSlider .swiper-slide:hover {
     border-color: #78b032;
   }
-
 </style>
 
 <script>
   import Swiper from "swiper";
+  import "@preline/accordion/index.js";
   import "swiper/css";
   import "swiper/css/pagination";
   import "swiper/css/zoom";
@@ -102,11 +174,13 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
     watchSlidesProgress: true,
     on: {
       click: function (swiper, event) {
-        const element = (event.target as HTMLElement)
-        
-        if(element instanceof HTMLImageElement) {
-          thumbsSliderElement.querySelector(".active").classList.remove("active")
-          element.parentElement.classList.add("active")
+        const element = event.target as HTMLElement;
+
+        if (element instanceof HTMLImageElement) {
+          thumbsSliderElement
+            .querySelector(".active")
+            .classList.remove("active");
+          element.parentElement.classList.add("active");
         }
       },
     },
@@ -115,19 +189,17 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
   var swiper = new Swiper(".swiperProduct", {
     modules: [Thumbs, Zoom],
     zoom: {
-      toggle: false
+      toggle: true,
     },
     slidesPerView: 1,
     spaceBetween: 20,
     thumbs: {
-        swiper: thumbsSlider,
+      swiper: thumbsSlider,
     },
     on: {
       click: function (swiper, event) {
-        swiper.zoom.toggle()
+        swiper.zoom.toggle();
       },
-    }
+    },
   });
-
- 
 </script>

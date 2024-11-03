@@ -147,9 +147,9 @@ We set the language of the page to English and add classes for scrollbar and scr
         })
       })
 
-      const hsAccordions = document.querySelectorAll(".hs-accordion")
+      const fadeUpDownGroup = document.querySelectorAll(".fade-up-down-group")
 
-      gsap.from(hsAccordions, {
+      gsap.from(fadeUpDownGroup, {
         opacity: 0,
         y: 0,
         duration: 1,
@@ -158,7 +158,7 @@ We set the language of the page to English and add classes for scrollbar and scr
           amount: 1
         },
         scrollTrigger: {
-          trigger: hsAccordions[0].parentElement,
+          trigger: fadeUpDownGroup[0]?.parentElement,
         }
       });
 

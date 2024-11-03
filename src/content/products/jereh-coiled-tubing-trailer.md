@@ -18,7 +18,7 @@ gallery:
   - "@/images/equipment_for_sale/jereh-coiled-tubing-trailer/4.jpg"
   - "@/images/equipment_for_sale/jereh-coiled-tubing-trailer/5.jpg"
 tableData:
-  - title: ""
+  - title: "Specifications"
     specifications:
       - "Unit Detailed Description: 2012 JEREH Trailer-Manufactured Coiled Tubing Unit 15,000’ 2” Coiled Tubing Hub Meter – 829.8"
       - "Injector Head: Model ZRT-80K"

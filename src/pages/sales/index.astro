@@ -59,7 +59,7 @@ const pageTitle: string = `Equipment for sale | ${SITE.title}`;
     </section>
 
     <section
-      class="mx-auto max-w-[85rem] items-center px-4 pb-10 text-pearl-100 sm:px-6 lg:px-8 lg:pb-14 2xl:max-w-full"
+      class="mx-auto max-w-[85rem] items-center px-4 pb-10 text-pearl-100 sm:px-6 lg:px-8 lg:pb-14 2xl:max-w-full" 
     >
       <form id="form-search" class="mx-auto max-w-sm">
         <div class="flex items-center">
@@ -106,7 +106,7 @@ const pageTitle: string = `Equipment for sale | ${SITE.title}`;
           {
             products.map((product, index) => {
               return (
-                <div id={product.slug}>
+                <div id={product.slug} class="fade-up-down-group">
                   <CardSales product={product} />
                 </div>
               );

@@ -1,23 +1,33 @@
 ---
 import Icon from "@components/ui/icons/Icon.astro";
 // Define props from Astro
-const { id, collapseId, question, answer, first } = Astro.props;
+const { id, collapseId, dataTable , first } = Astro.props;
 // Define TypeScript interface for props
 interface Props {
   id: string;
   collapseId: string;
-  question: string;
-  answer: string;
+  dataTable: any;
   first?: boolean;
 }
 // Define class names for the accordion and its content
-const ACCORDION_CLASS_DEFAULT = "hs-accordion fade-up-down-group pb-3 active";
-const ACCORDION_CLASS_COLLAPSED = "hs-accordion fade-up-down-group pt-6 pb-3";
+const ACCORDION_CLASS_DEFAULT = "hs-accordion fade-up-down-group pb-2 active";
+const ACCORDION_CLASS_COLLAPSED = "hs-accordion fade-up-down-group pt-2 pb-3";
 const ACCORDION_CONTENT_CLASS =
   "hs-accordion-content w-full overflow-hidden transition-[height] duration-300";
 // Helper function to return the correct class for the accordion
 function getAccordionClass(first: boolean = false) {
   return first ? ACCORDION_CLASS_DEFAULT : ACCORDION_CLASS_COLLAPSED;
+}
+function getSpecification(name: any) {
+  const fragments = name.split(":")
+
+  if(fragments.length == 1){
+    return fragments[0] 
+  }
+
+  const [title, value] = fragments;
+  return `<span class="font-bold">${title}:</span> ${value}`
+  
 }
 ---
 
@@ -25,15 +35,15 @@ function getAccordionClass(first: boolean = false) {
 <div class={getAccordionClass(first)} id={id}>
   <!-- The accordion button, which toggles the expanded/collapsed state -->
   <button
-    class="hs-accordion-toggle group inline-flex w-full items-center justify-between gap-x-3 text-balance rounded-lg pb-3 text-start font-bold outline-none ring-zinc-500 transition hover:text-primary-500 focus-visible:ring dark:text-neutral-200 dark:ring-zinc-200 dark:hover:text-neutral-400 dark:focus:outline-none md:text-lg "
+    class="hs-accordion-toggle inline-flex w-full items-center justify-between gap-x-3 text-balance rounded-lg pb-3 text-start font-bold md:text-lg bg-[#244840] p-4 text-white"
     aria-controls={collapseId}
   >
-    {question}
+    {dataTable.title}
     <!-- SVG Icon that is shown when the accordion is NOT active -->
-    <Icon name="accordionNotActive" />
+    <Icon name="accordionNotActive" classCustom="text-white"/>
 
     <!-- SVG Icon that is shown when the accordion is active -->
-    <Icon name="accordionActive" />
+    <Icon name="accordionActive" classCustom="text-white" />
   </button>
   <!-- The collapsible content of the accordion -->
   <div
@@ -42,8 +52,12 @@ function getAccordionClass(first: boolean = false) {
     id={collapseId}
   >
     <!-- The content paragraph -->
-    <p class="text-pretty">
-      {answer}
-    </p>
+    <div class="grid grid-cols-1 rounded-lg pb-5 pt-2 md:grid-cols-2">
+      {dataTable?.specifications.map((item, index) => (
+        <div class="md:text-md flex items-center gap-4 border-b border-[#33524A] px-6 py-[34px] text-sm font-medium text-white">
+          <div set:html={getSpecification(item)}></div>
+        </div>
+      ))}
+    </div>
   </div>
 </div>
