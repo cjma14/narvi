@@ -16,7 +16,7 @@ const productsCollection = defineCollection({
     btnURL: z.string(),
     btnSaleTitle: z.string(),
     btnSaleURL: z.string(),
-    gallery: z.array(z.string()),
+    gallery: z.array(image()),
     tableData: z.array(
       z.object({
         title: z.string(),

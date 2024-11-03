@@ -98,7 +98,7 @@ const pageTitle: string = `Equipment for sale | ${SITE.title}`;
       </form>
 
       <div class="max-w-screen-3xl mx-auto px-5 md:px-20">
-        <p id="searchReadout"></p>
+        <p id="noData" class="text-center text-2xl mt-20 hidden">No results were found for the search...</p>
         <div
           id="list"
           class="list mb-10 mt-10 grid grid-cols-1 gap-4 md:grid-cols-2"
@@ -123,7 +123,7 @@ const pageTitle: string = `Equipment for sale | ${SITE.title}`;
 
   //Selectors
   const search = document.querySelector("#search") as HTMLInputElement;
-  const searchReadout = document.querySelector("#searchReadout");
+  const noData = document.querySelector("#noData");
   const list = document.querySelector("#list") as HTMLElement;
   let SEARCH_DATA;
   //functions
@@ -137,8 +137,16 @@ const pageTitle: string = `Equipment for sale | ${SITE.title}`;
   }
 
   function showCards(filterData) {
+    
+    noData.classList.add("hidden")
+
+    if(filterData.length == 0) {
+      noData.classList.remove("hidden")
+    }
+
     for (const child of list.children) {
       const slugCard = child.id
+      
 
       if (!filterData.find((product) => product.slug == slugCard)) {
         child.classList.add("hidden");

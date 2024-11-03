@@ -51,7 +51,7 @@ interface Props {
       </p>
 
       <div class="mt-5">
-        <PrimaryCTA title={product.data.btnTitle} url={product.url} />
+        <PrimaryCTA title={product.data.btnTitle} url={"/sales/" + product.slug} />
         <SecondaryCTA title={product.data.btnSaleTitle} url={product.data.btnSaleURL} />
       </div>
     </div>

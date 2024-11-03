@@ -1,0 +1,133 @@
+---
+// Import section components
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import { SITE } from "@data/constants";
+
+// This gets the static paths for all the unique products
+export async function getStaticPaths() {
+  const productEntries = await getCollection("products");
+  return productEntries.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+
+const pageTitle: string = `${product.data.title} | ${SITE.title}`;
+---
+
+<MainLayout title={pageTitle}>
+  <section class="mx-auto max-w-screen-2xl px-4 text-pearl-100 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 gap-10 pt-[10rem]">
+      <div class="rounded p-4 bg-pearl-100">
+        <div class="swiper swiperProduct">
+          <div class="swiper-wrapper">
+            {
+              product.data.gallery.map((imageUrl) => (
+                <div class="swiper-slide">
+                  <div class="swiper-zoom-container">
+                    <Image
+                      src={(imageUrl as any)}
+                      alt={"asdas"}
+                      draggable={"false"}
+                      class="rounded cursor-zoom-in"
+                    />
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="swiper thumbsSlider mt-4">
+          <div class="swiper-wrapper">
+            {
+              product.data.gallery.map((imageUrl, index ) => (
+                <div 
+                  class:list={[{ active: index == 0 }]}
+                  class="swiper-slide cursor-pointer border border-2 rounded">
+                    <Image
+                      src={(imageUrl as any)}
+                      alt={"asdas"}
+                      draggable={"false"}
+                    />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+      <div class="fadeInUp">
+        <h1
+          class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
+        >
+          {product.data.title}
+        </h1>
+        <p class="text-lg">
+          {product.data.shortDescription}
+        </p>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .active {
+    border-color: #78b032 !important;
+  }
+
+  .thumbsSlider .swiper-slide:hover {
+    border-color: #78b032;
+  }
+
+</style>
+
+<script>
+  import Swiper from "swiper";
+  import "swiper/css";
+  import "swiper/css/pagination";
+  import "swiper/css/zoom";
+  import { Pagination, Autoplay, Thumbs, Zoom } from "swiper/modules";
+
+  const thumbsSliderElement = document.querySelector(".thumbsSlider");
+
+  var thumbsSlider = new Swiper(".thumbsSlider", {
+    loop: false,
+    spaceBetween: 10,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+    on: {
+      click: function (swiper, event) {
+        const element = (event.target as HTMLElement)
+        
+        if(element instanceof HTMLImageElement) {
+          thumbsSliderElement.querySelector(".active").classList.remove("active")
+          element.parentElement.classList.add("active")
+        }
+      },
+    },
+  });
+
+  var swiper = new Swiper(".swiperProduct", {
+    modules: [Thumbs, Zoom],
+    zoom: {
+      toggle: false
+    },
+    slidesPerView: 1,
+    spaceBetween: 20,
+    thumbs: {
+        swiper: thumbsSlider,
+    },
+    on: {
+      click: function (swiper, event) {
+        swiper.zoom.toggle()
+      },
+    }
+  });
+
+ 
+</script>
