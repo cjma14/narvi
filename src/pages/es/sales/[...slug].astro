@@ -11,18 +11,19 @@ import AccordionTableItem from "@/components/ui/blocks/AccordionTableItem.astro"
 // This gets the static paths for all the unique products
 export async function getStaticPaths() {
   const productEntries = await getCollection("products", ({ id }) =>
-    id.startsWith("en/")
+    id.startsWith("es/")
   );
   return productEntries.map((product) => {
-    const slugWithoutLang = product.slug.replace(/^en\//, ""); // Remove the "en/" prefix
+    const slugWithoutLang = product.slug.replace(/^es\//, ""); // Remove the "es/" prefix
     return {
-      params: { slug: slugWithoutLang },
+      params: { lang: "es", slug: slugWithoutLang },
       props: { product },
     };
   });
 }
 
 const { product } = Astro.props;
+
 const makeId = (base: any, index: any) => `${base}${index + 1}`;
 
 function getSpecification(name: any) {

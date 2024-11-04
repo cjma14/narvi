@@ -1,15 +1,15 @@
 ---
 id: 9
-slug:  gardner-denver-tee-pump
-title: "GARDNER DENVER TEE PUMP UNIT"
+slug:  unidad-bomba-triplex-gardner-denver-tee
+title: "UNIDAD DE BOMBA TRIPLEX GARDNER DENVER TEE"
 shortDescription: |
    TULSA TT-560 Triplex Pump Unit: A powerful and versatile pumping solution for demanding applications. With a 6" stroke and a capacity of up to 612 GPM, this unit is ideal for pressure testing, chemical water injection, drilling, and industrial applications. 
 imgCard: "@/images/equipment_for_sale/gardner-denver-tee-pump/1.jpeg"
-imgAlt: "GARDNER DENVER TEE PUMP UNIT"
+imgAlt: "UNIDAD DE BOMBA TRIPLEX GARDNER DENVER TEE"
 starCount: 4
-btnTitle: "View product"
+btnTitle: "Ver producto"
 btnURL: "#"
-btnSaleTitle: "Contact sales"
+btnSaleTitle: "Contactar con ventas"
 btnSaleURL: "#"
 gallery:
   - "@/images/equipment_for_sale/gardner-denver-tee-pump/1.jpeg"
@@ -18,7 +18,7 @@ gallery:
   - "@/images/equipment_for_sale/gardner-denver-tee-pump/4.jpeg"
   - "@/images/equipment_for_sale/gardner-denver-tee-pump/5.jpeg"
 tableData:
-  - title: ""
+  - title: "Specifications"
     specifications:
       - 'Engine - Caterpiler C7 225 Hp'
       - 'Transmision - Fuller 5 Speeds Std'

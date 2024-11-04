@@ -18,7 +18,7 @@ gallery:
   - "@/images/equipment_for_sale/pressure-control-valve-bop/4.jpg"
   - "@/images/equipment_for_sale/pressure-control-valve-bop/5.jpg"
 tableData:
-  - title: ""
+  - title: "Specifications"
     specifications:
       - 'Hub meter: 94,300 miles'
       - 'Hourmeter: 8,648 hrs'

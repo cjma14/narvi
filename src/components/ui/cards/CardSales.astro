@@ -8,12 +8,16 @@ import type { CollectionEntry } from "astro:content";
 import PrimaryCTA from "../buttons/PrimaryCTA.astro";
 import SecondaryCTA from "../buttons/SecondaryCTA.astro";
 
+const prefixRoute = Astro.currentLocale === "es" ? "/es/sales/" : "/sales/";
+
 const {
-  product
+  product,
+  productLocale = ""
 } = Astro.props;
 
 interface Props {
   product: any;
+  productLocale?: string;
 }
 ---
 
@@ -51,7 +55,11 @@ interface Props {
       </p>
 
       <div class="mt-5">
-        <PrimaryCTA title={product.data.btnTitle} url={"/sales/" + product.slug} />
+        <PrimaryCTA 
+          title={product.data.btnTitle} 
+          url={productLocale && productLocale !== "en"
+          ? `/${productLocale}/sales/${product.slug.replace(/^es\//, "")}/`
+          : `/sales/${product.slug.replace(/^en\//, "")}/`} />
         <SecondaryCTA title={product.data.btnSaleTitle} url={product.data.btnSaleURL} />
       </div>
     </div>

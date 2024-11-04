@@ -1,6 +1,5 @@
 ---
 id: 6
-slug:  1995-western-star-hot-oil
 title: "1995 Western Star Hot Oil Truck"
 shortDescription: |
    2004 Western Star 350 HP Caterpillar Engine, Eaton Fuller 13-speed transmission, 4,377 km, and 2,536 engine hours. Equipped with a 9,450 L steel tank with 3 compartments, catwalk, and Gardner Denver pump.
@@ -18,7 +17,7 @@ gallery:
   - "@/images/equipment_for_sale/1995-western-star-hot-oil/4.jpg"
   - "@/images/equipment_for_sale/1995-western-star-hot-oil/5.jpg"
 tableData:
-  - title: ""
+  - title: "Specifications"
     specifications:
       - 'Manufacturer: WESTERN STAR'
       - 'Engine: 3406 Caterpilar'

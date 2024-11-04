@@ -18,7 +18,7 @@ const navBarLinks = [
   {
     name: "Equipos para venta",
     type: "basic", 
-    url: "/es/" 
+    url: "/es/sales" 
   },
   {
     name: "Sobre nosotros",

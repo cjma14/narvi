@@ -18,7 +18,7 @@ gallery:
   - "@/images/equipment_for_sale/2003-mack-cvs713-hot-oiler/4.jpg"
   - "@/images/equipment_for_sale/2003-mack-cvs713-hot-oiler/5.jpg"
 tableData:
-  - title: ""
+  - title: "Specifications"
     specifications:
       - 'Mileage: 265609 miles'
       - 'Transmission: Maxitorque 10 Speeds'

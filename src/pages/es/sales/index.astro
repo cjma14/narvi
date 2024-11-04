@@ -5,20 +5,18 @@ import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
 import { SITE } from "@data/constants";
-import PrimaryCTA from "@/components/ui/buttons/PrimaryCTA.astro";
-import SecondaryCTA from "@/components/ui/buttons/SecondaryCTA.astro";
 import CardSales from "@/components/ui/cards/CardSales.astro";
 
 const products: CollectionEntry<"products">[] = (
   await getCollection("products", ({ id }) => {
-    return id.startsWith("en/");
+    return id.startsWith("es/");
   })
 ).sort(
   (a: CollectionEntry<"products">, b: CollectionEntry<"products">) =>
-    a.data.id - b.data.id,
+    a.data.id - b.data.id
 );
 
-const pageTitle: string = `Equipment for sale | ${SITE.title}`;
+const pageTitle: string = `Equipos para venta | ${SITE.title}`;
 ---
 
 <MainLayout
@@ -28,21 +26,21 @@ const pageTitle: string = `Equipment for sale | ${SITE.title}`;
     "@type": "WebPage",
     "@id": "https://narvi-ec.com/sales",
     url: "https://narvi-ec.com/sales",
-    name: "Equipment for sale | Narvi EC",
-    description: "Tailor-made solutions for the oil industry.",
+    name: "Equipos para venta | Narvi EC",
+    description: "Soluciones a medida para la industria petrolera",
     isPartOf: {
       "@type": "WebSite",
       url: "https://narvi-ec.com",
       name: "Narvi Enterprise Corporation",
       description:
-        "Narvi EC offers engineering and maintenance services throughout the Americas, optimizing your operations in the energy sector.",
+        "Narvi EC ofrece servicios de ingeniería y mantenimiento en todo el continente americano, optimizando sus operaciones en el sector energético.",
     },
-    inLanguage: "en-US",
+    inLanguage: "es",
   }}
 >
   <MainSection
-    label="Equipment for sale"
-    title="Tailor-made solutions for the oil industry"
+    label="Equipos para venta"
+    title="Soluciones a medida para la industria petrolera"
     backgroundImg="/img/background4.jpg"
   />
 
@@ -53,7 +51,7 @@ const pageTitle: string = `Equipment for sale | ${SITE.title}`;
       <div class="flex flex-col items-center">
         <!-- Section subtitle -->
         <p class="mb-8 max-w-prose text-pretty font-light sm:text-xl">
-          Heavy equipment at your fingertips! Our selection includes trucks and pumping equipment. Perfect for large-scale projects.
+          ¡Equipos pesados a tu alcance! Nuestra selección incluye camiones  y equipos de bombeo. Perfectos para proyectos de gran envergadura.
         </p>
       </div>
     </section>
@@ -98,7 +96,7 @@ const pageTitle: string = `Equipment for sale | ${SITE.title}`;
       </form>
 
       <div class="max-w-screen-3xl mx-auto px-5 md:px-20">
-        <p id="noData" class="text-center text-2xl mt-20 hidden">No results were found for the search...</p>
+        <p id="noData" class="text-center text-2xl mt-20 hidden">No se encontraron resultados para la búsqueda...</p>
         <div
           id="list"
           class="list mb-10 mt-10 grid grid-cols-1 gap-4 md:grid-cols-2"
@@ -107,7 +105,7 @@ const pageTitle: string = `Equipment for sale | ${SITE.title}`;
             products.map((product, index) => {
               return (
                 <div id={product.slug} class="fade-up-down-group">
-                  <CardSales product={product} />
+                  <CardSales product={product} productLocale="es"/>
                 </div>
               );
             })

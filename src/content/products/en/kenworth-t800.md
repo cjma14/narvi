@@ -17,7 +17,7 @@ gallery:
   - "@/images/equipment_for_sale/kenworth-t800/3.jpeg"
   - "@/images/equipment_for_sale/kenworth-t800/4.jpeg"
 tableData:
-  - title: ""
+  - title: "Specifications"
     specifications:
       - 'Manufacturer: Kenworth model T-800 '
       - 'Engine: Cummins Engine ISX156 Cylinder 15 L Ultra LowSulfur Diesel '

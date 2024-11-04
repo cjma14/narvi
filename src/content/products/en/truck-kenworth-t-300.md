@@ -18,7 +18,7 @@ gallery:
   - "@/images/equipment_for_sale/truck-kenworth-t-300/4.jpg"
   - "@/images/equipment_for_sale/truck-kenworth-t-300/5.jpg"
 tableData:
-  - title: ""
+  - title: "Specifications"
     specifications:
       - 'Hub meter: 94,300 miles'
       - 'Hourmeter: 8,648 hrs'
