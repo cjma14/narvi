@@ -1,30 +1,38 @@
 ---
 // Import the necessary components
+import MainSection from "@/components/ui/blocks/MainSection.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
 import ContactSection from "@components/sections/es/ContactSection_es.astro";
+import { SITE } from "@data/constants";
+
+const pageTitle: string = `Contacto | ${SITE.title}`;
 ---
 
 <!--Utilizing MainLayout for the outer layout of the page, and defining meta for SEO purposes-->
 <MainLayout
-  title="Contact | ScrewFast"
-  lang="es"
+  title={pageTitle}
   structuredData={{
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://screwfast.uk/es/contact",
-    url: "https://screwfast.uk/es/contact",
-    name: "Nous Contacter | ScrewFast",
+    "@id": "https://narvi-ec.com/contacto",
+    url: "https://narvi-ec.com/contacto",
+    name: "Contacto | Narvi EC",
     description:
-      "Vous avez des questions ou souhaitez discuter d'un projet ? Contactez-nous et élaborons ensemble la solution parfaite avec nos outils et services.",
+      "Tu futuro empieza aquí ¡Escríbenos!",
     isPartOf: {
       "@type": "WebSite",
-      url: "https://screwfast.uk/es/",
-      name: "ScrewFast",
+      url: "https://narvi-ec.com",
+      name: "Narvi Enterprise Corporation",
       description:
-        "ScrewFast propose des outils matériels de premier ordre et des services de construction experts pour répondre à tous vos besoins de projet.",
+        "Narvi EC ofrece servicios de ingeniería y mantenimiento en todo el continente americano, optimizando sus operaciones en el sector energético.",
     },
-    inLanguage: "es",
+    inLanguage: "en-US",
   }}
 >
+  <MainSection
+    label="Contactanos"
+    title="Tu futuro empieza aquí ¡Escríbenos!"
+    backgroundImg="/img/oil-and-gas-plant.jpg"
+  />
   <ContactSection />
 </MainLayout>

@@ -7,68 +7,80 @@ import EmailContactInput from "@components/ui/forms/input/EmailContactInput.astr
 import PhoneInput from "@components/ui/forms/input/PhoneInput.astro";
 import TextAreaInput from "@components/ui/forms/input/TextAreaInput.astro";
 import Icon from "@components/ui/icons/Icon.astro";
+import { environment } from "../../../environments/environment";
 
 // Define the variables that will be used in this component
-const title: string = "Contactez-nous";
-const subTitle: string =
-  "Vous avez des questions ou souhaitez discuter d'un projet ? Contactez-nous et laissons-nous élaborer la solution parfaite avec nos outils et services.";
-const formTitle: string = "Remplissez le formulaire ci-dessous";
-const formSubTitle: string =
-  "Nous vous répondrons dans un délai de 1 à 2 jours ouvrables.";
+const formTitle: string =
+  "Por favor rellene la información del formulario o contáctenos a través de nuestros otros canales.";
+const formSubTitle: string = "Nuestro tiempo de respuesta es de 24 horas.";
+
+const tokenWeb3forms = "e256344a-5846-48cc-90a2-1c2b4be78326";
 ---
 
 <!-- Contact Us -->
-<section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+<section
+  class="mx-auto max-w-[85rem] px-4 pb-10 text-pearl-100 sm:px-6 lg:px-8"
+>
   <div class="mx-auto max-w-2xl lg:max-w-5xl">
-    <div class="text-center">
-      <h1
-        class="text-balance text-2xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight"
-      >
-        {title}
-      </h1>
-      <p class="mt-1 text-pretty text-neutral-600 dark:text-neutral-400">
-        {subTitle}
-      </p>
-    </div>
-
     <div class="mt-12 grid items-center gap-6 lg:grid-cols-2 lg:gap-16">
       <div class="flex flex-col rounded-xl p-4 sm:p-6 lg:p-8">
-        <h2
-          class="mb-8 text-xl font-bold text-neutral-700 dark:text-neutral-300"
-        >
+        <h2 class="mb-8 text-xl font-bold">
           {formTitle}
         </h2>
         <!-- Form for user input with various input fields.-->
         <!-- Each field utilizes a different input component for the specific type of input (text, email, phone, and textarea)-->
-        <form>
+        <form
+          id="formContact"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          data-astro-reload
+        >
+          <input type="hidden" name="access_key" value={tokenWeb3forms} />
+          <input
+            type="checkbox"
+            class="hidden"
+            style="display:none"
+            name="botcheck"
+          />
           <div class="grid gap-4">
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div
+              id="success-alert"
+              class="relative hidden rounded border border-primary-400 bg-primary-100 px-4 py-3 text-primary-700 opacity-0 transition-all delay-150 duration-300 ease-in-out"
+              role="alert"
+            >
+              <strong class="font-bold">¡Hemos recibido tu solicitud!</strong>
+              <span class="block sm:inline"
+                >Gracias por contactarnos. Nos pondremos en contacto con usted en breve.</span
+              >
+            </div>
+
+            <div class="grid grid-cols-1 gap-4">
               <TextInput
                 id="hs-firstname-contacts"
-                label="Prénom"
-                name="hs-firstname-contacts"
-              />
-              <TextInput
-                id="hs-lastname-contacts"
-                label="Nom"
-                name="hs-firstname-contacts"
+                label="Nombre completo"
+                name="firstname"
               />
             </div>
-            <EmailContactInput id="hs-email-contacts" />
-            <PhoneInput id="hs-phone-number" />
+            <EmailContactInput id="hs-email-contacts" name="email" />
+
+            <PhoneInput
+              id="hs-phone-number"
+              name="phone"
+            />
+
             <TextAreaInput
               id="hs-about-contacts"
-              label="Détails"
-              name="hs-about-contacts"
+              label="Mensaje"
+              name="message"
             />
           </div>
 
           <div class="mt-4 grid">
-            <AuthBtn title="Envoyer un message" />
+            <AuthBtn title="Enviar mensaje" />
           </div>
 
           <div class="mt-3 text-center">
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">
+            <p class="text-sm">
               {formSubTitle}
             </p>
           </div>
@@ -77,43 +89,75 @@ const formSubTitle: string =
 
       <!--ContactIconBlocks are used to display different methods of contacting, including visiting office, email, browsing knowledgebase, and FAQ.-->
       <div class="divide-y divide-neutral-300 dark:divide-neutral-700">
+        <ContactIconBlock heading="Número de teléfono" content="+58 412-783-2848 ">
+          <Icon name="phone" classCustom="text-primary-500" />
+        </ContactIconBlock>
+
+        <ContactIconBlock heading="Email" content="info@narvi-ec.com"
+          ><Icon name="mail" classCustom="text-primary-500" />
+        </ContactIconBlock>
+
         <ContactIconBlock
-          heading="Base de connaissances"
-          content="Parcourez tous nos articles de base de connaissances."
+          heading="Preguntas frecuentes"
+          content="Explore nuestras preguntas frecuentes para obtener respuestas rápidas y claras a preguntas comunes."
           isLinkVisible={true}
-          linkTitle="Visiter les guides et tutoriels"
-          linkURL="#"
+          linkTitle="Visita las preguntas frecuentes"
+          linkURL="/#faq"
           isArrowVisible={true}
-          ><Icon name="question" />
+          ><Icon name="chatBubble" classCustom="text-primary-500" />
         </ContactIconBlock>
 
-        <ContactIconBlock
-          heading="FAQ"
-          content="Explorez notre FAQ pour des réponses rapides et claires aux questions courantes."
-          isLinkVisible={true}
-          linkTitle="Visiter la FAQ"
-          linkURL="#"
-          isArrowVisible={true}
-          ><Icon name="chatBubble" />
-        </ContactIconBlock>
-
-        <ContactIconBlock
-          heading="Visitez notre bureau"
-          content="ScrewFast UK"
-          isAddressVisible={true}
-          addressContent="72 Union Terrace, E10 4PE London"
-          ><Icon name="mapPin" />
-        </ContactIconBlock>
-
-        <ContactIconBlock
-          heading="Contactez-nous par e-mail"
-          content="Préférez-vous le texte écrit ? Envoyez-nous un e-mail à"
-          isLinkVisible={true}
-          linkTitle="support@screwfast.uk"
-          linkURL="#"
-          ><Icon name="envelopeOpen" />
+        <ContactIconBlock heading="Address" content="Caracas, DC. VEN"
+          ><Icon name="location" classCustom="text-primary-500" />
         </ContactIconBlock>
       </div>
     </div>
   </div>
 </section>
+<script is:inline>
+  const form = document.querySelector("#formContact");
+  const successAlert = document.querySelector("#success-alert");
+
+  // functions
+  const sendSuccess = () => {
+    successAlert.classList.remove("hidden");
+
+    setTimeout(() => {
+      successAlert.classList.remove("opacity-0");
+    }, 100);
+  };
+
+  form.addEventListener(
+    "submit",
+    async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
+      })
+        .then(async (response) => {
+          let json = await response.json();
+          if (response.status == 200) {
+            sendSuccess();
+          } else {
+            console.log(response);
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+        .then(function () {
+          form.reset();
+        });
+    },
+    { once: true },
+  );
+</script>

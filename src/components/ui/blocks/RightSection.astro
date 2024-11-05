@@ -3,6 +3,7 @@
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
 // Extract properties from Astro.props
 const {
+  id,
   title,
   subTitle,
   btnExists,
@@ -17,6 +18,7 @@ const {
 } = Astro.props;
 // Define TypeScript interface for the properties
 interface Props {
+  id?: string;
   title: string;
   subTitle: string;
   btnExists?: boolean;
@@ -32,6 +34,7 @@ interface Props {
 ---
 <!-- Root section of the component -->
 <section
+  id={id}
   class="mx-auto max-w-[85rem] items-center gap-16 px-4 py-5 md:py-10 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8 lg:py-14 2xl:max-w-full text-pearl-100"
 >
   <div class="fade-left">

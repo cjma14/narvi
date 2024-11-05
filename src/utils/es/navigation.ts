@@ -28,7 +28,7 @@ const navBarLinks = [
   { 
     name: "Contacto", 
     type: "basic",
-    url: "/es/" 
+    url: "/es/contact" 
   },
 ];
 
@@ -44,18 +44,18 @@ const footerLinks = [
   {
     section: "Sobre nostros",
     links: [
-      { name: "Misión", type: 'url', url: "/" },
-      { name: "Visión", type: 'url', url: "/" },
-      { name: "Contácto", type: 'url', url: "/" },
+      { name: "Misión", type: 'url', url: "/es/about#mision" },
+      { name: "Visión", type: 'url', url: "/es/about#vision" },
+      { name: "Contácto", type: 'url', url: "/es/contact" },
     ],
   },
   {
     section: "Servicios y Productos",
     links: [
-      { name: "Partes y herramientas", type: 'url', url: "/" },
-      { name: "Equipos", type: 'url', url: "/" },
-      { name: "Camiones y tractores", type: 'url', url: "/" },
-      { name: "Transición energética", type: 'url', url: "/" },
+      { name: "Partes y herramientas", type: 'url', url: "/es/products#exploration-production" },
+      { name: "Equipos", type: 'url', url: "/es/products#equipment-support" },
+      { name: "Camiones y tractores", type: 'url', url: "/es/sales" },
+      { name: "Transición energética", type: 'url', url: "/es/products#transportation-processes" },
     ],
   },
 ];

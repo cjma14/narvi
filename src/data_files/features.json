@@ -3,30 +3,30 @@
     "title": "Asset Management",
     "description": "encompasses the strategic management of machinery, equipment, and infrastructure assets to optimize their value and performance over their entire lifespan. Our approach involves meticulous planning, sound acquisition practices, operational excellence, robust maintenance procedures, and ensuring maximum asset availability.",
     "imgUrl": "/img/service1.jpeg",
-    "imgAlt": "Test",
-    "url": "/"
+    "imgAlt": "Asset Management specialist performing his analysis",
+    "url": "/services#asset-management"
   },
   {
     "title": "Technical Services",
     "description": " As experts in industrial and energy equipment and machinery, we offer comprehensive technical services designed to enhance your production and performance. Our highly skilled team provides tailored advice to meet your specific needs.",
     "imgUrl": "/img/service9.png",
-    "imgAlt": "Test",
-    "url": "/",
+    "imgAlt": "Narvis technician performing preventive maintenance",
+    "url": "/services#technical-services",
     "footer": "Always at your disposal"
   },
   {
     "title": "Business Analysis",
     "description": "Expertise in analyzing and identifying areas for improvement in businesses provides us with a detailed view of trends and performance statistics. Our team is dedicated to optimizing resources, processes, and engineering solutions, enabling us to evaluate a company's performance and efficiency.",
     "imgUrl": "/img/service7.jpeg",
-    "imgAlt": "Test",
-    "url": "/",
+    "imgAlt": "Business Analysis",
+    "url": "/services#bussines-analysis",
     "footer": "Reliable results"
   },
   {
     "title": "Equipment trading",
     "description": "NARVI Enterprise Corporation is a leading company specializing in the procurement of equipment, spare parts, and accessories for industrial and energy machinery. We provide our clients with a broad selection of options for marketing individual pieces of equipment, both new and pre-owned, in addition to supplying the essential equipment required for project development.",
     "imgUrl": "/img/service10.png",
-    "imgAlt": "Test",
-    "url": "/"
+    "imgAlt": "Equipment trading specialist conducting research",
+    "url": "/services#equipment-trading"
   }
 ]

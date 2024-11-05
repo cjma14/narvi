@@ -10,6 +10,7 @@ import FeaturesStats from "@components/sections/features/FeaturesStats.astro";
 import { SITE } from "@data/constants";
 
 interface aboutItem {
+  id?: string;
   isRightSection: boolean;
   title: string;
   subTitle: string;
@@ -28,6 +29,7 @@ interface aboutItem {
 
 const aboutItems: aboutItem[] = [
   {
+    id: "mision",
     isRightSection: false,
     title: "Misión",
     subTitle:
@@ -37,6 +39,7 @@ const aboutItems: aboutItem[] = [
     btnExists: false,
   },
   {
+    id: "vision",
     isRightSection: false,
     title: "Visión",
     subTitle:
@@ -145,6 +148,7 @@ const pageTitle: string = `About us | ${SITE.title}`;
         aboutItems.map((aboutItem) => {
           return aboutItem.isRightSection ? (
             <RightSection
+              id={aboutItem?.id}
               title={aboutItem.title}
               subTitle={aboutItem.subTitle}
               single={aboutItem.single}
@@ -159,6 +163,7 @@ const pageTitle: string = `About us | ${SITE.title}`;
             />
           ) : (
             <LeftSection
+              id={aboutItem?.id}
               title={aboutItem.title}
               subTitle={aboutItem.subTitle}
               img={aboutItem.img}

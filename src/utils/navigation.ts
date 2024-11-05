@@ -28,7 +28,7 @@ const navBarLinks = [
   {
      name: "Contact", 
      type: "basic",
-     url: "/"
+     url: "/contact"
   }
 ];
 // An array of links for footer
@@ -43,18 +43,18 @@ const footerLinks = [
   {
     section: "About us",
     links: [
-      { name: "Mision", type: 'url', url: "/" },
-      { name: "Vision", type: 'url', url: "/" },
-      { name: "Contact", type: 'url', url: "/" },
+      { name: "Mision", type: 'url', url: "/about#mision" },
+      { name: "Vision", type: 'url', url: "/about#vision" },
+      { name: "Contact", type: 'url', url: "/contact" },
     ],
   },
   {
     section: "Services & Products",
     links: [
-      { name: "Parts & tools", type: 'url', url: "/" },
-      { name: "Equipment", type: 'url', url: "/" },
-      { name: "Trucks & tractors", type: 'url', url: "/" },
-      { name: "Energy transition", type: 'url', url: "/" },
+      { name: "Parts & tools", type: 'url', url: "/products#exploration-production" },
+      { name: "Equipment", type: 'url', url: "/products#equipment-support" },
+      { name: "Trucks & tractors", type: 'url', url: "/sales" },
+      { name: "Energy transition", type: 'url', url: "/products#transportation-processes" },
     ],
   },
 ];

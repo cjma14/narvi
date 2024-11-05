@@ -10,76 +10,78 @@ import Icon from "@components/ui/icons/Icon.astro";
 import { environment } from "../../../environments/environment";
 
 // Define the variables that will be used in this component
-const title: string = "Contáctanos";
-const subTitle: string = "Tu futuro comienza aquí. ¡Escríbenos!";
 const formTitle: string =
-  "Complete la información del formulario, o contáctenos por nuestros otros canales";
-const formSubTitle: string = "Nuestro tiempo de respuesta es de 24 hrs";
+  "Please fill out the information in the form, or contact us through our other channels.";
+const formSubTitle: string = "Our response time is 24 hours";
+
+const tokenWeb3forms = "e256344a-5846-48cc-90a2-1c2b4be78326";
 ---
 
 <!-- Contact Us -->
-<section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+<section
+  class="mx-auto max-w-[85rem] px-4 pb-10 text-pearl-100 sm:px-6 lg:px-8"
+>
   <div class="mx-auto max-w-2xl lg:max-w-5xl">
-    <div class="text-center">
-      <h1
-        class="text-balance text-2xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight"
-      >
-        {title}
-      </h1>
-      <p class="mt-1 text-pretty text-neutral-600 dark:text-neutral-400">
-        {subTitle}
-      </p>
-    </div>
-
     <div class="mt-12 grid items-center gap-6 lg:grid-cols-2 lg:gap-16">
       <div class="flex flex-col rounded-xl p-4 sm:p-6 lg:p-8">
-        <h2
-          class="mb-8 text-xl font-bold text-neutral-700 dark:text-neutral-300"
-        >
+        <h2 class="mb-8 text-xl font-bold">
           {formTitle}
         </h2>
         <!-- Form for user input with various input fields.-->
         <!-- Each field utilizes a different input component for the specific type of input (text, email, phone, and textarea)-->
         <form
           id="formContact"
-          action={`${environment.apiurl}/webpage/send_form_contact`}
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          data-astro-reload
         >
+          <input type="hidden" name="access_key" value={tokenWeb3forms} />
+          <input
+            type="checkbox"
+            class="hidden"
+            style="display:none"
+            name="botcheck"
+          />
           <div class="grid gap-4">
-
-            <div id="success-alert" class="bg-primary-100 border border-primary-400 text-primary-700 px-4 py-3 rounded relative hidden opacity-0 transition-all ease-in-out delay-150 duration-300" role="alert">
-              <strong class="font-bold">¡Hemos recibido tu solicitud!</strong>
-              <span class="block sm:inline">Gracias por contactarnos. Nos pondremos en contacto a la brevedad.</span>
+            <div
+              id="success-alert"
+              class="relative hidden rounded border border-primary-400 bg-primary-100 px-4 py-3 text-primary-700 opacity-0 transition-all delay-150 duration-300 ease-in-out"
+              role="alert"
+            >
+              <strong class="font-bold">We have received your request!</strong>
+              <span class="block sm:inline"
+                >Thank you for contacting us. We will get back to you shortly.</span
+              >
             </div>
 
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div class="grid grid-cols-1 gap-4">
               <TextInput
                 id="hs-firstname-contacts"
-                label="Nombre"
+                label="Full Name"
                 name="firstname"
-              />
-              <TextInput
-                id="hs-lastname-contacts"
-                label="Apellido"
-                name="lastname"
               />
             </div>
             <EmailContactInput id="hs-email-contacts" name="email" />
 
-            <PhoneInput id="hs-phone-number" name="phone" />
+            <PhoneInput
+              id="hs-phone-number"
+              name="phone"
+              label="Phone number"
+            />
 
             <TextAreaInput
               id="hs-about-contacts"
-              label="Mensaje"
+              label="Message"
               name="message"
             />
           </div>
 
           <div class="mt-4 grid">
-            <AuthBtn title="Enviar Mensaje" />
+            <AuthBtn title="Send message" />
           </div>
 
           <div class="mt-3 text-center">
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">
+            <p class="text-sm">
               {formSubTitle}
             </p>
           </div>
@@ -88,50 +90,75 @@ const formSubTitle: string = "Nuestro tiempo de respuesta es de 24 hrs";
 
       <!--ContactIconBlocks are used to display different methods of contacting, including visiting office, email, browsing knowledgebase, and FAQ.-->
       <div class="divide-y divide-neutral-300 dark:divide-neutral-700">
-        <ContactIconBlock heading="Teléfono" content="+56 9 9978 8857" />
+        <ContactIconBlock heading="Phone number" content="+1 346 504 9060 ">
+          <Icon name="phone" classCustom="text-primary-500" />
+        </ContactIconBlock>
+
+        <ContactIconBlock heading="Email" content="info@narvi-ec.com"
+          ><Icon name="mail" classCustom="text-primary-500" />
+        </ContactIconBlock>
 
         <ContactIconBlock
-          heading="Correo"
-          content="emartinez@cepaonline.cl - contacto@cepaonline.cl"
-        />
+          heading="FAQ"
+          content="Explore our FAQ for quick, clear answers to common questions."
+          isLinkVisible={true}
+          linkTitle="Visit FAQ"
+          linkURL="/#faq"
+          isArrowVisible={true}
+          ><Icon name="chatBubble" classCustom="text-primary-500" />
+        </ContactIconBlock>
 
-        <ContactIconBlock
-          heading="Dirección"
-          content="Uribe 636, Oficina N° 302, Antofagasta | Lunes a Viernes 9:00 AM - 6:00 PM"
-        />
+        <ContactIconBlock heading="Address" content="Houston, Tx. USA"
+          ><Icon name="location" classCustom="text-primary-500" />
+        </ContactIconBlock>
       </div>
     </div>
   </div>
 </section>
-<script>
+<script is:inline>
   const form = document.querySelector("#formContact");
   const successAlert = document.querySelector("#success-alert");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const formElement = e.currentTarget as HTMLFormElement;
-    const apitUrl = formElement.action;
-    const formData = new FormData(formElement);
-
-    const response = await fetch(apitUrl, {
-      method: "POST",
-      body: formData,
-    });
-    const requestResponse = await response;
-
-    if (requestResponse.status == 200) {
-      formElement.reset();
-      setCodeSuccess()
-    } else {
-      console.error(requestResponse.statusText);
-    }
-  });
-
-  const setCodeSuccess = () => {
+  // functions
+  const sendSuccess = () => {
     successAlert.classList.remove("hidden");
 
     setTimeout(() => {
       successAlert.classList.remove("opacity-0");
     }, 100);
   };
+
+  form.addEventListener(
+    "submit",
+    async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
+      })
+        .then(async (response) => {
+          let json = await response.json();
+          if (response.status == 200) {
+            sendSuccess();
+          } else {
+            console.log(response);
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+        .then(function () {
+          form.reset();
+        });
+    },
+    { once: true },
+  );
 </script>

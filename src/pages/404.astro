@@ -25,10 +25,10 @@ const translations: Translations = {
     btnTitle: "Volver",
   },
   en: {
-    pageTitle: `Page Non Trouvée | ${SITE.title}`,
-    subTitle: "Oops, ce n'est pas l'outil que vous recherchiez!",
-    content: "Ne laissez pas ce contretemps vous ralentir. Revenons à la construction de votre chef-d'œuvre.",
-    btnTitle: "Retournez",
+    pageTitle: `Page not found | ${SITE.title}`,
+    subTitle: "Oops, we didn't find what you were looking for",
+    content: "Don't let this setback stop you. We're going to help you get back on track.",
+    btnTitle: "Go back",
   }
 };
 
@@ -41,16 +41,16 @@ const { pageTitle, subTitle, content, btnTitle } = translations[lang];
 ---
 
 <MainLayout title={pageTitle}>
-  <section class="grid h-svh place-content-center">
+  <section class="grid h-svh place-content-center text-center-100">
     <div class="mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16">
       <div class="mx-auto max-w-screen-sm text-center">
         <h1 class="text-dark mb-4 text-7xl font-extrabold text-cyan-500 dark:text-cyan-400 lg:text-9xl">
           404
         </h1>
-        <p id="subtitle" class="mb-4 text-balance text-3xl font-bold tracking-tight text-neutral-700 dark:text-neutral-300 md:text-4xl">
+        <p id="subtitle" class="mb-4 text-balance text-3xl font-bold tracking-tight md:text-4xl">
           {subTitle}
         </p>
-        <p id="content" class="mb-4 text-pretty text-lg text-neutral-600 dark:text-neutral-400">
+        <p id="content" class="mb-4 text-pretty text-lg">
           {content}
         </p>
         <!-- Display a button that navigates user back to the previous page -->

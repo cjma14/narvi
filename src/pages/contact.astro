@@ -1,10 +1,11 @@
 ---
 // Import the necessary components
+import MainSection from "@/components/ui/blocks/MainSection.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
 import ContactSection from "@components/sections/misc/ContactSection.astro";
 import { SITE } from "@data/constants";
 
-const pageTitle: string = `Contacto | ${SITE.title}`;
+const pageTitle: string = `Contact | ${SITE.title}`;
 ---
 
 <!--Utilizing MainLayout for the outer layout of the page, and defining meta for SEO purposes-->
@@ -13,18 +14,25 @@ const pageTitle: string = `Contacto | ${SITE.title}`;
   structuredData={{
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://cepaonline.cl/contact",
-    "url": "https://cepaonline.cl/contact",
-    "name": "Contacto | CEPA - Centro de Estudios Psicométricos y del Aprendizaje",
-    "description": "Para mayor información sobre TBA contactanos estamos para ayudarte",
-    "isPartOf": {
-        "@type": "WebSite",
-        "url": "https://cepaonline.cl",
-        "name": "CEPA - Centro de Estudios Psicométricos y del Aprendizaje",
-        "description": "ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs."
+    "@id": "https://narvi-ec.com/contact",
+    url: "https://narvi-ec.com/contact",
+    name: "Contact | Narvi EC",
+    description:
+      "Your future starts here. Write to us!",
+    isPartOf: {
+      "@type": "WebSite",
+      url: "https://narvi-ec.com",
+      name: "Narvi Enterprise Corporation",
+      description:
+        "Narvi EC offers engineering and maintenance services throughout the Americas, optimizing your operations in the energy sector.",
     },
-    "inLanguage": "es-CL"
+    inLanguage: "en-US",
   }}
 >
+  <MainSection
+    label="Contact us"
+    title="Your future starts here. Write to us!"
+    backgroundImg="/img/oil-and-gas-plant.jpg"
+  />
   <ContactSection />
 </MainLayout>
