@@ -7,7 +7,7 @@ shortDescription: |
 imgCard: "@/images/equipment_for_sale/2003-mack-cvs713-hot-oiler/1.jpg"
 imgAlt: "2003 MACK CVS713 HOT OILER TRUCK"
 starCount: 4
-btnTitle: "Camión Calentador de Aceite MACK CVS713 2003"
+btnTitle: "Ver producto"
 btnURL: "#"
 btnSaleTitle: "Contactar con ventas"
 btnSaleURL: "#"
