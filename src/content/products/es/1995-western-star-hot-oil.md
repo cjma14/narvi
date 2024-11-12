@@ -3,13 +3,13 @@ id: 6
 title: "Camión Calentador de Aceite Western Star 1995"
 shortDescription: |
    Camión Western Star 2004, motor Caterpillar de 350 HP, transmisión Eaton Fuller de 13 velocidades, 4,377 km y 2,536 horas de motor. Equipado con un tanque de acero de 9,450 L con 3 compartimentos, pasarela y bomba Gardner Denver.
-imgCard: "@/images/equipment_for_sale/1995-western-star-hot-oil/1.jpg"
+imgCard: "@/images/equipment_for_sale/1995-western-star-hot-oil/cover.jpeg"
 imgAlt: "Camión Calentador de Aceite Western Star 1995"
 starCount: 4
 btnTitle: "Ver producto"
 btnURL: "#"
 btnSaleTitle: "Contactar con ventas"
-btnSaleURL: "#"
+btnSaleURL: "/es/contact"
 gallery:
   - "@/images/equipment_for_sale/1995-western-star-hot-oil/1.jpg"
   - "@/images/equipment_for_sale/1995-western-star-hot-oil/2.jpg"

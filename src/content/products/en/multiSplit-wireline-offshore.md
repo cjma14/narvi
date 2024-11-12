@@ -10,7 +10,7 @@ starCount: 4
 btnTitle: "View product"
 btnURL: "#"
 btnSaleTitle: "Contact sales"
-btnSaleURL: "#"
+btnSaleURL: "/contact"
 gallery:
   - "@/images/equipment_for_sale/multiSplit-wireline-offshore/1.jpg"
   - "@/images/equipment_for_sale/multiSplit-wireline-offshore/2.jpg"

@@ -10,7 +10,7 @@ starCount: 4
 btnTitle: "View product"
 btnURL: "#"
 btnSaleTitle: "Contact sales"
-btnSaleURL: "#"
+btnSaleURL: "/contact"
 gallery:
   - "@/images/equipment_for_sale/gardner-denver-tee-pump/1.jpeg"
   - "@/images/equipment_for_sale/gardner-denver-tee-pump/2.jpeg"

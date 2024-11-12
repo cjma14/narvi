@@ -10,7 +10,7 @@ starCount: 4
 btnTitle: "Ver producto"
 btnURL: "#"
 btnSaleTitle: "Contactar con ventas"
-btnSaleURL: "#"
+btnSaleURL: "/es/contact"
 gallery:
   - "@/images/equipment_for_sale/tulsa-triplex-tt-560-pump/1.jpeg"
   - "@/images/equipment_for_sale/tulsa-triplex-tt-560-pump/2.jpeg"

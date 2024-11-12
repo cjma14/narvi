@@ -15,7 +15,6 @@ import TeleprompterSection from "@/components/sections/landing/TeleprompterSecti
 import ProductsSection from "@/components/sections/landing/ProductsSection.astro";
 import productsIcons from "@data/es/products-icons.json";
 
-
 const avatarSrcs: Array<string> = [avatar.src];
 ---
 
@@ -45,13 +44,13 @@ const avatarSrcs: Array<string> = [avatar.src];
     title="Miguel Mogollón"
     subTitle="Director Ejecutivo y Fundador"
   /> -->
-  
-  <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
 
-    <ClientsSection 
+  <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+    <ClientsSection
       label="Nuestros clientes"
       title="Algunas de las empresas que confían en nosotros"
-      subTitle="Los líderes confían en nuestros productos y servicios"/>
+      subTitle="Los líderes confían en nuestros productos y servicios"
+    />
 
     <AboutUsSection
       label="Sobre nosotros"
@@ -66,65 +65,66 @@ const avatarSrcs: Array<string> = [avatar.src];
       btnURL="/es/about"
     />
 
-    <FeaturesGeneral 
+    <FeaturesGeneral
       label="Productos y servicios"
       title="Innovación y eficiencia en cada proyecto"
       subTitle="En Narvi Enterprise Corporation, nuestro equipo de expertos y líderes en cada área, se dedican a superar las expectativas de nuestros clientes globales.Enfocándonos en la eficiencia, reducir los costos operativos, ayudando a las empresas a lograr sostenibles resultados de Excelencia Operacional.Nuestro equipo está disponible 24 horas al día, 7 días a la semana para analizar sus necesidades y acompañarlo hacia el éxito."
-      features={features}/>
-
+      features={features}
+    />
   </div>
 
-  <ProductsSection 
-    title="Equipamiento de última generación para la industria petrolera" 
+  <ProductsSection
+    title="Equipamiento de última generación para la industria petrolera"
     subTitle="Mantén tu operación a la vanguardia con nuestros equipos de última generación. Mayor eficiencia, menor costo de operación y mayor seguridad."
-    productsIcons={productsIcons}/>
+    productsIcons={productsIcons}
+  />
 
   <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-
     <TestimonialsSection
       label="Testimonios"
       title="Descubre por qué los clientes nos escogen"
-      subTitle="¿Quieres saber por qué tantas empresas confían en nosotros? Descubre los beneficios de trabajar con Narvi a través de los testimonios de nuestros clientes.";
+      subTitle="¿Quieres saber por qué tantas empresas confían en nosotros? Descubre los beneficios de trabajar con Narvi a través de los testimonios de nuestros clientes."
+      ;
       testimonials={[
         {
           content:
-            '"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit officia labore enim aspernatur distinctio expedita asperiores consectetur odit, deleniti delectus earum eligendi inventore, aut officiis voluptatem iure obcaecati tenetur aperiam!"',
-          author: "Lorem Isum",
-          role: "Lorem",
-          avatarSrc: "/img/profile.webp",
+            '"Narvi EC es una empresa sólida y rentable. Ha sido un excelente aliado en la comercialización de equipos."',
+          author: "Felix Florentino",
+          role: "Presidente - Petromex (Estados Unidos)",
+          avatarSrc: "/img/profile.png",
         },
         {
           content:
-            '"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit officia labore enim aspernatur distinctio expedita asperiores consectetur odit, deleniti delectus earum eligendi inventore, aut officiis voluptatem iure obcaecati tenetur aperiam!"',
-          author: "Lorem Isum",
-          role: "Lorem",
-          avatarSrc: "/img/profile.webp",
+            '"Ha sido clave para el emprendimiento de nuestro proyecto. Empezamos hace 2 años y seguimos contando con ellos."',
+          author: "Zenobio Matos",
+          role: "Director y Gerente General - Exxen Technology do Brasil S.A",
+          avatarSrc: "/img/profile.png",
         },
         {
           content:
-            '"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit officia labore enim aspernatur distinctio expedita asperiores consectetur odit, deleniti delectus earum eligendi inventore, aut officiis voluptatem iure obcaecati tenetur aperiam!"',
-          author: "Lorem Isum",
-          role: "Lorem",
-          avatarSrc: "/img/profile.webp",
+            '"Narvi es nuestro gran aliado en la gestión de activos. Ayudándonos en la centuplicación de nuestra flota de equipos y proyectos especiales de mejora continua."',
+          author: "Jorge Ivan Torres",
+          role: "CEO y Director - Innergy OFS S.A.S (Colombia)",
+          avatarSrc: "/img/profile.png",
         },
       ]}
     />
-    
   </div>
 
   <BannerSection
-    imgUrl="/img/woker-1.jpg" 
+    imgUrl="/img/woker-1.jpg"
     imgAlt="Worker 1"
     icon="trophy"
     title="25+"
     subtitle="Años de experiencia"
   />
 
-  <div id="faq" class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 mt-5">
-    <FAQ 
-      title="Repuestas rapidas a tus preguntas" 
+  <div id="faq" class="mx-auto mt-5 max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+    <FAQ
+      title="Repuestas rapidas a tus preguntas"
       subTitle="¿Tienes preguntas sobre nuestros servicios? Aquí encontrarás respuestas a las preguntas más frecuentes de nuestros clientes. Si no encuentras lo que buscas, por favor contáctanos."
-      faqs={faqs} 
-      label="Preguntas frecuentes"/>
+      faqs={faqs}
+      label="Preguntas frecuentes"
+    />
   </div>
 </MainLayout>

@@ -10,7 +10,7 @@ starCount: 4
 btnTitle: "View product"
 btnURL: "#"
 btnSaleTitle: "Contact sales"
-btnSaleURL: "#"
+btnSaleURL: "/contact"
 gallery:
   - "@/images/equipment_for_sale/truck-kenworth-t-300/1.jpg"
   - "@/images/equipment_for_sale/truck-kenworth-t-300/2.jpg"

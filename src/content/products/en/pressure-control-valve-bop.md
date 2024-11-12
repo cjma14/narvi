@@ -10,7 +10,7 @@ starCount: 4
 btnTitle: "View product"
 btnURL: "#"
 btnSaleTitle: "Contact sales"
-btnSaleURL: "#"
+btnSaleURL: "/contact"
 gallery:
   - "@/images/equipment_for_sale/pressure-control-valve-bop/1.jpg"
   - "@/images/equipment_for_sale/pressure-control-valve-bop/2.jpg"

@@ -10,12 +10,11 @@ starCount: 4
 btnTitle: "View product"
 btnURL: "#"
 btnSaleTitle: "Contact sales"
-btnSaleURL: "#"
+btnSaleURL: "/contact"
 gallery:
   - "@/images/equipment_for_sale/kenworth-t800/1.jpeg"
   - "@/images/equipment_for_sale/kenworth-t800/2.jpeg"
   - "@/images/equipment_for_sale/kenworth-t800/3.jpeg"
-  - "@/images/equipment_for_sale/kenworth-t800/4.jpeg"
 tableData:
   - title: "Specifications"
     specifications:
