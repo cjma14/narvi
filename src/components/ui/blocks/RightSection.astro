@@ -37,6 +37,39 @@ interface Props {
   id={id}
   class="mx-auto max-w-[85rem] items-center gap-16 px-4 py-5 md:py-10 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8 lg:py-14 2xl:max-w-full text-pearl-100"
 >
+
+  <div class="block md:hidden mb-8">
+    {
+      single ? (
+        <div class="mt-8">
+          <!-- Single image -->
+          <img
+            class="w-full rounded-lg fade-right"
+            src={imgOne}
+            alt={imgOneAlt}
+          />
+        </div>
+      ) : (
+        <div class="mt-8 grid grid-cols-2 gap-4">
+          <!-- First image in a two-image layout -->
+          <img
+            class="w-full rounded-xl fade-right"
+            src={imgOne}
+            alt={imgOneAlt}
+            draggable={"false"}
+          />
+          <!-- Second image in a two-image layout -->
+          <img
+            class="mt-4 w-full rounded-xl lg:mt-10 fade-right"
+            src={imgTwo}
+            alt={imgTwoAlt}
+            draggable={"false"}
+          />
+        </div>
+      )
+    }
+  </div>
+
   <div class="fade-left">
     <!-- Title of the section -->
     <h2
@@ -70,33 +103,37 @@ interface Props {
    
   </div>
   <!-- Conditionally render one or two images based on 'single' property -->
-  {
-    single ? (
-      <div class="mt-8">
-        <!-- Single image -->
-        <img
-          class="w-full rounded-lg fade-right"
-          src={imgOne}
-          alt={imgOneAlt}
-        />
-      </div>
-    ) : (
-      <div class="mt-8 grid grid-cols-2 gap-4">
-        <!-- First image in a two-image layout -->
-        <img
-          class="w-full rounded-xl fade-right"
-          src={imgOne}
-          alt={imgOneAlt}
-          draggable={"false"}
-        />
-        <!-- Second image in a two-image layout -->
-        <img
-          class="mt-4 w-full rounded-xl lg:mt-10 fade-right"
-          src={imgTwo}
-          alt={imgTwoAlt}
-          draggable={"false"}
-        />
-      </div>
-    )
-  }
+
+  <div class="hidden md:block">
+    {
+      single ? (
+        <div class="mt-8">
+          <!-- Single image -->
+          <img
+            class="w-full rounded-lg fade-right"
+            src={imgOne}
+            alt={imgOneAlt}
+          />
+        </div>
+      ) : (
+        <div class="mt-8 grid grid-cols-2 gap-4">
+          <!-- First image in a two-image layout -->
+          <img
+            class="w-full rounded-xl fade-right"
+            src={imgOne}
+            alt={imgOneAlt}
+            draggable={"false"}
+          />
+          <!-- Second image in a two-image layout -->
+          <img
+            class="mt-4 w-full rounded-xl lg:mt-10 fade-right"
+            src={imgTwo}
+            alt={imgTwoAlt}
+            draggable={"false"}
+          />
+        </div>
+      )
+    }
+  </div>
+ 
 </section>
