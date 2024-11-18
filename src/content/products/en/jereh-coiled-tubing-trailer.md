@@ -1,6 +1,5 @@
 ---
 id: 1
-slug: jereh-coiled-tubing-trailer
 title: "Jereh Coiled Tubing Trailer"
 shortDescription: |
    Increase the efficiency of your operations with this JEREH 2012 Pipe Coiling Unit. Its robust and versatile design, together with an exceptional load capacity, make it an indispensable tool for any project.

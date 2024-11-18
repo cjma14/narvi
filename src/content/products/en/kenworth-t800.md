@@ -1,6 +1,5 @@
 ---
 id: 5
-slug:  kenworth-t800
 title: "2013 Kenworth T800 6x4 Hot Oil Truck"
 shortDescription: |
    2013 Kenworth T800 6x4 Hot Oil Truck, Cummins ISX15 450 HP engine, Eaton Fuller 18-speed transmission, 330,801 miles, and 8,906 hours.

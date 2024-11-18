@@ -1,18 +1,17 @@
 ---
 id: 3
-slug:  valvula-control-presión-dual-bop
-title: "Válvula de Control de Presión Hidráulica Dual BOP con Rack Haul"
+title: "Control Pressure Equimente package"
 shortDescription: |
-   Válvula de Control de Presión Hidráulica Dual BOP (5-1/8", 10,000 PSI) de Lee Specialties, con rack haul, lubricantes, cruce, trampa de herramientas, atrapador de herramientas, sub de bombeo, válvula de tapón y módulo inyector de grasa.
-imgCard: "@/images/equipment_for_sale/pressure-control-valve-bop/1.jpg"
-imgAlt: "Válvula de Control de Presión Hidráulica Dual BOP con Rack Haul"
+   Control Pressure Equimente package (5-1/8", 10,000 PSI) de Lee Specialties, con rack haul, lubricantes, cruce, trampa de herramientas, atrapador de herramientas, sub de bombeo, válvula de tapón y módulo inyector de grasa.
+imgCard: "@/images/equipment_for_sale/pressure-control-valve-bop/1.png"
+imgAlt: "Control Pressure Equimente package"
 starCount: 4
 btnTitle: "Ver producto"
 btnURL: "#"
 btnSaleTitle: "Contactar con ventas"
 btnSaleURL: "/es/contact"
 gallery:
-  - "@/images/equipment_for_sale/pressure-control-valve-bop/1.jpg"
+  - "@/images/equipment_for_sale/pressure-control-valve-bop/1.png"
   - "@/images/equipment_for_sale/pressure-control-valve-bop/2.jpg"
   - "@/images/equipment_for_sale/pressure-control-valve-bop/3.jpg"
   - "@/images/equipment_for_sale/pressure-control-valve-bop/4.jpg"

@@ -1,11 +1,10 @@
 ---
 id: 9
-slug:  unidad-bomba-triplex-gardner-denver-tee
-title: "UNIDAD DE BOMBA TRIPLEX GARDNER DENVER TEE"
+title: "GARDNER DENVER TEE PUMP UNIT"
 shortDescription: |
-   TULSA TT-560 Triplex Pump Unit: A powerful and versatile pumping solution for demanding applications. With a 6" stroke and a capacity of up to 612 GPM, this unit is ideal for pressure testing, chemical water injection, drilling, and industrial applications. 
+   Esta unidad de bomba TEE de Gardner Denver es una solución potente y confiable para una variedad de aplicaciones. Su diseño triple garantiza un funcionamiento suave y un rendimiento duradero.
 imgCard: "@/images/equipment_for_sale/gardner-denver-tee-pump/1.jpeg"
-imgAlt: "UNIDAD DE BOMBA TRIPLEX GARDNER DENVER TEE"
+imgAlt: "GARDNER DENVER TEE PUMP UNIT"
 starCount: 4
 btnTitle: "Ver producto"
 btnURL: "#"

@@ -1,10 +1,9 @@
 ---
 id: 4
-slug:  unidad-multisplit-wireline
-title: "Unidad MultiSplit Wireline Offshore Zona 2"
+title: "MultiSplit Wireline Offshore Unit Zone 2"
 shortDescription: |
-  Unidad MultiSplit Wireline Offshore Zona 2: Una solución versátil y potente de cableado para operaciones offshore. Con un diseño compacto, un sistema de accionamiento hidráulico de alto rendimiento y un control avanzado de profundidad y tensión, esta unidad es ideal para operaciones de pozo entubado.
-imgCard: "@/images/equipment_for_sale/multiSplit-wireline-offshore/1.jpg"
+  MultiSplit Wireline Offshore Unit Zone 2: Una solución versátil y potente de cableado para operaciones offshore. Con un diseño compacto, un sistema de accionamiento hidráulico de alto rendimiento y un control avanzado de profundidad y tensión, esta unidad es ideal para operaciones de pozo entubado.
+imgCard: "@/images/equipment_for_sale/multiSplit-wireline-offshore/1.png"
 imgAlt: "MultiSplit Wireline Offshore Unit Zone 2"
 starCount: 4
 btnTitle: "Ver producto"
@@ -12,7 +11,7 @@ btnURL: "#"
 btnSaleTitle: "Contactar con ventas"
 btnSaleURL: "/es/contact"
 gallery:
-  - "@/images/equipment_for_sale/multiSplit-wireline-offshore/1.jpg"
+  - "@/images/equipment_for_sale/multiSplit-wireline-offshore/1.png"
   - "@/images/equipment_for_sale/multiSplit-wireline-offshore/2.jpg"
   - "@/images/equipment_for_sale/multiSplit-wireline-offshore/3.jpg"
   - "@/images/equipment_for_sale/multiSplit-wireline-offshore/4.jpg"

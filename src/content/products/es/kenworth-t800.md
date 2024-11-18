@@ -1,10 +1,10 @@
 ---
 id: 5
-title: "Camión Calentador de Aceite Kenworth T800 6x4 2013"
+title: "2013 Kenworth T800 6x4 Hot Oil Truck"
 shortDescription: |
-   Camión Calentador de Aceite Kenworth T800 6x4 2013, motor Cummins ISX15 de 450 HP, transmisión Eaton Fuller de 18 velocidades, 330,801 millas y 8,906 horas.
+   2013 Kenworth T800 6x4 Hot Oil Truck, motor Cummins ISX15 de 450 HP, transmisión Eaton Fuller de 18 velocidades, 330,801 millas y 8,906 horas.
 imgCard: "@/images/equipment_for_sale/kenworth-t800/1.jpeg"
-imgAlt: "Camión Calentador de Aceite Kenworth T800 6x4 2013"
+imgAlt: "2013 Kenworth T800 6x4 Hot Oil Truck"
 starCount: 4
 btnTitle: "Ver producto"
 btnURL: "#"

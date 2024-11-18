@@ -1,6 +1,5 @@
 ---
 id: 2
-slug:  truck-kenworth-t-300
 title: "Cased Hole Logging Truck Kenworth T-300 / 2007"
 shortDescription: |
    2007 Kenworth T-300 Cased Hole Logging Truck, 94,300 miles, 8,648 hours, Cummins 330 HP Diesel Engine, Eaton Fuller 18-speed transmission, 25,000 ft wireline capacity, hydraulic generator, and more.

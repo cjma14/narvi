@@ -1,10 +1,9 @@
 ---
 id: 4
-slug:  multiSplit-wireline-offshore
 title: "MultiSplit Wireline Offshore Unit Zone 2"
 shortDescription: |
   MultiSplit Wireline Offshore Unit Zone 2: A versatile and powerful wireline solution for offshore operations. Featuring a compact design, high-performance hydraulic drive system, and advanced depth and tension control, this unit is ideal for cased hole operations.
-imgCard: "@/images/equipment_for_sale/multiSplit-wireline-offshore/1.jpg"
+imgCard: "@/images/equipment_for_sale/multiSplit-wireline-offshore/1.png"
 imgAlt: "MultiSplit Wireline Offshore Unit Zone 2"
 starCount: 4
 btnTitle: "View product"
@@ -12,7 +11,7 @@ btnURL: "#"
 btnSaleTitle: "Contact sales"
 btnSaleURL: "/contact"
 gallery:
-  - "@/images/equipment_for_sale/multiSplit-wireline-offshore/1.jpg"
+  - "@/images/equipment_for_sale/multiSplit-wireline-offshore/1.png"
   - "@/images/equipment_for_sale/multiSplit-wireline-offshore/2.jpg"
   - "@/images/equipment_for_sale/multiSplit-wireline-offshore/3.jpg"
   - "@/images/equipment_for_sale/multiSplit-wireline-offshore/4.jpg"

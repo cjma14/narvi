@@ -1,7 +1,6 @@
 ---
 id: 2
-slug:  camion-registro-pozo-kenworth-t-300
-title: "Camión de Registro de Pozo Entubado Kenworth T-300 / 2007"
+title: "Cased Hole Logging Truck Kenworth T-300 / 2007"
 shortDescription: |
    Camión de Registro de Pozo Entubado Kenworth T-300 2007, 94,300 millas, 8,648 horas, Motor Diesel Cummins de 330 HP, Transmisión Eaton Fuller de 18 velocidades, capacidad de cableado de 25,000 pies, generador hidráulico y más.
 imgCard: "@/images/equipment_for_sale/truck-kenworth-t-300/1.jpg"

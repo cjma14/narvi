@@ -1,9 +1,8 @@
 ---
 id: 9
-slug:  gardner-denver-tee-pump
 title: "GARDNER DENVER TEE PUMP UNIT"
 shortDescription: |
-   TULSA TT-560 Triplex Pump Unit: A powerful and versatile pumping solution for demanding applications. With a 6" stroke and a capacity of up to 612 GPM, this unit is ideal for pressure testing, chemical water injection, drilling, and industrial applications. 
+   This Gardner Denver TEE Pump Unit is a powerful and reliable solution for a variety of applications. Its triplex design ensures smooth operation and long-lasting performance.
 imgCard: "@/images/equipment_for_sale/gardner-denver-tee-pump/1.jpeg"
 imgAlt: "GARDNER DENVER TEE PUMP UNIT"
 starCount: 4

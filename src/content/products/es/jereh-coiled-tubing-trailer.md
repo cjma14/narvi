@@ -1,11 +1,10 @@
 ---
 id: 1
-slug: remolque-tubo-enrollado-jereh
-title: "Remolque de Tubo Enrollado Jereh"
+title: "Jereh Coiled Tubing Trailer"
 shortDescription: |
    Aumenta la eficiencia de tus operaciones con esta Unidad de Enrollado de Tubería JEREH 2012. Su diseño robusto y versátil, junto con una capacidad de carga excepcional, la convierten en una herramienta indispensable para cualquier proyecto.
 imgCard: "@/images/equipment_for_sale/jereh-coiled-tubing-trailer/1.jpg"
-imgAlt: "Remolque de Tubo Enrollado Jereh"
+imgAlt: "Jereh Coiled Tubing Trailer"
 starCount: 4
 btnTitle: "Ver producto"
 btnURL: "#"

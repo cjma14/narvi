@@ -1,18 +1,17 @@
 ---
 id: 3
-slug:  pressure-control-valve-bop
-title: "Dual Hydraulic Pressure Control Valve BOP with rack haul"
+title: "Control Pressure Equimente package"
 shortDescription: |
-   Dual Hydraulic Pressure Control Valve BOP (5-1/8", 10,000 PSI) by Lee Specialties, featuring rack haul, lubricators, crossover, tool trap, tool catcher, pump-in sub, plug valve, and grease injector module.
-imgCard: "@/images/equipment_for_sale/pressure-control-valve-bop/1.jpg"
-imgAlt: "Dual Hydraulic Pressure Control Valve BOP with rack haul"
+   Control Pressure Equimente package (5-1/8", 10,000 PSI) by Lee Specialties, featuring rack haul, lubricators, crossover, tool trap, tool catcher, pump-in sub, plug valve, and grease injector module.
+imgCard: "@/images/equipment_for_sale/pressure-control-valve-bop/1.png"
+imgAlt: "Control Pressure Equimente package"
 starCount: 4
 btnTitle: "View product"
 btnURL: "#"
 btnSaleTitle: "Contact sales"
 btnSaleURL: "/contact"
 gallery:
-  - "@/images/equipment_for_sale/pressure-control-valve-bop/1.jpg"
+  - "@/images/equipment_for_sale/pressure-control-valve-bop/1.png"
   - "@/images/equipment_for_sale/pressure-control-valve-bop/2.jpg"
   - "@/images/equipment_for_sale/pressure-control-valve-bop/3.jpg"
   - "@/images/equipment_for_sale/pressure-control-valve-bop/4.jpg"

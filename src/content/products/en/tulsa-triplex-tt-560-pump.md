@@ -1,6 +1,5 @@
 ---
 id: 8
-slug:  tulsa-triplex-tt-560-pump
 title: "TULSA TRIPLEX TT-560 TRIPLEX PUMP UNIT"
 shortDescription: |
    TULSA TT-560 Triplex Pump Unit: A powerful and versatile pumping solution for demanding applications. With a 6" stroke and a capacity of up to 612 GPM, this unit is ideal for pressure testing, chemical water injection, drilling, and industrial applications. 
