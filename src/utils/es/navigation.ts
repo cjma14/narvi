@@ -23,7 +23,7 @@ const navBarLinks = [
   {
     name: "Sobre nosotros",
     type: "basic", 
-    url: "/es/about" 
+    url: "/es/about-us" 
   },
   { 
     name: "Contacto", 
