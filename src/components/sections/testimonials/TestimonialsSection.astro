@@ -3,12 +3,13 @@ import TestimonialItem from "./TestimonialItem.astro";
 import StatsGrid from "../../ui/blocks/StatsGrid.astro";
 import { Image } from "astro:assets";
 
-const { title, subTitle, testimonials, label } = Astro.props;
+const { title, subTitle, testimonials, label, videoUrl } = Astro.props;
 
 interface Props {
   label: string;
   title: string;
   subTitle?: string;
+  videoUrl?: string;
   testimonials?: Testimonial[];
   statistics?: StatProps[];
 }
@@ -55,7 +56,7 @@ const infoTitle2 = Astro.currentLocale === "es" ? "Empresas sastifechas" : "Sati
         </div>
   
         <!-- Testimonials -->
-        <div class="swiper swiperTestimonial h-full w-full">
+        <!-- <div class="swiper swiperTestimonial h-full w-full">
           <div class="swiper-wrapper">
             {
               testimonials.map((testimonial) => (
@@ -72,23 +73,8 @@ const infoTitle2 = Astro.currentLocale === "es" ? "Empresas sastifechas" : "Sati
           </div>
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
-        </div>
-      </div>
-    </div>
-   
-    <div>
-      <div class="flex flex-col gap-5 fade-up">
-        <div class="rounded-xl">
-          <Image
-            width="50"
-            height="50"
-            src="/img/service11.png"
-            alt="test"
-            draggable={"false"}
-            class="size-full h-full object-cover rounded-xl"
-          />
-        </div>
-  
+        </div> -->
+
         <div class="bg-primary-500 p-12 text-pearl-100 rounded-xl">
           <h3 class="text-4xl max-w-80 font-bold">{ brandTitle }</h3>
           <div class="mb-16 mt-10 flex gap-y-5 gap-x-20 flex-col md:flex-row">
@@ -104,12 +90,41 @@ const infoTitle2 = Astro.currentLocale === "es" ? "Empresas sastifechas" : "Sati
             </div>
           </div>
         </div>
+       
+      </div>
+    </div>
+   
+    <div>
+      <div class="flex flex-col gap-5 fade-up">
+
+        <div>
+          <video id="player" playsinline controls poster="/img/oil-and-gas-sector.jpg" style="--plyr-color-main: #78b032;">
+            <source src={videoUrl} type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
+        
+        
+        <div class="rounded-xl">
+          <Image
+            width="50"
+            height="50"
+            src="/img/service11.png"
+            alt="test"
+            draggable={"false"}
+            class="size-full h-full object-cover rounded-xl"
+          />
+        </div>
+
+        
+
       </div>
     </div>
     
   </div>
 
   <style>
+
     .swiper-pagination {
       position: absolute !important;
     }
@@ -153,6 +168,8 @@ const infoTitle2 = Astro.currentLocale === "es" ? "Empresas sastifechas" : "Sati
     import "swiper/css/pagination";
     import "swiper/css/navigation";
     import { Pagination, Autoplay, Navigation } from "swiper/modules";
+    import Plyr from 'plyr';
+    import 'plyr/dist/plyr.css';
 
     var swiper = new Swiper(".swiperTestimonial", {
       modules: [Pagination, Navigation, Autoplay],
@@ -172,6 +189,12 @@ const infoTitle2 = Astro.currentLocale === "es" ? "Empresas sastifechas" : "Sati
         prevEl: ".swiper-button-prev",
         nextEl: ".swiper-button-next",
       },
+    });
+
+    const player = new Plyr('#player', {
+
+    // Opciones de configuración
+
     });
   </script>
 </section>
