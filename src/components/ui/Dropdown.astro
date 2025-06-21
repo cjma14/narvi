@@ -20,9 +20,9 @@ const { link } = Astro.props;
         id="hs-dropdown-default"
         type="button"
         aria-label="Change language"
-        class="navbar-link hs-dropdown-toggle inline-flex items-center gap-x-2 rounded-lg px-1.5 py-1.5 text-sm font-medium outline-none ring-zinc-500 transition duration-300 hover:text-primary-400  text-white z-10"
+        class="navbar-link hs-dropdown-toggle inline-flex items-center gap-x-2 rounded-lg px-1.5 py-1.5 text-sm font-medium outline-none ring-zinc-500 transition duration-300 hover:text-primary-400  text-white z-10 text-center"
     >
-        <p class="drop-shadow-xl">{link.name}</p>
+        <p class="drop-shadow-xl lg:text-base xl:text-lg">{link.name}</p>
         <svg
             class="size-4 hs-dropdown-open:rotate-180"
             width="24"

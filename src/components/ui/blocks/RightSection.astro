@@ -35,7 +35,7 @@ interface Props {
 <!-- Root section of the component -->
 <section
   id={id}
-  class="mx-auto max-w-[85rem] items-center gap-16 px-4 py-5 md:py-10 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8 lg:py-14 2xl:max-w-full text-pearl-100"
+  class="mx-auto max-w-[85rem] gap-16 px-4 py-5 md:py-10 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8 lg:py-14 2xl:max-w-full text-pearl-100 xl:items-center"
 >
 
   <div class="block md:hidden mb-8">
@@ -107,13 +107,15 @@ interface Props {
   <div class="hidden md:block">
     {
       single ? (
-        <div class="mt-8">
+        <div class="mt-8 h-full">
           <!-- Single image -->
-          <img
-            class="w-full rounded-lg fade-right"
-            src={imgOne}
-            alt={imgOneAlt}
-          />
+          <picture class="h-full">
+            <img
+              class="w-full rounded-lg fade-right md:h-full md:object-cover"
+              src={imgOne}
+              alt={imgOneAlt}
+            />
+          </picture>
         </div>
       ) : (
         <div class="mt-8 grid grid-cols-2 gap-4">

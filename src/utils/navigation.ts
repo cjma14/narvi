@@ -6,7 +6,7 @@ const navBarLinks = [
     url: "/" 
   },
   { 
-    name: "Produtcs",
+    name: "Products",
     type: "basic", 
     url: "/products" 
   },
@@ -43,8 +43,8 @@ const footerLinks = [
   {
     section: "About us",
     links: [
-      { name: "Mision", type: 'url', url: "/about#mision" },
-      { name: "Vision", type: 'url', url: "/about#vision" },
+      { name: "Mision", type: 'url', url: "/about-us#mision" },
+      { name: "Vision", type: 'url', url: "/about-us#vision" },
       { name: "Contact", type: 'url', url: "/contact" },
     ],
   },

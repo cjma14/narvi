@@ -48,16 +48,16 @@ interface Props {
   <div class="pt-[5rem] fade-up">
     <!-- Each h1 and p tag renders a portion of the title and subTitle defined above -->
     <h1
-      class="block text-balance font-bold tracking-tight text-pearl-100 text-4xl md:text-5xl lg:text-5xl 2xl:text-[6rem] lg:leading-none"
+      class="block text-balance font-bold tracking-tight text-pearl-100 text-4xl lg:text-5xl 2xl:text-[6rem] lg:leading-none"
     >
       <!-- About Fragment: https://docs.astro.build/en/basics/astro-syntax/#fragments -->
       <Fragment set:html={title} />
     </h1>
     {subTitle &&
     <p
-      class="mt-3 text-pretty text-xl leading-relaxed text-pearl-100 lg:w-4/5 font-bold italic"
+      class="mt-3 text-pretty text-2xl leading-7 text-pearl-100 lg:w-4/5 font-bold italic  drop-shadow-md"
     >
-      {subTitle}
+      <Fragment set:html={subTitle} />
     </p>
   }
     <!-- Action Button Section: This section includes two CTAs with their own styles and URL -->

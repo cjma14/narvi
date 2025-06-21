@@ -19,6 +19,12 @@ interface Props {
   product: any;
   productLocale?: string;
 }
+
+const urlProdct = productLocale && productLocale !== "en"
+  ? `/${productLocale}/sales/${product.slug.replace(/^es\//, "")}/`
+  : `/sales/${product.slug.replace(/^en\//, "")}/`;
+
+const serverBaseUrl = new URL(Astro.request.url).origin;
 ---
 
 
@@ -57,10 +63,10 @@ interface Props {
       <div class="mt-5">
         <PrimaryCTA 
           title={product.data.btnTitle} 
-          url={productLocale && productLocale !== "en"
-          ? `/${productLocale}/sales/${product.slug.replace(/^es\//, "")}/`
-          : `/sales/${product.slug.replace(/^en\//, "")}/`} />
-        <SecondaryCTA title={product.data.btnSaleTitle} url={product.data.btnSaleURL} />
+          url={urlProdct} />
+        <SecondaryCTA 
+          title={product.data.btnSaleTitle} 
+          url={`${product.data.btnSaleURL}?product=${serverBaseUrl}${urlProdct}`} />
       </div>
     </div>
   </div>

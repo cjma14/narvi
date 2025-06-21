@@ -34,10 +34,10 @@ interface Props {
   id={id}
   class="mx-auto max-w-[85rem] px-4 py-5 md:py-10 text-pearl-100 sm:px-6 sm:py-16 lg:px-8 lg:py-14 2xl:max-w-full"
 >
-  <div class="gap-8 md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 xl:gap-16 items-center">
+  <div class="gap-8 md:grid md:grid-cols-2 xl:gap-16 xl:items-center ">
     <!-- The Image component which renders the image -->
     <picture class="">
-      <img class="w-full rounded-xl fade-left" src={img} alt={imgAlt} draggable={"false"} />
+      <img class="w-full rounded-xl fade-left md:h-full md:object-cover" src={img} alt={imgAlt} draggable={"false"} />
     </picture>
     
     <!-- The container for title, subtitle, and optional CTA button -->
