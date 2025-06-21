@@ -14,9 +14,7 @@ const formTitle: string =
   "Por favor rellene la información del formulario o contáctenos a través de nuestros otros canales.";
 const formSubTitle: string = "Nuestro tiempo de respuesta es de 24 horas.";
 
-// const tokenWeb3forms = "e256344a-5846-48cc-90a2-1c2b4be78326";
-const tokenWeb3forms = "97731e64-2e56-4dd5-83c6-d3fa06c23618";
-
+const tokenWeb3forms = "e256344a-5846-48cc-90a2-1c2b4be78326";
 ---
 
 <!-- Contact Us -->
@@ -67,7 +65,7 @@ const tokenWeb3forms = "97731e64-2e56-4dd5-83c6-d3fa06c23618";
 
             <PhoneInput
               id="hs-phone-number"
-              label="Número de teléfono. Ejemplo: +1 346 504 9060"
+              label="Número de teléfono, ejemplo: +1 346 504 9060"
               name="phone"
             />
 
@@ -120,17 +118,6 @@ const tokenWeb3forms = "97731e64-2e56-4dd5-83c6-d3fa06c23618";
 <script is:inline>
   const form = document.querySelector("#formContact");
   const successAlert = document.querySelector("#success-alert");
-
-  const urlParams = new URLSearchParams(window.location.search);
-  const productParam = urlParams.get("product");
-
-  if (productParam) {
-    const input = document.createElement("input");
-    input.type = "hidden";
-    input.name = "product";
-    input.value = productParam;
-    form.appendChild(input);
-  }
 
   // functions
   const sendSuccess = () => {

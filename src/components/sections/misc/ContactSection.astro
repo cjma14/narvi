@@ -14,8 +14,7 @@ const formTitle: string =
   "Please fill out the information in the form, or contact us through our other channels.";
 const formSubTitle: string = "Our response time is 24 hours";
 
-// const tokenWeb3forms = "e256344a-5846-48cc-90a2-1c2b4be78326";
-const tokenWeb3forms = "97731e64-2e56-4dd5-83c6-d3fa06c23618";
+const tokenWeb3forms = "e256344a-5846-48cc-90a2-1c2b4be78326";
 ---
 
 <!-- Contact Us -->
@@ -59,7 +58,7 @@ const tokenWeb3forms = "97731e64-2e56-4dd5-83c6-d3fa06c23618";
               <TextInput
                 id="hs-firstname-contacts"
                 label="Full Name"
-                name="firstname"
+                name="fullname"
               />
             </div>
             <EmailContactInput id="hs-email-contacts" name="email" />
@@ -67,7 +66,7 @@ const tokenWeb3forms = "97731e64-2e56-4dd5-83c6-d3fa06c23618";
             <PhoneInput
               id="hs-phone-number"
               name="phone"
-              label="Phone number. Example: +1 346 504 9060"
+              label="Phone number, example: +1 346 504 9060"
             />
 
             <TextAreaInput
@@ -120,17 +119,6 @@ const tokenWeb3forms = "97731e64-2e56-4dd5-83c6-d3fa06c23618";
   const form = document.querySelector("#formContact");
   const successAlert = document.querySelector("#success-alert");
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const productParam = urlParams.get("product");
-
-  if (productParam) {
-    const input = document.createElement("input");
-    input.type = "hidden";
-    input.name = "product";
-    input.value = productParam;
-    form.appendChild(input);
-  }
-
   // functions
   const sendSuccess = () => {
     successAlert.classList.remove("hidden");
@@ -144,6 +132,16 @@ const tokenWeb3forms = "97731e64-2e56-4dd5-83c6-d3fa06c23618";
     "submit",
     async (e) => {
       e.preventDefault();
+      const urlParams = new URLSearchParams(window.location.search);
+      const productParam = urlParams.get("product");
+
+      if (productParam) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "product";
+        input.value = productParam;
+        form.appendChild(input);
+      }
       const formData = new FormData(form);
       const object = Object.fromEntries(formData);
       const json = JSON.stringify(object);

@@ -39,6 +39,7 @@ function getSpecification(name: any) {
 
 const pageTitle: string = `${product.data.title} | ${SITE.title}`;
 
+const serverBaseUrl = new URL(Astro.request.url);
 ---
 
 <MainLayout title={pageTitle}>
@@ -101,7 +102,7 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
         <div class="mt-5">
           <PrimaryCTA
             title={product.data.btnSaleTitle}
-            url={product.data.btnSaleURL}
+            url={`${product.data.btnSaleURL}?product=${serverBaseUrl}`}
           />
         </div>
       </div>
