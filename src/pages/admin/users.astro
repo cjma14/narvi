@@ -1,0 +1,13 @@
+---
+import AdminLayout from '../../admin/layouts/AdminLayout.astro';
+import UserListTable from '../../admin/modules/users/UserListTable.tsx';
+
+const breadcrumbs = [
+  { label: 'Usuarios' },
+];
+---
+
+<AdminLayout title="Usuarios" breadcrumbs={breadcrumbs}>
+  <!-- User List Table con búsqueda y botón agregar integrados -->
+  <UserListTable client:load />
+</AdminLayout>

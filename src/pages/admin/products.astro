@@ -1,0 +1,13 @@
+---
+import AdminLayout from '../../admin/layouts/AdminLayout.astro';
+import ProductListTable from '../../admin/modules/products/ProductListTable.tsx';
+
+const breadcrumbs = [
+  { label: 'Productos' },
+];
+---
+
+<AdminLayout title="Productos" breadcrumbs={breadcrumbs}>
+  <!-- Product List Table -->
+  <ProductListTable client:load />
+</AdminLayout>

@@ -41,6 +41,35 @@ export default {
         '900': '#33491e',
         '950': '#19280b',
       },
+      // Admin panel colors
+      admin: {
+        primary: {
+          DEFAULT: '#172C27',
+          50: '#e8f2f0',
+          100: '#d1e5e1',
+          200: '#a3cbc3',
+          300: '#75b1a5',
+          400: '#479787',
+          500: '#172C27',
+          600: '#12231f',
+          700: '#0e1a17',
+          800: '#091210',
+          900: '#050908',
+        },
+        secondary: {
+          DEFAULT: '#78B032',
+          50: '#f5faeb',
+          100: '#e7f5d2',
+          200: '#d2ebab',
+          300: '#b3dc7a',
+          400: '#8cc63f',
+          500: '#78B032',
+          600: '#5c8c24',
+          700: '#476b20',
+          800: '#3a561e',
+          900: '#33491e',
+        },
+      },
       indigo: colors.indigo,
       neutral: colors.neutral,  // Used mainly for text color
       yellow: {

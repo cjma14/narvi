@@ -1,0 +1,47 @@
+---
+import AdminWrapper from './AdminWrapper.tsx';
+
+interface Props {
+  title?: string;
+  breadcrumbs?: { label: string; href?: string }[];
+}
+
+const { title, breadcrumbs } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title || 'Admin Panel'} | Narvi</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <AdminWrapper client:only="react" title={title} breadcrumbs={breadcrumbs} currentPath={currentPath}>
+      <slot />
+    </AdminWrapper>
+  </body>
+</html>
+
+<style is:global>
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+</style>
