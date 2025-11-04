@@ -1,0 +1,139 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Button from "../admin/shared/Button.jsx";
+import SignIn from "../admin/auth/sign-in.tsx";
+
+const pageTitle = "Admin React Test | Narvi";
+---
+
+<MainLayout title={pageTitle}>
+  <div class="container mx-auto px-4 py-12">
+    <section class="mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">
+        React Integration Test
+      </h1>
+      <p class="text-gray-600 mb-8">
+        This page tests React component integration with Astro. All components below are React components with full interactivity.
+      </p>
+    </section>
+
+    <!-- Test 1: Interactive Button Component -->
+    <section class="mb-12 bg-white p-8 rounded-lg shadow-md">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">
+        Test 1: Interactive Button with State
+      </h2>
+      <p class="text-gray-600 mb-6">
+        This button demonstrates React state management (useState) and event handling (onClick).
+        Click the button to see the counter increment.
+      </p>
+      <div class="flex gap-4 flex-wrap">
+        <Button client:load text="Primary Button" variant="primary" />
+        <Button client:load text="Success Button" variant="success" />
+        <Button client:load text="Danger Button" variant="danger" />
+      </div>
+      <div class="mt-4 p-4 bg-blue-50 rounded">
+        <p class="text-sm text-blue-900">
+          ✓ Tests: useState hook, onClick event handler, component props
+        </p>
+      </div>
+    </section>
+
+    <!-- Test 2: Form with Multiple Inputs -->
+    <section class="mb-12 bg-white p-8 rounded-lg shadow-md">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">
+        Test 2: Complex Form with Validation
+      </h2>
+      <p class="text-gray-600 mb-6">
+        This sign-in form demonstrates multiple React features including form handling,
+        validation, conditional rendering, and multiple state variables.
+      </p>
+      <SignIn client:load />
+      <div class="mt-4 p-4 bg-blue-50 rounded">
+        <p class="text-sm text-blue-900">
+          ✓ Tests: Multiple useState hooks, onChange handlers, form submission, conditional rendering
+        </p>
+      </div>
+    </section>
+
+    <!-- Test 3: Component Hydration -->
+    <section class="mb-12 bg-white p-8 rounded-lg shadow-md">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">
+        Test 3: Client Directives
+      </h2>
+      <p class="text-gray-600 mb-6">
+        Demonstrating different Astro client directives for React components:
+      </p>
+      <div class="space-y-4">
+        <div>
+          <h3 class="font-semibold mb-2">client:load - Loads immediately</h3>
+          <Button client:load text="Loaded on page load" variant="primary" />
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">client:visible - Loads when visible</h3>
+          <Button client:visible text="Loaded when scrolled into view" variant="secondary" />
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">client:idle - Loads when browser is idle</h3>
+          <Button client:idle text="Loaded when idle" variant="success" />
+        </div>
+      </div>
+      <div class="mt-4 p-4 bg-blue-50 rounded">
+        <p class="text-sm text-blue-900">
+          ✓ Tests: Different hydration strategies for optimal performance
+        </p>
+      </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section class="bg-gray-50 p-8 rounded-lg">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">
+        Integration Documentation
+      </h2>
+      <div class="space-y-4">
+        <div>
+          <h3 class="font-semibold text-lg mb-2">✅ Completed Setup</h3>
+          <ul class="list-disc list-inside space-y-2 text-gray-700">
+            <li>Installed @astrojs/react, react, and react-dom packages</li>
+            <li>Configured React integration in astro.config.mjs</li>
+            <li>Created admin folder structure in src/admin/</li>
+            <li>Built reusable React components with TypeScript</li>
+            <li>Implemented interactive features (state, events, forms)</li>
+          </ul>
+        </div>
+        <div class="mt-6">
+          <h3 class="font-semibold text-lg mb-2">📁 Admin Structure</h3>
+          <pre class="bg-gray-900 text-green-400 p-4 rounded text-sm overflow-x-auto">
+src/admin/
+├── navigation/
+│   └── navigation.ts
+├── auth/
+│   └── sign-in.tsx
+├── layouts/
+├── modules/
+│   ├── users/
+│   │   ├── components/modals/
+│   │   ├── add-list.tsx
+│   │   └── user-list.tsx
+│   └── products/
+│       ├── components/modals/
+│       ├── products-add.tsx
+│       └── products-list.tsx
+├── guards/
+└── shared/
+    └── Button.jsx
+          </pre>
+        </div>
+        <div class="mt-6">
+          <h3 class="font-semibold text-lg mb-2">🚀 Next Steps</h3>
+          <ul class="list-disc list-inside space-y-2 text-gray-700">
+            <li>Implement authentication guards</li>
+            <li>Create admin layout components</li>
+            <li>Add modal components for user and product operations</li>
+            <li>Connect to backend API</li>
+            <li>Add routing for admin pages</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>
