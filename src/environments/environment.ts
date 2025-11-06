@@ -1,4 +1,5 @@
 export const environment = {
     production: false,
-    apiurl: `http://localhost:3600/api`,
+    // Use environment variable or fallback to local dev
+    apiUrl: import.meta.env.PUBLIC_API_URL || 'http://localhost:6650/api',
 };

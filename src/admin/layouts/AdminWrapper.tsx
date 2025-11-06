@@ -1,6 +1,8 @@
 import { useState, useEffect, type ReactNode } from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import { AuthProvider } from '../auth/AuthProvider';
+import RequireAuth from '../guards/RequireAuth';
 
 interface AdminWrapperProps {
   title?: string;
@@ -46,7 +48,8 @@ export default function AdminWrapper({ title, breadcrumbs, currentPath, children
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <AuthProvider>
+      <div className="min-h-screen bg-gray-50">
       {/* Sidebar - Fixed */}
       <Sidebar 
         currentPath={currentPath} 
@@ -80,7 +83,12 @@ export default function AdminWrapper({ title, breadcrumbs, currentPath, children
 
         {/* Page Content */}
         <main className="flex-1 p-3 sm:p-4 bg-gray-50">
-          {children}
+          {/* allow unauthenticated access to the login page */}
+          {currentPath && currentPath.replace(/\/$/, '') === '/admin/login' ? (
+            children
+          ) : (
+            <RequireAuth>{children}</RequireAuth>
+          )}
         </main>
 
         {/* Footer (standard admin size) */}
@@ -91,6 +99,7 @@ export default function AdminWrapper({ title, breadcrumbs, currentPath, children
           </div>
         </footer>
       </div>
-    </div>
+      </div>
+    </AuthProvider>
   );
 }
