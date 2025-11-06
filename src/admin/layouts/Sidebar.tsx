@@ -72,7 +72,7 @@ export default function Sidebar({ currentPath = '', isCollapsed = false, isMobil
     `}>
       {/* Logo Section */}
       <div className={`p-5 border-admin-primary-700 flex-shrink-0 ${isCollapsed ? 'flex justify-center' : ''}`}>
-        <a href="/admin/dashboard" className={`flex items-center ${isCollapsed ? 'justify-center' : 'gap-3'}`}>
+        <a href="/admin/users" className={`flex items-center ${isCollapsed ? 'justify-center' : 'gap-3'}`}>
           {isCollapsed ? (
             <img src="/img/logo/logo_white.png" alt="Narvi EC" className="w-10 h-10 object-contain" />
           ) : (

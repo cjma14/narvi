@@ -114,7 +114,7 @@ export default function ProtectedRoute({
               href="/admin"
               className="px-4 py-2 bg-admin-secondary hover:bg-admin-secondary-600 text-white rounded-lg transition-colors"
             >
-              Ir al Dashboard
+              Ir al Inicio
             </a>
           </div>
         </div>

@@ -1,14 +1,19 @@
 import { useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
 import Table, { type TableColumn } from '../../shared/Table';
 import RequirePermission from '../../guards/RequirePermission';
 import { PERMISSIONS } from '../../guards/auth-guard';
+import api from '../../utils/api';
+import UserModal from './UserModal';
 
 interface User {
   id: number;
-  username: string;
   name: string;
   email: string;
-  role: string;
+  roles_list?: string[];
+  permissions_list?: string[];
+  created_at?: string;
+  updated_at?: string;
 }
 
 type SortDirection = 'asc' | 'desc' | null;
@@ -17,7 +22,7 @@ type SortKey = keyof User | null;
 /**
  * UserListTable Component
  * Tabla de listado de usuarios con búsqueda, ordenamiento y paginación integrada
- * Ahora con control de permisos para acciones
+ * Ahora con integración real al backend API
  */
 export default function UserListTable() {
   const [users, setUsers] = useState<User[]>([]);
@@ -28,22 +33,40 @@ export default function UserListTable() {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortKey, setSortKey] = useState<SortKey>(null);
   const [sortDirection, setSortDirection] = useState<SortDirection>(null);
+  const [showModal, setShowModal] = useState(false);
+  const [modalMode, setModalMode] = useState<'create' | 'edit'>('create');
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
+  // Cargar usuarios desde la API
   useEffect(() => {
-    // Simulated data fetch
-    setTimeout(() => {
-      const mockUsers: User[] = Array.from({ length: 50 }, (_, i) => ({
-        id: i + 1,
-        username: `user${i + 1}`,
-        name: `Usuario Nombre ${i + 1}`,
-        email: `usuario${i + 1}@example.com`,
-        role: ['Admin', 'Editor', 'Viewer', 'Manager'][i % 4],
-      }));
-      setUsers(mockUsers);
-      setFilteredUsers(mockUsers);
-      setLoading(false);
-    }, 500);
+    loadUsers();
   }, []);
+
+  const loadUsers = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get('/users');
+      
+      // El backend puede retornar paginación { data: [...] } o directamente [...]
+      const usersData = response.data || response;
+      setUsers(usersData);
+      setFilteredUsers(usersData);
+      
+      if (usersData.length > 0) {
+        setCurrentPage(1);
+      }
+    } catch (error: any) {
+      console.error('Error loading users:', error);
+      toast.error(error.message || 'Error al cargar usuarios', {
+        duration: 4000,
+        position: 'top-right',
+      });
+      setUsers([]);
+      setFilteredUsers([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Búsqueda
   useEffect(() => {
@@ -51,10 +74,9 @@ export default function UserListTable() {
     
     if (searchQuery) {
       filtered = users.filter(user => 
-        user.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
         user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        user.role.toLowerCase().includes(searchQuery.toLowerCase())
+        (user.roles_list && user.roles_list.join(', ').toLowerCase().includes(searchQuery.toLowerCase()))
       );
     }
 
@@ -81,15 +103,82 @@ export default function UserListTable() {
   }, [searchQuery, users, sortKey, sortDirection]);
 
   const handleEdit = (user: User) => {
-    console.log('Editar usuario:', user);
-    // TODO: Implementar modal de edición
+    setSelectedUser(user);
+    setModalMode('edit');
+    setShowModal(true);
   };
 
-  const handleDelete = (user: User) => {
-    if (confirm('¿Está seguro de que desea eliminar este usuario?')) {
-      setUsers(users.filter(u => u.id !== user.id));
-      console.log('Usuario eliminado:', user.id);
-    }
+  const handleDelete = async (user: User) => {
+    // Toast de confirmación personalizado
+    toast((t) => (
+      <div className="flex flex-col gap-3">
+        <div className="flex items-start gap-3">
+          <div className="flex-shrink-0 w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+            <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <div className="flex-1">
+            <h3 className="font-semibold text-gray-900 mb-1">¿Eliminar usuario?</h3>
+            <p className="text-sm text-gray-600">
+              ¿Está seguro de eliminar a <strong>{user.name}</strong>?
+              <br />
+              Esta acción no se puede deshacer.
+            </p>
+          </div>
+        </div>
+        <div className="flex gap-2 justify-end">
+          <button
+            onClick={() => toast.dismiss(t.id)}
+            className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            Cancelar
+          </button>
+          <button
+            onClick={async () => {
+              toast.dismiss(t.id);
+              try {
+                await api.delete(`/users/${user.id}`);
+                
+                toast.success('Usuario eliminado exitosamente', {
+                  duration: 3000,
+                  position: 'top-right',
+                  icon: '✅',
+                });
+                
+                loadUsers();
+              } catch (error: any) {
+                console.error('Error deleting user:', error);
+                toast.error(error.message || 'Error al eliminar usuario', {
+                  duration: 4000,
+                  position: 'top-right',
+                });
+              }
+            }}
+            className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors"
+          >
+            Eliminar
+          </button>
+        </div>
+      </div>
+    ), {
+      duration: Infinity,
+      position: 'top-center',
+      style: {
+        background: 'white',
+        padding: '16px',
+        borderRadius: '12px',
+        boxShadow: '0 10px 40px rgba(0, 0, 0, 0.15)',
+        maxWidth: '420px',
+        marginTop: '40vh',
+      },
+    });
+  };
+
+  const handleCreate = () => {
+    setSelectedUser(null);
+    setModalMode('create');
+    setShowModal(true);
   };
 
   const handleSort = (key: string) => {
@@ -121,9 +210,9 @@ export default function UserListTable() {
 
   const columns: TableColumn<User>[] = [
     {
-      key: 'username',
-      label: 'Usuario',
-      width: '150px',
+      key: 'id',
+      label: 'ID',
+      width: '80px',
       sortable: true,
     },
     {
@@ -137,23 +226,34 @@ export default function UserListTable() {
       sortable: true,
     },
     {
-      key: 'role',
-      label: 'Rol',
-      width: '120px',
+      key: 'roles_list',
+      label: 'Roles',
+      width: '180px',
       align: 'center',
-      sortable: true,
-      render: (value) => {
+      render: (value: any, row: User) => {
+        const roles = row.roles_list || [];
+        
+        if (roles.length === 0) {
+          return <span className="text-gray-400 text-sm">Sin rol</span>;
+        }
+
         const roleColors: Record<string, string> = {
-          Admin: 'bg-purple-100 text-purple-800',
-          Manager: 'bg-blue-100 text-blue-800',
-          Editor: 'bg-green-100 text-green-800',
-          Viewer: 'bg-gray-100 text-gray-800',
+          admin: 'bg-purple-100 text-purple-800',
+          editor: 'bg-green-100 text-green-800',
+          viewer: 'bg-gray-100 text-gray-800',
         };
 
         return (
-          <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${roleColors[value] || 'bg-gray-100 text-gray-800'}`}>
-            {value}
-          </span>
+          <div className="flex flex-wrap gap-1 justify-center">
+            {roles.map((role, index) => (
+              <span 
+                key={index}
+                className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${roleColors[role] || 'bg-blue-100 text-blue-800'}`}
+              >
+                {role}
+              </span>
+            ))}
+          </div>
         );
       },
     },
@@ -204,7 +304,7 @@ export default function UserListTable() {
     <div className="space-y-4">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm">
-        <a href="/admin/dashboard" className="text-gray-500 hover:text-admin-secondary transition-colors">Dashboard</a>
+        <a href="/admin/users" className="text-gray-500 hover:text-admin-secondary transition-colors">Inicio</a>
         <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
@@ -249,7 +349,7 @@ export default function UserListTable() {
             {/* Botón Agregar - Solo si tiene permiso */}
             <RequirePermission permission={PERMISSIONS.USERS_CREATE}>
               <button
-                onClick={() => console.log('Agregar usuario')}
+                onClick={handleCreate}
                 className="flex items-center justify-center gap-2 bg-admin-secondary hover:bg-admin-secondary-600 text-white font-medium px-4 py-2.5 rounded-lg transition-colors shadow-sm hover:shadow whitespace-nowrap"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -433,6 +533,18 @@ export default function UserListTable() {
           </div>
         </div>
       </div>
+
+      {/* Modal para Crear/Editar Usuario */}
+      <UserModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        onSuccess={() => {
+          loadUsers(); // Recargar lista al guardar
+          setShowModal(false);
+        }}
+        user={selectedUser}
+        mode={modalMode}
+      />
     </div>
   );
 }
