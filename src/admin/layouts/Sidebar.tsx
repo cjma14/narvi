@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
-import { adminNavigation } from '../navigation/navigation';
+import { adminNavigation, filterNavigationByPermissions } from '../navigation/navigation';
 import SidebarMenuItem from '../components/sidebar/SidebarMenuItem';
+import { useAuth } from '../auth/AuthProvider';
 
 interface SidebarProps {
   currentPath?: string;
@@ -11,10 +12,22 @@ interface SidebarProps {
 
 /**
  * Sidebar Component
- * Optimized sidebar with memoized navigation items
+ * Optimized sidebar with memoized navigation items and permission filtering
  */
 export default function Sidebar({ currentPath = '', isCollapsed = false, isMobile = false, isOpen = false }: SidebarProps) {
   const [expandedMenus, setExpandedMenus] = useState<Record<string, boolean>>({});
+  const { user } = useAuth();
+
+  // Filtrar navegación basada en permisos del usuario
+  const filteredNavigation = useMemo(() => {
+    if (!user) return [];
+    
+    return filterNavigationByPermissions(
+      adminNavigation,
+      user.permissions_list || [],
+      user.roles_list || []
+    );
+  }, [user]);
 
   const toggleMenu = (menuKey: string) => {
     if (!isCollapsed) {
@@ -71,7 +84,7 @@ export default function Sidebar({ currentPath = '', isCollapsed = false, isMobil
       {/* Navigation Menu */}
       <nav className={`flex-1 py-4 ${!isCollapsed ? 'overflow-y-auto scrollbar-thin scrollbar-thumb-admin-primary-700 scrollbar-track-admin-primary-800' : 'overflow-hidden'}`}>
         <ul className="space-y-1 px-3">
-          {adminNavigation.map((item) => (
+          {filteredNavigation.map((item) => (
             <SidebarMenuItem
               key={item.href}
               item={item}

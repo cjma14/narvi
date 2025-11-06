@@ -1,6 +1,6 @@
 ---
 import AdminLayout from '../../admin/layouts/AdminLayout.astro';
-import ProductListTable from '../../admin/modules/products/ProductListTable.tsx';
+import ProductsPageWrapper from '../../admin/modules/products/ProductsPageWrapper.tsx';
 
 const breadcrumbs = [
   { label: 'Productos' },
@@ -8,6 +8,6 @@ const breadcrumbs = [
 ---
 
 <AdminLayout title="Productos" breadcrumbs={breadcrumbs}>
-  <!-- Product List Table -->
-  <ProductListTable client:load />
+  <!-- Product List Table protegido con permisos -->
+  <ProductsPageWrapper client:load />
 </AdminLayout>

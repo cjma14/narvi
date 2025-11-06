@@ -10,7 +10,10 @@ export interface NavItem {
   href: string;
   icon: ReactNode;
   children?: NavSubItem[];
-  permission?: string;
+  permission?: string; 
+  permissions?: string[]; 
+  role?: string; 
+  roles?: string[]; 
   key?: string;
 }
 
@@ -18,6 +21,8 @@ export interface NavSubItem {
   label: string;
   href: string;
   icon?: ReactNode;
+  permission?: string;
+  permissions?: string[];
 }
 
 // SVG Icons as React components
@@ -118,41 +123,111 @@ const ListIcon = (
 );
 
 /**
- * Main navigation menu items
+ * Main navigation menu items with permissions
  */
 export const adminNavigation: NavItem[] = [
   {
     label: 'Dashboard',
-    href: '/admin/dashboard',
+    href: '/admin',
     icon: DashboardIcon,
+    // Dashboard visible para todos los usuarios autenticados
   },
   {
     label: 'Usuarios',
     href: '/admin/users',
     icon: UsersIcon,
     key: 'users',
+    permission: 'users.view', // Requiere permiso para ver usuarios
     children: [
       {
         label: 'Listado',
         href: '/admin/users',
         icon: ListIcon,
+        permission: 'users.view',
       },
     ],
   },
   {
-    label: 'Products',
+    label: 'Productos',
     href: '/admin/products',
     icon: ProductsIcon,
     key: 'products',
+    permission: 'products.view', // Requiere permiso para ver productos
     children: [
       {
         label: 'Listado',
         href: '/admin/products',
         icon: ListIcon,
+        permission: 'products.view',
       },
     ],
   },
 ];
 
+/**
+ * Filtrar items de navegación basado en permisos del usuario
+ */
+export function filterNavigationByPermissions(
+  items: NavItem[],
+  userPermissions: string[] = [],
+  userRoles: string[] = []
+): NavItem[] {
+  return items
+    .filter(item => {
+      // Si no tiene restricciones, mostrar
+      if (!item.permission && !item.permissions && !item.role && !item.roles) {
+        return true;
+      }
+
+      // Verificar permiso único
+      if (item.permission && userPermissions.includes(item.permission)) {
+        return true;
+      }
+
+      // Verificar lista de permisos (al menos uno)
+      if (item.permissions && item.permissions.some(p => userPermissions.includes(p))) {
+        return true;
+      }
+
+      // Verificar rol único
+      if (item.role && userRoles.includes(item.role)) {
+        return true;
+      }
+
+      // Verificar lista de roles (al menos uno)
+      if (item.roles && item.roles.some(r => userRoles.includes(r))) {
+        return true;
+      }
+
+      return false;
+    })
+    .map(item => {
+      // Filtrar subitems si existen
+      if (item.children) {
+        const filteredChildren = item.children.filter(child => {
+          if (!child.permission && !child.permissions) {
+            return true;
+          }
+
+          if (child.permission && userPermissions.includes(child.permission)) {
+            return true;
+          }
+
+          if (child.permissions && child.permissions.some(p => userPermissions.includes(p))) {
+            return true;
+          }
+
+          return false;
+        });
+
+        return {
+          ...item,
+          children: filteredChildren.length > 0 ? filteredChildren : undefined,
+        };
+      }
+
+      return item;
+    });
+}
 
 export default adminNavigation;

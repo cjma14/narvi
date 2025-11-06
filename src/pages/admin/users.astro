@@ -1,6 +1,6 @@
 ---
 import AdminLayout from '../../admin/layouts/AdminLayout.astro';
-import UserListTable from '../../admin/modules/users/UserListTable.tsx';
+import UsersPageWrapper from '../../admin/modules/users/UsersPageWrapper.tsx';
 
 const breadcrumbs = [
   { label: 'Usuarios' },
@@ -8,6 +8,6 @@ const breadcrumbs = [
 ---
 
 <AdminLayout title="Usuarios" breadcrumbs={breadcrumbs}>
-  <!-- User List Table con búsqueda y botón agregar integrados -->
-  <UserListTable client:load />
+  <!-- User List Table protegido con permisos -->
+  <UsersPageWrapper client:load />
 </AdminLayout>
