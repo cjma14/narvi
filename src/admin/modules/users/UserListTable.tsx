@@ -45,7 +45,7 @@ export default function UserListTable() {
   const loadUsers = async () => {
     try {
       setLoading(true);
-      const response = await api.get('/users');
+      const response = await api.get('/api/users');
       
       // El backend puede retornar paginación { data: [...] } o directamente [...]
       const usersData = response.data || response;
@@ -138,7 +138,7 @@ export default function UserListTable() {
             onClick={async () => {
               toast.dismiss(t.id);
               try {
-                await api.delete(`/users/${user.id}`);
+                await api.delete(`/api/users/${user.id}`);
                 
                 toast.success('Usuario eliminado exitosamente', {
                   duration: 3000,

@@ -69,8 +69,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (email: string, password: string) => {
     try {
-      const apiUrl = import.meta.env.PUBLIC_API_URL || 'http://localhost:6650/api';
-      const res = await fetch(`${apiUrl}/login`, {
+      const apiUrl = import.meta.env.PUBLIC_API_URL || 'http://localhost:6650';
+      const res = await fetch(`${apiUrl}/api/login`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',

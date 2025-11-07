@@ -1,15 +1,30 @@
 import { useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
 import RequirePermission from '../../guards/RequirePermission';
 import { PERMISSIONS } from '../../guards/auth-guard';
+import api from '../../utils/api';
+import ProductModal from './ProductModal';
+
+interface ProductImage {
+  id: number;
+  path: string;
+  url?: string;
+  order: number;
+}
 
 interface Product {
   id: number;
-  sku: string;
-  name: string;
-  category: string;
-  price: number;
-  stock: number;
-  status: string;
+  title: string;
+  url_alias: string;
+  description: string;
+  primary_button_url?: string;
+  primary_button_title?: string;
+  secondary_button_url?: string;
+  secondary_button_title?: string;
+  specifications?: string[];
+  images?: ProductImage[];
+  created_at?: string;
+  updated_at?: string;
 }
 
 type SortDirection = 'asc' | 'desc' | null;
@@ -29,15 +44,36 @@ export default function ProductListTable() {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortKey, setSortKey] = useState<SortKey>(null);
   const [sortDirection, setSortDirection] = useState<SortDirection>(null);
+  const [showModal, setShowModal] = useState(false);
+  const [modalMode, setModalMode] = useState<'create' | 'edit'>('create');
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
+  // Cargar productos desde la API
   useEffect(() => {
-    // Simulated data fetch - Sin datos
-    setTimeout(() => {
+    loadProducts();
+  }, []);
+
+  const loadProducts = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get('/api/products');
+      
+      // El backend puede retornar paginación { data: [...] } o directamente [...]
+      const productsData = response.data || response;
+      setProducts(productsData);
+      setFilteredProducts(productsData);
+    } catch (error: any) {
+      console.error('Error loading products:', error);
+      toast.error(error.message || 'Error al cargar productos', {
+        duration: 4000,
+        position: 'top-right',
+      });
       setProducts([]);
       setFilteredProducts([]);
+    } finally {
       setLoading(false);
-    }, 500);
-  }, []);
+    }
+  };
 
   // Búsqueda
   useEffect(() => {
@@ -45,9 +81,9 @@ export default function ProductListTable() {
     
     if (searchQuery) {
       filtered = products.filter(product => 
-        product.sku.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.category.toLowerCase().includes(searchQuery.toLowerCase())
+        product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.url_alias.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (product.description && product.description.toLowerCase().includes(searchQuery.toLowerCase()))
       );
     }
 
@@ -74,14 +110,82 @@ export default function ProductListTable() {
   }, [searchQuery, products, sortKey, sortDirection]);
 
   const handleEdit = (product: Product) => {
-    console.log('Editar producto:', product);
+    setSelectedProduct(product);
+    setModalMode('edit');
+    setShowModal(true);
   };
 
-  const handleDelete = (product: Product) => {
-    if (confirm('¿Está seguro de que desea eliminar este producto?')) {
-      setProducts(products.filter(p => p.id !== product.id));
-      console.log('Producto eliminado:', product.id);
-    }
+  const handleDelete = async (product: Product) => {
+    // Toast de confirmación personalizado
+    toast((t) => (
+      <div className="flex flex-col gap-3">
+        <div className="flex items-start gap-3">
+          <div className="flex-shrink-0 w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+            <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <div className="flex-1">
+            <h3 className="font-semibold text-gray-900 mb-1">¿Eliminar producto?</h3>
+            <p className="text-sm text-gray-600">
+              ¿Está seguro de eliminar <strong>{product.title}</strong>?
+              <br />
+              Esta acción no se puede deshacer.
+            </p>
+          </div>
+        </div>
+        <div className="flex gap-2 justify-end">
+          <button
+            onClick={() => toast.dismiss(t.id)}
+            className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            Cancelar
+          </button>
+          <button
+            onClick={async () => {
+              toast.dismiss(t.id);
+              try {
+                await api.delete(`/api/products/${product.id}`);
+                
+                toast.success('Producto eliminado exitosamente', {
+                  duration: 3000,
+                  position: 'top-right',
+                  icon: '✅',
+                });
+                
+                loadProducts();
+              } catch (error: any) {
+                console.error('Error deleting product:', error);
+                toast.error(error.message || 'Error al eliminar producto', {
+                  duration: 4000,
+                  position: 'top-right',
+                });
+              }
+            }}
+            className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors"
+          >
+            Eliminar
+          </button>
+        </div>
+      </div>
+    ), {
+      duration: Infinity,
+      position: 'top-center',
+      style: {
+        background: 'white',
+        padding: '16px',
+        borderRadius: '12px',
+        boxShadow: '0 10px 40px rgba(0, 0, 0, 0.15)',
+        maxWidth: '420px',
+        marginTop: '40vh',
+      },
+    });
+  };
+
+  const handleCreate = () => {
+    setSelectedProduct(null);
+    setModalMode('create');
+    setShowModal(true);
   };
 
   const handleSort = (key: string) => {
@@ -112,65 +216,68 @@ export default function ProductListTable() {
 
   const columns = [
     {
-      key: 'sku',
-      label: 'SKU',
-      width: '120px',
+      key: 'id',
+      label: 'ID',
+      width: '80px',
       sortable: true,
     },
     {
-      key: 'name',
-      label: 'Nombre del Producto',
+      key: 'title',
+      label: 'Título',
       sortable: true,
+      render: (value: any, row: Product) => (
+        <div className="flex items-center gap-3">
+          {row.images && row.images.length > 0 ? (
+            <img 
+              src={`${import.meta.env.PUBLIC_API_URL || 'http://localhost:6650'}/${row.images[0].url || row.images[0].path}`}
+              alt={row.title}
+              className="w-12 h-12 rounded object-cover"
+            />
+          ) : (
+            <div className="w-12 h-12 rounded bg-gray-200 flex items-center justify-center">
+              <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+          )}
+          <div className="flex flex-col">
+            <span className="font-medium text-gray-900">{value}</span>
+            <span className="text-xs text-gray-500">/{row.url_alias}</span>
+          </div>
+        </div>
+      ),
     },
     {
-      key: 'category',
-      label: 'Categoría',
-      width: '150px',
-      sortable: true,
-    },
-    {
-      key: 'price',
-      label: 'Precio',
-      width: '120px',
-      align: 'right' as const,
-      sortable: true,
-      render: (value: any) => `$${value.toFixed(2)}`,
-    },
-    {
-      key: 'stock',
-      label: 'Stock',
-      width: '100px',
-      align: 'center' as const,
-      sortable: true,
+      key: 'description',
+      label: 'Descripción',
+      width: '300px',
       render: (value: any) => (
-        <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-          value > 50 ? 'bg-green-100 text-green-800' : 
-          value > 0 ? 'bg-yellow-100 text-yellow-800' : 
-          'bg-red-100 text-red-800'
-        }`}>
-          {value}
+        <div className="max-w-xs truncate text-gray-600 text-sm">
+          {value || '-'}
+        </div>
+      ),
+    },
+    {
+      key: 'specifications',
+      label: 'Especificaciones',
+      width: '150px',
+      align: 'center' as const,
+      render: (value: any) => (
+        <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+          {value ? value.length : 0} specs
         </span>
       ),
     },
     {
-      key: 'status',
-      label: 'Estado',
+      key: 'images',
+      label: 'Imágenes',
       width: '120px',
       align: 'center' as const,
-      sortable: true,
-      render: (value: any) => {
-        const statusColors: Record<string, string> = {
-          Activo: 'bg-green-100 text-green-800',
-          Inactivo: 'bg-gray-100 text-gray-800',
-          Agotado: 'bg-red-100 text-red-800',
-        };
-
-        return (
-          <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${statusColors[value] || 'bg-gray-100 text-gray-800'}`}>
-            {value}
-          </span>
-        );
-      },
+      render: (value: any) => (
+        <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800">
+          {value ? value.length : 0} fotos
+        </span>
+      ),
     },
     {
       key: 'actions',
@@ -195,7 +302,7 @@ export default function ProductListTable() {
             </button>
           </RequirePermission>
           
-          {/* Botón Eliminar - Solo si tiene permiso */}
+                    {/* Botón Eliminar - Solo si tiene permiso */}
           <RequirePermission permission={PERMISSIONS.PRODUCTS_DELETE}>
             <button
               onClick={(e) => {
@@ -211,22 +318,6 @@ export default function ProductListTable() {
             </button>
           </RequirePermission>
           
-          {/* Botón Ver Detalles - Disponible para todos con products.view */}
-          <RequirePermission permission={PERMISSIONS.PRODUCTS_VIEW}>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                console.log('Ver detalles:', row);
-              }}
-              className="p-2 text-blue-600 hover:bg-blue-600 hover:text-white rounded-lg transition-all duration-200 hover:shadow-md"
-              title="Ver detalles"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-            </button>
-          </RequirePermission>
         </div>
       ),
     },
@@ -281,7 +372,7 @@ export default function ProductListTable() {
             {/* Botón Agregar - Solo si tiene permiso */}
             <RequirePermission permission={PERMISSIONS.PRODUCTS_CREATE}>
               <button
-                onClick={() => console.log('Agregar producto')}
+                onClick={handleCreate}
                 className="flex items-center justify-center gap-2 bg-admin-secondary hover:bg-admin-secondary-600 text-white font-medium px-4 py-2.5 rounded-lg transition-colors shadow-sm hover:shadow whitespace-nowrap"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -304,7 +395,7 @@ export default function ProductListTable() {
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gradient-to-r from-gray-50 to-gray-100 sticky top-0 z-10 shadow-sm">
               <tr>
-                {columns.map((column) => (
+                {columns.map((column: any) => (
                   <th
                     key={column.key}
                     scope="col"
@@ -364,13 +455,13 @@ export default function ProductListTable() {
                     key={row.id}
                     className="hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0"
                   >
-                    {columns.map((column) => (
+                    {columns.map((column: any) => (
                       <td
                         key={column.key}
                         className={`
                           px-6 py-4 text-sm
                           ${column.align === 'center' ? 'text-center' : column.align === 'right' ? 'text-right' : 'text-left'}
-                          ${column.key === 'sku' || column.key === 'name' ? 'font-medium text-gray-900' : 'text-gray-700'}
+                          ${column.key === 'id' || column.key === 'title' ? 'font-medium text-gray-900' : 'text-gray-700'}
                         `}
                       >
                         {column.render ? column.render((row as any)[column.key], row) : (row as any)[column.key] ?? '-'}
@@ -465,6 +556,18 @@ export default function ProductListTable() {
           </div>
         </div>
       </div>
+
+      {/* Modal para Crear/Editar Producto */}
+      <ProductModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        onSuccess={() => {
+          loadProducts(); // Recargar lista al guardar
+          setShowModal(false);
+        }}
+        product={selectedProduct}
+        mode={modalMode}
+      />
     </div>
   );
 }

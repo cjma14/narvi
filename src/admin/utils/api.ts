@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 const TOKEN_KEY = 'narvi_token';
 
 // URL base de la API desde variables de entorno
-const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:6650/api';
+const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:6650';
 
 /**
  * Obtener el token de autenticación desde cookies
@@ -139,6 +139,47 @@ export async function apiDelete<T = any>(endpoint: string): Promise<T> {
 }
 
 /**
+ * POST request autenticado para FormData (archivos)
+ */
+export async function apiPostFormData<T = any>(endpoint: string, formData: FormData): Promise<T> {
+  const token = getAuthToken();
+  
+  // Headers sin Content-Type para FormData (el navegador lo setea automáticamente con boundary)
+  const headers: HeadersInit = {
+    'Accept': 'application/json',
+  };
+
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+  const url = endpoint.startsWith('http') ? endpoint : `${API_URL}${endpoint}`;
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers,
+    body: formData,
+  });
+
+  if (response.status === 401) {
+    toast.error('Sesión expirada. Por favor inicia sesión nuevamente.');
+    Cookies.remove(TOKEN_KEY);
+    Cookies.remove('narvi_user');
+    setTimeout(() => {
+      window.location.href = '/admin/login';
+    }, 1500);
+    throw new Error('Unauthorized');
+  }
+
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({ message: 'Error desconocido' }));
+    throw new Error(error.message || `HTTP ${response.status}`);
+  }
+
+  return response.json();
+}
+
+/**
  * Verificar si el usuario tiene un permiso específico
  */
 export function hasPermission(permission: string): boolean {
@@ -177,6 +218,7 @@ export default {
   post: apiPost,
   put: apiPut,
   delete: apiDelete,
+  postFormData: apiPostFormData,
   fetchWithAuth,
   hasPermission,
   hasRole,

@@ -1,0 +1,179 @@
+---
+// Dynamic product page from backend API (Spanish version)
+import MainLayout from "@/layouts/MainLayout.astro";
+import { SITE } from "@data/constants";
+import PrimaryCTA from "@/components/ui/buttons/PrimaryCTA.astro";
+
+const { slug } = Astro.params;
+
+// Fetch product from backend API
+const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:6650';
+let product = null;
+let error = null;
+
+try {
+  const response = await fetch(`${API_URL}/api/public/es/products/${slug}`);
+  if (!response.ok) {
+    throw new Error('Producto no encontrado');
+  }
+  const data = await response.json();
+  product = data.product;
+} catch (e) {
+  error = e.message;
+  return Astro.redirect('/404');
+}
+
+const pageTitle: string = `${product.title} | ${SITE.title}`;
+const serverBaseUrl = new URL(Astro.request.url);
+
+function getSpecification(name: string) {
+  const fragments = name.split(":");
+  
+  if(fragments.length == 1){
+    return fragments[0];
+  }
+
+  const [title, value] = fragments;
+  return `<span class="font-bold">${title}:</span> ${value}`;
+}
+---
+
+<MainLayout title={pageTitle}>
+  <section class="mx-auto max-w-screen-2xl px-4 text-pearl-100 sm:px-6 lg:px-8">
+    <div
+      class="grid grid-cols-1 gap-4 pt-[6rem] md:grid-cols-2 md:gap-10 md:pt-[10rem]"
+    >
+      <!-- Gallery -->
+      <div class="fade-left rounded border border-[#244840] p-4">
+        <div class="swiper swiperProduct">
+          <div class="swiper-wrapper">
+            {
+              product.images && product.images.map((image: any, index: number) => (
+                <div class="swiper-slide">
+                  <div class="swiper-zoom-container">
+                    <img
+                      src={`${API_URL}/${image.url || image.path}`}
+                      alt={`${product.title} - ${index + 1}`}
+                      draggable="false"
+                      class="cursor-zoom-in rounded aspect-[4/3] w-[40rem] object-contain"
+                    />
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="swiper thumbsSlider mt-4">
+          <div class="swiper-wrapper">
+            {
+              product.images && product.images.map((image: any, index: number) => (
+                <div
+                  class:list={[{ active: index == 0 }]}
+                  class="swiper-slide cursor-pointer rounded border border-2"
+                >
+                  <img
+                    src={`${API_URL}/${image.url || image.path}`}
+                    alt={`${product.title} - ${index + 1}`}
+                    draggable="false"
+                    class="aspect-[4/3] w-[40rem] object-contain"
+                  />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- info -->
+      <div class="fade-right flex flex-col justify-center gap-y-2">
+        <h1
+          class="text-xl font-bold tracking-tighter sm:text-5xl md:text-4xl md:text-6xl lg:text-7xl"
+        >
+          {product.title}
+        </h1>
+        <p class="text-md md:mt-5 md:text-xl">
+          {product.description}
+        </p>
+        <div class="mt-5">
+          {product.secondary_button_title && product.secondary_button_url && (
+            <PrimaryCTA
+              title={product.secondary_button_title}
+              url={`${product.secondary_button_url}?product=${serverBaseUrl}`}
+            />
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  {product.specifications && product.specifications.length > 0 && (
+    <div class="mx-auto max-w-screen-2xl px-4 text-pearl-100 sm:px-6 lg:px-8 mt-[2rem] md:mt-[4rem] mb-[4rem]">
+      <h3 class="text-center text-xl font-bold">Especificaciones</h3>
+      <div class="grid grid-cols-1 rounded-lg pb-5 pt-2 md:grid-cols-2">
+        {product.specifications.map((item: string) => (
+          <div class="md:text-md flex items-center gap-4 border-b border-[#33524A] px-6 py-[34px] text-sm font-medium text-white">
+            <div set:html={getSpecification(item)}></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+</MainLayout>
+
+<style>
+  .active {
+    border-color: #78b032 !important;
+  }
+
+  .thumbsSlider .swiper-slide:hover {
+    border-color: #78b032;
+  }
+</style>
+
+<script>
+  import Swiper from "swiper";
+  import "swiper/css";
+  import "swiper/css/pagination";
+  import "swiper/css/zoom";
+  import { Thumbs, Zoom } from "swiper/modules";
+
+  const thumbsSliderElement = document.querySelector(".thumbsSlider");
+
+  var thumbsSlider = new Swiper(".thumbsSlider", {
+    loop: false,
+    spaceBetween: 10,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+    on: {
+      click: function (swiper, event) {
+        const element = event.target as HTMLElement;
+
+        if (element instanceof HTMLImageElement) {
+          thumbsSliderElement
+            ?.querySelector(".active")
+            ?.classList.remove("active");
+          element.parentElement?.classList.add("active");
+        }
+      },
+    },
+  });
+
+  var swiper = new Swiper(".swiperProduct", {
+    modules: [Thumbs, Zoom],
+    zoom: {
+      toggle: true,
+    },
+    slidesPerView: 1,
+    spaceBetween: 20,
+    thumbs: {
+      swiper: thumbsSlider,
+    },
+    on: {
+      click: function (swiper, event) {
+        swiper.zoom.toggle();
+      },
+    },
+  });
+</script>

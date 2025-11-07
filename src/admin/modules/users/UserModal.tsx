@@ -1,23 +1,14 @@
 /**
  * UserModal Component
  * Modal para crear y editar usuarios
+ * Usa react-hook-form para validación
  */
 
 import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import api from '../../utils/api';
-
-interface User {
-  id?: number;
-  name: string;
-  email: string;
-  roles_list?: string[];
-}
-
-interface Role {
-  id: number;
-  name: string;
-}
+import type { User, Role, UserFormData } from '../../types/shared';
 
 interface UserModalProps {
   isOpen: boolean;
@@ -27,37 +18,63 @@ interface UserModalProps {
   mode: 'create' | 'edit';
 }
 
+// form shape comes from shared types: UserFormData
+
 export default function UserModal({ isOpen, onClose, onSuccess, user, mode }: UserModalProps) {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
-    roles: [] as string[],
-  });
   const [roles, setRoles] = useState<Role[]>([]);
   const [loading, setLoading] = useState(false);
   const [loadingRoles, setLoadingRoles] = useState(true);
 
-  // Cargar roles disponibles
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    setValue,
+    watch,
+    trigger,
+  } = useForm<UserFormData>({
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+      password_confirmation: '',
+      roles: [],
+    },
+  });
+
+  const password = watch('password');
+  const selectedRoles = watch('roles');
+
   useEffect(() => {
     if (isOpen) {
       loadRoles();
     }
   }, [isOpen]);
 
-  // Cargar datos del usuario al editar
   useEffect(() => {
-    if (mode === 'edit' && user) {
-      setFormData({
-        name: user.name,
-        email: user.email,
-        password: '',
-        password_confirmation: '',
-        roles: user.roles_list || [],
-      });
+    if (isOpen) {
+      if (mode === 'edit' && user) {
+        setTimeout(() => {
+          reset({
+            name: user.name || '',
+            email: user.email || '',
+            password: '',
+            password_confirmation: '',
+            roles: user.roles_list || [],
+          });
+        }, 0);
+      } else if (mode === 'create') {
+        reset({
+          name: '',
+          email: '',
+          password: '',
+          password_confirmation: '',
+          roles: [],
+        });
+      }
     } else {
-      setFormData({
+      reset({
         name: '',
         email: '',
         password: '',
@@ -65,12 +82,12 @@ export default function UserModal({ isOpen, onClose, onSuccess, user, mode }: Us
         roles: [],
       });
     }
-  }, [mode, user, isOpen]);
+  }, [mode, user, isOpen, reset]);
 
   const loadRoles = async () => {
     try {
       setLoadingRoles(true);
-      const response = await api.get('/roles');
+      const response = await api.get('/api/roles');
       setRoles(response.roles || []);
     } catch (error: any) {
       console.error('Error loading roles:', error);
@@ -83,58 +100,31 @@ export default function UserModal({ isOpen, onClose, onSuccess, user, mode }: Us
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Validaciones
-    if (!formData.name || !formData.email) {
-      toast.error('Por favor completa todos los campos requeridos', {
-        duration: 3000,
-        position: 'top-right',
-      });
-      return;
-    }
-
-    if (mode === 'create' && !formData.password) {
-      toast.error('La contraseña es requerida', {
-        duration: 3000,
-        position: 'top-right',
-      });
-      return;
-    }
-
-    if (formData.password && formData.password !== formData.password_confirmation) {
-      toast.error('Las contraseñas no coinciden', {
-        duration: 3000,
-        position: 'top-right',
-      });
-      return;
-    }
-
+  const onSubmit = async (data: UserFormData) => {
     try {
       setLoading(true);
 
       const payload: any = {
-        name: formData.name,
-        email: formData.email,
-        roles: formData.roles,
+        name: data.name,
+        email: data.email,
+        roles: data.roles,
       };
 
       // Solo incluir password si se proporcionó
-      if (formData.password) {
-        payload.password = formData.password;
-        payload.password_confirmation = formData.password_confirmation;
+      if (data.password) {
+        payload.password = data.password;
+        payload.password_confirmation = data.password_confirmation;
       }
 
       if (mode === 'create') {
-        await api.post('/users', payload);
+        await api.post('/api/users', payload);
         toast.success('Usuario creado exitosamente', {
           duration: 3000,
           position: 'top-right',
           icon: '✅',
         });
       } else {
-        await api.put(`/users/${user?.id}`, payload);
+        await api.put(`/api/users/${user?.id}`, payload);
         toast.success('Usuario actualizado exitosamente', {
           duration: 3000,
           position: 'top-right',
@@ -156,12 +146,11 @@ export default function UserModal({ isOpen, onClose, onSuccess, user, mode }: Us
   };
 
   const handleRoleToggle = (roleName: string) => {
-    setFormData(prev => ({
-      ...prev,
-      roles: prev.roles.includes(roleName)
-        ? prev.roles.filter(r => r !== roleName)
-        : [...prev.roles, roleName],
-    }));
+    const currentRoles = selectedRoles || [];
+    const newRoles = currentRoles.includes(roleName)
+      ? currentRoles.filter(r => r !== roleName)
+      : [...currentRoles, roleName];
+    setValue('roles', newRoles);
   };
 
   if (!isOpen) return null;
@@ -193,7 +182,7 @@ export default function UserModal({ isOpen, onClose, onSuccess, user, mode }: Us
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" autoComplete="off">
             {/* Nombre */}
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -202,12 +191,19 @@ export default function UserModal({ isOpen, onClose, onSuccess, user, mode }: Us
               <input
                 type="text"
                 id="name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                autoComplete="off"
+                {...register('name', {
+                  required: 'El nombre es requerido',
+                  minLength: {
+                    value: 3,
+                    message: 'El nombre debe tener al menos 3 caracteres'
+                  }
+                })}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-admin-secondary focus:border-admin-secondary transition-colors"
-                placeholder="Juan Pérez"
-                required
               />
+              {errors.name && (
+                <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
+              )}
             </div>
 
             {/* Email */}
@@ -218,12 +214,19 @@ export default function UserModal({ isOpen, onClose, onSuccess, user, mode }: Us
               <input
                 type="email"
                 id="email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                autoComplete="off"
+                {...register('email', {
+                  required: 'El email es requerido',
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: 'Email inválido'
+                  }
+                })}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-admin-secondary focus:border-admin-secondary transition-colors"
-                placeholder="juan@example.com"
-                required
               />
+              {errors.email && (
+                <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+              )}
             </div>
 
             {/* Password */}
@@ -235,17 +238,23 @@ export default function UserModal({ isOpen, onClose, onSuccess, user, mode }: Us
               <input
                 type="password"
                 id="password"
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                autoComplete="new-password"
+                {...register('password', {
+                  required: mode === 'create' ? 'La contraseña es requerida' : false,
+                  minLength: {
+                    value: 8,
+                    message: 'La contraseña debe tener al menos 8 caracteres'
+                  }
+                })}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-admin-secondary focus:border-admin-secondary transition-colors"
-                placeholder="••••••••"
-                required={mode === 'create'}
-                minLength={8}
               />
+              {errors.password && (
+                <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
+              )}
             </div>
 
             {/* Confirmar Password */}
-            {formData.password && (
+            {password && (
               <div>
                 <label htmlFor="password_confirmation" className="block text-sm font-medium text-gray-700 mb-1">
                   Confirmar Contraseña <span className="text-red-500">*</span>
@@ -253,12 +262,15 @@ export default function UserModal({ isOpen, onClose, onSuccess, user, mode }: Us
                 <input
                   type="password"
                   id="password_confirmation"
-                  value={formData.password_confirmation}
-                  onChange={(e) => setFormData({ ...formData, password_confirmation: e.target.value })}
+                  autoComplete="new-password"
+                  {...register('password_confirmation', {
+                    validate: value => !password || value === password || 'Las contraseñas no coinciden'
+                  })}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-admin-secondary focus:border-admin-secondary transition-colors"
-                  placeholder="••••••••"
-                  required
                 />
+                {errors.password_confirmation && (
+                  <p className="mt-1 text-sm text-red-600">{errors.password_confirmation.message}</p>
+                )}
               </div>
             )}
 
@@ -275,7 +287,7 @@ export default function UserModal({ isOpen, onClose, onSuccess, user, mode }: Us
                     <label key={role.id} className="flex items-center space-x-2 cursor-pointer">
                       <input
                         type="checkbox"
-                        checked={formData.roles.includes(role.name)}
+                        checked={selectedRoles.includes(role.name)}
                         onChange={() => handleRoleToggle(role.name)}
                         className="w-4 h-4 text-admin-secondary border-gray-300 rounded focus:ring-admin-secondary"
                       />

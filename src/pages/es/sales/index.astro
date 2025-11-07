@@ -1,20 +1,23 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import MainSection from "@/components/ui/blocks/MainSection.astro";
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
-
 import { SITE } from "@data/constants";
-import CardSales from "@/components/ui/cards/CardSales.astro";
+import PrimaryCTA from "@/components/ui/buttons/PrimaryCTA.astro";
+import SecondaryCTA from "@/components/ui/buttons/SecondaryCTA.astro";
 
-const products: CollectionEntry<"products">[] = (
-  await getCollection("products", ({ id }) => {
-    return id.startsWith("es/");
-  })
-).sort(
-  (a: CollectionEntry<"products">, b: CollectionEntry<"products">) =>
-    a.data.id - b.data.id
-);
+// Fetch products from backend API
+const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:6650';
+let products = [];
+
+try {
+  const response = await fetch(`${API_URL}/api/public/es/products`);
+  if (response.ok) {
+    const data = await response.json();
+    products = data.data || []; // La API retorna paginación con 'data'
+  }
+} catch (error) {
+  console.error('Error fetching products:', error);
+}
 
 const pageTitle: string = `Equipos para venta | ${SITE.title}`;
 ---
@@ -102,10 +105,44 @@ const pageTitle: string = `Equipos para venta | ${SITE.title}`;
           class="list mb-10 mt-10 grid grid-cols-1 gap-5 md:grid-cols-1 px-20"
         >
           {
-            products.map((product, index) => {
+            products.map((product: any) => {
+              const firstImage = product.images?.[0];
               return (
-                <div id={product.slug} class="fade-up-down-group">
-                  <CardSales product={product} productLocale="es"/>
+                <div id={product.url_alias} class="fade-up-down-group" data-title={product.title}>
+                  <div class="rounded-xl border border-[#244840] shadow-sm sm:flex md:min-h-[17rem]">
+                    <div class="relative w-full shrink-0 overflow-hidden rounded-t-xl sm:max-w-60 sm:rounded-s-xl md:rounded-se-none">
+                      {firstImage && (
+                        <img
+                          src={`${API_URL}/${firstImage.url || firstImage.path}`}
+                          alt={product.title}
+                          draggable="false"
+                          class="absolute start-0 top-0 h-full w-full object-cover"
+                        />
+                      )}
+                    </div>
+                    <div class="flex flex-wrap items-center p-4 sm:p-7 text-pearl-100">
+                      <div class="flex flex-col gap-2">
+                        <h3 class="font-bold text-xl">
+                          {product.title}
+                        </h3>
+                        <p class="text-left line-clamp-3">
+                          {product.description}
+                        </p>
+                        <div class="mt-5">
+                          <PrimaryCTA 
+                            title={product.primary_button_title || "Ver detalles"} 
+                            url={`/es/sales/${product.url_alias}`} 
+                          />
+                          {product.secondary_button_title && product.secondary_button_url && (
+                            <SecondaryCTA 
+                              title={product.secondary_button_title} 
+                              url={`${product.secondary_button_url}?product=${Astro.url.origin}/es/sales/${product.url_alias}`} 
+                            />
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               );
             })
@@ -123,63 +160,31 @@ const pageTitle: string = `Equipos para venta | ${SITE.title}`;
   const search = document.querySelector("#search") as HTMLInputElement;
   const noData = document.querySelector("#noData");
   const list = document.querySelector("#list") as HTMLElement;
-  let SEARCH_DATA;
+
   //functions
-
-  // Función para filtrar los datos
-
-  function filter(search, data) {
-    return data.filter((item) =>
-      item.data.title.toLowerCase().includes(search.toLowerCase()),
-    );
-  }
-
-  function showCards(filterData) {
-    
-    noData.classList.add("hidden")
-
-    if(filterData.length == 0) {
-      noData.classList.remove("hidden")
-    }
+  function filter(searchTerm: string) {
+    noData.classList.add("hidden");
+    let visibleCount = 0;
 
     for (const child of list.children) {
-      const slugCard = child.id
+      const title = child.getAttribute("data-title")?.toLowerCase() || "";
       
-
-      if (!filterData.find((product) => product.slug == slugCard)) {
-        child.classList.add("hidden");
-      } else {
+      if (title.includes(searchTerm.toLowerCase())) {
         child.classList.remove("hidden");
+        visibleCount++;
+      } else {
+        child.classList.add("hidden");
       }
     }
-  }
 
-  async function fetchSearchData() {
-    try {
-      const res = await fetch("../api/sales_equipment.json");
-
-      if (!res.ok) {
-        throw new Error("Something went wrong... Please try again");
-      }
-
-      const data = await res.json();
-      SEARCH_DATA = data
-     
-    } catch (e) {
-      console.error(e);
+    if (visibleCount === 0) {
+      noData.classList.remove("hidden");
     }
   }
 
   //Event listeners
-  window.addEventListener("DOMContentLoaded", () => {
-    // const urlParams = DOMPurify.sanitize(new URLSearchParams(window.location.search).get("q"));
-    // search.value = urlParams
-    fetchSearchData()
-  })
-
   search.addEventListener("input", () => {
     const searchTerm = DOMPurify.sanitize(search.value);
-    const filterData = filter(searchTerm, SEARCH_DATA);
-    showCards(filterData);
+    filter(searchTerm);
   });
 </script>
