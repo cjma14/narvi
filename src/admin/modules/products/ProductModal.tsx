@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import type { Product } from '../../types/shared';
 import { useProductForm } from './hooks/useProductForm';
-import { useProductImages } from './hooks/useProductImages';
+import { useProductImages } from './hooks/useProductImages.tsx';
 import LanguageTabs from './components/LanguageTabs';
 import ProductFormFields from './components/ProductFormFields';
 import ProductImageManager from './components/ProductImageManager';
