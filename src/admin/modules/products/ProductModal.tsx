@@ -22,7 +22,7 @@ interface ProductModalProps {
 }
 
 export default function ProductModal({ isOpen, onClose, onSuccess, product, mode }: ProductModalProps) {
-  const [currentLang, setCurrentLang] = useState<'es' | 'en'>('es');
+  const [currentLang, setCurrentLang] = useState<'es' | 'en'>('en');
 
   const { form, loading, onSubmit, toSlug } = useProductForm(mode, product);
   const {
@@ -49,11 +49,15 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
   const specifications = watch('specifications');
   const specifications_en = watch('specifications_en');
 
-  // Cargar datos del producto al editar
   useEffect(() => {
     if (isOpen) {
       if (mode === 'edit' && product) {
-        setProductImages(product.images || []);
+
+        const images = (product.images || []).map(img => ({
+          ...img,
+          url: img.url || `storage/${img.path}` 
+        }));
+        setProductImages(images);
         setTimeout(() => {
           reset({
             title: product.title || '',
@@ -67,7 +71,9 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
             title_en: product.translations?.en?.title || '',
             url_alias_en: product.translations?.en?.url_alias || '',
             description_en: product.translations?.en?.description || '',
+            primary_button_url_en: product.translations?.en?.primary_button_url || '',
             primary_button_title_en: product.translations?.en?.primary_button_title || '',
+            secondary_button_url_en: product.translations?.en?.secondary_button_url || '',
             secondary_button_title_en: product.translations?.en?.secondary_button_title || '',
             specifications_en: product.translations?.en?.specifications && product.translations?.en?.specifications.length > 0 ? product.translations?.en?.specifications : [''],
           });
@@ -87,17 +93,32 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
           title_en: '',
           url_alias_en: '',
           description_en: '',
+          primary_button_url_en: '',
           primary_button_title_en: '',
+          secondary_button_url_en: '',
           secondary_button_title_en: '',
           specifications_en: [''],
         });
       }
-      setCurrentLang('es');
+      setCurrentLang('en');
     }
   }, [mode, product, isOpen, reset, setProductImages, setPendingFiles]);
 
   const handleFormSubmit = (data: any) => {
     onSubmit(data, pendingFiles, onSuccess, onClose, setPendingFiles, setUploadingImages, setProductImages);
+  };
+
+  const handleFormError = (errors: any) => {
+    // Mostrar toast si hay errores de validación
+    console.log('Form errors:', errors);
+    const errorFields = Object.keys(errors);
+    if (errorFields.length > 0) {
+      const firstError = errors[errorFields[0]];
+      // Usar setTimeout para asegurar que el toast se muestre
+      setTimeout(() => {
+        toast.error(firstError?.message || 'Por favor revisa los campos marcados en rojo');
+      }, 0);
+    }
   };
 
   const addSpecification = (lang: 'es' | 'en') => {
@@ -146,7 +167,7 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
 
           <LanguageTabs currentLang={currentLang} onChangeLang={setCurrentLang} />
 
-          <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4">
+          <form onSubmit={handleSubmit(handleFormSubmit, handleFormError)} className="space-y-4">
             {/* Campos en Español */}
             <div style={{ display: currentLang === 'es' ? 'block' : 'none' }}>
               <ProductFormFields
@@ -154,6 +175,7 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
                 register={register}
                 errors={errors}
                 setValue={setValue}
+                watch={watch}
                 toSlug={toSlug}
                 specifications={specifications}
                 onUpdateSpec={(idx, val) => updateSpecification('es', idx, val)}
@@ -169,6 +191,7 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
                 register={register}
                 errors={errors}
                 setValue={setValue}
+                watch={watch}
                 toSlug={toSlug}
                 specifications={specifications_en}
                 onUpdateSpec={(idx, val) => updateSpecification('en', idx, val)}

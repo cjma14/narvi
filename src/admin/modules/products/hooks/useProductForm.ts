@@ -35,7 +35,9 @@ export function useProductForm(mode: 'create' | 'edit', product: Product | null)
       title_en: '',
       url_alias_en: '',
       description_en: '',
+      primary_button_url_en: '',
       primary_button_title_en: '',
+      secondary_button_url_en: '',
       secondary_button_title_en: '',
       specifications_en: [''],
     },
@@ -59,16 +61,18 @@ export function useProductForm(mode: 'create' | 'edit', product: Product | null)
         description: data.description,
         primary_button_url: data.primary_button_url,
         primary_button_title: data.primary_button_title,
-        secondary_button_url: data.secondary_button_url,
-        secondary_button_title: data.secondary_button_title,
+        secondary_button_url: data.secondary_button_url || null,
+        secondary_button_title: data.secondary_button_title || null,
         specifications: data.specifications.filter(s => s.trim() !== ''),
         translations: {
           en: {
-            title: data.title_en || data.title,
-            url_alias: toSlug(data.url_alias_en || data.url_alias),
+            title: data.title_en,
+            url_alias: toSlug(data.url_alias_en),
             description: data.description_en || data.description,
+            primary_button_url: data.primary_button_url_en,
             primary_button_title: data.primary_button_title_en || data.primary_button_title,
-            secondary_button_title: data.secondary_button_title_en || data.secondary_button_title,
+            secondary_button_url: data.secondary_button_url_en || null,
+            secondary_button_title: data.secondary_button_title_en || data.secondary_button_title || null,
             specifications: data.specifications_en.filter(s => s.trim() !== ''),
           },
         },
@@ -98,30 +102,26 @@ export function useProductForm(mode: 'create' | 'edit', product: Product | null)
                 })
                 .join('\n');
               
-              toast.error(
-                `Error al subir imágenes:\n\n${imageErrors}`,
-                { 
-                  duration: 5000, 
-                  position: 'top-right',
-                  style: { whiteSpace: 'pre-line', maxWidth: '500px' }
-                }
-              );
+              toast.error(`Error al subir imágenes:\n${imageErrors}`);
             } else {
-              toast.error(err.message || 'Error al subir imágenes después de crear', { duration: 4000, position: 'top-right' });
+              toast.error(err.message || 'Error al subir imágenes después de crear');
             }
           } finally {
             setUploadingImages(false);
           }
         }
 
-        toast.success('Producto creado exitosamente', { duration: 3000, position: 'top-right', icon: '✅' });
       } else {
         await api.put(`/api/products/${product?.id}`, payload);
-        toast.success('Producto actualizado exitosamente', { duration: 3000, position: 'top-right', icon: '✅' });
       }
 
+      const successMessage = mode === 'create' ? 'Producto creado exitosamente' : 'Producto actualizado exitosamente';
+      
+      // Primero actualizamos la lista
       onSuccess();
-      onClose();
+      
+      // Mostramos el toast inmediatamente (el Toaster del padre ya está montado)
+      toast.success(successMessage);
     } catch (error: any) {
       console.error('Error saving product:', error);
       
@@ -148,21 +148,11 @@ export function useProductForm(mode: 'create' | 'edit', product: Product | null)
           })
           .join('\n');
         
-        toast.error(
-          `Error de validación:\n\n${validationErrors}`,
-          { 
-            duration: 6000, 
-            position: 'top-right',
-            style: {
-              whiteSpace: 'pre-line',
-              maxWidth: '500px',
-            }
-          }
-        );
+        toast.error(`Error de validación:\n${validationErrors}`);
       } else {
         // Error genérico
         const errorMessage = error.message || 'Error al guardar producto';
-        toast.error(errorMessage, { duration: 4000, position: 'top-right' });
+        toast.error(errorMessage);
       }
     } finally {
       setLoading(false);

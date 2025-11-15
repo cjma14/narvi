@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import RequirePermission from '../../guards/RequirePermission';
 import { PERMISSIONS } from '../../guards/auth-guard';
 import api from '../../utils/api';
@@ -64,10 +64,7 @@ export default function ProductListTable() {
       setFilteredProducts(productsData);
     } catch (error: any) {
       console.error('Error loading products:', error);
-      toast.error(error.message || 'Error al cargar productos', {
-        duration: 4000,
-        position: 'top-right',
-      });
+      toast.error(error.message || 'Error al cargar productos');
       setProducts([]);
       setFilteredProducts([]);
     } finally {
@@ -147,19 +144,12 @@ export default function ProductListTable() {
               try {
                 await api.delete(`/api/products/${product.id}`);
                 
-                toast.success('Producto eliminado exitosamente', {
-                  duration: 3000,
-                  position: 'top-right',
-                  icon: '✅',
-                });
+                toast.success('Producto eliminado exitosamente');
                 
                 loadProducts();
               } catch (error: any) {
                 console.error('Error deleting product:', error);
-                toast.error(error.message || 'Error al eliminar producto', {
-                  duration: 4000,
-                  position: 'top-right',
-                });
+                toast.error(error.message || 'Error al eliminar producto');
               }
             }}
             className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors"
@@ -324,10 +314,49 @@ export default function ProductListTable() {
   ];
 
   return (
-    <div className="space-y-4">
-      {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm">
-        <a href="/admin/products" className="text-gray-500 hover:text-admin-secondary transition-colors">Inicio</a>
+    <>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        gutter={12}
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: '#ffffff',
+            color: '#1f2937',
+            padding: '12px 16px',
+            borderRadius: '8px',
+            fontSize: '14px',
+            fontWeight: '500',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+            border: '1px solid #e5e7eb',
+            maxWidth: '420px',
+          },
+          success: {
+            iconTheme: {
+              primary: '#10b981',
+              secondary: '#ffffff',
+            },
+            style: {
+              borderLeft: '4px solid #10b981',
+            },
+          },
+          error: {
+            iconTheme: {
+              primary: '#ef4444',
+              secondary: '#ffffff',
+            },
+            style: {
+              borderLeft: '4px solid #ef4444',
+            },
+          },
+        }}
+      />
+      
+      <div className="space-y-4">
+        {/* Breadcrumb */}
+        <nav className="flex items-center gap-2 text-sm">
+          <a href="/admin/products" className="text-gray-500 hover:text-admin-secondary transition-colors">Inicio</a>
         <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
@@ -568,6 +597,7 @@ export default function ProductListTable() {
         product={selectedProduct}
         mode={modalMode}
       />
-    </div>
+      </div>
+    </>
   );
 }

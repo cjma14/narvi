@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import Table, { type TableColumn } from '../../shared/Table';
 import RequirePermission from '../../guards/RequirePermission';
 import { PERMISSIONS } from '../../guards/auth-guard';
@@ -57,10 +57,7 @@ export default function UserListTable() {
       }
     } catch (error: any) {
       console.error('Error loading users:', error);
-      toast.error(error.message || 'Error al cargar usuarios', {
-        duration: 4000,
-        position: 'top-right',
-      });
+      toast.error(error.message || 'Error al cargar usuarios');
       setUsers([]);
       setFilteredUsers([]);
     } finally {
@@ -140,19 +137,12 @@ export default function UserListTable() {
               try {
                 await api.delete(`/api/users/${user.id}`);
                 
-                toast.success('Usuario eliminado exitosamente', {
-                  duration: 3000,
-                  position: 'top-right',
-                  icon: '✅',
-                });
+                toast.success('Usuario eliminado exitosamente');
                 
                 loadUsers();
               } catch (error: any) {
                 console.error('Error deleting user:', error);
-                toast.error(error.message || 'Error al eliminar usuario', {
-                  duration: 4000,
-                  position: 'top-right',
-                });
+                toast.error(error.message || 'Error al eliminar usuario');
               }
             }}
             className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors"
@@ -301,10 +291,49 @@ export default function UserListTable() {
   ];
 
   return (
-    <div className="space-y-4">
-      {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm">
-        <a href="/admin/users" className="text-gray-500 hover:text-admin-secondary transition-colors">Inicio</a>
+    <>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        gutter={12}
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: '#ffffff',
+            color: '#1f2937',
+            padding: '12px 16px',
+            borderRadius: '8px',
+            fontSize: '14px',
+            fontWeight: '500',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+            border: '1px solid #e5e7eb',
+            maxWidth: '420px',
+          },
+          success: {
+            iconTheme: {
+              primary: '#10b981',
+              secondary: '#ffffff',
+            },
+            style: {
+              borderLeft: '4px solid #10b981',
+            },
+          },
+          error: {
+            iconTheme: {
+              primary: '#ef4444',
+              secondary: '#ffffff',
+            },
+            style: {
+              borderLeft: '4px solid #ef4444',
+            },
+          },
+        }}
+      />
+      
+      <div className="space-y-4">
+        {/* Breadcrumb */}
+        <nav className="flex items-center gap-2 text-sm">
+          <a href="/admin/users" className="text-gray-500 hover:text-admin-secondary transition-colors">Inicio</a>
         <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
@@ -545,6 +574,7 @@ export default function UserListTable() {
         user={selectedUser}
         mode={modalMode}
       />
-    </div>
+      </div>
+    </>
   );
 }

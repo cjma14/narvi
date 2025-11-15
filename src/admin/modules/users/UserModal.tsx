@@ -118,30 +118,34 @@ export default function UserModal({ isOpen, onClose, onSuccess, user, mode }: Us
 
       if (mode === 'create') {
         await api.post('/api/users', payload);
-        toast.success('Usuario creado exitosamente', {
-          duration: 3000,
-          position: 'top-right',
-          icon: '✅',
-        });
       } else {
         await api.put(`/api/users/${user?.id}`, payload);
-        toast.success('Usuario actualizado exitosamente', {
-          duration: 3000,
-          position: 'top-right',
-          icon: '✅',
-        });
       }
 
+      const successMessage = mode === 'create' ? 'Usuario creado exitosamente' : 'Usuario actualizado exitosamente';
+      
+      // Primero actualizamos la lista
       onSuccess();
-      onClose();
+      
+      // Mostramos el toast inmediatamente (el Toaster del padre ya está montado)
+      toast.success(successMessage);
     } catch (error: any) {
       console.error('Error saving user:', error);
-      toast.error(error.message || 'Error al guardar usuario', {
-        duration: 4000,
-        position: 'top-right',
-      });
+      toast.error(error.message || 'Error al guardar usuario');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleFormError = (errors: any) => {
+    console.log('Form errors:', errors);
+    const errorFields = Object.keys(errors);
+    if (errorFields.length > 0) {
+      const firstError = errors[errorFields[0]];
+      // Usar setTimeout para asegurar que el toast se muestre
+      setTimeout(() => {
+        toast.error(firstError?.message || 'Por favor revisa los campos marcados en rojo');
+      }, 0);
     }
   };
 
@@ -182,7 +186,7 @@ export default function UserModal({ isOpen, onClose, onSuccess, user, mode }: Us
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" autoComplete="off">
+          <form onSubmit={handleSubmit(onSubmit, handleFormError)} className="space-y-4" autoComplete="off">
             {/* Nombre */}
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">

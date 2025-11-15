@@ -52,7 +52,7 @@ function getSpecification(name: string) {
                 <div class="swiper-slide">
                   <div class="swiper-zoom-container">
                     <img
-                      src={`${API_URL}/${image.url || image.path}`}
+                      src={`${API_URL}/storage/${image.path}`}
                       alt={`${product.title} - ${index + 1}`}
                       draggable="false"
                       class="cursor-zoom-in rounded aspect-[4/3] w-[40rem] object-contain"
@@ -73,7 +73,7 @@ function getSpecification(name: string) {
                   class="swiper-slide cursor-pointer rounded border border-2"
                 >
                   <img
-                    src={`${API_URL}/${image.url || image.path}`}
+                    src={`${API_URL}/storage/${image.path}`}
                     alt={`${product.title} - ${index + 1}`}
                     draggable="false"
                     class="aspect-[4/3] w-[40rem] object-contain"

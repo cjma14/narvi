@@ -99,55 +99,66 @@ const pageTitle: string = `Equipment for sale | ${SITE.title}`;
       </form>
 
       <div class="max-w-screen-3xl mx-auto px-5 md:px-20">
-        <p id="noData" class="text-center text-2xl mt-20 hidden">No results were found for the search...</p>
-        <div
-          id="list"
-          class="list mb-10 mt-10 grid grid-cols-1 gap-5 md:grid-cols-1 px-20"
-        >
-          {
-            products.map((product: any) => {
-              const firstImage = product.images?.[0];
-              return (
-                <div id={product.url_alias} class="fade-up-down-group" data-title={product.title}>
-                  <div class="rounded-xl border border-[#244840] shadow-sm sm:flex md:min-h-[17rem]">
-                    <div class="relative w-full shrink-0 overflow-hidden rounded-t-xl sm:max-w-60 sm:rounded-s-xl md:rounded-se-none">
-                      {firstImage && (
-                        <img
-                          src={`${API_URL}/${firstImage.url || firstImage.path}`}
-                          alt={product.title}
-                          draggable="false"
-                          class="absolute start-0 top-0 h-full w-full object-cover"
-                        />
-                      )}
-                    </div>
-                    <div class="flex flex-wrap items-center p-4 sm:p-7 text-pearl-100">
-                      <div class="flex flex-col gap-2">
-                        <h3 class="font-bold text-xl">
-                          {product.title}
-                        </h3>
-                        <p class="text-left line-clamp-3">
-                          {product.description}
-                        </p>
-                        <div class="mt-5">
-                          <PrimaryCTA 
-                            title={product.primary_button_title || "View details"} 
-                            url={`/sales/${product.url_alias}`} 
-                          />
-                          {product.secondary_button_title && product.secondary_button_url && (
-                            <SecondaryCTA 
-                              title={product.secondary_button_title} 
-                              url={`${product.secondary_button_url}?product=${Astro.url.origin}/sales/${product.url_alias}`} 
+        {products.length === 0 ? (
+          <div class="text-center py-20">
+            <svg class="mx-auto h-16 w-16 text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+            </svg>
+            <h3 class="text-2xl font-semibold text-pearl-100 mb-2">No equipment available</h3>
+            <p class="text-gray-400">There are currently no products for sale. Check back soon!</p>
+          </div>
+        ) : (
+          <>
+            <p id="noData" class="text-center text-2xl mt-20 hidden">No results were found for the search...</p>
+            <div
+              id="list"
+              class="list mb-10 mt-10 grid grid-cols-1 gap-5 md:grid-cols-1 px-20"
+            >
+              {
+                products.map((product: any) => {
+                  const firstImage = product.images?.[0];
+                  const imageUrl = firstImage ? `${API_URL}/storage/${firstImage.path}` : null;
+                  return (
+                    <div id={product.url_alias} class="fade-up-down-group" data-title={product.title}>
+                      <div class="rounded-xl border border-[#244840] shadow-sm sm:flex md:min-h-[17rem]">
+                        <div class="relative w-full shrink-0 overflow-hidden rounded-t-xl sm:max-w-60 sm:rounded-s-xl md:rounded-se-none">
+                          {imageUrl && (
+                            <img
+                              src={imageUrl}
+                              alt={product.title}
+                              draggable="false"
+                              class="absolute start-0 top-0 h-full w-full object-cover"
                             />
                           )}
                         </div>
+                        <div class="flex flex-wrap items-center p-4 sm:p-7 text-pearl-100">
+                          <div class="flex flex-col gap-2">
+                            <h3 class="font-bold text-xl">
+                              {product.title}
+                            </h3>
+                            <p class="text-left line-clamp-3">
+                              {product.description}
+                            </p>
+                            <div class="mt-5">
+                              <PrimaryCTA 
+                                title="View product" 
+                                url={`/sales/${product.url_alias}`} 
+                              />
+                              <SecondaryCTA 
+                                title="Contact sales" 
+                                url={`/contact?product=${Astro.url.origin}/sales/${product.url_alias}`} 
+                              />
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              );
-            })
-          }
-        </div>
+                  );
+                })
+              }
+            </div>
+          </>
+        )}
       </div>
     </section>
   </div>
