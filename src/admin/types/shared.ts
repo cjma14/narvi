@@ -15,8 +15,21 @@ export interface Product {
   secondary_button_url?: string;
   secondary_button_title?: string;
   specifications?: string[];
+  stock?: boolean;
   images?: ProductImage[];
   translations?: {
+    en?: {
+      title?: string;
+      url_alias?: string;
+      description?: string;
+      primary_button_url?: string;
+      primary_button_title?: string;
+      secondary_button_url?: string;
+      secondary_button_title?: string;
+      specifications?: string[];
+    };
+  };
+  translations_data?: {
     en?: {
       title?: string;
       url_alias?: string;
@@ -39,12 +52,11 @@ export interface ProductFormData {
   secondary_button_url: string;
   secondary_button_title: string;
   specifications: string[];
+  stock?: boolean;
   title_en: string;
   url_alias_en: string;
   description_en: string;
-  primary_button_url_en: string;
   primary_button_title_en: string;
-  secondary_button_url_en: string;
   secondary_button_title_en: string;
   specifications_en: string[];
 }

@@ -13,10 +13,10 @@ const toSlug = (text: string): string => {
   return text
     .toLowerCase()
     .trim()
-    .replace(/[^\w\s\-\/]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-+|-+$/g, '');
+    .replace(/[^\w\s\-\/]/g, '') 
+    .replace(/\s+/g, '-')        
+    .replace(/-{2,}/g, '-')      
+    .replace(/^-+|-+$/g, '');    
 };
 
 export function useProductForm(mode: 'create' | 'edit', product: Product | null) {
@@ -31,13 +31,12 @@ export function useProductForm(mode: 'create' | 'edit', product: Product | null)
       primary_button_title: '',
       secondary_button_url: '',
       secondary_button_title: '',
+      stock: true,
       specifications: [''],
       title_en: '',
       url_alias_en: '',
       description_en: '',
-      primary_button_url_en: '',
       primary_button_title_en: '',
-      secondary_button_url_en: '',
       secondary_button_title_en: '',
       specifications_en: [''],
     },
@@ -55,28 +54,46 @@ export function useProductForm(mode: 'create' | 'edit', product: Product | null)
     try {
       setLoading(true);
 
-      const payload = {
+      // Construir traducciones en inglés
+      const enTranslations: any = {
+        title: data.title_en,
+        url_alias: toSlug(data.url_alias_en),
+        specifications: data.specifications_en.filter(s => s.trim() !== ''),
+      };
+
+      // Agregar campos opcionales de traducciones solo si tienen valor
+      if (data.description_en && data.description_en.trim()) {
+        enTranslations.description = data.description_en;
+      }
+      if (data.primary_button_title_en && data.primary_button_title_en.trim()) {
+        enTranslations.primary_button_title = data.primary_button_title_en;
+      }
+      if (data.secondary_button_title_en && data.secondary_button_title_en.trim()) {
+        enTranslations.secondary_button_title = data.secondary_button_title_en;
+      }
+
+      const payload: any = {
         title: data.title,
         url_alias: toSlug(data.url_alias),
-        description: data.description,
         primary_button_url: data.primary_button_url,
         primary_button_title: data.primary_button_title,
-        secondary_button_url: data.secondary_button_url || null,
-        secondary_button_title: data.secondary_button_title || null,
+        stock: typeof data.stock !== 'undefined' ? data.stock : true,
         specifications: data.specifications.filter(s => s.trim() !== ''),
         translations: {
-          en: {
-            title: data.title_en,
-            url_alias: toSlug(data.url_alias_en),
-            description: data.description_en || data.description,
-            primary_button_url: data.primary_button_url_en,
-            primary_button_title: data.primary_button_title_en || data.primary_button_title,
-            secondary_button_url: data.secondary_button_url_en || null,
-            secondary_button_title: data.secondary_button_title_en || data.secondary_button_title || null,
-            specifications: data.specifications_en.filter(s => s.trim() !== ''),
-          },
+          en: enTranslations,
         },
       };
+
+      // Agregar campos opcionales del español solo si tienen valor
+      if (data.description && data.description.trim()) {
+        payload.description = data.description;
+      }
+      if (data.secondary_button_url && data.secondary_button_url.trim()) {
+        payload.secondary_button_url = data.secondary_button_url;
+      }
+      if (data.secondary_button_title && data.secondary_button_title.trim()) {
+        payload.secondary_button_title = data.secondary_button_title;
+      }
 
       if (mode === 'create') {
         const created = await api.post('/api/products', payload);

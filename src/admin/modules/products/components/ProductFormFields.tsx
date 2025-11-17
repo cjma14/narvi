@@ -71,12 +71,15 @@ export default function ProductFormFields({
             required: isSpanish ? 'El URL alias es requerido' : 'URL alias is required',
             minLength: { value: 3, message: isSpanish ? 'Mínimo 3 caracteres' : 'Minimum 3 characters' },
             pattern: {
-              value: /^[a-z0-9\-\/]+$/,
-              message: isSpanish ? 'Solo minúsculas, números y guiones (sin espacios ni https)' : 'Only lowercase, numbers and hyphens (no spaces or https)'
+              value: /^\/[a-z0-9\-\/]+$|^[a-z0-9\-\/]+$/,
+              message: isSpanish ? 'Solo minúsculas, números, guiones y "/" (sin espacios ni https)' : 'Only lowercase, numbers, hyphens and "/" (no spaces or https)'
             },
             onChange: (e) => {
-              const slugified = toSlug(e.target.value);
-              setValue(`url_alias${prefix}`, slugified);
+              const value = e.target.value
+                .toLowerCase()
+                .replace(/[^a-z0-9\-\/\s]/g, '') 
+                .replace(/\s+/g, '-');            
+              setValue(`url_alias${prefix}`, value);
             }
           })}
           className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-admin-secondary focus:border-admin-secondary transition-colors ${
@@ -107,6 +110,7 @@ export default function ProductFormFields({
 
       {/* Botones */}
       <div className="space-y-4">
+        {/* Títulos de botones (traducibles por idioma) */}
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label htmlFor={`primary_button_title${prefix}`} className="block text-sm font-medium text-gray-700 mb-1">
@@ -121,31 +125,6 @@ export default function ProductFormFields({
             />
           </div>
           <div>
-            <label htmlFor={`primary_button_url${prefix}`} className="block text-sm font-medium text-gray-700 mb-1">
-              {isSpanish ? 'URL Botón Principal' : 'Primary Button URL'}
-            </label>
-            <input
-              type="text"
-              id={`primary_button_url${prefix}`}
-              placeholder={isSpanish ? 'Ej: /es/ruta-contacto' : 'Ex: /route-contact'}
-              {...register(`primary_button_url${prefix}` as any, {
-                pattern: {
-                  value: /^\/[a-z0-9\-\/]*$/,
-                  message: isSpanish ? 'Debe comenzar con / y usar solo minúsculas, números y guiones' : 'Must start with / and use only lowercase, numbers and hyphens'
-                }
-              })}
-              className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-admin-secondary focus:border-admin-secondary transition-colors ${
-                errors[`primary_button_url${prefix}` as keyof FieldErrors<ProductFormData>] ? 'border-red-500' : 'border-gray-300'
-              }`}
-            />
-            {errors[`primary_button_url${prefix}` as keyof FieldErrors<ProductFormData>] && (
-              <p className="mt-1 text-sm text-red-500">{errors[`primary_button_url${prefix}` as keyof FieldErrors<ProductFormData>]?.message}</p>
-            )}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4">
-          <div>
             <label htmlFor={`secondary_button_title${prefix}`} className="block text-sm font-medium text-gray-700 mb-1">
               {isSpanish ? 'Título Botón Secundario (Opcional)' : 'Secondary Button Title (Optional)'}
             </label>
@@ -157,30 +136,58 @@ export default function ProductFormFields({
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-admin-secondary focus:border-admin-secondary transition-colors"
             />
           </div>
+        </div>
+        
+        {/* URLs de botones (globales, compartidas entre idiomas) */}
+        <div className="grid grid-cols-2 gap-4">
           <div>
-            <label htmlFor={`secondary_button_url${prefix}`} className="block text-sm font-medium text-gray-700 mb-1">
-              {isSpanish ? 'URL Botón Secundario (Opcional)' : 'Secondary Button URL (Optional)'}
+            <label htmlFor="primary_button_url" className="block text-sm font-medium text-gray-700 mb-1">
+              {isSpanish ? 'URL Botón Principal' : 'Primary Button URL'}
             </label>
             <input
               type="text"
-              id={`secondary_button_url${prefix}`}
-              placeholder={isSpanish ? 'Ej: /es/contacto' : 'Ex: /contact'}
-              {...register(`secondary_button_url${prefix}` as any, {
+              id="primary_button_url"
+              placeholder={isSpanish ? 'Ej: /contacto' : 'Ex: /contact'}
+              {...register('primary_button_url' as any, {
                 pattern: {
                   value: /^\/[a-z0-9\-\/]*$/,
                   message: isSpanish ? 'Debe comenzar con / y usar solo minúsculas, números y guiones' : 'Must start with / and use only lowercase, numbers and hyphens'
                 }
               })}
               className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-admin-secondary focus:border-admin-secondary transition-colors ${
-                errors[`secondary_button_url${prefix}` as keyof FieldErrors<ProductFormData>] ? 'border-red-500' : 'border-gray-300'
+                errors['primary_button_url' as keyof FieldErrors<ProductFormData>] ? 'border-red-500' : 'border-gray-300'
               }`}
             />
-            {errors[`secondary_button_url${prefix}` as keyof FieldErrors<ProductFormData>] && (
-              <p className="mt-1 text-sm text-red-500">{errors[`secondary_button_url${prefix}` as keyof FieldErrors<ProductFormData>]?.message}</p>
+            {errors['primary_button_url' as keyof FieldErrors<ProductFormData>] && (
+              <p className="mt-1 text-sm text-red-500">{errors['primary_button_url' as keyof FieldErrors<ProductFormData>]?.message}</p>
+            )}
+          </div>
+          <div>
+            <label htmlFor="secondary_button_url" className="block text-sm font-medium text-gray-700 mb-1">
+              {isSpanish ? 'URL Botón Secundario (Opcional)' : 'Secondary Button URL (Optional)'}
+            </label>
+            <input
+              type="text"
+              id="secondary_button_url"
+              placeholder={isSpanish ? 'Ej: /ventas' : 'Ex: /sales'}
+              {...register('secondary_button_url' as any, {
+                pattern: {
+                  value: /^\/[a-z0-9\-\/]*$/,
+                  message: isSpanish ? 'Debe comenzar con / y usar solo minúsculas, números y guiones' : 'Must start with / and use only lowercase, numbers and hyphens'
+                }
+              })}
+              className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-admin-secondary focus:border-admin-secondary transition-colors ${
+                errors['secondary_button_url' as keyof FieldErrors<ProductFormData>] ? 'border-red-500' : 'border-gray-300'
+              }`}
+            />
+            {errors['secondary_button_url' as keyof FieldErrors<ProductFormData>] && (
+              <p className="mt-1 text-sm text-red-500">{errors['secondary_button_url' as keyof FieldErrors<ProductFormData>]?.message}</p>
             )}
           </div>
         </div>
       </div>
+
+      {/* stock input is handled once in the modal (global), not in per-language fields */}
 
       {/* Especificaciones */}
       <div>

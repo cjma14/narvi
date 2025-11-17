@@ -12,6 +12,7 @@ import { useProductImages } from './hooks/useProductImages.tsx';
 import LanguageTabs from './components/LanguageTabs';
 import ProductFormFields from './components/ProductFormFields';
 import ProductImageManager from './components/ProductImageManager';
+import api from '../../utils/api';
 
 interface ProductModalProps {
   isOpen: boolean;
@@ -23,8 +24,10 @@ interface ProductModalProps {
 
 export default function ProductModal({ isOpen, onClose, onSuccess, product, mode }: ProductModalProps) {
   const [currentLang, setCurrentLang] = useState<'es' | 'en'>('en');
+  const [loadingProduct, setLoadingProduct] = useState(false);
+  const [fullProduct, setFullProduct] = useState<Product | null>(null);
 
-  const { form, loading, onSubmit, toSlug } = useProductForm(mode, product);
+  const { form, loading, onSubmit, toSlug } = useProductForm(mode, fullProduct || product);
   const {
     register,
     handleSubmit,
@@ -49,33 +52,69 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
   const specifications = watch('specifications');
   const specifications_en = watch('specifications_en');
 
+  // Cargar producto completo cuando se abre en modo edición
+  useEffect(() => {
+    const loadProduct = async () => {
+      if (isOpen && mode === 'edit' && product?.id) {
+        try {
+          setLoadingProduct(true);
+          const response = await api.get(`/api/products/${product.id}`);
+          // La API retorna { product: {...} }
+          const productData = response.product || response.data?.product || response;
+          setFullProduct(productData);
+        } catch (error: any) {
+          console.error('Error loading product:', error);
+          toast.error('Error al cargar el producto');
+          onClose();
+        } finally {
+          setLoadingProduct(false);
+        }
+      } else if (isOpen && mode === 'create') {
+        setFullProduct(null);
+      }
+    };
+
+    loadProduct();
+  }, [isOpen, mode, product?.id, onClose]);
+
   useEffect(() => {
     if (isOpen) {
-      if (mode === 'edit' && product) {
+      const productData = fullProduct || product;
+      
+      if (mode === 'edit' && productData) {
 
-        const images = (product.images || []).map(img => ({
+        const images = (productData.images || []).map(img => ({
           ...img,
           url: img.url || `storage/${img.path}` 
         }));
         setProductImages(images);
+        const toRelativeUrl = (url: string | undefined | null): string => {
+          if (!url) return '';
+          try {
+            const urlObj = new URL(url);
+            return urlObj.pathname;
+          } catch {
+            return url;
+          }
+        };
+
         setTimeout(() => {
           reset({
-            title: product.title || '',
-            url_alias: product.url_alias || '',
-            description: product.description || '',
-            primary_button_url: product.primary_button_url || '',
-            primary_button_title: product.primary_button_title || '',
-            secondary_button_url: product.secondary_button_url || '',
-            secondary_button_title: product.secondary_button_title || '',
-            specifications: product.specifications && product.specifications.length > 0 ? product.specifications : [''],
-            title_en: product.translations?.en?.title || '',
-            url_alias_en: product.translations?.en?.url_alias || '',
-            description_en: product.translations?.en?.description || '',
-            primary_button_url_en: product.translations?.en?.primary_button_url || '',
-            primary_button_title_en: product.translations?.en?.primary_button_title || '',
-            secondary_button_url_en: product.translations?.en?.secondary_button_url || '',
-            secondary_button_title_en: product.translations?.en?.secondary_button_title || '',
-            specifications_en: product.translations?.en?.specifications && product.translations?.en?.specifications.length > 0 ? product.translations?.en?.specifications : [''],
+            title: productData.title || '',
+            url_alias: productData.url_alias || '',
+            description: productData.description || '',
+            primary_button_url: toRelativeUrl(productData.primary_button_url),
+            primary_button_title: productData.primary_button_title || '',
+            secondary_button_url: toRelativeUrl(productData.secondary_button_url),
+            secondary_button_title: productData.secondary_button_title || '',
+            stock: typeof productData.stock !== 'undefined' ? productData.stock : true,
+            specifications: productData.specifications && productData.specifications.length > 0 ? productData.specifications : [''],
+            title_en: productData.translations_data?.en?.title || productData.translations?.en?.title || '',
+            url_alias_en: productData.translations_data?.en?.url_alias || productData.translations?.en?.url_alias || '',
+            description_en: productData.translations_data?.en?.description || productData.translations?.en?.description || '',
+            primary_button_title_en: productData.translations_data?.en?.primary_button_title || productData.translations?.en?.primary_button_title || '',
+            secondary_button_title_en: productData.translations_data?.en?.secondary_button_title || productData.translations?.en?.secondary_button_title || '',
+            specifications_en: (productData.translations_data?.en?.specifications || productData.translations?.en?.specifications || []).length > 0 ? (productData.translations_data?.en?.specifications || productData.translations?.en?.specifications) : [''],
           });
         }, 0);
       } else if (mode === 'create') {
@@ -89,23 +128,32 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
           primary_button_title: '',
           secondary_button_url: '',
           secondary_button_title: '',
+          stock: true,
           specifications: [''],
           title_en: '',
           url_alias_en: '',
           description_en: '',
-          primary_button_url_en: '',
           primary_button_title_en: '',
-          secondary_button_url_en: '',
           secondary_button_title_en: '',
           specifications_en: [''],
         });
       }
       setCurrentLang('en');
     }
-  }, [mode, product, isOpen, reset, setProductImages, setPendingFiles]);
+  }, [mode, fullProduct, product, isOpen, reset, setProductImages, setPendingFiles]);
 
   const handleFormSubmit = (data: any) => {
-    onSubmit(data, pendingFiles, onSuccess, onClose, setPendingFiles, setUploadingImages, setProductImages);
+    // Obtener la URL base actual del sitio
+    const siteUrl = typeof window !== 'undefined' ? window.location.origin : 'https://narvi-ec.com';
+    
+    // Convertir URLs relativas a absolutas antes de enviar (URLs son globales, no por idioma)
+    const dataWithAbsoluteUrls = {
+      ...data,
+      primary_button_url: data.primary_button_url ? `${siteUrl}${data.primary_button_url}` : '',
+      secondary_button_url: data.secondary_button_url ? `${siteUrl}${data.secondary_button_url}` : '',
+    };
+    
+    onSubmit(dataWithAbsoluteUrls, pendingFiles, onSuccess, onClose, setPendingFiles, setUploadingImages, setProductImages);
   };
 
   const handleFormError = (errors: any) => {
@@ -145,11 +193,23 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
-      <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" onClick={onClose} />
+    <div className="fixed inset-0 z-50 overflow-y-auto animate-fadeIn">
+      <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300" onClick={onClose} />
 
       <div className="flex items-center justify-center min-h-screen p-4">
-        <div className="relative bg-white rounded-lg shadow-xl max-w-4xl w-full p-6 z-50 max-h-[90vh] overflow-y-auto">
+        <div className="relative bg-white rounded-lg shadow-xl max-w-4xl w-full p-6 z-50 max-h-[90vh] overflow-y-auto animate-slideUp">
+          {loadingProduct ? (
+            <div className="flex items-center justify-center py-12">
+              <div className="flex flex-col items-center gap-3">
+                <svg className="animate-spin h-8 w-8 text-admin-secondary" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <p className="text-sm text-gray-600">Cargando producto...</p>
+              </div>
+            </div>
+          ) : (
+            <>
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
             <div>
@@ -163,6 +223,20 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
+          </div>
+
+          {/* Stock (single global checkbox) */}
+          <div className="mb-4">
+            <label htmlFor="stock" className="inline-flex items-center gap-2">
+              <input
+                id="stock"
+                type="checkbox"
+                {...register('stock' as any)}
+                className="h-4 w-4 text-admin-secondary border-gray-300 rounded"
+              />
+              <span className="text-sm text-gray-700">{currentLang === 'es' ? 'Disponible (no agotado)' : 'Available (not sold out)'}</span>
+            </label>
+            <p className="mt-1 text-xs text-gray-500">{currentLang === 'es' ? 'Desmarca para indicar que el producto está AGOTADO' : 'Uncheck to mark the product as SOLD OUT'}</p>
           </div>
 
           <LanguageTabs currentLang={currentLang} onChangeLang={setCurrentLang} />
@@ -239,6 +313,8 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
               </button>
             </div>
           </form>
+          </>
+          )}
         </div>
       </div>
     </div>

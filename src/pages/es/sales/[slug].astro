@@ -87,15 +87,24 @@ function getSpecification(name: string) {
 
       <!-- info -->
       <div class="fade-right flex flex-col justify-center gap-y-2">
-        <h1
-          class="text-xl font-bold tracking-tighter sm:text-5xl md:text-4xl md:text-6xl lg:text-7xl"
-        >
-          {product.title}
-        </h1>
+        <div class="flex items-center gap-4">
+          <h1 class="text-xl font-bold tracking-tighter sm:text-5xl md:text-4xl md:text-6xl lg:text-7xl">
+            {product.title}
+          </h1>
+          {product.stock === false && (
+            <span class="bg-red-600 text-white text-sm font-semibold px-3 py-1 rounded">AGOTADO</span>
+          )}
+        </div>
         <p class="text-md md:mt-5 md:text-xl">
           {product.description}
         </p>
-        <div class="mt-5">
+        <div class="mt-5 flex gap-3">
+          {product.primary_button_title && product.primary_button_url && (
+            <PrimaryCTA
+              title={product.primary_button_title}
+              url={product.primary_button_url}
+            />
+          )}
           {product.secondary_button_title && product.secondary_button_url && (
             <PrimaryCTA
               title={product.secondary_button_title}

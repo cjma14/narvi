@@ -18,10 +18,12 @@ class Product extends Model
         'secondary_button_url',
         'secondary_button_title',
         'specifications',
+        'stock',
     ];
 
     protected $casts = [
         'specifications' => 'array',
+        'stock' => 'boolean',
     ];
 
     /**

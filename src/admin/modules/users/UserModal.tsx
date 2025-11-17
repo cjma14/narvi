@@ -91,10 +91,7 @@ export default function UserModal({ isOpen, onClose, onSuccess, user, mode }: Us
       setRoles(response.roles || []);
     } catch (error: any) {
       console.error('Error loading roles:', error);
-      toast.error('Error al cargar roles', {
-        duration: 3000,
-        position: 'top-right',
-      });
+      toast.error('Error al cargar roles');
     } finally {
       setLoadingRoles(false);
     }

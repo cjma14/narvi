@@ -27,29 +27,19 @@ export default function SignIn() {
 
     try {
       if (!email || !password) {
-        toast.error('Por favor ingresa tu correo y contraseña', {
-          duration: 3000,
-          position: 'top-center',
-        });
+        toast.error('Por favor ingresa tu correo y contraseña');
         setLoading(false);
         return;
       }
 
       const result = await auth.login(email, password);
       if (!result.ok) {
-        toast.error(result.message || 'Credenciales inválidas', {
-          duration: 4000,
-          position: 'top-center',
-        });
+        toast.error(result.message || 'Credenciales inválidas');
         return;
       }
 
       // Success - show message and redirect after a short delay
-      toast.success(result.message || 'Inicio de sesión exitoso', {
-        duration: 2000,
-        position: 'top-center',
-        icon: '✅',
-      });
+      toast.success(result.message || 'Inicio de sesión exitoso');
       
       setTimeout(() => {
         const params = new URLSearchParams(window.location.search);
@@ -57,10 +47,7 @@ export default function SignIn() {
         window.location.href = next;
       }, 1500);
     } catch (err) {
-      toast.error('Ocurrió un error al iniciar sesión. Intenta nuevamente.', {
-        duration: 4000,
-        position: 'top-center',
-      });
+      toast.error('Ocurrió un error al iniciar sesión. Intenta nuevamente.');
       console.error('Sign in error:', err);
     } finally {
       setLoading(false);
@@ -77,35 +64,25 @@ export default function SignIn() {
 
   return (
     <>
-      <Toaster
-        position="top-center"
-        reverseOrder={false}
+      <Toaster 
+        position="top-right" 
         toastOptions={{
-          // Estilos personalizados para los toast
+          duration: 3000,
           style: {
-            padding: '16px',
-            borderRadius: '10px',
+            background: '#ffffff',
+            color: '#1f2937',
+            borderRadius: '8px',
             fontSize: '14px',
             fontWeight: '500',
           },
           success: {
             style: {
-              background: '#10B981',
-              color: '#fff',
-            },
-            iconTheme: {
-              primary: '#fff',
-              secondary: '#10B981',
+              borderLeft: '4px solid #10b981',
             },
           },
           error: {
             style: {
-              background: '#EF4444',
-              color: '#fff',
-            },
-            iconTheme: {
-              primary: '#fff',
-              secondary: '#EF4444',
+              borderLeft: '4px solid #ef4444',
             },
           },
         }}

@@ -75,9 +75,10 @@ class ProductController extends Controller
      *             @OA\Property(property="primary_button_title", type="string", maxLength=255, example="Comprar ahora"),
      *             @OA\Property(property="secondary_button_url", type="string", format="url", example="https://example.com/info"),
      *             @OA\Property(property="secondary_button_title", type="string", maxLength=255, example="Más información"),
-     *             @OA\Property(property="specifications", type="array", @OA\Items(type="string", example="Alta calidad")),
-     *             @OA\Property(property="translations", type="object",
-     *                 description="Traducciones opcionales por código de idioma",
+ *             @OA\Property(property="specifications", type="array", @OA\Items(type="string", example="Alta calidad")),
+ *             @OA\Property(property="stock", type="boolean", example=true, description="Disponibilidad del producto (true = disponible, false = SOLD OUT)"),
+ *             @OA\Property(property="translations", type="object",
+ *                 description="Traducciones opcionales por código de idioma",
      *                 @OA\Property(property="en", type="object",
      *                     @OA\Property(property="title", type="string", example="Premium Product"),
      *                     @OA\Property(property="url_alias", type="string", example="premium-product"),
@@ -111,6 +112,7 @@ class ProductController extends Controller
             'primary_button_title' => 'nullable|string|max:255',
             'secondary_button_url' => 'nullable|string|url',
             'secondary_button_title' => 'nullable|string|max:255',
+            'stock' => 'nullable|boolean',
             'specifications' => 'nullable|array',
             'specifications.*' => 'string',
             
@@ -135,6 +137,7 @@ class ProductController extends Controller
             'secondary_button_url' => $validated['secondary_button_url'] ?? null,
             'secondary_button_title' => $validated['secondary_button_title'] ?? null,
             'specifications' => $validated['specifications'] ?? null,
+            'stock' => isset($validated['stock']) ? (bool)$validated['stock'] : true,
         ]);
 
         // Guardar traducciones si se proporcionaron
@@ -207,9 +210,10 @@ class ProductController extends Controller
      *             @OA\Property(property="primary_button_title", type="string", maxLength=255, example="Comprar ahora"),
      *             @OA\Property(property="secondary_button_url", type="string", format="url", example="https://example.com/info"),
      *             @OA\Property(property="secondary_button_title", type="string", maxLength=255, example="Más información"),
-     *             @OA\Property(property="specifications", type="array", @OA\Items(type="string", example="Característica actualizada")),
-     *             @OA\Property(property="translations", type="object",
-     *                 description="Traducciones opcionales por código de idioma",
+ *             @OA\Property(property="specifications", type="array", @OA\Items(type="string", example="Característica actualizada")),
+ *             @OA\Property(property="stock", type="boolean", example=true, description="Disponibilidad del producto (true = disponible, false = SOLD OUT)"),
+ *             @OA\Property(property="translations", type="object",
+ *                 description="Traducciones opcionales por código de idioma",
      *                 @OA\Property(property="en", type="object",
      *                     @OA\Property(property="title", type="string", example="Updated Premium Product"),
      *                     @OA\Property(property="url_alias", type="string", example="updated-premium-product"),
@@ -252,6 +256,7 @@ class ProductController extends Controller
             'primary_button_title' => 'nullable|string|max:255',
             'secondary_button_url' => 'nullable|string|url',
             'secondary_button_title' => 'nullable|string|max:255',
+            'stock' => 'nullable|boolean',
             'specifications' => 'nullable|array',
             'specifications.*' => 'string',
             
@@ -276,6 +281,7 @@ class ProductController extends Controller
             'secondary_button_url' => $validated['secondary_button_url'] ?? null,
             'secondary_button_title' => $validated['secondary_button_title'] ?? null,
             'specifications' => $validated['specifications'] ?? null,
+            'stock' => isset($validated['stock']) ? (bool)$validated['stock'] : $product->stock,
         ]);
 
         // Actualizar traducciones si se proporcionaron

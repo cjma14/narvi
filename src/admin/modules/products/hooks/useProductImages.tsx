@@ -27,7 +27,7 @@ export function useProductImages(mode: 'create' | 'edit', productId?: number) {
 
         const response = await api.postFormData(`/api/products/${productId}/images`, formData);
         setProductImages([...productImages, ...response.images]);
-        toast.success('Imágenes subidas exitosamente', { duration: 3000, position: 'top-right', icon: '✅' });
+        toast.success('Imágenes subidas exitosamente');
         event.target.value = '';
       } catch (error: any) {
         console.error('Error uploading images:', error);
@@ -52,8 +52,6 @@ export function useProductImages(mode: 'create' | 'edit', productId?: number) {
           toast.error(
             `Error al subir imágenes:\n\n${imageErrors}`,
             { 
-              duration: 5000, 
-              position: 'top-right',
               style: {
                 whiteSpace: 'pre-line',
                 maxWidth: '500px',
@@ -76,7 +74,7 @@ export function useProductImages(mode: 'create' | 'edit', productId?: number) {
             }
           }
           
-          toast.error(errorMessage, { duration: 4000, position: 'top-right' });
+          toast.error(errorMessage);
         }
       } finally {
         setUploadingImages(false);
@@ -119,11 +117,7 @@ export function useProductImages(mode: 'create' | 'edit', productId?: number) {
               try {
                 await api.delete(`/api/products/${productId}/images/${imageId}`);
                 setProductImages(productImages.filter(img => img.id !== imageId));
-                toast.success('Imagen eliminada exitosamente', { 
-                  duration: 3000, 
-                  position: 'top-right', 
-                  icon: '✅' 
-                });
+                toast.success('Imagen eliminada exitosamente');
               } catch (error: any) {
                 console.error('Error deleting image:', error);
                 
@@ -140,7 +134,7 @@ export function useProductImages(mode: 'create' | 'edit', productId?: number) {
                   }
                 }
                 
-                toast.error(errorMessage, { duration: 4000, position: 'top-right' });
+                toast.error(errorMessage);
               }
             }}
             className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors"
