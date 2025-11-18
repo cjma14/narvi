@@ -154,17 +154,37 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
         stock: { es: 'Stock', en: 'Stock' },
       };
 
+      const uiLangOfFirst = errorFields[0].endsWith('_en') ? 'en' : 'es';
+
       const summaries = errorFields.map((key) => {
         const isEn = key.endsWith('_en');
         const base = isEn ? key.slice(0, -3) : key;
-        const lang = isEn ? 'en' : 'es';
-        const label = labelMap[base]?.[lang] || base;
-        const message = errors[key]?.message || (lang === 'es' ? 'Requerido' : 'Required');
-        return `${label} (${lang === 'es' ? 'Español' : 'English'}): ${message}`;
+        const labelEs = labelMap[base]?.es || base;
+        const labelEn = labelMap[base]?.en || base;
+
+        // If the key ends with _en -> missing English translation
+        if (isEn) {
+          return uiLangOfFirst === 'es'
+            ? `Se debe completar la traducción al inglés de: ${labelEn}`
+            : `Please complete the English translation for: ${labelEn}`;
+        }
+
+        // If it's a translatable base field (like title, description, etc.),
+        // indicate Spanish translation is missing (original content)
+        if (labelMap[base]) {
+          return uiLangOfFirst === 'es'
+            ? `Se debe completar la traducción al español de: ${labelEs}`
+            : `Please complete the Spanish translation for: ${labelEn}`;
+        }
+
+        // Fallback for global fields (URLs, stock, etc.)
+        return uiLangOfFirst === 'es'
+          ? `Por favor completa: ${labelEs}`
+          : `Please complete: ${labelEn}`;
       });
 
       setErrorSummary(summaries);
-      setCurrentLang(errorFields[0].endsWith('_en') ? 'en' : 'es');
+      setCurrentLang(uiLangOfFirst);
       setTimeout(() => {
         toast.error(summaries[0]);
       }, 0);
