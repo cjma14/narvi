@@ -26,6 +26,7 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
   const [currentLang, setCurrentLang] = useState<'es' | 'en'>('en');
   const [loadingProduct, setLoadingProduct] = useState(false);
   const [fullProduct, setFullProduct] = useState<Product | null>(null);
+  const [errorSummary, setErrorSummary] = useState<string[]>([]);
 
   const { form, loading, onSubmit, toSlug } = useProductForm(mode, fullProduct || product);
   const {
@@ -59,7 +60,6 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
         try {
           setLoadingProduct(true);
           const response = await api.get(`/api/products/${product.id}`);
-          // La API retorna { product: {...} }
           const productData = response.product || response.data?.product || response;
           setFullProduct(productData);
         } catch (error: any) {
@@ -130,22 +130,43 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
         });
       }
       setCurrentLang('en');
+      setErrorSummary([]);
     }
   }, [mode, fullProduct, product, isOpen, reset, setProductImages, setPendingFiles]);
 
   const handleFormSubmit = (data: any) => {
+    setErrorSummary([]);
     onSubmit(data, pendingFiles, onSuccess, onClose, setPendingFiles, setUploadingImages, setProductImages);
   };
 
   const handleFormError = (errors: any) => {
-    // Mostrar toast si hay errores de validación
-    console.log('Form errors:', errors);
     const errorFields = Object.keys(errors);
     if (errorFields.length > 0) {
-      const firstError = errors[errorFields[0]];
-      // Usar setTimeout para asegurar que el toast se muestre
+      const labelMap: Record<string, { es: string; en: string }> = {
+        title: { es: 'Título', en: 'Title' },
+        url_alias: { es: 'URL Alias', en: 'URL Alias' },
+        description: { es: 'Descripción', en: 'Description' },
+        primary_button_title: { es: 'Título Botón Principal', en: 'Primary Button Title' },
+        secondary_button_title: { es: 'Título Botón Secundario', en: 'Secondary Button Title' },
+        primary_button_url: { es: 'URL Botón Principal', en: 'Primary Button URL' },
+        secondary_button_url: { es: 'URL Botón Secundario', en: 'Secondary Button URL' },
+        specifications: { es: 'Especificaciones', en: 'Specifications' },
+        stock: { es: 'Stock', en: 'Stock' },
+      };
+
+      const summaries = errorFields.map((key) => {
+        const isEn = key.endsWith('_en');
+        const base = isEn ? key.slice(0, -3) : key;
+        const lang = isEn ? 'en' : 'es';
+        const label = labelMap[base]?.[lang] || base;
+        const message = errors[key]?.message || (lang === 'es' ? 'Requerido' : 'Required');
+        return `${label} (${lang === 'es' ? 'Español' : 'English'}): ${message}`;
+      });
+
+      setErrorSummary(summaries);
+      setCurrentLang(errorFields[0].endsWith('_en') ? 'en' : 'es');
       setTimeout(() => {
-        toast.error(firstError?.message || 'Por favor revisa los campos marcados en rojo');
+        toast.error(summaries[0]);
       }, 0);
     }
   };
@@ -223,6 +244,16 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
           <LanguageTabs currentLang={currentLang} onChangeLang={setCurrentLang} />
 
           <form onSubmit={handleSubmit(handleFormSubmit, handleFormError)} className="space-y-4">
+            {errorSummary.length > 0 && (
+              <div className="mb-4 p-3 border border-red-200 bg-red-50 rounded text-sm text-red-800">
+                <strong>{currentLang === 'es' ? 'Por favor corrige los siguientes campos:' : 'Please correct the following fields:'}</strong>
+                <ul className="mt-1 list-disc list-inside">
+                  {errorSummary.map((s, i) => (
+                    <li key={i}>{s}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
             {/* Campos en Español */}
             <div style={{ display: currentLang === 'es' ? 'block' : 'none' }}>
               <ProductFormFields
