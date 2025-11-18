@@ -88,24 +88,15 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
           url: img.url || `storage/${img.path}` 
         }));
         setProductImages(images);
-        const toRelativeUrl = (url: string | undefined | null): string => {
-          if (!url) return '';
-          try {
-            const urlObj = new URL(url);
-            return urlObj.pathname;
-          } catch {
-            return url;
-          }
-        };
 
         setTimeout(() => {
           reset({
             title: productData.title || '',
             url_alias: productData.url_alias || '',
             description: productData.description || '',
-            primary_button_url: toRelativeUrl(productData.primary_button_url),
+            primary_button_url: productData.primary_button_url || '',
             primary_button_title: productData.primary_button_title || '',
-            secondary_button_url: toRelativeUrl(productData.secondary_button_url),
+            secondary_button_url: productData.secondary_button_url || '',
             secondary_button_title: productData.secondary_button_title || '',
             stock: typeof productData.stock !== 'undefined' ? productData.stock : true,
             specifications: productData.specifications && productData.specifications.length > 0 ? productData.specifications : [''],
@@ -143,17 +134,7 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product, mode
   }, [mode, fullProduct, product, isOpen, reset, setProductImages, setPendingFiles]);
 
   const handleFormSubmit = (data: any) => {
-    // Obtener la URL base actual del sitio
-    const siteUrl = typeof window !== 'undefined' ? window.location.origin : 'https://narvi-ec.com';
-    
-    // Convertir URLs relativas a absolutas antes de enviar (URLs son globales, no por idioma)
-    const dataWithAbsoluteUrls = {
-      ...data,
-      primary_button_url: data.primary_button_url ? `${siteUrl}${data.primary_button_url}` : '',
-      secondary_button_url: data.secondary_button_url ? `${siteUrl}${data.secondary_button_url}` : '',
-    };
-    
-    onSubmit(dataWithAbsoluteUrls, pendingFiles, onSuccess, onClose, setPendingFiles, setUploadingImages, setProductImages);
+    onSubmit(data, pendingFiles, onSuccess, onClose, setPendingFiles, setUploadingImages, setProductImages);
   };
 
   const handleFormError = (errors: any) => {

@@ -58,39 +58,20 @@ export default function ProductFormFields({
         )}
       </div>
 
-      {/* URL Alias */}
+      {/* URL Alias (Auto-generado desde el título) */}
       <div>
-        <label htmlFor={`url_alias${prefix}`} className="block text-sm font-medium text-gray-700 mb-1">
-          URL Alias <span className="text-red-500">*</span>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          URL Alias <span className="text-gray-400 text-xs font-normal">(generado automáticamente)</span>
         </label>
-        <input
-          type="text"
-          id={`url_alias${prefix}`}
-          placeholder={isSpanish ? 'Ej: jereh-trailer-2012' : 'Ex: jereh-trailer-2012'}
-          {...register(`url_alias${prefix}` as any, {
-            required: isSpanish ? 'El URL alias es requerido' : 'URL alias is required',
-            minLength: { value: 3, message: isSpanish ? 'Mínimo 3 caracteres' : 'Minimum 3 characters' },
-            pattern: {
-              value: /^\/[a-z0-9\-\/]+$|^[a-z0-9\-\/]+$/,
-              message: isSpanish ? 'Solo minúsculas, números, guiones y "/" (sin espacios ni https)' : 'Only lowercase, numbers, hyphens and "/" (no spaces or https)'
-            },
-            onChange: (e) => {
-              const value = e.target.value
-                .toLowerCase()
-                .replace(/[^a-z0-9\-\/\s]/g, '') 
-                .replace(/\s+/g, '-');            
-              setValue(`url_alias${prefix}`, value);
-            }
-          })}
-          className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-admin-secondary focus:border-admin-secondary transition-colors ${
-            errors[`url_alias${prefix}` as keyof FieldErrors<ProductFormData>] ? 'border-red-500' : 'border-gray-300'
-          }`}
-        />
-        {errors[`url_alias${prefix}` as keyof FieldErrors<ProductFormData>] && (
-          <p className="mt-1 text-sm text-red-500">{errors[`url_alias${prefix}` as keyof FieldErrors<ProductFormData>]?.message}</p>
-        )}
+        <div className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg text-gray-600 break-all">
+          <span className="font-mono">
+            {typeof window !== 'undefined' ? window.location.origin : ''}{isSpanish ? '/es' : ''}/sales/<span className="font-semibold text-gray-800">{toSlug(watch(`title${prefix}`) || '') || '...'}</span>
+          </span>
+        </div>
         <p className="mt-1 text-xs text-gray-500">
-          {isSpanish ? 'Ruta final: /es/sales/' : 'Final path: /sales/'}<span className="font-mono">{watch(`url_alias${prefix}`) || '...'}</span>
+          {isSpanish 
+            ? 'Se genera automáticamente a partir del título (sin acentos ni caracteres especiales)' 
+            : 'Auto-generated from title (without accents or special characters)'}
         </p>
       </div>
 
@@ -145,13 +126,13 @@ export default function ProductFormFields({
               {isSpanish ? 'URL Botón Principal' : 'Primary Button URL'}
             </label>
             <input
-              type="text"
+              type="url"
               id="primary_button_url"
-              placeholder={isSpanish ? 'Ej: /contacto' : 'Ex: /contact'}
+              placeholder={isSpanish ? 'Ej: https://narvi.us/sales/view-contact' : 'Ex: https://narvi.us/sales/view-contact'}
               {...register('primary_button_url' as any, {
                 pattern: {
-                  value: /^\/[a-z0-9\-\/]*$/,
-                  message: isSpanish ? 'Debe comenzar con / y usar solo minúsculas, números y guiones' : 'Must start with / and use only lowercase, numbers and hyphens'
+                  value: /^https?:\/\/.+/,
+                  message: isSpanish ? 'Debe ser una URL completa (https://...)' : 'Must be a complete URL (https://...)'
                 }
               })}
               className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-admin-secondary focus:border-admin-secondary transition-colors ${
@@ -167,13 +148,13 @@ export default function ProductFormFields({
               {isSpanish ? 'URL Botón Secundario (Opcional)' : 'Secondary Button URL (Optional)'}
             </label>
             <input
-              type="text"
+              type="url"
               id="secondary_button_url"
-              placeholder={isSpanish ? 'Ej: /ventas' : 'Ex: /sales'}
+              placeholder={isSpanish ? 'Ej: https://narvi.us/contact' : 'Ex: https://narvi.us/contact'}
               {...register('secondary_button_url' as any, {
                 pattern: {
-                  value: /^\/[a-z0-9\-\/]*$/,
-                  message: isSpanish ? 'Debe comenzar con / y usar solo minúsculas, números y guiones' : 'Must start with / and use only lowercase, numbers and hyphens'
+                  value: /^https?:\/\/.+/,
+                  message: isSpanish ? 'Debe ser una URL completa (https://...)' : 'Must be a complete URL (https://...)'
                 }
               })}
               className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-admin-secondary focus:border-admin-secondary transition-colors ${

@@ -13,10 +13,12 @@ const toSlug = (text: string): string => {
   return text
     .toLowerCase()
     .trim()
-    .replace(/[^\w\s\-\/]/g, '') 
-    .replace(/\s+/g, '-')        
-    .replace(/-{2,}/g, '-')      
-    .replace(/^-+|-+$/g, '');    
+    .normalize('NFD')              // Normalizar para separar caracteres base de acentos
+    .replace(/[\u0300-\u036f]/g, '') // Remover acentos
+    .replace(/[^a-z0-9\s-]/g, '')  // Solo alfanuméricos, espacios y guiones
+    .replace(/\s+/g, '-')          // Espacios a guiones
+    .replace(/-{2,}/g, '-')        // Múltiples guiones a uno
+    .replace(/^-+|-+$/g, '');      // Remover guiones al inicio/final
 };
 
 export function useProductForm(mode: 'create' | 'edit', product: Product | null) {
@@ -25,7 +27,6 @@ export function useProductForm(mode: 'create' | 'edit', product: Product | null)
   const form = useForm<ProductFormData>({
     defaultValues: {
       title: '',
-      url_alias: '',
       description: '',
       primary_button_url: '',
       primary_button_title: '',
@@ -34,7 +35,6 @@ export function useProductForm(mode: 'create' | 'edit', product: Product | null)
       stock: true,
       specifications: [''],
       title_en: '',
-      url_alias_en: '',
       description_en: '',
       primary_button_title_en: '',
       secondary_button_title_en: '',
@@ -57,7 +57,7 @@ export function useProductForm(mode: 'create' | 'edit', product: Product | null)
       // Construir traducciones en inglés
       const enTranslations: any = {
         title: data.title_en,
-        url_alias: toSlug(data.url_alias_en),
+        url_alias: toSlug(data.title_en), // Generado automáticamente desde el título en inglés
         specifications: data.specifications_en.filter(s => s.trim() !== ''),
       };
 
@@ -74,7 +74,7 @@ export function useProductForm(mode: 'create' | 'edit', product: Product | null)
 
       const payload: any = {
         title: data.title,
-        url_alias: toSlug(data.url_alias),
+        url_alias: toSlug(data.title), // Generado automáticamente desde el título
         primary_button_url: data.primary_button_url,
         primary_button_title: data.primary_button_title,
         stock: typeof data.stock !== 'undefined' ? data.stock : true,
