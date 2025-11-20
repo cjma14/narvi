@@ -98,7 +98,7 @@ const infoTitle2 = Astro.currentLocale === "es" ? "Empresas sastifechas" : "Sati
       <div class="flex flex-col gap-5 fade-up">
 
         <div>
-          <video id="player" playsinline controls poster="/img/oil-and-gas-sector.jpg" style="--plyr-color-main: #78b032;">
+          <video preload="none" id="player" playsinline controls poster="/img/oil-and-gas-sector.jpg" style="--plyr-color-main: #78b032;">
             <source src={videoUrl} type="video/mp4">
             Tu navegador no soporta el elemento de video.
           </video>

@@ -121,21 +121,6 @@ const ListIcon = (
  */
 export const adminNavigation: NavItem[] = [
   {
-    label: 'Usuarios',
-    href: '/admin/users',
-    icon: UsersIcon,
-    key: 'users',
-    permission: 'users.view', // Requiere permiso para ver usuarios
-    children: [
-      {
-        label: 'Listado',
-        href: '/admin/users',
-        icon: ListIcon,
-        permission: 'users.view',
-      },
-    ],
-  },
-  {
     label: 'Productos',
     href: '/admin/products',
     icon: ProductsIcon,
@@ -147,6 +132,21 @@ export const adminNavigation: NavItem[] = [
         href: '/admin/products',
         icon: ListIcon,
         permission: 'products.view',
+      },
+    ],
+  },
+  {
+    label: 'Usuarios',
+    href: '/admin/users',
+    icon: UsersIcon,
+    key: 'users',
+    permission: 'users.view', // Requiere permiso para ver usuarios
+    children: [
+      {
+        label: 'Listado',
+        href: '/admin/users',
+        icon: ListIcon,
+        permission: 'users.view',
       },
     ],
   },
