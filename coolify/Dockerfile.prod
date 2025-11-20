@@ -1,0 +1,42 @@
+# Stage 1: Build Astro app
+FROM node:22.7-alpine AS build
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm ci
+
+COPY . .
+
+RUN npm run build:without-check
+
+# Stage 2: Serve with Node.js for SSR and Nginx as reverse proxy
+FROM node:22.7-alpine AS runtime
+
+# Install nginx
+RUN apk add --no-cache nginx
+
+WORKDIR /app
+
+# Copy built files from build stage
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/package*.json ./
+
+# Install only production dependencies
+RUN npm ci --production
+
+# Copy nginx configuration
+COPY coolify/nginx-prod.conf /etc/nginx/http.d/default.conf
+
+# Create nginx directories
+RUN mkdir -p /run/nginx
+
+# Expose port 80 for nginx
+EXPOSE 80
+
+# Copy startup script
+COPY coolify/start.sh /start.sh
+RUN chmod +x /start.sh
+
+CMD ["/start.sh"]
