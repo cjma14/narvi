@@ -22,9 +22,10 @@ WORKDIR /app
 # Copy built files from build stage
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/package*.json ./
+COPY --from=build /app/node_modules ./node_modules
 
-# Install only production dependencies
-RUN npm ci --production
+# Copy source images (needed for favicon generation)
+COPY --from=build /app/src/images ./src/images
 
 # Copy nginx configuration
 COPY coolify/nginx-prod.conf /etc/nginx/http.d/default.conf
