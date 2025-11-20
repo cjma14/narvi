@@ -84,7 +84,7 @@ class ProductImageController extends Controller
 
         foreach ($images as $index => $image) {
             // Guardar imagen en storage/app/public/products
-            $path = $image->store('products', 'public');
+            $path = $image->store('products/' . $product->url_alias, 'public');
 
             // Crear registro en BD
             $productImage = ProductImage::create([
