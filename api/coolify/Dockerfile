@@ -48,7 +48,7 @@ RUN echo "opcache.enable=1" > /usr/local/etc/php/conf.d/custom.ini \
     && echo "post_max_size=64M" >> /usr/local/etc/php/conf.d/custom.ini \
     && echo "max_execution_time=300" >> /usr/local/etc/php/conf.d/custom.ini
 
-COPY ./docker/coolify/php.ini /usr/local/etc/php/conf.d/custom.ini
+COPY ./coolify/php.ini /usr/local/etc/php/conf.d/custom.ini
 
 # Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -82,10 +82,10 @@ RUN unset DB_CONNECTION DB_DATABASE
 
 # Configuración de Nginx y Supervisor desde archivos externos
 RUN rm -f /etc/nginx/sites-enabled/default
-COPY ./docker/coolify/laravel.conf /etc/nginx/sites-available/laravel
+COPY ./coolify/laravel.conf /etc/nginx/sites-available/laravel
 RUN ln -s /etc/nginx/sites-available/laravel /etc/nginx/sites-enabled/
 
-COPY ./docker/coolify/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY ./coolify/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Asegurar permisos finales
 RUN chown -R www-data:www-data /var/www \
