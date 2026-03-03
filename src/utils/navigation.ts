@@ -34,27 +34,28 @@ const navBarLinks = [
 // An array of links for footer
 const footerLinks = [
   {
+    section: "Solutions",
+    links: [
+      { name: "Equipment Supply", type: 'url', url: "/products" },
+      { name: "Industrial Transport", type: 'url', url: "/services" },
+      { name: "Industrial Parts", type: 'url', url: "/products" },
+      { name: "Strategic Logistics", type: 'url', url: "/services" },
+    ],
+  },
+  {
     section: "Contact",
     links: [
-      { name: "+1 346 504 9060", type: 'basic'},
-      { name: "info@narvi-ec.com", type: 'basic'}, ,
+      { name: "Operations in North and LATAM", type: 'basic', icon: 'location' },
+      { name: "info@narvi.corp", type: 'url', url: 'mailto:info@narvi.corp', icon: 'mail' },
+      { name: "Support 24/7", type: 'basic', icon: 'phone' },
     ],
   },
   {
-    section: "About us",
+    section: "Coverage",
     links: [
-      { name: "Mision", type: 'url', url: "/about-us#mision" },
-      { name: "Vision", type: 'url', url: "/about-us#vision" },
-      { name: "Contact", type: 'url', url: "/contact" },
-    ],
-  },
-  {
-    section: "Services & Products",
-    links: [
-      { name: "Parts & tools", type: 'url', url: "/products#exploration-production" },
-      { name: "Equipment", type: 'url', url: "/products#equipment-support" },
-      { name: "Trucks & tractors", type: 'url', url: "/sales" },
-      { name: "Energy transition", type: 'url', url: "/products#transportation-processes" },
+      { name: "North America", type: 'basic' },
+      { name: "Latin America", type: 'basic' },
+      { name: "Caribbean", type: 'basic' },
     ],
   },
 ];

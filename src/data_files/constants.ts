@@ -1,12 +1,13 @@
 import ogImageSrc from "@images/social.png";
 
 export const SITE = {
-  title: "Narvi EC",
-  tagline: "Boost your business. Innovate your operations.",
-  description: "Narvi leaders in Oil & Gas in North America and Latin America. Professional services in project engineering, asset management and equipment maintenance. Increase the efficiency and profitability of your operations.",
-  description_short: "Oil & Gas Experts. Comprehensive solutions for your business.",
+  title: "NARVI Enterprise Corporation",
+  tagline: "Equipos y Servicios para Petróleo, Gas e Industria",
+  description: "NARVI Enterprise Corporation - Proveedor líder de equipos, repuestos y soluciones para la industria energética e industrial (Oil & Gas). Más de 25 años de experiencia en Norteamérica y Latinoamérica.",
+  description_short: "Equipos industriales Oil & Gas, maquinaria y servicios técnicos.",
   url: "https://narvi-ec.com",
   author: "Miguel Mogollón",
+  keywords: "NARVI Enterprise, equipo industrial, Oil & Gas, maquinaria energética, repuestos industriales, gestión de activos, servicios técnicos energéticos, Houston, Latinoamérica, equipos petroleros, suministro industrial, mantenimiento maquinaria, soluciones energéticas",
 };
 
 export const SEO = {
@@ -29,11 +30,38 @@ export const SEO = {
   },
 };
 
+// Organization Schema for better SEO
+export const ORGANIZATION = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "NARVI Enterprise Corporation",
+  url: "https://narvi-ec.com/",
+  logo: "https://narvi-ec.com/img/logo/logo_white.png",
+  description: "Proveedor líder de equipos, maquinaria y servicios para la industria energética e industrial (Oil & Gas).",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Houston",
+    addressRegion: "TX",
+    addressCountry: "US"
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "Sales",
+    email: "info@narvi-ec.com",
+    availableLanguage: ["English", "Spanish"]
+  },
+  sameAs: [
+    "https://www.linkedin.com/in/miguel-mogollon-4b5277314",
+    "https://www.facebook.com/narvi.enterprise",
+    "https://www.instagram.com/narvienterprise/"
+  ]
+};
+
 export const OG = {
   locale: "en_US",
   type: "website",
   url: SITE.url,
-  title:`${SITE.title}: Oil & Gas Experts. Comprehensive solutions for your business.`,
-  description: "Professional services in project engineering, asset management and equipment maintenance. Increase the efficiency and profitability of your operations.",
+  title: `${SITE.title} | Equipos y Servicios para Petróleo, Gas e Industria`,
+  description: "Proveedor líder de equipos, repuestos y soluciones para la industria energética e industrial (Oil & Gas). Más de 25 años de experiencia.",
   image: ogImageSrc,
 };

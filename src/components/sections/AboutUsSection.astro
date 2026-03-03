@@ -28,66 +28,69 @@ interface Props {
   imgTwoAlt?: any;
 }
 
-const infoTitle1 =  Astro.currentLocale === "es" ? "Clientes" : "Clients"
-const infoTitle2 = Astro.currentLocale === "es" ? "Proyectos" : "Projects"
+const infoTitle1 = Astro.currentLocale === "es" ? "Clientes" : "Clients";
+const infoTitle2 = Astro.currentLocale === "es" ? "Proyectos" : "Projects";
 ---
+
 <!-- Root section of the component -->
-<section
-  class="mx-auto max-w-[85rem] items-center gap-16 px-4 py-10 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8 lg:py-14 2xl:max-w-full text-pearl-100"
->
-  <div class="fade-up">
-    <!-- Title of the section -->
-    <div class="flex items-center gap-3 mb-4">
-      <span class="flex bg-primary-500 h-[10px] w-[10px] rounded-full"></span>
-      <h3 class="text-pearl-100 font-bold drop-shadow-xl text-lg">{label}</h3>
-    </div>
-   
-    <h2
-      class="mb-4 text-balance text-4xl font-extrabold tracking-tight"
-    >
-      {title}
-    </h2>
-    <!-- Subtitle of the section -->
-    <p
-      class="mb-4 max-w-prose text-pretty font-light dark:text-neutral-400 sm:text-lg"
-    >
-      {subTitle}
-    </p>
+<div class="px-4 sm:px-6 lg:px-8 border-pearl-100/10 bg-neutral-900/30">
+  <section
+    class="mx-auto max-w-screen-2xl items-center gap-16 px-4 py-10 text-pearl-100 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8 lg:py-20"
+  >
+    <div class="fade-up">
+      <!-- Title of the section -->
+      <!-- <div class="mb-4 flex items-center gap-3">
+        <span class="flex h-[10px] w-[10px] rounded-full bg-primary-500"></span>
+        <h3 class="text-lg font-bold text-pearl-100 drop-shadow-xl">{label}</h3>
+      </div> -->
 
-    <div class="flex gap-10 mt-16 mb-16">
-      <div class="">
-        <p class="text-5xl font-bold sm:text-5xl mb-3">35+</p>
-        <p class="text-xl">{infoTitle1}</p>
-      </div>
-      <div class="md:pl-10 md:border-l">
-        <p class="text-5xl font-bold sm:text-5xl mb-3 border-l-primary-400">50+</p>
-        <p class="text-xl">{infoTitle2}</p>
-      </div>
-    </div>
-    <!-- Conditional rendering of the Primary Call-To-Action button if 'btnExists' is true -->
-    {btnExists ? <PrimaryCTA title={btnTitle} url={btnURL} /> : null}
-  </div>
-  <!-- Conditionally render one or two images based on 'single' property -->
+      <h2 class="mb-4 text-balance text-4xl font-extrabold tracking-tight">
+        {title}
+      </h2>
+      <!-- Subtitle of the section -->
+      <p
+        class="mb-4 max-w-prose text-pretty font-light dark:text-neutral-400 sm:text-lg"
+      >
+        {subTitle}
+      </p>
 
-  <div class="mt-8 grid grid-cols-2 gap-4">
-    <!-- First image in a two-image layout -->
-    <picture>
-      <img
-      class="w-full rounded-md h-full fade-up"
-      src={imgOne}
-      alt={imgOneAlt}
-      draggable={"false"}/>
-    </picture>
-   
-    <!-- Second image in a two-image layout -->
-    <picture>
-      <img
-          class="mt-4 w-full lg:mt-10 rounded-md h-full fade-up"
+      <div class="mb-16 mt-16 flex gap-10">
+        <div class="">
+          <p class="mb-3 text-5xl font-bold sm:text-5xl">35+</p>
+          <p class="text-xl">{infoTitle1}</p>
+        </div>
+        <div class="md:border-l md:pl-10">
+          <p class="mb-3 border-l-primary-400 text-5xl font-bold sm:text-5xl">
+            50+
+          </p>
+          <p class="text-xl">{infoTitle2}</p>
+        </div>
+      </div>
+      <!-- Conditional rendering of the Primary Call-To-Action button if 'btnExists' is true -->
+      {btnExists ? <PrimaryCTA title={btnTitle} url={btnURL} /> : null}
+    </div>
+    <!-- Conditionally render one or two images based on 'single' property -->
+
+    <div class="mt-8 grid grid-cols-2 gap-4">
+      <!-- First image in a two-image layout -->
+      <picture>
+        <img
+          class="fade-up h-full w-full rounded-md"
+          src={imgOne}
+          alt={imgOneAlt}
+          draggable={"false"}
+        />
+      </picture>
+
+      <!-- Second image in a two-image layout -->
+      <picture>
+        <img
+          class="fade-up mt-4 h-full w-full rounded-md lg:mt-10"
           src={imgTwo}
           alt={imgTwoAlt}
           draggable={"false"}
-      />
-    </picture>
-   
-  </div>
-</section>
+        />
+      </picture>
+    </div>
+  </section>
+</div>
