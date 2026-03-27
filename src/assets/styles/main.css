@@ -6,3 +6,77 @@
 html {
     font-family: "DM Sans", sans-serif;
 }
+
+.plyr {
+    --plyr-color-main: #8cc63f;
+    --plyr-range-fill-background: #8cc63f;
+    --plyr-video-control-background-hover: #8cc63f;
+    --plyr-video-progress-buffered-background: rgba(140, 198, 63, 0.25);
+    height: 100%;
+    width: 100%;
+    border-radius: 1.5rem !important;
+    overflow: hidden !important;
+}
+
+@media (min-width: 640px) {
+    .plyr {
+        border-radius: 2rem !important;
+    }
+}
+
+.plyr--youtube .plyr__video-wrapper {
+    height: 100%;
+    border-radius: inherit !important;
+    overflow: hidden !important;
+}
+
+.plyr--youtube .plyr__video-wrapper iframe {
+    border-radius: inherit !important;
+    overflow: hidden !important;
+}
+
+.plyr .plyr__video-wrapper--fixed-ratio {
+    border-radius: inherit !important;
+}
+
+.plyr__poster {
+    border-radius: inherit !important;
+}
+
+/* Match the styling from TestimonialsSection */
+.plyr--youtube .plyr__control--overlaid {
+    background: #8cc63f !important;
+    color: #000 !important;
+    padding: 1rem !important;
+    border-radius: 100% !important;
+    transition: transform 0.3s ease !important;
+}
+
+@media (min-width: 640px) {
+    .plyr--youtube .plyr__control--overlaid {
+        padding: 1.5rem !important;
+    }
+}
+
+.plyr--youtube .plyr__control--overlaid:hover {
+    background: #8eaf1f !important;
+}
+
+.plyr--youtube .plyr__control--overlaid svg {
+    width: 20px !important;
+    height: 20px !important;
+    fill: #000 !important;
+    margin-left: 3px !important;
+}
+
+.plyr--full-ui input[type="range"] {
+    color: #8cc63f !important;
+}
+
+@media (min-width: 640px) {
+    .plyr--youtube .plyr__control--overlaid svg {
+        width: 28px !important;
+        height: 28px !important;
+        margin-left: 4px !important;
+    }
+}

@@ -9,10 +9,7 @@ const {
   btnExists,
   btnTitle,
   btnURL,
-  imgOne,
-  imgOneAlt,
-  imgTwo,
-  imgTwoAlt,
+  videoUrl,
 } = Astro.props;
 // Define TypeScript interface for the properties
 interface Props {
@@ -22,14 +19,20 @@ interface Props {
   btnExists?: boolean;
   btnTitle?: string;
   btnURL?: string;
-  imgOne?: any;
-  imgOneAlt?: any;
-  imgTwo?: any;
-  imgTwoAlt?: any;
+  videoUrl?: string;
 }
 
-const infoTitle1 = Astro.currentLocale === "es" ? "Clientes" : "Clients";
-const infoTitle2 = Astro.currentLocale === "es" ? "Proyectos" : "Projects";
+const infoTitle1 = Astro.currentLocale === "es" ? "Clientes Globales" : "Global Clients";
+const infoTitle2 = Astro.currentLocale === "es" ? "Grandes Proyectos" : "Major Projects";
+
+// Extract YouTube ID from URL
+const getYouTubeId = (url: string) => {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url?.match(regExp);
+  return (match && match[2].length === 11) ? match[2] : null;
+};
+
+const youtubeId = videoUrl ? getYouTubeId(videoUrl) : null;
 ---
 
 <!-- Root section of the component -->
@@ -69,28 +72,27 @@ const infoTitle2 = Astro.currentLocale === "es" ? "Proyectos" : "Projects";
       <!-- Conditional rendering of the Primary Call-To-Action button if 'btnExists' is true -->
       {btnExists ? <PrimaryCTA title={btnTitle} url={btnURL} /> : null}
     </div>
-    <!-- Conditionally render one or two images based on 'single' property -->
-
-    <div class="mt-8 grid grid-cols-2 gap-4">
-      <!-- First image in a two-image layout -->
-      <picture>
-        <img
-          class="fade-up h-full w-full rounded-md"
-          src={imgOne}
-          alt={imgOneAlt}
-          draggable={"false"}
-        />
-      </picture>
-
-      <!-- Second image in a two-image layout -->
-      <picture>
-        <img
-          class="fade-up mt-4 h-full w-full rounded-md lg:mt-10"
-          src={imgTwo}
-          alt={imgTwoAlt}
-          draggable={"false"}
-        />
-      </picture>
-    </div>
+    <!-- Video Player with Plyr -->
+    {youtubeId && (
+      <div class="mt-8">
+        <div class="fade-up relative w-full">
+          <div 
+            id="player-about" 
+            data-plyr-provider="youtube" 
+            data-plyr-embed-id={youtubeId}
+            class="absolute inset-0 h-full w-full"
+          ></div>
+        </div>
+      </div>
+    )}
   </section>
 </div>
+
+<script>
+  import Plyr from 'plyr';
+  import 'plyr/dist/plyr.css';
+
+  const playerAbout = new Plyr('#player-about', {
+    controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+  });
+</script>

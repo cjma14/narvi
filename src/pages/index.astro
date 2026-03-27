@@ -24,7 +24,7 @@ const avatarSrcs: Array<string> = [avatar.src];
 const solutionsSection = {
   sectionLabel: "Solutions Ecosystem",
   title: "Solutions That Power Your Operations",
-  subTitle: "When your operations can't stop, we respond.",
+  subTitle: '"When your operations can\'t stop, we respond"',
   ctaLabel: "Request Catalog",
   ctaUrl: "/contact",
   solutions: [
@@ -33,32 +33,36 @@ const solutionsSection = {
       description:
         "Supply of certified new and used equipment, designed for high-performance operations in the Oil & Gas industry.",
       bullets: ["Drilling equipment", "Pumping systems"],
-      image: "/img/machine-1.jpg",
+      image: "/img/service25.jpg",
       imageAlt: "Heavy machinery for oil and gas operations",
+      iconName: "gearSettings",
     },
     {
       title: "Industrial Transport",
       description:
         "Industrial trucks and logistics solutions for the safe movement of oilfield equipment, ensuring operational continuity.",
       bullets: ["Heavy-duty trucks", "Strategic logistics"],
-      image: "/img/product2.jpg",
+      image: "/img/service26.png",
       imageAlt: "Industrial transport vehicle for oilfield logistics",
+      iconName: "truck",
     },
     {
       title: "Spare Parts and Support",
       description:
         "Supply of critical industrial parts that reduce downtime and maintain your machinery at peak performance.",
       bullets: ["Critical components", "Dedicated support"],
-      image: "/img/service22.jpeg",
+      image: "/img/service28.png",
       imageAlt: "Technical work for spare parts and industrial support",
+      iconName: "sliders",
     },
     {
       title: "Well Services",
       description:
         "Comprehensive technical solutions for well intervention, maintenance, and optimization to maximize reservoir productivity.",
       bullets: ["Maintenance and workover", "Monitoring and optimization"],
-      image: "/img/oil-and-gas-plant.jpg",
+      image: "/img/service24.png",
       imageAlt: "Oil and gas plant for well services operations",
+      iconName: "building",
     },
   ],
 };
@@ -76,8 +80,8 @@ const solutionsSection = {
   /> -->
 
   <HeroSection
-    title=`Do you need reliable equipment for your  <span class='text-primary-400'>project in the sector</span> ?`
-    subTitle="At NARVI Enterprise Corporation, we supply heavy machinery, industrial trucks, spare parts, and specialized logistics solutions for oil and gas projects in North and Latin America."
+    title=`Do you need <span class='text-primary-400'>reliable equipment</span>?`
+    subTitle="At Narvi Enterprise Corporation, we supply heavy machinery, industrial trucks, and specialized logistics for the energy sector across North and Latin America."
     primaryBtn="Quote Now"
     primaryBtnURL="/contact"
     secondaryBtn="Explore Solutions"
@@ -96,15 +100,12 @@ const solutionsSection = {
  
   <AboutUsSection
     label="About Us"
-    title="Your reliable partner in Oil & Gas"
-    subTitle="With over 25 years of experience in the Oil and Gas sector, asset management, maintenance, and equipment reliability at an international level, spanning North America and Latin America, we have focused on providing professional services in project engineering for equipment, as well as its commercialization and supply."
-    imgOne="/img/machine-1.jpg"
-    imgOneAlt="Oil Driller"
-    imgTwo="/img/machine-2.jpg"
-    imgTwoAlt="Oil and gas plant"
+    title="Engineering & Asset Management for the Oil & Gas Industry"
+    subTitle="With over 25 years of international experience, we specialize in maximizing equipment reliability and operational efficiency. From North America to Latin America, we provide world-class project engineering and specialized equipment supply."
+    videoUrl="https://youtu.be/dyiQqlkigkE"
     btnExists={true}
-    btnTitle="Read more"
-    btnURL="/about-us"
+    btnTitle="View Our Solutions"
+    btnURL="/sales"
   />
 
 
@@ -122,30 +123,16 @@ const solutionsSection = {
     />
 
     <TestimonialsSection
-      label="How we work"
+      label=""
       title="Discover how we work"
-      subTitle="Want to know why so many companies trust us? Discover the benefits of working with Narvi through our customer testimonials."
-      videoUrl="/videos/narvi-video-en.mp4"
+      subTitle='Want to know why so many companies trust us? Discover the benefits of working with Narvi through our customer testimonials.'
+      videoUrl="https://youtu.be/kXDREldf7b8"
       testimonials={[
         {
           content:
-            '"Narvi EC is a solid and profitable company. It has been an excellent ally in the commercialization of equipment."',
-          author: "Felix Florentino",
-          role: "President - Petromex (United States)",
-          avatarSrc: "/img/clients/testimonial-3.jpeg",
-        },
-        {
-          content:
-            '"It has been key to the undertaking of our project. We started 2 years ago and we continue counting on them."',
-          author: "Zenobio Matos",
-          role: "Director and General Manager - Exxen Technology do Brasil S.A",
-          avatarSrc: "/img/clients/testimonial-2.jpeg",
-        },
-        {
-          content:
-            '"Narvi is our great ally in asset management. Helping us in the hundredfold power of our fleet of equipment and special projects of continuous improvement."',
-          author: "Jorge Ivan Torres",
-          role: "CEO and Director - Innergy OFS S.A.S (Colombia)",
+            '"Working with Narvi has transformed our efficiency. Their team sustains our logistics."',
+          author: "Chief Engineer",
+          role: "Chief Engineer @Petroalliance",
           avatarSrc: "/img/clients/testimonial-1.jpeg",
         },
       ]}

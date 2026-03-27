@@ -1,10 +1,13 @@
 ---
+import Icon from "@components/ui/icons/Icon.astro";
+
 interface SolutionItem {
   title: string;
   description: string;
   bullets: string[];
   image: string;
   imageAlt: string;
+  iconName?: string; // Icon name from icons.ts
 }
 
 interface Props {
@@ -39,11 +42,11 @@ const { sectionLabel, title, subTitle, solutions, ctaLabel, ctaUrl = "/contact" 
       {ctaLabel && (
         <a
           href={ctaUrl}
-          class="inline-flex items-center justify-center gap-2 rounded-lg border border-pearl-100/25 px-6 py-3 text-base font-semibold text-pearl-100 transition duration-300 hover:border-primary-500 hover:text-primary-500"
+          class="group inline-flex items-center justify-center gap-x-2 rounded-lg border border-transparent bg-primary-500 px-8 py-4 text-lg font-bold text-neutral-50 shadow-[0_0_15px_rgba(159,196,35,0.3)] ring-zinc-500 transition-all duration-300 hover:cursor-pointer hover:bg-primary-600 hover:shadow-[0_0_25px_rgba(159,196,35,0.5)] focus-visible:ring active:bg-primary-500 disabled:pointer-events-none disabled:opacity-50 dark:focus:outline-none dark:ring-zinc-200"
         >
           {ctaLabel}
-          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m0 0l-5-5m5 5l5-5"></path>
+          <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
           </svg>
         </a>
       )}
@@ -64,9 +67,13 @@ const { sectionLabel, title, subTitle, solutions, ctaLabel, ctaUrl = "/contact" 
 
         <div class="relative p-8">
           <span class="absolute -top-5 right-8 inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary-500 text-neutral-900 shadow-[0_8px_20px_rgba(159,196,35,0.35)]">
-            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7 5h10a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2z"></path>
-            </svg>
+            {item.iconName ? (
+              <Icon name={item.iconName} />
+            ) : (
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7 5h10a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2z"></path>
+              </svg>
+            )}
           </span>
 
           <h3 class="text-2xl font-bold text-pearl-100">{item.title}</h3>
