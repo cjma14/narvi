@@ -38,51 +38,109 @@ interface Props {
   src?: any;
   alt?: string;
 }
+
+// Internationalization for badge
+const badgeText = Astro.currentLocale === "es" 
+  ? "Socio estratégico en Oil & Gas" 
+  : "Strategic partner in Oil & Gas";
+
+const heroStats = Astro.currentLocale === "es"
+  ? [
+      { value: "25+", label: "Años Exp." },
+      { value: "99.8%", label: "Eficiencia" },
+      { value: "24/7", label: "Soporte" },
+      { value: "Global", label: "Alcance" },
+    ]
+  : [
+      { value: "25+", label: "Years Exp." },
+      { value: "99.8%", label: "Efficiency" },
+      { value: "24/7", label: "Support" },
+      { value: "Global", label: "Reach" },
+    ];
+
+const ctaAriaLabel = Astro.currentLocale === "es"
+  ? "Acciones principales de la sección principal"
+  : "Primary actions for the hero section";
 ---
 
-<!-- Defining a grid container that holds all the content -->
+<!-- Defining a container that holds all the content -->
 <section
-  class="grid gap-4 grid-cols-1 md:grid-cols-2 px-4 py-14 sm:px-6 md:items-center md:gap-8 lg:px-[10rem] 2xl:max-w-full bg-image-hero"
+  id="home"
+  aria-labelledby="hero-title"
+  class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 min-h-screen flex items-center overflow-hidden"
 >
-  <!-- Title and description -->
-  <div class="pt-[5rem] fade-up">
-    <!-- Each h1 and p tag renders a portion of the title and subTitle defined above -->
-    <h1
-      class="block text-balance font-bold tracking-tight text-pearl-100 text-4xl lg:text-5xl 2xl:text-[6rem] lg:leading-none"
-    >
-      <!-- About Fragment: https://docs.astro.build/en/basics/astro-syntax/#fragments -->
-      <Fragment set:html={title} />
-    </h1>
-    {subTitle &&
-    <p
-      class="mt-3 text-pretty text-2xl leading-7 text-pearl-100 lg:w-4/5 font-bold italic  drop-shadow-md"
-    >
-      <Fragment set:html={subTitle} />
-    </p>
-  }
-    <!-- Action Button Section: This section includes two CTAs with their own styles and URL -->
-    <div class="mt-7 grid w-full gap-3 sm:inline-flex">
-      {primaryBtn && 
-      <PrimaryCTA title={primaryBtn} url={primaryBtnURL} />
-      }
-      {secondaryBtn && 
-      <SecondaryCTA title={secondaryBtn} url={secondaryBtnURL} />
-      }
+  <!-- Background Image with lazy loading -->
+  <img
+    src="/img/hero5.avif"
+    alt="Oil and gas industrial operations background"
+    loading="eager"
+    decoding="async"
+    class="absolute inset-0 w-full h-full object-cover object-center"
+  />
+  
+  <!-- Green overlay gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[rgba(23,44,39,0.9)] to-[rgba(29,29,29,0.95)] pointer-events-none"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+    <!-- Title and description -->
+    <div class="max-w-4xl mx-auto fade-up text-center">
+      <!-- Badge -->
+      <p class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-400/10 border border-primary-400/30 text-primary-400 text-sm font-semibold mb-6">
+        <span class="w-2 h-2 rounded-full bg-primary-400 animate-pulse"></span>
+        {badgeText}
+      </p>
+      
+      <!-- Each h1 and p tag renders a portion of the title and subTitle defined above -->
+      <h1
+        id="hero-title"
+        class="block text-balance font-extrabold tracking-tight text-pearl-100 text-4xl md:text-5xl lg:text-6xl lg:leading-tight mb-6"
+      >
+        <!-- About Fragment: https://docs.astro.build/en/basics/astro-syntax/#fragments -->
+        <Fragment set:html={title} />
+      </h1>
+      {subTitle &&
+      <p
+        class="text-pretty text-lg md:text-xl leading-relaxed text-pearl-100/90 max-w-2xl mx-auto mb-10"
+      >
+        <Fragment set:html={subTitle} />
+      </p>
+    }
+      <!-- Action Button Section: This section includes two CTAs with their own styles and URL -->
+      <nav class="flex flex-col sm:flex-row gap-4 justify-center" aria-label={ctaAriaLabel}>
+        {primaryBtn && 
+        <PrimaryCTA title={primaryBtn} url={primaryBtnURL} />
+        }
+        {secondaryBtn && 
+        <SecondaryCTA title={secondaryBtn} url={secondaryBtnURL} />
+        }
+      </nav>
+
+      <div class="mt-14 border-t border-pearl-100/15 pt-8">
+        <ul class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4" aria-label="Key performance indicators">
+          {heroStats.map((stat) => (
+            <li class="text-center list-none">
+              <p class="text-pearl-100 font-extrabold text-3xl md:text-4xl leading-none">{stat.value}</p>
+              <p class="mt-2 text-pearl-100/55 text-sm md:text-base uppercase tracking-[0.16em]">{stat.label}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Review Section: This section presents avatars, review ratings and the number of reviews -->
+      <!-- { withReview ? (
+      <ReviewComponent avatars={avatars} starCount={starCount} rating={rating} reviews={reviews} />
+      ) : "" } -->
+
     </div>
-
-    <!-- Review Section: This section presents avatars, review ratings and the number of reviews -->
-    <!-- { withReview ? (
-    <ReviewComponent avatars={avatars} starCount={starCount} rating={rating} reviews={reviews} />
-    ) : "" } -->
-
+  </div>
+  
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10" aria-hidden="true">
+    <svg class="w-8 h-8 text-pearl-100/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
   </div>
   <!-- Hero Image Section -->
  
 </section>
-
-<style>
-  .bg-image-hero {
-    @apply bg-[url('/img/hero5.avif')] bg-cover bg-right lg:bg-center bg-no-repeat bg-fixed h-screen items-center 
-  }
-</style>
 

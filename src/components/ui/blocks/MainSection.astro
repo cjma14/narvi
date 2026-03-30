@@ -24,9 +24,21 @@ const backgroundImgUrl = `url('${backgroundImg}')`
 <!-- Root section of the component -->
 
 <!-- Defining a grid container that holds all the content -->
-<section class="bg-image-hero">
+<section class="relative h-[60vh] grid gap-4 grid-cols-1 md:grid-cols-2 justify-center items-center px-4 py-14 sm:px-6 md:gap-8 lg:px-[10rem] 2xl:max-w-full overflow-hidden">
+  <!-- Background Image with lazy loading -->
+  <img
+    src={backgroundImg}
+    alt="Background for {title}"
+    loading="lazy"
+    decoding="async"
+    class="absolute inset-0 w-full h-full object-cover object-right lg:object-center"
+  />
+  
+  <!-- Dark overlay for better text readability -->
+  <!-- <div class="absolute inset-0 bg-gradient-to-br from-[rgba(23,44,39,0.85)] to-[rgba(29,29,29,0.9)]"></div> -->
+  
   <!-- Title and description -->
-  <div class="pt-[5rem] fade-up">
+  <div class="pt-[5rem] fade-up relative z-10">
 
     <div class="flex items-center gap-3 mb-2">
       <span class="flex bg-primary-500 h-[11px] w-[11px] rounded-full"></span>
@@ -51,28 +63,3 @@ const backgroundImgUrl = `url('${backgroundImg}')`
   <!-- Hero Image Section -->
  
 </section>
-
-<style define:vars={{ backgroundImgUrl }}>
-  .bg-image-hero {
-    background-image: var(--backgroundImgUrl);
-    @apply
-    h-[60vh] 
-    bg-cover 
-    bg-right 
-    lg:bg-center 
-    bg-no-repeat 
-    items-center 
-    grid 
-    gap-4 
-    grid-cols-1
-    md:grid-cols-2 
-    justify-center
-    px-4
-    py-14
-    sm:px-6
-    md:items-center 
-    md:gap-8 
-    lg:px-[10rem] 
-    2xl:max-w-full
-  }
-</style>

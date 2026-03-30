@@ -112,7 +112,7 @@ const pageTitle: string = `Equipment for sale | ${SITE.title}`;
             <p id="noData" class="text-center text-2xl mt-20 hidden">No results were found for the search...</p>
             <div
               id="list"
-              class="list mb-10 mt-10 grid grid-cols-1 gap-5 md:grid-cols-1 px-20"
+              class="list mb-10 mt-10 grid grid-cols-1 gap-5 md:grid-cols-1"
             >
               {
                 products.map((product: any) => {
@@ -131,18 +131,18 @@ const pageTitle: string = `Equipment for sale | ${SITE.title}`;
                             />
                           )}
                         </div>
-                        <div class="flex flex-wrap items-center p-4 sm:p-7 text-pearl-100">
+                        <div class="flex flex-col p-4 sm:p-7 text-pearl-100">
                           <div class="flex flex-col gap-2">
-                                <h3 class="font-bold text-xl flex items-center gap-3">
-                                  {product.title}
+                                <h3 class="font-bold text-xl flex flex-wrap items-center gap-2">
+                                  <span>{product.title}</span>
                                   {product.stock === false && (
-                                    <span class="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">SOLD OUT</span>
+                                    <span class="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded whitespace-nowrap">SOLD OUT</span>
                                   )}
                                 </h3>
                             <p class="text-left line-clamp-3">
                               {product.description}
                             </p>
-                            <div class="mt-5">
+                            <div class="mt-5 flex flex-col sm:flex-row gap-3">
                               <PrimaryCTA 
                                 title="View product" 
                                 url={`/sales/${product.url_alias}`} 

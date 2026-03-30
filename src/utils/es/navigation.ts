@@ -34,28 +34,28 @@ const navBarLinks = [
 
 const footerLinks = [
   {
-    section: "Contact",
+    section: "Soluciones",
     links: [
-      { name: "US +1 346-508-9060 Houston, Tx. USA", type: 'basic'},
-      { name: "VE +58 412-783-2848 Caracas, DC. VEN", type: 'basic'},
-      { name: "info@narvi-ec.com", type: 'basic'}, ,
+      { name: "Suministro de Equipos", type: 'url', url: "/es/products" },
+      { name: "Transporte Industrial", type: 'url', url: "/es/services" },
+      { name: "Partes Industriales", type: 'url', url: "/es/products" },
+      { name: "Logística Estratégica", type: 'url', url: "/es/services" },
     ],
   },
   {
-    section: "Sobre nostros",
+    section: "Contacto",
     links: [
-      { name: "Misión", type: 'url', url: "/es/about#mision" },
-      { name: "Visión", type: 'url', url: "/es/about#vision" },
-      { name: "Contácto", type: 'url', url: "/es/contact" },
+      { name: "Operaciones en Norte y LATAM", type: 'basic', icon: 'location' },
+      { name: "info@narvi.corp", type: 'url', url: 'mailto:info@narvi.corp', icon: 'mail' },
+      { name: "Soporte 24/7", type: 'basic', icon: 'phone' },
     ],
   },
   {
-    section: "Servicios y Productos",
+    section: "Cobertura",
     links: [
-      { name: "Partes y herramientas", type: 'url', url: "/es/products#exploration-production" },
-      { name: "Equipos", type: 'url', url: "/es/products#equipment-support" },
-      { name: "Camiones y tractores", type: 'url', url: "/es/sales" },
-      { name: "Transición energética", type: 'url', url: "/es/products#transportation-processes" },
+      { name: "Norteamérica", type: 'basic' },
+      { name: "Latinoamérica", type: 'basic' },
+      { name: "Caribe", type: 'basic' },
     ],
   },
 ];

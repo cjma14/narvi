@@ -28,173 +28,126 @@ type StatProps = {
   description: string;
 };
 
-const brandTitle = Astro.currentLocale === "es" ? "Proporcionamos los mejores servicios" : "We provide the best service"
-const infoTitle1 =  Astro.currentLocale === "es" ? "Testimonios" : "Testimonies"
-const infoTitle2 = Astro.currentLocale === "es" ? "Empresas sastifechas" : "Satisfied companies"
+const brandTitle = Astro.currentLocale === "es" ? "PROPORCIONAMOS EL MEJOR SERVICIO" : "WE PROVIDE THE BEST SERVICE"
+const brandSubtitle = Astro.currentLocale === "es" ? "Descubra lo que nuestros socios dicen sobre nuestro compromiso con la excelencia y eficiencia." : "Check out what our partners say about our commitment to excellence and efficiency."
+const stat1Count = "150+"
+const stat1Label = Astro.currentLocale === "es" ? "CASOS DE ÉXITO" : "SUCCESS CASES"
+const stat2Count = "35+"
+const stat2Label = Astro.currentLocale === "es" ? "SOCIOS A LARGO PLAZO" : "LONG-TERM PARTNERS"
+
+// Extract YouTube ID from URL
+const getYouTubeId = (url: string) => {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url?.match(regExp);
+  return (match && match[2].length === 11) ? match[2] : null;
+};
+
+const youtubeId = videoUrl ? getYouTubeId(videoUrl) : null;
+
+// Get the first testimonial
+const mainTestimonial = testimonials && testimonials.length > 0 ? testimonials[0] : null;
+const cleanContent = mainTestimonial ? mainTestimonial.content.replace(/^["']|["']$/g, '') : '';
 ---
 
-<section class="mb-20 px-4 py-10 text-pearl-100 sm:px-6 lg:px-8 lg:py-14">
-  <!-- Container for the testimonials -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-
-    <div class="">
-      <div class="flex flex-col gap-5 fade-up">
-        <!-- Title and Subtitle -->
-        <div class="">
-          
-          <div class="flex items-center gap-3 mb-4">
-            <span class="flex bg-primary-500 h-[10px] w-[10px] rounded-full"></span>
-            <h3 class="text-pearl-100 font-bold drop-shadow-xl text-lg">{label}</h3>
-          </div>
-  
-          <div class="mb-8">
-            <h2 class="mb-2 text-3xl font-bold lg:text-4xl">
-              {title}
-            </h2>
-            {subTitle && <p class="">{subTitle}</p>}
-          </div>
-        </div>
-  
-        <!-- Testimonials -->
-        <!-- <div class="swiper swiperTestimonial h-full w-full">
-          <div class="swiper-wrapper">
-            {
-              testimonials.map((testimonial) => (
-                <div class="swiper-slide">
-                  <TestimonialItem
-                    content={testimonial.content}
-                    author={testimonial.author}
-                    role={testimonial.role}
-                    avatarSrc={testimonial.avatarSrc}
-                  />
-                </div>
-              ))
-            }
-          </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div> -->
-
-        <div class="bg-primary-500 p-12 text-pearl-100 rounded-xl">
-          <h3 class="text-4xl max-w-80 font-bold">{ brandTitle }</h3>
-          <div class="mb-16 mt-10 flex gap-y-5 gap-x-20 flex-col md:flex-row">
-            <div class="">
-              <p class="mb-3 text-5xl font-bold sm:text-5xl">
-                150+
-              </p>
-              <p class="text-xl">{infoTitle1}</p>
-            </div>
-            <div class="md:border-l md:pl-10">
-              <p class="mb-3 border-l-primary-400 text-5xl font-bold sm:text-5xl">35+</p>
-              <p class="text-xl">{infoTitle2}</p>
-            </div>
-          </div>
-        </div>
-       
-      </div>
-    </div>
-   
-    <div>
-      <div class="flex flex-col gap-5 fade-up">
-
-        <div>
-          <video preload="none" id="player" playsinline controls poster="/img/oil-and-gas-sector.jpg" style="--plyr-color-main: #78b032;">
-            <source src={videoUrl} type="video/mp4">
-            Tu navegador no soporta el elemento de video.
-          </video>
-        </div>
-        
-        
-        <div class="rounded-xl">
-          <Image
-            width="50"
-            height="50"
-            src="/img/service11.png"
-            alt="test"
-            draggable={"false"}
-            class="size-full h-full object-cover rounded-xl"
-          />
-        </div>
-
-        
-
-      </div>
-    </div>
-    
+<section class="mb-12 px-4 py-8 text-pearl-100 sm:mb-16 sm:px-6 sm:py-10 lg:mb-20 lg:px-8 lg:py-14">
+  <!-- Section Title and Subtitle -->
+  <div class="fade-up mb-8 max-w-3xl sm:mb-12">
+    <h2 class="mb-3 text-2xl font-bold sm:mb-4 sm:text-3xl md:text-5xl md:leading-tight">
+      {title}
+    </h2>
+    {subTitle && (
+      <p class="text-pretty text-base text-pearl-100/85 sm:text-lg">
+        {subTitle}
+      </p>
+    )}
   </div>
 
-  <style>
+  <!-- Container for the section -->
+  <div class="mx-auto max-w-screen-2xl">
+    <div class="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2 lg:gap-6">
+      
+      <!-- Left Column: Green Card with Stats -->
+      <div class="fade-up h-full">
+        <div class="flex h-full flex-col rounded-[1.5rem] bg-primary-400 p-6 text-neutral-900 sm:p-8 sm:rounded-[2rem] lg:p-14">
+          <div>
+            <h2 class="mb-4 max-w-lg text-[1.75rem] font-black uppercase leading-[1.1] sm:mb-6 sm:text-[2.5rem] lg:text-[3rem]">
+              {brandTitle}
+            </h2>
+            <p class="mb-8 max-w-md text-base font-medium leading-relaxed sm:mb-12 sm:text-lg">
+              {brandSubtitle}
+            </p>
+          </div>
 
-    .swiper-pagination {
-      position: absolute !important;
-    }
+          <div class="flex flex-col gap-6 sm:flex-row sm:gap-10 lg:gap-16">
+            <!-- Stat 1 -->
+            <div>
+              <p class="mb-1 text-4xl font-black sm:text-5xl lg:text-7xl">
+                {stat1Count}
+              </p>
+              <p class="text-[0.7rem] font-bold uppercase tracking-widest text-neutral-800 sm:text-[0.8rem]">
+                {stat1Label}
+              </p>
+            </div>
 
-    .swiper-slide {
-      display: flex !important;
-      justify-content: center;
-      background-color: #244840;
-      border-radius: 10px;
-      padding: 5rem;
-    }
-    .swiper-button-prev {
-      left: 184px;
-      top: 124px;
-    }
-    .swiper-button-next {
-      right: 184px;
-      top: 124px;
-    }
+            <!-- Stat 2 -->
+            <div>
+              <p class="mb-1 text-4xl font-black sm:text-5xl lg:text-7xl">
+                {stat2Count}
+              </p>
+              <p class="text-[0.7rem] font-bold uppercase tracking-widest text-neutral-800 sm:text-[0.8rem]">
+                {stat2Label}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Right Column: Video and Testimonial -->
+      <div class="fade-up flex h-full flex-col justify-between gap-4 sm:gap-6">
+        
+        <!-- Video with Plyr -->
+        {youtubeId && (
+          <div class="relative w-full flex-grow rounded-[1.5rem] bg-neutral-800 sm:rounded-[2rem]">
+            <div 
+              id="player" 
+              data-plyr-provider="youtube" 
+              data-plyr-embed-id={youtubeId}
+              class="absolute inset-0 h-full w-full"
+            ></div>
+          </div>
+        )}
 
-    @media screen and (max-width: 480px) {
-      .swiper-pagination {
-        position: relative !important;
-        margin-top: 25px;
-      }
+        <!-- Single Testimonial -->
+        {mainTestimonial && (
+          <div class="rounded-[1.5rem] border border-white/5 bg-[#141a17] p-5 shadow-lg sm:p-6 sm:rounded-[2rem] lg:p-10">
+            <div class="flex items-center gap-4 sm:gap-6 lg:gap-8">
+              <img
+                src={mainTestimonial.avatarSrc}
+                alt={mainTestimonial.author}
+                class="size-14 flex-shrink-0 rounded-full object-cover shadow-sm sm:size-20 lg:size-24"
+              />
+              <div class="flex flex-col gap-2 sm:gap-3">
+                <p class="text-sm font-light italic leading-relaxed text-pearl-100 sm:text-base lg:text-xl">
+                  "{cleanContent}"
+                </p>
+                <div class="text-[0.65rem] font-bold uppercase tracking-widest text-primary-500 sm:text-[0.75rem] lg:text-[0.8rem]">
+                  {mainTestimonial.role}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
-      .swiper-slide {
-        padding: 2rem;
-      }
-
-      .swiper-button-prev,
-      .swiper-button-next {
-        display: none;
-      }
-    }
-  </style>
+      </div>
+    </div>
+  </div>
 
   <script>
-    import Swiper from "swiper";
-    import "swiper/css";
-    import "swiper/css/pagination";
-    import "swiper/css/navigation";
-    import { Pagination, Autoplay, Navigation } from "swiper/modules";
     import Plyr from 'plyr';
     import 'plyr/dist/plyr.css';
 
-    var swiper = new Swiper(".swiperTestimonial", {
-      modules: [Pagination, Navigation, Autoplay],
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: true,
-
-      autoplay: {
-        delay: 10000,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        // definir botones next y prev para el módulo Navigation
-        prevEl: ".swiper-button-prev",
-        nextEl: ".swiper-button-next",
-      },
-    });
-
     const player = new Plyr('#player', {
-
-    // Opciones de configuración
-
+      controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
     });
   </script>
 </section>

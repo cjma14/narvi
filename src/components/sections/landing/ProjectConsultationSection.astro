@@ -1,0 +1,304 @@
+---
+import Icon from "@components/ui/icons/Icon.astro";
+
+interface ServiceOption {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  mainTitle: string;
+  mainTitleHighlight: string;
+  mainSubtitle: string;
+  benefit1: string;
+  benefit2: string;
+  benefit3: string;
+  formTitle: string;
+  formSubtitle: string;
+  formLabels: {
+    fullName: string;
+    fullNamePlaceholder: string;
+    company: string;
+    companyPlaceholder: string;
+    email: string;
+    emailPlaceholder: string;
+    phone: string;
+    phonePlaceholder: string;
+    serviceRequired: string;
+    serviceRequiredPlaceholder: string;
+    projectLocation: string;
+    projectLocationPlaceholder: string;
+    submitButton: string;
+  };
+  serviceOptions: ServiceOption[];
+  successMessage: {
+    title: string;
+    description: string;
+  };
+}
+
+const { 
+  mainTitle,
+  mainTitleHighlight,
+  mainSubtitle, 
+  benefit1, 
+  benefit2, 
+  benefit3,
+  formTitle,
+  formSubtitle,
+  formLabels,
+  serviceOptions,
+  successMessage
+} = Astro.props;
+
+const tokenWeb3forms = "e256344a-5846-48cc-90a2-1c2b4be78326";
+---
+
+<section class="relative bg-[#1a332e] py-16 lg:py-24">
+  <div class="mx-auto max-w-[85rem] px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+      <!-- Left Column: Title and Benefits -->
+      <div class="text-pearl-100">
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl mb-4">
+          {mainTitle}
+          <span class="text-primary-400">{mainTitleHighlight}</span>
+        </h2>
+        <p class="text-lg text-neutral-200 mb-8 max-w-xl">
+          {mainSubtitle}
+        </p>
+
+        <!-- Benefits List -->
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary-400/20">
+              <Icon name="checkCircle" classCustom="h-4 w-4 text-primary-400" />
+            </div>
+            <span class="text-base text-neutral-200">{benefit1}</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary-400/20">
+              <Icon name="checkCircle" classCustom="h-4 w-4 text-primary-400" />
+            </div>
+            <span class="text-base text-neutral-200">{benefit2}</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary-400/20">
+              <Icon name="checkCircle" classCustom="h-4 w-4 text-primary-400" />
+            </div>
+            <span class="text-base text-neutral-200">{benefit3}</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right Column: Form -->
+      <div class="rounded-2xl bg-[#1f1f1f] p-6 sm:p-8 lg:p-10">
+        <h3 class="text-2xl font-bold text-white mb-3">{formTitle}</h3>
+        <p class="text-base text-neutral-400 mb-6">{formSubtitle}</p>
+        
+        <form
+          id="formProjectConsultation"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          data-astro-reload
+        >
+          <input type="hidden" name="access_key" value={tokenWeb3forms} />
+          <input type="hidden" name="subject" value="New Project Consultation Request" />
+          <input
+            type="checkbox"
+            class="hidden"
+            style="display:none"
+            name="botcheck"
+          />
+
+          <!-- Success Alert -->
+          <div
+            id="project-success-alert"
+            class="relative mb-6 hidden rounded-lg border border-primary-400 bg-primary-100 px-4 py-3 text-primary-700 opacity-0 transition-all delay-150 duration-300 ease-in-out"
+            role="alert"
+          >
+            <strong class="font-bold">{successMessage.title}</strong>
+            <span class="block sm:inline">{successMessage.description}</span>
+          </div>
+
+          <div class="grid gap-4">
+            <!-- Full Name and Company -->
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div>
+                <label for="fullname" class="mb-2 block text-sm font-medium text-neutral-400">
+                  {formLabels.fullName}
+                </label>
+                <input
+                  type="text"
+                  id="fullname"
+                  name="fullname"
+                  placeholder={formLabels.fullNamePlaceholder}
+                  required
+                  class="block w-full rounded-lg border border-neutral-700/50 bg-[#0f0f0f] px-4 py-3 text-sm text-white placeholder-neutral-500 transition-colors focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 focus:outline-none"
+                />
+              </div>
+              <div>
+                <label for="company" class="mb-2 block text-sm font-medium text-neutral-400">
+                  {formLabels.company}
+                </label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  placeholder={formLabels.companyPlaceholder}
+                  required
+                  class="block w-full rounded-lg border border-neutral-700/50 bg-[#0f0f0f] px-4 py-3 text-sm text-white placeholder-neutral-500 transition-colors focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <!-- Email and Phone -->
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div>
+                <label for="email" class="mb-2 block text-sm font-medium text-neutral-400">
+                  {formLabels.email}
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder={formLabels.emailPlaceholder}
+                  required
+                  class="block w-full rounded-lg border border-neutral-700/50 bg-[#0f0f0f] px-4 py-3 text-sm text-white placeholder-neutral-500 transition-colors focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 focus:outline-none"
+                />
+              </div>
+              <div>
+                <label for="phone" class="mb-2 block text-sm font-medium text-neutral-400">
+                  {formLabels.phone}
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder={formLabels.phonePlaceholder}
+                  required
+                  class="block w-full rounded-lg border border-neutral-700/50 bg-[#0f0f0f] px-4 py-3 text-sm text-white placeholder-neutral-500 transition-colors focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <!-- Equipment/Service Required -->
+            <div>
+              <label for="service" class="mb-2 block text-sm font-medium text-neutral-400">
+                {formLabels.serviceRequired}
+              </label>
+              <select
+                id="service"
+                name="service"
+                required
+                class="block w-full rounded-lg border border-neutral-700/50 bg-[#0f0f0f] px-4 py-3 text-sm text-white transition-colors focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 focus:outline-none appearance-none bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgMS41TDYgNi41TDExIDEuNSIgc3Ryb2tlPSIjOWZjNDIzIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==')] bg-[length:12px] bg-[right_1rem_center] bg-no-repeat pr-10"
+              >
+                <option value="" disabled selected class="text-neutral-500">
+                  {formLabels.serviceRequiredPlaceholder}
+                </option>
+                {serviceOptions.map((option) => (
+                  <option value={option.value} class="text-white">
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <!-- Project Location -->
+            <div>
+              <label for="location" class="mb-2 block text-sm font-medium text-neutral-400">
+                {formLabels.projectLocation}
+              </label>
+              <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder={formLabels.projectLocationPlaceholder}
+                required
+                class="block w-full rounded-lg border border-neutral-700/50 bg-[#0f0f0f] px-4 py-3 text-sm text-white placeholder-neutral-500 transition-colors focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 focus:outline-none"
+              />
+            </div>
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              class="mt-2 w-full rounded-lg bg-primary-500 px-6 py-4 text-base font-bold uppercase tracking-wide text-neutral-900 transition-all duration-300 hover:bg-primary-600 hover:shadow-[0_0_25px_rgba(159,196,35,0.5)] focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-[#1f1f1f] flex items-center justify-center gap-2"
+            >
+              {formLabels.submitButton}
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  const projectForm = document.querySelector("#formProjectConsultation");
+  const projectSuccessAlert = document.querySelector("#project-success-alert");
+
+  if (projectForm && projectSuccessAlert) {
+    const sendSuccess = () => {
+      projectSuccessAlert.classList.remove("hidden");
+      setTimeout(() => {
+        projectSuccessAlert.classList.remove("opacity-0");
+      }, 100);
+      
+      // Hide after 5 seconds
+      setTimeout(() => {
+        projectSuccessAlert.classList.add("opacity-0");
+        setTimeout(() => {
+          projectSuccessAlert.classList.add("hidden");
+        }, 300);
+      }, 5000);
+    };
+
+    projectForm.addEventListener(
+      "submit",
+      async (e) => {
+        e.preventDefault();
+        
+        // Capture URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const productParam = urlParams.get("product");
+
+        if (productParam) {
+          const input = document.createElement("input");
+          input.type = "hidden";
+          input.name = "product";
+          input.value = productParam;
+          projectForm.appendChild(input);
+        }
+
+        const formData = new FormData(projectForm);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        try {
+          const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: json,
+          });
+
+          const result = await response.json();
+          
+          if (response.status === 200) {
+            sendSuccess();
+            projectForm.reset();
+          } else {
+            console.error("Form submission error:", result);
+          }
+        } catch (error) {
+          console.error("Network error:", error);
+        }
+      },
+      { once: false }
+    );
+  }
+</script>
