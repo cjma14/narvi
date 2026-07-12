@@ -38,6 +38,7 @@ const footerLinks = [
     links: [
       { name: "Equipment Supply", type: 'url', url: "/products" },
       { name: "Industrial Transport", type: 'url', url: "/services" },
+      { name: "Well Pumping Services", type: 'url', url: "/services#bombeo-a-pozos" },
       { name: "Industrial Parts", type: 'url', url: "/products" },
       { name: "Strategic Logistics", type: 'url', url: "/services" },
     ],
@@ -53,9 +54,10 @@ const footerLinks = [
   {
     section: "Coverage",
     links: [
-      { name: "North America", type: 'basic' },
-      { name: "Latin America", type: 'basic' },
-      { name: "Caribbean", type: 'basic' },
+      { name: "Houston, Texas (USA)", type: 'basic' },
+      { name: "El Tigre, Anzoategui (Venezuela)", type: 'basic' },
+      { name: "Panama City (Panama)", type: 'basic' },
+      { name: "Latin America and the Caribbean", type: 'basic' },
     ],
   },
 ];
