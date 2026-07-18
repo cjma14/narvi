@@ -13,5 +13,11 @@
       "@styles/*": ["src/assets/styles/*"],
       "@utils/*": ["src/utils/*"]
     },
-  }
+  },
+  "exclude": [
+    "api/**/*",
+    "node_modules",
+    "dist",
+    ".astro"
+  ]
 }

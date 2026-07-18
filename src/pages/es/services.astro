@@ -5,7 +5,6 @@ import MainSection from "@/components/ui/blocks/MainSection.astro";
 import { SITE } from "@data/constants";
 import LeftSection from "@/components/ui/blocks/LeftSection.astro";
 import RightSection from "@/components/ui/blocks/RightSection.astro";
-import FeaturesStats from "@/components/sections/features/FeaturesStats.astro";
 
 const pageTitle: string = `Servicios | ${SITE.title}`;
 ---
@@ -52,16 +51,32 @@ const pageTitle: string = `Servicios | ${SITE.title}`;
           El compromiso de Narvi con la eficiencia operativa
         </h2>
         <p class="mt-3 mb-4 text-pretty font-light sm:text-lg">
-          En Narvi Enterprise Corporation, nuestro compromiso con la excelencia
-          operativa es el eje central de todo lo que hacemos. Nuestros
-          experimentados profesionales lideran la industria en innovación, con
-          el objetivo de superar las expectativas de nuestra clientela mundial
-          mejorando la eficiencia y disminuyendo los costos operativos. Asóciese
-          con nosotros para obtener soluciones comerciales duraderas y
-          sostenibles.
+          Con base de operaciones en Houston (Texas, EE.UU.) y El Tigre
+          (Anzoátegui, Venezuela), en Narvi Enterprise Corporation impulsamos
+          la excelencia operativa con soluciones técnicas especializadas para
+          mantener la continuidad, seguridad y productividad de sus operaciones
+          energéticas.
         </p>
       </div>
     </section>
+
+    <RightSection
+      id="bombeo-a-pozos"
+      title="Servicios de Bombeo a Pozos"
+      subTitle="Con base operativa en El Tigre, brindamos capacidades técnicas para mantenimiento, intervención y optimización de pozos, con equipos y personal especializado para ejecutar servicios de bombeo en campo de forma segura, eficiente y alineada a las exigencias operacionales de cada cliente."
+      single={true}
+      imgOne="/img/service24.avif"
+      imgOneAlt="Unidad de bombeo en operación de campo"
+      items={[
+        "Servicios de bombeo para pozos de producción activos.",
+        "Servicios de bombeo caliente.",
+        "Servicios de bombeo frío.",
+        "Estimulación y rehabilitación (Acidificación/Acidizing).",
+      ]}
+      btnExists={true}
+      btnTitle="Contactar con ventas"
+      btnURL="/contact"
+    />
 
     <LeftSection
       id="equipment-trading"
@@ -113,44 +128,22 @@ const pageTitle: string = `Servicios | ${SITE.title}`;
 
     <RightSection
       id="bussines-analysis"
-      title="Análisis de negocio"
-      subTitle="Apoyamos su plan de negocio a través de nuestra experiencia en análisis e identificación de puntos de mejora en las empresas, lo que nos permite una visión detallada de las tendencias y estadísticas de los resultados."
+      title="Laboratorio Quimico In-House (Servicios Petroleros / Oilfield Services)"
+      subTitle="Contamos con servicio de analisis y pruebas quimicas en sitio, disenado para realizar evaluaciones en tiempo real, optimizacion de fluidos y control de calidad directamente en el pozo o en la base operativa regional. Al eliminar los retrasos logisticos asociados al envio de muestras a laboratorios externos distantes, este servicio permite tomar decisiones rapidas y respaldadas por datos, minimizando el tiempo no productivo (NPT) y garantizando la maxima eficiencia operativa en el campo."
       single={true}
       imgOne="/img/service21.png"
-      imgOneAlt="Especialista en marketing de Narvi celebrando una reunión"
+      imgOneAlt="Servicio de laboratorio quimico en campo para operaciones petroleras"
       items={[
-        "Identificación de áreas de mejora",
-        "Evaluación del desempeño",
-        "Análisis de tendencias y datos",
-        "Optimización de recursos",
-        "Implementación de soluciones de ingeniería",
+        "Acondicionamiento de fluidos en tiempo real",
+        "Quimica de produccion y aseguramiento de flujo",
+        "Integridad de activos y control de corrosion",
+        "Caracterizacion del agua de produccion",
+        "Eliminacion de tiempos muertos (NPT)",
       ]}
       btnExists={true}
       btnTitle="Contactar con ventas"
       btnURL="/contact"
     />
 
-    <div class="mb-20">
-      <FeaturesStats
-        title="En cifras"
-        subTitle="Nuestro compromiso con la calidad y la confiabilidad es evidente en todos los servicios que brindamos. En Narvi, nos dedicamos a brindar servicios líderes en la industria que garantizan que sus proyectos de construcción sean duraderos."
-        mainStatTitle="96%"
-        mainStatSubTitle="de nuestros clientes califican su experiencia con Narvi como excepcional"
-        stats={[
-          {
-            stat: "99.8%",
-            description: "tasa de finalización del proyecto",
-          },
-          {
-            stat: "5,000+",
-            description: "Instalaciones exitosas",
-          },
-          {
-            stat: "85%",
-            description: "Crecimiento de clientes año tras año",
-          },
-        ]}
-      />
-    </div>
   </div>
 </MainLayout>
