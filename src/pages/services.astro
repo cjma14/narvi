@@ -5,7 +5,6 @@ import MainSection from "@/components/ui/blocks/MainSection.astro";
 import { SITE } from "@data/constants";
 import LeftSection from "@/components/ui/blocks/LeftSection.astro";
 import RightSection from "@/components/ui/blocks/RightSection.astro";
-import FeaturesStats from "@/components/sections/features/FeaturesStats.astro";
 
 const pageTitle: string = `Services | ${SITE.title}`;
 ---
@@ -46,16 +45,33 @@ const pageTitle: string = `Services | ${SITE.title}`;
           Narvi's Commitment to Operational Efficiency
         </h2>
         <p class="mt-3 mb-4 text-pretty font-light sm:text-lg">
-          At Narvi Enterprise Corporation, where our commitment to Operational
-          Excellence is at the heart of everything we do. Our seasoned
-          professionals lead the industry in innovation, aiming to surpass our
-          worldwide clientele's expectations by enhancing efficiency and
-          diminishing operational costs. Partner with us for enduring and
-          sustainable business solutions.
+          With operations based in Houston (Texas, USA) and El Tigre
+          (Anzoategui, Venezuela), at Narvi Enterprise Corporation we drive
+          operational excellence through specialized technical solutions that
+          sustain continuity, safety, and productivity across your energy
+          operations.
         </p>
       </div>
 
     </section>
+
+    <RightSection
+      id="bombeo-a-pozos"
+      title="Well Pumping Services"
+      subTitle="With an operational base in El Tigre, we provide technical capabilities for well maintenance, intervention, and optimization, supported by specialized field crews and equipment to execute pumping services safely and efficiently according to each client's operational requirements."
+      single={true}
+      imgOne="/img/service24.avif"
+      imgOneAlt="Pumping unit in field operation"
+      items={[
+        "Pumping services for active production wells.",
+        "Hot pumping services.",
+        "Cold pumping services.",
+        "Stimulation and rehabilitation (Acidification/Acidizing).",
+      ]}
+      btnExists={true}
+      btnTitle="Contact Sales Team"
+      btnURL="/contact"
+    />
 
     <LeftSection
       id="equipment-trading"
@@ -107,46 +123,22 @@ const pageTitle: string = `Services | ${SITE.title}`;
 
     <RightSection
       id="bussines-analysis"
-      title="Bussines Analysis"
-      subTitle="We support your business plan through our expertise in analysis and identification of improvement points in companies, which allows us a detailed view of the trends and statistics of the results."
+      title="In-House Chemical Laboratory (Oilfield Services)"
+      subTitle="Our in-house laboratory with specialized technical support provides on-site analytical and testing services designed for real-time chemical evaluation, fluid optimization, and quality control directly at the wellsite or regional operations base. By eliminating logistical delays from sending samples to distant third-party facilities, this service enables rapid, data-driven decisions that minimize non-productive time (NPT) and sustain peak operational efficiency."
       single={true}
       imgOne="/img/service21.png"
-      imgOneAlt="Narvi marketing specialist holding a meeting"
-      imgTwo="/img/product2.jpg"
-      imgTwoAlt="Pipeline for transporting oil or gas"
+      imgOneAlt="On-site chemical laboratory support for oilfield operations"
       items={[
-        "Identification of areas for improvement",
-        "Performance evaluation",
-        "Analysis of trends and data",
-        "Resource optimization",
-        "Implementation of engineering solutions",
+        "Real-Time Fluid Conditioning",
+        "Production Chemistry and Flow Assurance",
+        "Asset Integrity and Corrosion Control",
+        "Produced Water Characterization",
+        "Elimination of Rig-Down Time (NPT)",
       ]}
       btnExists={true}
       btnTitle="Contact Sales Team"
       btnURL="/contact"
     />
 
-    <div class="mb-20">
-      <FeaturesStats
-        title="By the Numbers"
-        subTitle="Our commitment to quality and reliability is evident in every services we provide. At Narvi, we are dedicated to delivering industry-leading services that ensure your construction projects are built to last."
-        mainStatTitle="96%"
-        mainStatSubTitle="of our clients rate their experience with Narvi as exceptional"
-        stats={[
-          {
-            stat: "99.8%",
-            description: "project completion rate",
-          },
-          {
-            stat: "5,000+",
-            description: "successful installations",
-          },
-          {
-            stat: "85%",
-            description: "client growth year-over-year",
-          },
-        ]}
-      />
-    </div>
   </div>
 </MainLayout>
