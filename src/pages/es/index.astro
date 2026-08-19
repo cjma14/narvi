@@ -28,41 +28,32 @@ const solutionsSection = {
   ctaUrl: "/es/contact",
   solutions: [
     {
-      title: "Servicios de Pozos",
+      title: "Servicio de Bombeo a Pozo",
       description:
-        "Soluciones técnicas integrales para intervención, mantenimiento y optimización de pozos que maximizan la productividad del yacimiento.",
-      bullets: ["Mantenimiento y workover", "Monitoreo y optimización"],
-      image: "/img/service24.avif",
+        "",
+      bullets: ["Bombeo en caliente", "Bombeo en Frío", "Estimulación de pozo"],
+      image: "/img/pozos.avif",
       imageAlt: "Planta de petróleo y gas para operaciones de servicios de pozos",
       iconName: "building",
     },
     {
-      title: "Transporte Industrial",
+      title: "Soluciones Químicas",
       description:
-        "Camiones industriales y soluciones logísticas para el movimiento seguro de equipos petroleros, garantizando continuidad operativa.",
-      bullets: ["Camiones de carga pesada", "Logística estratégica"],
-      image: "/img/service26.avif",
+        "",
+      bullets: ["Laboratorio In-House", "Logística estratégica"],
+      image: "/img/service30.avif",
       imageAlt: "Vehículo de transporte industrial para logística petrolera",
       iconName: "truck",
     },
     {
-      title: "Repuestos y Soporte",
+      title: "Gestión de Activos",
       description:
-        "Suministro de piezas industriales críticas que reducen el tiempo de inactividad y mantienen su maquinaria al máximo rendimiento.",
-      bullets: ["Componentes críticos", "Soporte dedicado"],
-      image: "/img/service28.avif",
+        "",
+      bullets: ["Comercialización de Equipos", "Mantenimiento"],
+      image: "/img/getion-de-activos.avif",
       imageAlt: "Trabajo técnico para repuestos y soporte industrial",
       iconName: "sliders",
-    },
-    {
-      title: "Maquinaria Pesada",
-      description:
-        "Suministro de equipos nuevos y usados certificados, diseñados para operaciones de alto rendimiento en la industria de Oil & Gas.",
-      bullets: ["Equipos de perforación", "Sistemas de bombeo"],
-      image: "/img/service25.avif",
-      imageAlt: "Maquinaria pesada para operaciones de petróleo y gas",
-      iconName: "gearSettings",
-    },
+    }
   ],
 };
 ---
@@ -79,11 +70,11 @@ const solutionsSection = {
   /> -->
 
   <HeroSection
-    title=`¿Busca <span class='text-primary-400'>equipos confiables</span>?`
-    subTitle="En Narvi Enterprise Corporation, proveemos maquinaria pesada, transporte industrial y logística especializada para el sector energético en toda Norteamérica y Latinoamérica."
-    primaryBtn="Cotizar Ahora"
+    title=`Liderando la <span class='text-primary-400'>industria con equipos confiables</span>`
+    subTitle=""
+    primaryBtn="Contactar"
     primaryBtnURL="/es/contact"
-    secondaryBtn="Explorar Soluciones"
+    secondaryBtn="Ver Soluciones"
     secondaryBtnURL="#solutions"
     withReview={false}
   />
@@ -97,22 +88,6 @@ const solutionsSection = {
     solutions={solutionsSection.solutions}
   />
 
-  <AboutUsSection
-    label="Sobre nosotros"
-    title="Ingeniería y Gestión de Activos para la Industria del Petróleo y Gas"
-    subTitle="Con más de 25 años de experiencia internacional, nos especializamos en maximizar la confiabilidad de los equipos y la eficiencia operativa. Desde Norteamérica hasta Latinoamérica, brindamos ingeniería de proyectos de clase mundial y suministro de equipos especializados."
-    videoUrl="https://youtu.be/dyiQqlkigkE"
-    btnExists={true}
-    btnTitle="Ver nuestras soluciones"
-    btnURL="/es/sales"
-  />
-
-  <!-- <TeleprompterSection
-    text="Con más de 25 años de experiencia en el sector del Oil and Gas, manejo y administración de activos, mantenimiento y confiabilidad de equipos, anivel internacional, en países de Norteamérica y Latinoamérica. Nos hemos enfocado en ofrecer servicios profesionales en la ingeniería de proyectos de equipos, su comercialización y suministro. Nuestra prioridad es la eficacia en cada proyecto, acompañamos tus metas de negocio con innovación y sostenibilidad."
-    title="Miguel Mogollón"
-    subTitle="Director Ejecutivo y Fundador"
-  /> -->
-
   <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
     <ClientsSection
       label="Nuestros clientes"
@@ -120,7 +95,7 @@ const solutionsSection = {
       subTitle="Los líderes confían en nuestros productos y servicios"
     />
 
-    <TestimonialsSection
+    <!-- <TestimonialsSection
       label="How we work"
       title="Descubra cómo trabajamos"
       subTitle="¿Quieres saber cómo transformamos tus ideas en realidad? En Narvi creemos en la colaboración, la innovación y la excelencia. ¡Únete a nosotros en este viaje y descubre por qué nuestros clientes nos eligen!"
@@ -134,18 +109,26 @@ const solutionsSection = {
           avatarSrc: "/img/clients/testimonial-4.jpeg",
         },
       ]}
-    />
+    /> -->
   </div>
 
-  <TechPartnersSection
-      title='Impulsando la industria con <span class="text-primary-400">Innovación</span>'
-      partners={[
-        { name: "TECHCORE", icon: "cpu", color: "text-primary-400" },
-        { name: "SECURE RIG", icon: "shield-check", color: "text-primary-500" },
-        { name: "LOGÍSTICA GLOBAL", icon: "globe", color: "text-primary-400" },
-        { name: "POWER SYSTEMS", icon: "zap", color: "text-primary-500" },
-      ]}
-    />
+  <AboutUsSection
+    label="Sobre nosotros"
+    title="Liderando el futuro"
+    subTitle="Con más de 25 años de experiencia internacional, nos especializamos en maximizar la confiabilidad de los equipos y la eficiencia operativa. Desde Norteamérica hasta Latinoamérica, brindamos ingeniería de proyectos de clase mundial y suministro de equipos especializados."
+    videoUrl="https://youtu.be/pEQnZ6nrDlY"
+    btnExists={true}
+    btnTitle="Ver nuestras soluciones"
+    btnURL="/es/sales"
+  />
+
+  <!-- <TeleprompterSection
+    text="Con más de 25 años de experiencia en el sector del Oil and Gas, manejo y administración de activos, mantenimiento y confiabilidad de equipos, anivel internacional, en países de Norteamérica y Latinoamérica. Nos hemos enfocado en ofrecer servicios profesionales en la ingeniería de proyectos de equipos, su comercialización y suministro. Nuestra prioridad es la eficacia en cada proyecto, acompañamos tus metas de negocio con innovación y sostenibilidad."
+    title="Miguel Mogollón"
+    subTitle="Director Ejecutivo y Fundador"
+  /> -->
+
+  
 
   <ProjectConsultationSection
     mainTitle="Su Proyecto Merece"
@@ -185,4 +168,12 @@ const solutionsSection = {
     }}
   />
 
+  <TechPartnersSection
+    title='Miembros <span class="text-primary-400">Aliados</span>'
+    partners={[
+      { src: "/img/clients/logo de camara petrolera.avif", alt: "Logo de camara petrolera" },
+      { src: "/img/clients/Logo de CONAPRI.avif", alt: "Logo de CONAPRI" },
+    ]}
+  />
+ 
 </MainLayout>

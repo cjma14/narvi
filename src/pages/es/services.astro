@@ -36,27 +36,157 @@ const pageTitle: string = `Servicios | ${SITE.title}`;
   />
 
   <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+    <!-- EL COMPROMISO DE NARVI CON LA EFICIENCIA OPERATIVA (HIGHLIGHT CONTAINER FROM SKETCH) -->
     <section
-      class="fade-up mx-auto mt-10 max-w-[85rem] px-4 py-5 md:py-8 text-pearl-100 2xl:max-w-full"
+      class="glass-card border-primary-800/40 relative mt-14 overflow-hidden rounded-3xl border p-8 shadow-2xl sm:p-10"
     >
-      <div class="fade-up ">
-        <div class="flex items-center gap-3">
-          <span class="flex h-[10px] w-[10px] rounded-full bg-primary-500"
-          ></span>
-          <h3 class="text-pearl-100">Descripción</h3>
+      <div
+        class="bg-primary-400/10 pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full blur-3xl"
+      >
+      </div>
+      <div
+        class="from-primary-400 to-emerald-600 absolute left-0 top-0 h-full w-2 bg-gradient-to-b"
+      >
+      </div>
+
+      <div
+        class="border-neutral-800/80 mb-8 flex flex-col justify-between gap-4 border-b pb-6 md:flex-row md:items-center"
+      >
+        <div>
+          <span
+            class="text-primary-400 mb-1 block text-xs font-extrabold uppercase tracking-widest"
+            >Valor Añadido Garantizado</span
+          >
+          <h2
+            class="flex items-center gap-3 text-2xl font-black text-white sm:text-3xl"
+          >
+            <span class="material-symbols-outlined text-primary-400 text-xl">task_alt</span>
+            El compromiso de Narvi con la eficiencia operativa
+          </h2>
         </div>
-        <h2
-          class="mb-4 mt-4 text-balance text-4xl font-extrabold tracking-tight"
+        <div class="shrink-0">
+          <span
+            class="bg-neutral-900 border-primary-400/30 text-primary-400 rounded-full border px-3.5 py-1.5 text-xs font-bold"
+          >
+            Estándares Homologados
+          </span>
+        </div>
+      </div>
+
+      <!-- 4 FEATURE CARDS FROM SKETCH -->
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- FEATURE 1 -->
+        <div
+          class="bg-neutral-950/90 border-neutral-800 hover:border-primary-400/50 group flex flex-col justify-between rounded-2xl border p-5 transition-all duration-300"
         >
-          El compromiso de Narvi con la eficiencia operativa
-        </h2>
-        <p class="mt-3 mb-4 text-pretty font-light sm:text-lg">
-          Con base de operaciones en Houston (Texas, EE.UU.) y El Tigre
-          (Anzoátegui, Venezuela), en Narvi Enterprise Corporation impulsamos
-          la excelencia operativa con soluciones técnicas especializadas para
-          mantener la continuidad, seguridad y productividad de sus operaciones
-          energéticas.
-        </p>
+          <div>
+            <div
+              class="bg-neutral-900 border-primary-400/30 text-primary-400 group-hover:bg-primary-400 group-hover:text-white mb-4 flex h-12 w-12 items-center justify-center rounded-xl border text-xl shadow-md transition-all"
+            >
+              <span class="material-symbols-outlined">local_shipping</span>
+            </div>
+            <h3
+              class="group-hover:text-primary-400 mb-2 text-sm font-bold text-white transition-colors"
+            >
+              Flota y Equipos Especializados
+            </h3>
+            <p class="text-neutral-400 text-xs leading-relaxed">
+              Bombeo en caliente, en frío y estimulación a pozos con unidades
+              operativas de alta capacidad y mantenimiento preventivo continuo.
+            </p>
+          </div>
+          <div
+            class="border-neutral-800/50 text-primary-400 mt-4 flex items-center justify-between border-t pt-3 text-[10px] font-bold uppercase tracking-wider"
+          >
+            <span>Operaciones en Campo</span>
+            <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+          </div>
+        </div>
+
+        <!-- FEATURE 2 -->
+        <div
+          class="bg-neutral-950/90 border-neutral-800 hover:border-primary-400/50 group flex flex-col justify-between rounded-2xl border p-5 transition-all duration-300"
+        >
+          <div>
+            <div
+              class="bg-neutral-900 border-primary-400/30 text-primary-400 group-hover:bg-primary-400 group-hover:text-white mb-4 flex h-12 w-12 items-center justify-center rounded-xl border text-xl shadow-md transition-all"
+            >
+              <span class="material-symbols-outlined">science</span>
+            </div>
+            <h3
+              class="group-hover:text-primary-400 mb-2 text-sm font-bold text-white transition-colors"
+            >
+              Laboratorio In-House
+            </h3>
+            <p class="text-neutral-400 text-xs leading-relaxed">
+              Análisis técnico analítico avanzado que garantiza intervenciones
+              altamente eficaces y selección exacta de tratamientos químicos.
+            </p>
+          </div>
+          <div
+            class="border-neutral-800/50 text-primary-400 mt-4 flex items-center justify-between border-t pt-3 text-[10px] font-bold uppercase tracking-wider"
+          >
+            <span>Analítica de Fluidos</span>
+            <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+          </div>
+        </div>
+
+        <!-- FEATURE 3 -->
+        <div
+          class="bg-neutral-950/90 border-neutral-800 hover:border-primary-400/50 group flex flex-col justify-between rounded-2xl border p-5 transition-all duration-300"
+        >
+          <div>
+            <div
+              class="bg-neutral-900 border-primary-400/30 text-primary-400 group-hover:bg-primary-400 group-hover:text-white mb-4 flex h-12 w-12 items-center justify-center rounded-xl border text-xl shadow-md transition-all"
+            >
+              <span class="material-symbols-outlined">memory</span>
+            </div>
+            <h3
+              class="group-hover:text-primary-400 mb-2 text-sm font-bold text-white transition-colors"
+            >
+              Tecnología e IA
+            </h3>
+            <p class="text-neutral-400 text-xs leading-relaxed">
+              Monitoreo y control en tiempo real para optimizar procesos,
+              predecir variaciones de presión y prevenir desviaciones
+              operativas.
+            </p>
+          </div>
+          <div
+            class="border-neutral-800/50 text-primary-400 mt-4 flex items-center justify-between border-t pt-3 text-[10px] font-bold uppercase tracking-wider"
+          >
+            <span>Telemetría 24/7</span>
+            <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+          </div>
+        </div>
+
+        <!-- FEATURE 4 -->
+        <div
+          class="bg-neutral-950/90 border-neutral-800 hover:border-primary-400/50 group flex flex-col justify-between rounded-2xl border p-5 transition-all duration-300"
+        >
+          <div>
+            <div
+              class="bg-neutral-900 border-primary-400/30 text-primary-400 group-hover:bg-primary-400 group-hover:text-white mb-4 flex h-12 w-12 items-center justify-center rounded-xl border text-xl shadow-md transition-all"
+            >
+              <span class="material-symbols-outlined">shield</span>
+            </div>
+            <h3
+              class="group-hover:text-primary-400 mb-2 text-sm font-bold text-white transition-colors"
+            >
+              Seguridad e Integridad
+            </h3>
+            <p class="text-neutral-400 text-xs leading-relaxed">
+              Gestión integral homologada bajo los más altos estándares
+              internacionales de calidad, ambiente y seguridad ISO y API.
+            </p>
+          </div>
+          <div
+            class="border-neutral-800/50 text-primary-400 mt-4 flex items-center justify-between border-t pt-3 text-[10px] font-bold uppercase tracking-wider"
+          >
+            <span>Normativa ISO & API</span>
+            <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -65,7 +195,7 @@ const pageTitle: string = `Servicios | ${SITE.title}`;
       title="Servicios de Bombeo a Pozos"
       subTitle="Con base operativa en El Tigre, brindamos capacidades técnicas para mantenimiento, intervención y optimización de pozos, con equipos y personal especializado para ejecutar servicios de bombeo en campo de forma segura, eficiente y alineada a las exigencias operacionales de cada cliente."
       single={true}
-      imgOne="/img/service24.avif"
+      imgOne="/img/pozos.avif"
       imgOneAlt="Unidad de bombeo en operación de campo"
       items={[
         "Servicios de bombeo para pozos de producción activos.",
@@ -78,42 +208,12 @@ const pageTitle: string = `Servicios | ${SITE.title}`;
       btnURL="/contact"
     />
 
-    <LeftSection
-      id="equipment-trading"
-      title="Comercialización de equipos"
-      subTitle="NARVI Enterprise Corporation es una empresa líder con experiencia en la adquisición de equipos, repuestos y accesorios para maquinaria en los sectores Industrial y Energético. Ofrecemos a nuestros clientes una amplia gama de opciones para la comercialización de equipos individuales, tanto nuevos como usados, así como los equipos necesarios para el desarrollo y crecimiento de su parque de maquinaria."
-      img="/img/service29.avif"
-      imgAlt="El equipo comercial de la empresa Narvis Enterprise realiza una investigación de mercado"
-      btnExists={true}
-      btnTitle="Contactar con ventas"
-      btnURL="/contact"
-    />
-
-    <RightSection
-      id="technical-services"
-      title="Servicio técnico"
-      subTitle="Nuestro equipo cuenta con experiencia en equipos y maquinarias para el sector industrial y energético, con sólidos conocimientos para mejorar la producción y la eficiencia. Contamos con un equipo humano capacitado y preparado para brindar la orientación necesaria en cada procedimiento."
-      single={true}
-      imgOne="/img/servcie17.jpg"
-      imgOneAlt="Técnico de narvis ec realizando apoyo preventivo"
-      items={[
-        "Instalación y Configuración",
-        "Mantenimiento Preventivo",
-        "Diagnóstico y Reparación",
-        "Actualización y Mejora",
-        "Soporte Técnico",
-        "Capacitación",
-      ]}
-      btnExists={true}
-      btnTitle="Contactar con ventas"
-      btnURL="/contact"
-    />
 
     <LeftSection
       id="asset-management"
       title="Gestión de activos"
       subTitle="En NARVI, redefinimos la gestión de activos mediante la supervisión meticulosa del ciclo de vida de su maquinaria, equipo e infraestructura. Nuestro enfoque garantiza el máximo rendimiento y el valor maximizado desde la adquisición hasta la disposición. A través de la planificación estratégica, la adquisición precisa, la excelencia operativa y el mantenimiento constante, potenciamos sus activos para que contribuyan a su éxito. Confíe en NARVI para mejorar su experiencia en gestión de activos."
-      img="/img/service23.png"
+      img="/img/getion-de-activos.avif"
       imgAlt="Personal de Narvis realizando un estudio de gestión de activos"
       btnExists={true}
       btnTitle="Contactar con ventas"
@@ -144,6 +244,12 @@ const pageTitle: string = `Servicios | ${SITE.title}`;
       btnTitle="Contactar con ventas"
       btnURL="/contact"
     />
-
   </div>
 </MainLayout>
+<style>
+.glass-card {
+    background: rgba(29, 37, 35, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+</style>

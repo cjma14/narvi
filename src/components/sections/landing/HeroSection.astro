@@ -41,18 +41,18 @@ interface Props {
 
 // Internationalization for badge
 const badgeText = Astro.currentLocale === "es" 
-  ? "Socio estratégico en Oil & Gas" 
-  : "Strategic partner in Oil & Gas";
+  ? "Aliados estratégicos" 
+  : "Strategic Partners";
 
 const heroStats = Astro.currentLocale === "es"
   ? [
-      { value: "25+", label: "Años Exp." },
+      { value: "30 años", label: "Exp. Técnica" },
       { value: "99.8%", label: "Eficiencia" },
       { value: "24/7", label: "Soporte" },
       { value: "Global", label: "Alcance" },
     ]
   : [
-      { value: "25+", label: "Years Exp." },
+      { value: "30 years", label: "Technical Exp." },
       { value: "99.8%", label: "Efficiency" },
       { value: "24/7", label: "Support" },
       { value: "Global", label: "Reach" },
@@ -71,11 +71,11 @@ const ctaAriaLabel = Astro.currentLocale === "es"
 >
   <!-- Background Image with lazy loading -->
   <img
-    src="/img/hero5.avif"
+    src="/img/hero6.avif"
     alt="Oil and gas industrial operations background"
     loading="eager"
     decoding="async"
-    class="absolute inset-0 w-full h-full object-cover object-center"
+    class="absolute inset-0 w-full h-full object-cover"
   />
   
   <!-- Green overlay gradient -->
@@ -93,7 +93,7 @@ const ctaAriaLabel = Astro.currentLocale === "es"
       <!-- Each h1 and p tag renders a portion of the title and subTitle defined above -->
       <h1
         id="hero-title"
-        class="block text-balance font-extrabold tracking-tight text-pearl-100 text-4xl md:text-5xl lg:text-6xl lg:leading-tight mb-6"
+        class="block text-balance font-extrabold tracking-tight text-pearl-100 text-4xl md:text-5xl lg:text-7xl lg:leading-tight mb-6"
       >
         <!-- About Fragment: https://docs.astro.build/en/basics/astro-syntax/#fragments -->
         <Fragment set:html={title} />
@@ -107,11 +107,11 @@ const ctaAriaLabel = Astro.currentLocale === "es"
     }
       <!-- Action Button Section: This section includes two CTAs with their own styles and URL -->
       <nav class="flex flex-col sm:flex-row gap-4 justify-center" aria-label={ctaAriaLabel}>
-        {primaryBtn && 
-        <PrimaryCTA title={primaryBtn} url={primaryBtnURL} />
-        }
         {secondaryBtn && 
         <SecondaryCTA title={secondaryBtn} url={secondaryBtnURL} />
+        }
+        {primaryBtn && 
+        <PrimaryCTA title={primaryBtn} url={primaryBtnURL} />
         }
       </nav>
 

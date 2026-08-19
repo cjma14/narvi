@@ -23,47 +23,35 @@ const avatarSrcs: Array<string> = [avatar.src];
 
 const solutionsSection = {
   sectionLabel: "Solutions Ecosystem",
-  title: "Solutions That Power Your Operations",
-  subTitle: '"When your operations can\'t stop, we respond"',
+  title: "Solutions Driving Your Operation",
+  subTitle: "When your operation cannot stop, we respond.",
   ctaLabel: "Request Catalog",
-  ctaUrl: "/contact",
+  ctaUrl: "/es/contact",
   solutions: [
-     {
-      title: "Well Services",
-      description:
-        "Comprehensive technical solutions for well intervention, maintenance, and optimization to maximize reservoir productivity.",
-      bullets: ["Maintenance and workover", "Monitoring and optimization"],
-      image: "/img/service24.avif",
-      imageAlt: "Oil and gas plant for well services operations",
+    {
+      title: "Well Pumping Service",
+      description: "",
+      bullets: ["Hot Pumping", "Cold Pumping", "Well Stimulation"],
+      image: "/img/pozos.avif",
+      imageAlt: "Oil and gas plant for well service operations",
       iconName: "building",
     },
     {
-      title: "Industrial Transport",
-      description:
-        "Industrial trucks and logistics solutions for the safe movement of oilfield equipment, ensuring operational continuity.",
-      bullets: ["Heavy-duty trucks", "Strategic logistics"],
-      image: "/img/service26.avif",
-      imageAlt: "Industrial transport vehicle for oilfield logistics",
+      title: "Chemical Solutions",
+      description: "",
+      bullets: ["In-House Laboratory", "Strategic Logistics"],
+      image: "/img/service30.avif",
+      imageAlt: "Industrial transport vehicle for oil logistics",
       iconName: "truck",
     },
     {
-      title: "Spare Parts and Support",
-      description:
-        "Supply of critical industrial parts that reduce downtime and maintain your machinery at peak performance.",
-      bullets: ["Critical components", "Dedicated support"],
+      title: "Asset Management",
+      description: "",
+      bullets: ["Equipment Marketing", "Maintenance"],
       image: "/img/service28.avif",
       imageAlt: "Technical work for spare parts and industrial support",
       iconName: "sliders",
-    },
-     {
-      title: "Heavy Machinery",
-      description:
-        "Supply of certified new and used equipment, designed for high-performance operations in the Oil & Gas industry.",
-      bullets: ["Drilling equipment", "Pumping systems"],
-      image: "/img/service25.avif",
-      imageAlt: "Heavy machinery for oil and gas operations",
-      iconName: "gearSettings",
-    },
+    }
   ],
 };
 ---
@@ -80,11 +68,11 @@ const solutionsSection = {
   /> -->
 
   <HeroSection
-    title=`Do you need <span class='text-primary-400'>reliable equipment</span>?`
-    subTitle="At Narvi Enterprise Corporation, we supply heavy machinery, industrial trucks, and specialized logistics for the energy sector across North and Latin America."
-    primaryBtn="Quote Now"
+    title=`Leading the <span class='text-primary-400'>industry with reliable equipment</span>`
+    subTitle=""
+    primaryBtn="Contact Us"
     primaryBtnURL="/contact"
-    secondaryBtn="Explore Solutions"
+    secondaryBtn="See Solutions"
     secondaryBtnURL="#solutions"
     withReview={false}
   />
@@ -97,23 +85,7 @@ const solutionsSection = {
     ctaUrl={solutionsSection.ctaUrl}
     solutions={solutionsSection.solutions}
   />
- 
-  <AboutUsSection
-    label="About Us"
-    title="Engineering & Asset Management for the Oil & Gas Industry"
-    subTitle="With over 25 years of international experience, we specialize in maximizing equipment reliability and operational efficiency. From North America to Latin America, we provide world-class project engineering and specialized equipment supply."
-    videoUrl="https://youtu.be/dyiQqlkigkE"
-    btnExists={true}
-    btnTitle="View Our Solutions"
-    btnURL="/sales"
-  />
 
-
-  <!-- <TeleprompterSection
-    text="With over 25 years of experience in the Oil and Gas sector, asset management, maintenance, and equipment reliability at an international level, in North American and Latin American countries. We have focused on providing professional services in the engineering of equipment projects, their commercialization, and supply. Our priority is efficiency in every project, we accompany your business goals with innovation and sustainability."
-    title="Miguel Mogollón"
-    subTitle="CEO and Founder"
-  /> -->
 
   <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
     <ClientsSection
@@ -122,7 +94,7 @@ const solutionsSection = {
       subTitle="Leaders trust in our products and services"
     />
 
-    <TestimonialsSection
+    <!-- <TestimonialsSection
       label=""
       title="Discover how we work"
       subTitle='Want to know why so many companies trust us? Discover the benefits of working with Narvi through our customer testimonials.'
@@ -136,18 +108,27 @@ const solutionsSection = {
           avatarSrc: "/img/clients/testimonial-4.jpeg",
         },
       ]}
-    />
+    /> -->
   </div>
+ 
+  <AboutUsSection
+    label="About Us"
+    title="Leading the future"
+    subTitle="With over 25 years of international experience, we specialize in maximizing equipment reliability and operational efficiency. From North America to Latin America, we provide world-class project engineering and specialized equipment supply."
+    videoUrl="https://youtu.be/PzsHkXPMVcs"
+    btnExists={true}
+    btnTitle="View Our Solutions"
+    btnURL="/sales"
+  />
 
-  <TechPartnersSection
-      title='Driving the industry with <span class="text-primary-400">Innovation</span>'
-      partners={[
-        { name: "TECHCORE", icon: "cpu", color: "text-primary-400" },
-        { name: "SECURE RIG", icon: "shield-check", color: "text-primary-500" },
-        { name: "GLOBAL LOGISTICS", icon: "globe", color: "text-primary-400" },
-        { name: "POWER SYSTEMS", icon: "zap", color: "text-primary-500" },
-      ]}
-    />
+
+  <!-- <TeleprompterSection
+    text="With over 25 years of experience in the Oil and Gas sector, asset management, maintenance, and equipment reliability at an international level, in North American and Latin American countries. We have focused on providing professional services in the engineering of equipment projects, their commercialization, and supply. Our priority is efficiency in every project, we accompany your business goals with innovation and sustainability."
+    title="Miguel Mogollón"
+    subTitle="CEO and Founder"
+  /> -->
+
+
 
   <ProjectConsultationSection
     mainTitle="Your Project Deserves"
@@ -185,5 +166,13 @@ const solutionsSection = {
       title: "We have received your request!",
       description: "Thank you for contacting us. We will get back to you shortly."
     }}
+  />
+
+  <TechPartnersSection
+    title='Driving the industry with <span class="text-primary-400">Innovation</span>'
+    partners={[
+      { src: "/img/clients/logo de camara petrolera.avif", alt: "Logo de camara petrolera" },
+      { src: "/img/clients/Logo de CONAPRI.avif", alt: "Logo de CONAPRI" },
+    ]}
   />
 </MainLayout>

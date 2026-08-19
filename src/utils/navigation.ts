@@ -6,24 +6,24 @@ const navBarLinks = [
     url: "/" 
   },
   { 
-    name: "Products",
-    type: "basic", 
-    url: "/products" 
-  },
-  { 
-    name: "Services",
-    type: "basic", 
-    url: "/services" 
-  },
-  { 
-    name: "About us",
+    name: "About Us",
     type: "basic", 
     url: "/about-us" 
   },
   { 
-    name: "Equipment for sale", 
-    type: "basic",
-    url: "/sales" 
+    name: "Products and Services",
+    type: "basic", 
+    url: "/services" 
+  },
+  { 
+    name: "Sustainability",
+    type: "basic", 
+    url: "/products" 
+  },
+  { 
+    name: "Memberships and Alliances", 
+    type: "basic", 
+    url: "/#tech-partners" 
   },
   {
      name: "Contact", 
@@ -36,23 +36,21 @@ const footerLinks = [
   {
     section: "Solutions",
     links: [
-      { name: "Equipment Supply", type: 'url', url: "/products" },
-      { name: "Industrial Transport", type: 'url', url: "/services" },
-      { name: "Well Pumping Services", type: 'url', url: "/services#bombeo-a-pozos" },
-      { name: "Industrial Parts", type: 'url', url: "/products" },
-      { name: "Strategic Logistics", type: 'url', url: "/services" },
+      { name: "Well Pumping", type: 'url', url: "/services#bombeo-a-pozos" },
+      { name: "In-house Laboratory", type: 'url', url: "/services" },
+      { name: "Asset Management", type: 'url', url: "/services#asset-management" },
     ],
   },
   {
     section: "Contact",
     links: [
-      { name: "Operations in North and LATAM", type: 'basic', icon: 'location' },
+      { name: "Zona Industrial San José de Guanipa, Edo Anzoátegui. El Tigre, VE", type: 'basic', icon: 'location' },
       { name: "info@narvi.corp", type: 'url', url: 'mailto:info@narvi.corp', icon: 'mail' },
       { name: "Support 24/7", type: 'basic', icon: 'phone' },
     ],
   },
   {
-    section: "Coverage",
+    section: "Location",
     links: [
       { name: "Houston, Texas (USA)", type: 'basic' },
       { name: "El Tigre, Anzoategui (Venezuela)", type: 'basic' },

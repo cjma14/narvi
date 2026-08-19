@@ -2,9 +2,6 @@
 // Import necessary components
 import MainLayout from "@/layouts/MainLayout.astro";
 import MainSection from "@components/ui/blocks/MainSection.astro";
-import LeftSection from "@components/ui/blocks/LeftSection.astro";
-import RightSection from "@components/ui/blocks/RightSection.astro";
-import FeaturesStats from "@components/sections/features/FeaturesStats.astro";
 
 // Import necessary images
 import { SITE } from "@data/constants";
@@ -98,76 +95,469 @@ const pageTitle: string = `About us | ${SITE.title}`;
   />
 
   <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-    <section
-      class="fade-up mx-auto mt-10 max-w-[85rem] px-4 py-5 text-pearl-100 md:py-8 2xl:max-w-full"
-    >
-      <div class="fade-up">
-        <div class="flex items-center gap-3">
-          <span class="flex h-[10px] w-[10px] rounded-full bg-primary-500"
-          ></span>
-          <h3 class="text-pearl-100">Description</h3>
+    <section class="relative py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto mb-10 text-center">
+          <span class="text-primary-400 text-mg font-bold uppercase tracking-widest">
+            Key Capabilities
+          </span>
+          <h2 class="mt-1 text-balance text-3xl font-bold text-pearl-100 md:text-5xl md:leading-tight">
+            Pillars of Operational Excellence
+          </h2>
+          <p class="mt-4 text-pretty text-pearl-100/85 md:text-lg">
+            Behind every field operation, we combine more than 30 years of
+            technical experience with cutting-edge technology to drive the
+            Oil & Gas sector with maximum precision and safety. At Narvi
+            Enterprise Corporation, we bring operational excellence and
+            technical support to every project.
+          </p>
         </div>
-        <h2
-          class="mb-4 mt-4 text-balance text-3xl font-extrabold tracking-tight md:text-4xl"
-        >
-          Narvi's Powering Your Industry
-        </h2>
-        <p class="mb-4 mt-3 text-pretty font-light sm:text-lg">
-          NARVI Enterprise Corporation is a leading company specializing in the
-          marketing of equipment, spare parts, and accessories for industrial
-          energy machinery. We offer our clients a wide selection of options for
-          the marketing of individual equipment, both new and used, in addition
-          to supplying the essential equipment required for project development.
-        </p>
-        <p class="mb-4 mt-3 text-pretty font-light sm:text-lg">
-          We are a responsible and committed company that embraces cutting-edge
-          technologies for production improvement.
-        </p>
-        <p class="mb-4 mt-3 text-pretty font-light sm:text-lg">
-          Every day, the best minds in the energy industry put into practice
-          hundreds of years of experience to help their clients achieve lasting
-          success.
-        </p>
-        <p class="mb-4 mt-3 text-pretty font-light sm:text-lg">
-          We believe in innovation with a purpose because we see what others do
-          not and take action. Through business innovation, product creation,
-          and service delivery, we are dedicated to driving the industry that
-          moves the world.
-        </p>
-      </div>
 
-      {
-        aboutItems.map((aboutItem) => {
-          return aboutItem.isRightSection ? (
-            <RightSection
-              id={aboutItem?.id}
-              title={aboutItem.title}
-              subTitle={aboutItem.subTitle}
-              single={aboutItem.single}
-              imgOne={aboutItem.imgOne}
-              imgOneAlt={aboutItem.imgOneAlt}
-              imgTwo={aboutItem.imgTwo}
-              imgTwoAlt={aboutItem.imgTwoAlt}
-              btnExists={aboutItem.btnExists}
-              btnTitle={aboutItem.btnTitle}
-              btnURL={aboutItem.btnURL}
-              items={aboutItem.items}
-            />
-          ) : (
-            <LeftSection
-              id={aboutItem?.id}
-              title={aboutItem.title}
-              subTitle={aboutItem.subTitle}
-              img={aboutItem.img}
-              imgAlt={aboutItem.imgAlt}
-              btnExists={aboutItem.btnExists}
-              btnTitle={aboutItem.btnTitle}
-              btnURL={aboutItem.btnURL}
-              items={aboutItem.items}
-            />
-          );
-        })
-      }
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="glass-card border-primary-800 hover:border-primary-400 group rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1">
+            <div class="bg-neutral-900 border-primary-800 text-primary-400 group-hover:bg-primary-400 group-hover:text-white mb-5 flex h-12 w-12 items-center justify-center rounded-xl border transition-all">
+              <span class="material-symbols-outlined mi text-current text-[20px] transition-colors group-hover:text-white">construction</span>
+            </div>
+            <h3 class="group-hover:text-primary-400 mb-2 text-md font-bold uppercase tracking-wider text-white transition-colors">
+              Advanced Services
+            </h3>
+            <p class="text-neutral-400 text-sm leading-relaxed">
+              Specialized well intervention and production services with
+              cutting-edge technology.
+            </p>
+          </div>
+
+          <div class="glass-card border-primary-800 hover:border-primary-400 group rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1">
+            <div class="bg-neutral-900 border-primary-800 text-primary-400 group-hover:bg-primary-400 group-hover:text-white mb-5 flex h-12 w-12 items-center justify-center rounded-xl border transition-all">
+              <span class="material-symbols-outlined mi text-current text-[20px] transition-colors group-hover:text-white">emoji_events</span>
+            </div>
+            <h3 class="text-primary-400 mb-1 text-2xl font-black">+30 Years</h3>
+            <p class="mb-2 text-md font-semibold uppercase tracking-wider text-white">
+              Technical Track Record
+            </p>
+            <p class="text-neutral-400 text-sm leading-relaxed">
+              Proven experience in high-complexity international operations.
+            </p>
+          </div>
+
+          <div class="glass-card border-primary-800 hover:border-primary-400 group rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1">
+            <div class="bg-neutral-900 border-primary-800 text-primary-400 group-hover:bg-primary-400 group-hover:text-white mb-5 flex h-12 w-12 items-center justify-center rounded-xl border transition-all">
+              <span class="material-symbols-outlined mi text-current text-[20px] transition-colors group-hover:text-white">verified_user</span>
+            </div>
+            <h3 class="group-hover:text-primary-400 mb-2 text-md font-bold uppercase tracking-wider text-white transition-colors">
+              Integrated QHSE Management
+            </h3>
+            <p class="text-neutral-400 text-sm leading-relaxed">
+              Strict international standards in Quality, Health, Safety, and
+              Environment.
+            </p>
+          </div>
+
+          <div class="glass-card border-primary-800 hover:border-primary-400 group relative overflow-hidden rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1">
+            <div class="bg-primary-400/20 text-primary-400 absolute right-2 top-2 rounded px-2 py-0.5 text-[10px] font-bold">
+              TECH
+            </div>
+            <div class="bg-neutral-900 border-primary-800 text-primary-400 group-hover:bg-primary-400 group-hover:text-white mb-5 flex h-12 w-12 items-center justify-center rounded-xl border transition-all">
+              <span class="material-symbols-outlined mi text-current text-[20px] transition-colors group-hover:text-white">settings</span>
+            </div>
+            <h3 class="group-hover:text-primary-400 mb-2 text-md font-bold uppercase tracking-wider text-white transition-colors">
+              AI + GPS Monitoring
+            </h3>
+            <p class="text-neutral-400 text-sm leading-relaxed">
+              Real-time control and smart telemetry for critical assets and
+              operations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 relative rounded-xl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h2 class="text-balance text-2xl font-bold leading-tight text-pearl-100 sm:text-4xl">
+            Strategic Foundations
+          </h2>
+          <p class="mt-4 text-pretty text-pearl-100/85 md:text-lg">
+            The corporate engine that guides our decisions and commercial
+            relationships worldwide.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-primary-400/5 rounded-full blur-2xl group-hover:bg-primary-400/15 transition-all"></div>
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-primary-400 text-slate-950 flex items-center justify-center text-2xl font-bold shadow-lg">
+                <span class="material-symbols-outlined mi text-[22px]">track_changes</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-primary-400 uppercase tracking-widest">Purpose</span>
+                <h3 class="text-2xl font-bold text-white">Mission</h3>
+              </div>
+            </div>
+            <p class="text-pearl-100 text-base leading-relaxed">
+              To be strategic allies in project development and sustainable
+              growth, providing integrated solutions for our clients business
+              success.
+            </p>
+          </div>
+
+          <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-primary-400/5 rounded-full blur-2xl group-hover:bg-primary-400/15 transition-all"></div>
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-primary-400 text-slate-950 flex items-center justify-center text-2xl font-bold shadow-lg">
+                <span class="material-symbols-outlined mi text-[22px]">visibility</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-primary-400 uppercase tracking-widest">Future</span>
+                <h3 class="text-2xl font-bold text-white">Vision</h3>
+              </div>
+            </div>
+            <p class="text-pearl-100 text-base leading-relaxed">
+              To be a regional benchmark in the transition toward a more
+              efficient, sustainable, and technologically advanced energy
+              industry.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-card p-8 rounded-3xl">
+          <div class="text-center mb-8">
+            <h3 class="text-2xl font-bold text-white">Our Corporate Values</h3>
+            <p class="text-md text-neutral-400 mt-1">
+              The unwavering principles of every member of the Narvi team
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div class="bg-neutral-950 border border-primary-800 hover:border-primary-400 p-4 rounded-xl text-center group transition-all">
+              <span class="material-symbols-outlined mi text-primary-400 text-[20px] mb-2 group-hover:scale-110 transition-transform inline-block">handshake</span>
+              <h4 class="text-sm font-bold text-white">Reliability</h4>
+            </div>
+
+            <div class="bg-neutral-950 border border-primary-800 hover:border-primary-400 p-4 rounded-xl text-center group transition-all">
+              <span class="material-symbols-outlined mi text-primary-400 text-[20px] mb-2 group-hover:scale-110 transition-transform inline-block">lightbulb</span>
+              <h4 class="text-sm font-bold text-white">Innovation</h4>
+            </div>
+
+            <div class="bg-neutral-950 border border-primary-800 hover:border-primary-400 p-4 rounded-xl text-center group transition-all">
+              <span class="material-symbols-outlined mi text-primary-400 text-[20px] mb-2 group-hover:scale-110 transition-transform inline-block">domain</span>
+              <h4 class="text-sm font-bold text-white">Commitment</h4>
+            </div>
+
+            <div class="bg-neutral-950 border border-primary-800 hover:border-primary-400 p-4 rounded-xl text-center group transition-all">
+              <span class="material-symbols-outlined mi text-primary-400 text-[20px] mb-2 group-hover:scale-110 transition-transform inline-block">gavel</span>
+              <h4 class="text-sm font-bold text-white">Responsibility</h4>
+            </div>
+
+            <div class="bg-neutral-950 border border-primary-800 hover:border-primary-400 p-4 rounded-xl text-center group transition-all col-span-2 sm:col-span-1">
+              <span class="material-symbols-outlined mi text-primary-400 text-[20px] mb-2 group-hover:scale-110 transition-transform inline-block">eco</span>
+              <h4 class="text-sm font-bold text-white">Sustainability</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ecosystem" class="pt-5 pb-20 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 text-primary-400 text-xs font-semibold uppercase mb-3 border border-primary-800">
+              <span class="material-symbols-outlined mi text-[16px]">public</span>
+              Strategic Presence
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-black text-white">
+              Narvi Ecosystem
+            </h2>
+          </div>
+          <p class="text-sm text-neutral-400 max-w-md mt-4 md:mt-0">
+            Internationally connected infrastructure to ensure fast response
+            and uninterrupted logistical support.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="glass-card rounded-3xl p-8 border border-primary-800 hover:border-primary-400 transition-all duration-300 relative group overflow-hidden">
+            <div class="flex items-center justify-between mb-6">
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">🇺🇸</span>
+                <h3 class="text-2xl font-bold text-white">USA</h3>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-neutral-900 text-primary-400 text-xs font-bold border border-primary-800">
+                Logistics Hub
+              </span>
+            </div>
+
+            <div class="space-y-4">
+              <div class="p-4 rounded-2xl bg-neutral-950/80 border border-primary-800">
+                <h4 class="text-xs font-bold uppercase text-primary-400 mb-1">Operational Role</h4>
+                <p class="text-sm font-semibold text-white">
+                  Main center for supply chain management.
+                </p>
+              </div>
+              <p class="text-xs text-neutral-400 leading-relaxed">
+                Ensures procurement, quality control, and import of heavy,
+                highly specialized technical equipment for all subsidiaries.
+              </p>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-primary-800/50 flex items-center justify-between text-xs text-neutral-400">
+              <span class="inline-flex items-center"><span class="material-symbols-outlined mi text-primary-400 text-[16px] mr-1">warehouse</span> Global Supplies</span>
+              <span class="material-symbols-outlined mi text-primary-400 group-hover:translate-x-1 transition-transform text-[16px]">chevron_right</span>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-3xl p-8 border border-primary-800 hover:border-primary-400 transition-all duration-300 relative group overflow-hidden bg-gradient-to-b from-neutral-800 to-neutral-900">
+            <div class="flex items-center justify-between mb-6">
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">🇻🇪</span>
+                <h3 class="text-2xl font-bold text-white">VENEZUELA</h3>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-primary-400 text-slate-950 text-xs font-bold">
+                Technical Base
+              </span>
+            </div>
+
+            <div class="space-y-4">
+              <div class="p-4 rounded-2xl bg-neutral-950/80 border border-primary-800">
+                <h4 class="text-xs font-bold uppercase text-primary-400 mb-1">Operational Role</h4>
+                <p class="text-sm font-semibold text-white">
+                  Technical operations and field execution center for well
+                  pumping services.
+                </p>
+              </div>
+              <p class="text-xs text-neutral-400 leading-relaxed">
+                Workshop infrastructure, in-house laboratories, and specialized
+                fleet deployment for active well operations.
+              </p>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-primary-800/50 flex items-center justify-between text-xs text-neutral-400">
+              <span class="inline-flex items-center"><span class="material-symbols-outlined mi text-primary-400 text-[16px] mr-1">handyman</span> Field Deployment</span>
+              <span class="material-symbols-outlined mi text-primary-400 group-hover:translate-x-1 transition-transform text-[16px]">chevron_right</span>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-3xl p-8 border border-primary-800 hover:border-primary-400 transition-all duration-300 relative group overflow-hidden">
+            <div class="flex items-center justify-between mb-6">
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">🇵🇦</span>
+                <h3 class="text-2xl font-bold text-white">PANAMA</h3>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-neutral-900 text-primary-400 text-xs font-bold border border-primary-800">
+                Corporate HQ
+              </span>
+            </div>
+
+            <div class="space-y-4">
+              <div class="p-4 rounded-2xl bg-neutral-950/80 border border-primary-800">
+                <h4 class="text-xs font-bold uppercase text-primary-400 mb-1">Operational Role</h4>
+                <p class="text-sm font-semibold text-white">
+                  Strategic banking, corporate, and commercial center.
+                </p>
+              </div>
+              <p class="text-xs text-neutral-400 leading-relaxed">
+                Centralizes international financial administration, large-scale
+                contract structuring, and institutional commercial relations.
+              </p>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-primary-800/50 flex items-center justify-between text-xs text-neutral-400">
+              <span class="inline-flex items-center"><span class="material-symbols-outlined mi text-primary-400 text-[16px] mr-1">work</span> Finance & Partnerships</span>
+              <span class="material-symbols-outlined mi text-primary-400 group-hover:translate-x-1 transition-transform text-[16px]">chevron_right</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="evolution" class="py-16 bg-neutral-900/40 relative rounded-xl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 text-primary-400 text-xs font-semibold uppercase mb-3 border border-primary-800">
+            <span class="material-symbols-outlined mi text-[16px]">timeline</span>
+            Trajectory
+          </div>
+          <h2 class="text-balance text-2xl font-bold leading-tight text-pearl-100 sm:text-4xl">
+            Our Evolution
+          </h2>
+          <p class="mt-4 text-pretty text-pearl-100/85 md:text-lg">
+            A continuous path of innovation, financial strength, and expansion
+            into key markets.
+          </p>
+        </div>
+
+        <div class="relative">
+          <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-primary-800 via-primary-400 to-primary-800 -translate-y-1/2 z-0"></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10">
+            <div class="glass-card p-6 rounded-2xl border border-primary-800 hover:border-primary-400 transition-all duration-300 flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-3xl font-black text-primary-400">2022</span>
+                  <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-950 text-neutral-400 border border-primary-800 font-bold">U.S.</span>
+                </div>
+                <h3 class="text-sm font-bold text-white mb-2">Foundation and Structure</h3>
+                <p class="text-xs text-neutral-400 leading-relaxed">
+                  Establishment of the corporate structure and supply chain
+                  center in the U.S.
+                </p>
+              </div>
+              <div class="mt-6 pt-3 border-t border-primary-800/40 text-[11px] text-primary-400 font-semibold flex items-center gap-1">
+                <span class="material-symbols-outlined mi text-[16px]">check_circle</span>
+                <span>Initial Phase</span>
+              </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border border-primary-800 hover:border-primary-400 transition-all duration-300 flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-3xl font-black text-primary-400">2023</span>
+                  <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-950 text-neutral-400 border border-primary-800 font-bold">Panama</span>
+                </div>
+                <h3 class="text-sm font-bold text-white mb-2">Financial Management</h3>
+                <p class="text-xs text-neutral-400 leading-relaxed">
+                  Consolidation of Panama as the group's banking, commercial,
+                  and legal hub.
+                </p>
+              </div>
+              <div class="mt-6 pt-3 border-t border-primary-800/40 text-[11px] text-primary-400 font-semibold flex items-center gap-1">
+                <span class="material-symbols-outlined mi text-[16px]">check_circle</span>
+                <span>Consolidation</span>
+              </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border border-primary-800 hover:border-primary-400 transition-all duration-300 flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-3xl font-black text-primary-400">2024</span>
+                  <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-950 text-neutral-400 border border-primary-800 font-bold">Global</span>
+                </div>
+                <h3 class="text-sm font-bold text-white mb-2">Commercial Expansion</h3>
+                <p class="text-xs text-neutral-400 leading-relaxed">
+                  Entry into the Middle East and Africa, and reactivation in
+                  Venezuela.
+                </p>
+              </div>
+              <div class="mt-6 pt-3 border-t border-primary-800/40 text-[11px] text-primary-400 font-semibold flex items-center gap-1">
+                <span class="material-symbols-outlined mi text-[16px]">check_circle</span>
+                <span>Internationalization</span>
+              </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border border-primary-800 hover:border-primary-400 transition-all duration-300 flex flex-col justify-between group bg-neutral-900/80">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-3xl font-black text-white group-hover:text-primary-400 transition-colors">2025</span>
+                  <span class="text-xs px-2.5 py-1 rounded-md bg-primary-400 text-slate-950 font-bold">Venezuela</span>
+                </div>
+                <h3 class="text-sm font-bold text-white mb-2">Operational Deployment</h3>
+                <p class="text-xs text-neutral-400 leading-relaxed">
+                  Direct field execution with well pumping equipment and QHSE
+                  integration.
+                </p>
+              </div>
+              <div class="mt-6 pt-3 border-t border-primary-800/40 text-[11px] text-primary-400 font-semibold flex items-center gap-1">
+                <span class="material-symbols-outlined mi text-[16px] animate-spin">sync</span>
+                <span>Active Operation</span>
+              </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border border-primary-800 hover:border-primary-400 transition-all duration-300 flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-3xl font-black text-primary-400">2026</span>
+                  <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-950 text-neutral-400 border border-primary-800 font-bold">South America</span>
+                </div>
+                <h3 class="text-sm font-bold text-white mb-2">Logistics Network and Alliances</h3>
+                <p class="text-xs text-neutral-400 leading-relaxed">
+                  Strategic alliances in Mexico, Brazil, Ecuador, and Colombia.
+                </p>
+              </div>
+              <div class="mt-6 pt-3 border-t border-primary-800/40 text-[11px] text-neutral-400 font-semibold flex items-center gap-1">
+                <span class="material-symbols-outlined mi text-[16px]">explore</span>
+                <span>Outlook</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="py-24 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-6 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-950 text-primary-400 text-xs font-semibold uppercase border border-primary-800">
+              <span class="material-symbols-outlined mi text-[16px]">groups</span>
+              Technical Leadership
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
+              Our Leadership
+            </h2>
+            <p class="text-base text-neutral-400 leading-relaxed">
+              With decades of proven experience in field engineering and global
+              corporate management, our approach stands out for technical
+              excellence, operational discipline, and unwavering commitment to
+              safety.
+            </p>
+            <div class="border-t border-primary-800/50 pt-6">
+              <blockquote class="text-pearl-100/90 italic border-l-2 border-primary-400 pl-4">
+                "Our priority is efficiency in every project; we support your
+                business goals with innovation, sustainability, and operational
+                certainty."
+              </blockquote>
+              <p class="text-xs text-primary-400 font-bold uppercase tracking-wider mt-2 pl-4">
+                — Miguel Mogollón, President & CEO
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 flex justify-center lg:justify-end">
+            <div class="glass-card w-full max-w-xl rounded-3xl overflow-hidden border border-primary-800/80 hover:border-primary-400 transition-all duration-300 group shadow-2xl">
+              <div class="sm:flex">
+                <div class="sm:w-1/2 h-80 sm:h-auto relative overflow-hidden bg-neutral-900 border-b sm:border-b-0 sm:border-r border-primary-850">
+                  <img src="/img/miguel-mogollon.avif" alt="Miguel Mogollón - President of NARVI" class="w-full h-full object-cover object-top opacity-90 group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x800/11231f/80c342?text=Miguel+Mogollon'"/>
+                  <div class="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent sm:bg-gradient-to-r sm:from-transparent sm:via-transparent sm:to-neutral-900/40"></div>
+                </div>
+                <div class="sm:w-1/2 p-8 flex flex-col justify-between">
+                  <div>
+                    <div class="inline-block px-2.5 py-0.5 rounded-full bg-primary-400/10 text-primary-400 text-[10px] font-bold uppercase tracking-wider border border-primary-400/20 mb-3">
+                      Founder
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1 group-hover:text-primary-400 transition-colors">
+                      Miguel Mogollón
+                    </h3>
+                    <p class="text-xs text-primary-400 font-semibold uppercase tracking-widest mb-4">
+                      President & CEO
+                    </p>
+                    <p class="text-sm text-neutral-400 leading-relaxed mb-6">
+                      Visionary leader with more than 30 years of technical and
+                      executive experience in the energy and industrial sectors
+                      across North and Latin America.
+                    </p>
+                  </div>
+                  <div class="pt-4 border-t border-primary-800/55 flex items-center justify-between text-xs text-neutral-400">
+                    <span class="inline-flex items-center gap-1">
+                      <span class="material-symbols-outlined text-primary-400 text-sm">stars</span>
+                      Strategic Vision
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 </MainLayout>
+<style>
+.glass-card {
+    background: rgba(29, 37, 35, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+</style>

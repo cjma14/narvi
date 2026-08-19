@@ -17,50 +17,185 @@ const pageTitle: string = `Services | ${SITE.title}`;
     "@id": "https://narvi-ec.com/services",
     url: "https://narvi-ec.com/services",
     name: "Services | Narvi EC",
-    description: "Innovative Solutions for Sustainable Business Growth.",
+    description: "Innovative solutions for sustainable business growth.",
     isPartOf: {
       "@type": "WebSite",
       url: "https://narvi-ec.com",
       name: "Narvi Enterprise Corporation",
       description:
-        "Narvi EC offers engineering and maintenance services throughout the Americas, optimizing your operations in the energy sector.",
+        "Narvi EC provides engineering and maintenance services throughout the Americas, optimizing operations in the energy sector.",
     },
     inLanguage: "en-US",
   }}
 >
   <MainSection
     label="Services"
-    title="Innovative Solutions for Sustainable Business Growth"
+    title="Innovative solutions for sustainable business growth."
     backgroundImg="/img/service15.png"
   />
 
   <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-    <section class="fade-up mx-auto mt-10 max-w-[85rem] px-4 py-5 md:py-8 text-pearl-100 2xl:max-w-full">
-      <div class="fade-up ">
-        <div class="flex items-center gap-3">
-          <span class="flex h-[10px] w-[10px] rounded-full bg-primary-500"></span>
-          <h3 class="text-pearl-100">Description</h3>
-        </div>
-        <h2 class="mb-4 mt-4 text-balance text-3xl md:text-4xl font-extrabold tracking-tight">
-          Narvi's Commitment to Operational Efficiency
-        </h2>
-        <p class="mt-3 mb-4 text-pretty font-light sm:text-lg">
-          With operations based in Houston (Texas, USA) and El Tigre
-          (Anzoategui, Venezuela), at Narvi Enterprise Corporation we drive
-          operational excellence through specialized technical solutions that
-          sustain continuity, safety, and productivity across your energy
-          operations.
-        </p>
+    <!-- NARVI'S COMMITMENT TO OPERATIONAL EFFICIENCY (HIGHLIGHT CONTAINER FROM SKETCH) -->
+    <section
+      class="glass-card border-primary-800/40 relative mt-14 overflow-hidden rounded-3xl border p-8 shadow-2xl sm:p-10"
+    >
+      <div
+        class="bg-primary-400/10 pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full blur-3xl"
+      >
+      </div>
+      <div
+        class="from-primary-400 to-emerald-600 absolute left-0 top-0 h-full w-2 bg-gradient-to-b"
+      >
       </div>
 
+      <div
+        class="border-neutral-800/80 mb-8 flex flex-col justify-between gap-4 border-b pb-6 md:flex-row md:items-center"
+      >
+        <div>
+          <span
+            class="text-primary-400 mb-1 block text-xs font-extrabold uppercase tracking-widest"
+            >Guaranteed Added Value</span
+          >
+          <h2
+            class="flex items-center gap-3 text-2xl font-black text-white sm:text-3xl"
+          >
+            <span class="material-symbols-outlined text-primary-400 text-xl">task_alt</span>
+            Narvi's commitment to operational efficiency
+          </h2>
+        </div>
+        <div class="shrink-0">
+          <span
+            class="bg-neutral-900 border-primary-400/30 text-primary-400 rounded-full border px-3.5 py-1.5 text-xs font-bold"
+          >
+            Certified Standards
+          </span>
+        </div>
+      </div>
+
+      <!-- 4 FEATURE CARDS FROM SKETCH -->
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- FEATURE 1 -->
+        <div
+          class="bg-neutral-950/90 border-neutral-800 hover:border-primary-400/50 group flex flex-col justify-between rounded-2xl border p-5 transition-all duration-300"
+        >
+          <div>
+            <div
+              class="bg-neutral-900 border-primary-400/30 text-primary-400 group-hover:bg-primary-400 group-hover:text-white mb-4 flex h-12 w-12 items-center justify-center rounded-xl border text-xl shadow-md transition-all"
+            >
+              <span class="material-symbols-outlined">local_shipping</span>
+            </div>
+            <h3
+              class="group-hover:text-primary-400 mb-2 text-sm font-bold text-white transition-colors"
+            >
+              Specialized Fleet and Equipment
+            </h3>
+            <p class="text-neutral-400 text-xs leading-relaxed">
+              Hot pumping, cold pumping, and well stimulation with high-capacity
+              operational units and continuous preventive maintenance.
+            </p>
+          </div>
+          <div
+            class="border-neutral-800/50 text-primary-400 mt-4 flex items-center justify-between border-t pt-3 text-[10px] font-bold uppercase tracking-wider"
+          >
+            <span>Field Operations</span>
+            <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+          </div>
+        </div>
+
+        <!-- FEATURE 2 -->
+        <div
+          class="bg-neutral-950/90 border-neutral-800 hover:border-primary-400/50 group flex flex-col justify-between rounded-2xl border p-5 transition-all duration-300"
+        >
+          <div>
+            <div
+              class="bg-neutral-900 border-primary-400/30 text-primary-400 group-hover:bg-primary-400 group-hover:text-white mb-4 flex h-12 w-12 items-center justify-center rounded-xl border text-xl shadow-md transition-all"
+            >
+              <span class="material-symbols-outlined">science</span>
+            </div>
+            <h3
+              class="group-hover:text-primary-400 mb-2 text-sm font-bold text-white transition-colors"
+            >
+              In-House Laboratory
+            </h3>
+            <p class="text-neutral-400 text-xs leading-relaxed">
+              Advanced analytical technical analysis that ensures highly
+              effective interventions and precise selection of chemical
+              treatments.
+            </p>
+          </div>
+          <div
+            class="border-neutral-800/50 text-primary-400 mt-4 flex items-center justify-between border-t pt-3 text-[10px] font-bold uppercase tracking-wider"
+          >
+            <span>Fluid Analytics</span>
+            <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+          </div>
+        </div>
+
+        <!-- FEATURE 3 -->
+        <div
+          class="bg-neutral-950/90 border-neutral-800 hover:border-primary-400/50 group flex flex-col justify-between rounded-2xl border p-5 transition-all duration-300"
+        >
+          <div>
+            <div
+              class="bg-neutral-900 border-primary-400/30 text-primary-400 group-hover:bg-primary-400 group-hover:text-white mb-4 flex h-12 w-12 items-center justify-center rounded-xl border text-xl shadow-md transition-all"
+            >
+              <span class="material-symbols-outlined">memory</span>
+            </div>
+            <h3
+              class="group-hover:text-primary-400 mb-2 text-sm font-bold text-white transition-colors"
+            >
+              Technology and AI
+            </h3>
+            <p class="text-neutral-400 text-xs leading-relaxed">
+              Real-time monitoring and control to optimize processes, predict
+              pressure variations, and prevent operational deviations.
+            </p>
+          </div>
+          <div
+            class="border-neutral-800/50 text-primary-400 mt-4 flex items-center justify-between border-t pt-3 text-[10px] font-bold uppercase tracking-wider"
+          >
+            <span>24/7 Telemetry</span>
+            <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+          </div>
+        </div>
+
+        <!-- FEATURE 4 -->
+        <div
+          class="bg-neutral-950/90 border-neutral-800 hover:border-primary-400/50 group flex flex-col justify-between rounded-2xl border p-5 transition-all duration-300"
+        >
+          <div>
+            <div
+              class="bg-neutral-900 border-primary-400/30 text-primary-400 group-hover:bg-primary-400 group-hover:text-white mb-4 flex h-12 w-12 items-center justify-center rounded-xl border text-xl shadow-md transition-all"
+            >
+              <span class="material-symbols-outlined">shield</span>
+            </div>
+            <h3
+              class="group-hover:text-primary-400 mb-2 text-sm font-bold text-white transition-colors"
+            >
+              Safety and Integrity
+            </h3>
+            <p class="text-neutral-400 text-xs leading-relaxed">
+              Integrated management certified under the highest international
+              standards for quality, environmental performance, and ISO/API
+              safety.
+            </p>
+          </div>
+          <div
+            class="border-neutral-800/50 text-primary-400 mt-4 flex items-center justify-between border-t pt-3 text-[10px] font-bold uppercase tracking-wider"
+          >
+            <span>ISO & API Compliance</span>
+            <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <RightSection
       id="bombeo-a-pozos"
       title="Well Pumping Services"
-      subTitle="With an operational base in El Tigre, we provide technical capabilities for well maintenance, intervention, and optimization, supported by specialized field crews and equipment to execute pumping services safely and efficiently according to each client's operational requirements."
+      subTitle="With an operational base in El Tigre, we provide technical capabilities for maintenance, intervention, and optimization of wells, with specialized equipment and personnel to execute field pumping services safely, efficiently, and aligned with each client's operational requirements."
       single={true}
-      imgOne="/img/service24.avif"
+      imgOne="/img/pozos.avif"
       imgOneAlt="Pumping unit in field operation"
       items={[
         "Pumping services for active production wells.",
@@ -74,71 +209,46 @@ const pageTitle: string = `Services | ${SITE.title}`;
     />
 
     <LeftSection
-      id="equipment-trading"
-      title="Equipment Trading"
-      subTitle="NARVI Enterprise Corporation is a leading company with expertise in the procurement of equipment, spare parts, and accessories for machinery in the Industrial and Energy sectors. We offer our clients a wide range of options to trade individual equipment, both new and used, as well as the necessary equipment for the development and growth of their fleet of machinery."
-      img="/img/service29.avif"
-      imgAlt="Narvis Enterprise company trading team doing market research"
-      btnExists={true}
-      btnTitle="Contact Sales Team"
-      btnURL="/contact"
-    />
-
-    <RightSection
-      id="technical-services"
-      title="Technical Services"
-      subTitle="Our team boasts expertise in the industrial and energy sectors' equipment and machinery, possessing robust knowledge to enhance production and efficiency. We are equipped with a professionally trained team ready to provide necessary guidance throughout each procedure."
-      single={true}
-      imgOne="/img/servcie17.jpg"
-      imgOneAlt="Narvis ec technician performing preventive support"
-      items={[
-        "Installation and Configuration",
-        "Preventive Maintenance",
-        "Diagnosis and Repair",
-        "Update and Improvement",
-        "Technical Support",
-        "Training",
-      ]}
-      btnExists={true}
-      btnTitle="Contact Sales Team"
-      btnURL="/contact"
-    />
-
-    <LeftSection
       id="asset-management"
       title="Asset Management"
-      subTitle="At NARVI, we redefine asset management by meticulously overseeing the lifecycle of your machinery, equipment, and infrastructure. Our approach ensures peak performance and maximized value from acquisition to disposition. Through strategic planning, precise procurement, operational excellence, and steadfast maintenance, we empower your assets to contribute to your success. Trust NARVI to elevate your asset management experience."
-      img="/img/service23.png"
-      imgAlt="Narvis staff conducting an Asset Management study"
+      subTitle="At NARVI, we redefine asset management through meticulous supervision of the lifecycle of your machinery, equipment, and infrastructure. Our approach ensures maximum performance and value from acquisition to disposal. Through strategic planning, precise procurement, operational excellence, and continuous maintenance, we empower your assets to contribute to your success. Trust NARVI to elevate your asset management experience."
+      img="/img/getion-de-activos.avif"
+      imgAlt="Narvi staff conducting an asset management study"
       btnExists={true}
       btnTitle="Contact Sales Team"
       btnURL="/contact"
       items={[
-        "Asset value and performance consulting",
-        "Acquisition of reliable assets",
+        "Consulting on asset value and performance",
+        "Reliable asset acquisition",
         "Assurance and control in the acquisition of your fleet assets",
-        "Assistance in asset administration and management",
+        "Support in asset administration and management",
       ]}
     />
 
     <RightSection
       id="bussines-analysis"
       title="In-House Chemical Laboratory (Oilfield Services)"
-      subTitle="Our in-house laboratory with specialized technical support provides on-site analytical and testing services designed for real-time chemical evaluation, fluid optimization, and quality control directly at the wellsite or regional operations base. By eliminating logistical delays from sending samples to distant third-party facilities, this service enables rapid, data-driven decisions that minimize non-productive time (NPT) and sustain peak operational efficiency."
+      subTitle="We provide on-site chemical analysis and testing services designed to perform real-time evaluations, fluid optimization, and quality control directly at the wellsite or regional operations base. By eliminating logistical delays associated with sending samples to distant external labs, this service enables fast, data-driven decision-making, minimizing non-productive time (NPT) and ensuring maximum operational efficiency in the field."
       single={true}
       imgOne="/img/service30.avif"
       imgOneAlt="On-site chemical laboratory support for oilfield operations"
       items={[
-        "Real-Time Fluid Conditioning",
-        "Production Chemistry and Flow Assurance",
-        "Asset Integrity and Corrosion Control",
-        "Produced Water Characterization",
-        "Elimination of Rig-Down Time (NPT)",
+        "Real-time fluid conditioning",
+        "Production chemistry and flow assurance",
+        "Asset integrity and corrosion control",
+        "Produced water characterization",
+        "Elimination of non-productive time (NPT)",
       ]}
       btnExists={true}
       btnTitle="Contact Sales Team"
       btnURL="/contact"
     />
-
   </div>
 </MainLayout>
+<style>
+.glass-card {
+    background: rgba(29, 37, 35, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+</style>

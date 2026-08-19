@@ -7,7 +7,7 @@ import LeftSection from "@/components/ui/blocks/LeftSection.astro";
 import RightSection from "@/components/ui/blocks/RightSection.astro";
 import productsFeatures from "@data/es/products-features.json";
 
-const pageTitle: string = `Products | ${SITE.title}`
+const pageTitle: string = `Products | ${SITE.title}`;
 ---
 
 <MainLayout
@@ -16,68 +16,486 @@ const pageTitle: string = `Products | ${SITE.title}`
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": "https://narvi-ec.com/es/products",
-    "url": "https://narvi-ec.com/es/products",
-    "name": "Productos | Narvi EC",
-    "description": "Soluciones integrales para la industria del petróleo y el gas.",
-    "isPartOf": {
+    url: "https://narvi-ec.com/es/products",
+    name: "Productos | Narvi EC",
+    description:
+      "Soluciones integrales para la industria del petróleo y el gas.",
+    isPartOf: {
       "@type": "WebSite",
-      "url": "https://narvi-ec.com",
-      "name": "Narvi Enterprise Corporation",
-      "description": "Narvi EC ofrece servicios de ingeniería y mantenimiento en todo el continente americano, optimizando sus operaciones en el sector energético."
+      url: "https://narvi-ec.com",
+      name: "Narvi Enterprise Corporation",
+      description:
+        "Narvi EC ofrece servicios de ingeniería y mantenimiento en todo el continente americano, optimizando sus operaciones en el sector energético.",
     },
-    "inLanguage": "es"
+    inLanguage: "es",
   }}
 >
-    <MainSection
-        label="Productos"
-        title="Soluciones integrales para la industria del petróleo y el gas"
-        backgroundImg="/img/background2.jpg"
-       
-    />
-
-    <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-      <div class="mt-10">
-        <LeftSection
-          id="exploration-production"
-          title="Exploración y producción"
-          subTitle="Nuestros servicios de exploración le permiten descubrir y desarrollar nuevos yacimientos de petróleo y gas, maximizando su potencial de producción. Contamos con las últimas tecnologías y un equipo experto para garantizar el éxito de sus proyectos."
-          img="/img/product5.jpg"
-          imgAlt="Perforación petrolera"
-          btnExists={true}
-          btnTitle="Contactar con ventas"
-          btnURL="/contact"
-          items={productsFeatures["exploration-production"].items}
-        />
+  <MainSection
+    label="Productos"
+    title="Soluciones integrales para la industria del petróleo y el gas"
+    backgroundImg="/img/background2.jpg"
+  />
+  <!-- 4 PILARES DE SOSTENIBILIDAD (BOCETO EXACTO) -->
+  <section
+    class="bg-neutral-900/30 border-primary-800/40 relative border-b py-20"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto mb-16 max-w-2xl text-center">
+        <span
+          class="text-primary-400 text-xs font-bold uppercase tracking-widest"
+          >Pilares Estratégicos</span
+        >
+        <h2 class="mt-2 text-balance text-3xl font-bold text-pearl-100 md:text-5xl md:leading-tight">
+          Ejes Fundamentales de Nuestra Estrategia
+        </h2>
+        <p class="text-neutral-400 mt-2">
+          Cuatro compromisos de acción directa en nuestras operaciones diarias
+          en campo e instalaciones corporativas.
+        </p>
       </div>
 
-      <RightSection
-        id="transportation-processes"
-        title="Transporte y procesos"
-        subTitle="Ofrecemos soluciones de transporte y logística personalizadas, garantizando la entrega segura y eficiente de sus equipos y materiales en todo el mundo."
-        single={true}
-        imgOne="/img/product6.png"
-        imgOneAlt="Camión para transporte de petróleo"
-        imgTwo="/img/product2.jpg"
-        imgTwoAlt="Oleoducto para transportar petróleo o gas"
-        items={productsFeatures["transportation-processes"].items}
-        btnExists={true}
-        btnTitle="Contactar con ventas"
-        btnURL="/contact"
-      />
+      <!-- GRID OF 4 PILLARS FROM SKETCH -->
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <!-- PILAR 1: OPERACIONES RESPONSABLES -->
+        <div
+          class="glass-card border-primary-800 hover:border-primary-400 group relative flex flex-col justify-between rounded-3xl border p-8 transition-all duration-300"
+        >
+          <div>
+            <div class="mb-6 flex items-center justify-between">
+              <div
+                class="bg-neutral-900 border-primary-400/40 text-primary-400 group-hover:bg-primary-400 group-hover:text-white flex h-14 w-14 items-center justify-center rounded-2xl border text-2xl shadow-md transition-all"
+              >
+                <span class="material-symbols-outlined text-current transition-colors group-hover:text-white">eco</span>
+              </div>
+              <span
+                class="text-primary-800 group-hover:text-primary-400/30 text-3xl font-black transition-colors"
+                >01</span
+              >
+            </div>
+            <h3
+              class="group-hover:text-primary-400 mb-3 text-xl font-bold text-white transition-colors sm:text-2xl"
+            >
+              1. OPERACIONES RESPONSABLES
+            </h3>
+            <p class="text-neutral-400 mt-2">
+              Nuestro primer compromiso es desarrollar operaciones seguras,
+              eficientes y ambientalmente responsables. Trabajamos bajo un
+              Sistema de Gestión Integrado orientado a estándares
+              internacionales de calidad, ambiente, seguridad y salud
+              ocupacional, incorporando la prevención de riesgos, el
+              cumplimiento regulatorio y la mejora continua como elementos
+              fundamentales de nuestras operaciones.
+            </p>
+          </div>
 
-      <div class="mb-20">
-        <LeftSection
-          id="equipment-support"
-          title="Equipos de soporte"
-          subTitle="Nuestro equipo de técnicos altamente capacitados le brinda soluciones personalizadas para mantener sus equipos en óptimas condiciones."
-          img="/img/product6.jpg"
-          imgAlt="Oil drill"
-          btnExists={true}
-          btnTitle="Contactar con ventas"
-          btnURL="/contact"
-          items={productsFeatures["equipment-support"].items}
-        />
+          <!-- COMMITMENT QUOTE BOX FROM SKETCH -->
+          <div
+            class="bg-neutral-950/90 border-primary-400 border-primary-800/60 rounded-2xl border-y border-l-4 border-r p-4 sm:p-5"
+          >
+            <span
+              class="text-primary-400 mb-1 block text-[10px] font-extrabold uppercase tracking-widest"
+              >Nuestro Compromiso</span
+            >
+            <p class="text-xs font-medium italic text-white sm:text-sm">
+              "Prevenir incidentes, minimizar impactos ambientales y utilizar
+              los recursos de manera cada vez más eficiente"
+            </p>
+          </div>
+        </div>
+
+        <!-- PILAR 2: PERSONAS Y COMUNIDADES -->
+        <div
+          class="glass-card border-primary-800 hover:border-primary-400 group relative flex flex-col justify-between rounded-3xl border p-8 transition-all duration-300"
+        >
+          <div>
+            <div class="mb-6 flex items-center justify-between">
+              <div
+                class="bg-neutral-900 border-primary-400/40 text-primary-400 group-hover:bg-primary-400 group-hover:text-white flex h-14 w-14 items-center justify-center rounded-2xl border text-2xl shadow-md transition-all"
+              >
+                <span class="material-symbols-outlined text-current transition-colors group-hover:text-white">groups</span>
+              </div>
+              <span
+                class="text-primary-800 group-hover:text-primary-400/30 text-3xl font-black transition-colors"
+                >02</span
+              >
+            </div>
+            <h3
+              class="group-hover:text-primary-400 mb-3 text-xl font-bold text-white transition-colors sm:text-2xl"
+            >
+              2. PERSONAS Y COMUNIDADES
+            </h3>
+            <p class="text-neutral-400 mt-2">
+              Creemos que el desarrollo de la industria debe generar
+              oportunidades y capacidades en los territorios donde operamos.
+              Promovemos una cultura basada en seguridad, respeto, desarrollo
+              profesional, diversidad de capacidades y generación de empleo y
+              conocimiento local. En la <strong class="text-white"
+                >Faja Petrolífera del Orinoco</strong
+              >, nuestra aspiración es crecer conjuntamente con nuestro entorno,
+              contribuyendo progresivamente al desarrollo de talento,
+              proveedores y capacidades locales.
+            </p>
+          </div>
+
+          <!-- COMMITMENT QUOTE BOX FROM SKETCH -->
+          <div
+            class="bg-neutral-950/90 border-primary-400 border-primary-800/60 rounded-2xl border-y border-l-4 border-r p-4 sm:p-5 mt-4"
+          >
+            <span
+              class="text-primary-400 mb-1 block text-[10px] font-extrabold uppercase tracking-widest"
+              >Nuestro Compromiso</span
+            >
+            <p class="text-xs font-medium italic text-white sm:text-sm">
+              "Proteger a nuestra gente, desarrollar talento local y contribuir
+              positivamente a las comunidades donde operamos"
+            </p>
+          </div>
+        </div>
+
+        <!-- PILAR 3: EFICIENCIA E INNOVACIÓN -->
+        <div
+          class="glass-card border-primary-800 hover:border-primary-400 group relative flex flex-col justify-between rounded-3xl border p-8 transition-all duration-300"
+        >
+          <div>
+            <div class="mb-6 flex items-center justify-between">
+              <div
+                class="bg-neutral-900 border-primary-400/40 text-primary-400 group-hover:bg-primary-400 group-hover:text-white flex h-14 w-14 items-center justify-center rounded-2xl border text-2xl shadow-md transition-all"
+              >
+                <span class="material-symbols-outlined text-current transition-colors group-hover:text-white">memory</span>
+              </div>
+              <span
+                class="text-primary-800 group-hover:text-primary-400/30 text-3xl font-black transition-colors"
+                >03</span
+              >
+            </div>
+            <h3
+              class="group-hover:text-primary-400 mb-3 text-xl font-bold text-white transition-colors sm:text-2xl"
+            >
+              3. EFICIENCIA E INNOVACIÓN
+            </h3>
+            <p class="text-neutral-400 mt-2">
+              Para NARVI, sostenibilidad también significa hacer más eficiente
+              cada operación. Aplicamos tecnología, monitoreo en tiempo real,
+              análisis de datos e inteligencia artificial para mejorar el
+              desempeño de nuestros servicios, anticipar desviaciones, aumentar
+              la confiabilidad de los equipos y reducir tiempos no productivos.
+            </p>
+          </div>
+
+          <!-- COMMITMENT QUOTE BOX FROM SKETCH -->
+          <div
+            class="bg-neutral-950/90 border-primary-400 border-primary-800/60 rounded-2xl border-y border-l-4 border-r p-4 sm:p-5 mt-4"
+          >
+            <span
+              class="text-primary-400 mb-1 block text-[10px] font-extrabold uppercase tracking-widest"
+              >Nuestro Compromiso</span
+            >
+            <p class="text-xs font-medium italic text-white sm:text-sm">
+              "Utilizar innovación y tecnología para producir mejores resultados
+              utilizando los recursos de manera más inteligente"
+            </p>
+          </div>
+        </div>
+
+        <!-- PILAR 4: INTEGRIDAD Y GOBERNANZA -->
+        <div
+          class="glass-card border-primary-800 hover:border-primary-400 group relative flex flex-col justify-between rounded-3xl border p-8 transition-all duration-300"
+        >
+          <div>
+            <div class="mb-6 flex items-center justify-between">
+              <div
+                class="bg-neutral-900 border-primary-400/40 text-primary-400 group-hover:bg-primary-400 group-hover:text-white flex h-14 w-14 items-center justify-center rounded-2xl border text-2xl shadow-md transition-all"
+              >
+                <span class="material-symbols-outlined text-current transition-colors group-hover:text-white">balance</span>
+              </div>
+              <span
+                class="text-primary-800 group-hover:text-primary-400/30 text-3xl font-black transition-colors"
+                >04</span
+              >
+            </div>
+            <h3
+              class="group-hover:text-primary-400 mb-3 text-xl font-bold text-white transition-colors sm:text-2xl"
+            >
+              4. INTEGRIDAD Y GOBERNANZA
+            </h3>
+            <p class="text-neutral-400 mt-2">
+              La sostenibilidad comienza con la manera en que hacemos negocios.
+              Actuamos bajo principios de ética, transparencia, cumplimiento,
+              responsabilidad y respeto por nuestros clientes, trabajadores,
+              proveedores y aliados, incorporando estos principios en nuestras
+              decisiones y relaciones comerciales.
+            </p>
+          </div>
+
+          <!-- COMMITMENT QUOTE BOX FROM SKETCH -->
+          <div
+            class="bg-neutral-950/90 border-primary-400 border-primary-800/60 rounded-2xl border-y border-l-4 border-r p-4 sm:p-5"
+          >
+            <span
+              class="text-primary-400 mb-1 block text-[10px] font-extrabold uppercase tracking-widest"
+              >Nuestro Compromiso</span
+            >
+            <p class="text-xs font-medium italic text-white sm:text-sm">
+              "Crecer con integridad, transparencia y responsabilidad
+              construyendo relaciones de largo plazo basadas en la confianza"
+            </p>
+          </div>
+        </div>
       </div>
-      
     </div>
+  </section>
+
+  <!-- EVOLUCIÓN DE LA ESTRATEGIA (BOCETO EXACTO) -->
+  <section
+    class="bg-neutral-900/60 border-primary-800/50 relative border-b py-20"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+        <div class="space-y-6 lg:col-span-6">
+          <div
+            class="bg-neutral-900 text-primary-400 border-primary-800 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase"
+          >
+            <span class="material-symbols-outlined text-[16px]">trending_up</span>
+            Hoja de Ruta Metodológica
+          </div>
+          <h2 class="mt-2 text-balance text-3xl font-bold text-pearl-100 md:text-5xl md:leading-tight">
+            Evolución de la Estrategia
+          </h2>
+          <p class="text-neutral-400 mt-2">
+            Durante la etapa inicial de operaciones, <strong class="text-white"
+              >NARVI desarrollará progresivamente una línea base de desempeño</strong
+            > que permita establecer indicadores y metas medibles en áreas clave
+            como seguridad, desempeño ambiental, eficiencia operativa, desarrollo
+            de talento, creación de valor local y cumplimiento.
+          </p>
+
+          <!-- HIGHLIGHT BOX FOR CREACIÓN DE VALOR LOCAL -->
+          <div
+            class="bg-neutral-800/90 border-primary-400/30 group relative overflow-hidden rounded-2xl border p-6"
+          >
+            <div
+              class="bg-primary-400/10 group-hover:bg-primary-400/20 absolute -bottom-8 -right-8 h-32 w-32 rounded-full blur-xl transition-all"
+            >
+            </div>
+            <div class="flex items-start gap-4">
+              <div
+                class="bg-primary-400 text-white mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-lg font-bold"
+              >
+                <span class="material-symbols-outlined text-[20px]">handshake</span>
+              </div>
+              <div>
+                <h3 class="mb-1 text-base font-bold text-white">
+                  Creación de Valor Local (Concepto Transversal)
+                </h3>
+                <p class="text-neutral-400 mt-2">
+                  Será un concepto transversal de la estrategia, promoviendo
+                  progresivamente el <strong class="text-primary-400"
+                    >empleo local, formación técnica, participación de
+                    proveedores nacionales y transferencia de conocimiento</strong
+                  > en cada proyecto.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE INDICATORS CARD -->
+        <div class="lg:col-span-6">
+          <div
+            class="glass-card border-primary-800 space-y-4 rounded-3xl border p-8"
+          >
+            <h3 class="flex items-center gap-2 text-lg font-bold text-white">
+              <span class="material-symbols-outlined text-primary-400 text-[18px]">tune</span>
+              Indicadores y Metas Medibles
+            </h3>
+            <p class="text-neutral-400 text-xs">
+              Monitoreo continuo en nuestra matriz de desempeño de
+              sostenibilidad:
+            </p>
+
+            <div class="space-y-3 pt-2">
+              <div
+                class="bg-neutral-950 border-primary-800 flex items-center justify-between rounded-xl border p-3.5"
+              >
+                <div
+                  class="flex items-center gap-3 text-xs font-semibold text-white"
+                >
+                  <span class="material-symbols-outlined text-primary-400 text-[18px]">shield</span>
+                  <span>Seguridad y Salud Ocupacional</span>
+                </div>
+                <span
+                  class="bg-primary-400/20 text-primary-400 rounded px-2 py-0.5 text-[11px] font-bold"
+                  >Cero Incidentes</span
+                >
+              </div>
+
+              <div
+                class="bg-neutral-950 border-primary-800 flex items-center justify-between rounded-xl border p-3.5"
+              >
+                <div
+                  class="flex items-center gap-3 text-xs font-semibold text-white"
+                >
+                  <span class="material-symbols-outlined text-primary-400 text-[18px]">forest</span>
+                  <span>Desempeño Ambiental y Huella</span>
+                </div>
+                <span
+                  class="bg-primary-400/20 text-primary-400 rounded px-2 py-0.5 text-[11px] font-bold"
+                  >Línea Base 2026</span
+                >
+              </div>
+
+              <div
+                class="bg-neutral-950 border-primary-800 flex items-center justify-between rounded-xl border p-3.5"
+              >
+                <div
+                  class="flex items-center gap-3 text-xs font-semibold text-white"
+                >
+                  <span class="material-symbols-outlined text-primary-400 text-[18px]">speed</span>
+                  <span>Eficiencia Operativa e IA</span>
+                </div>
+                <span
+                  class="bg-primary-400/20 text-primary-400 rounded px-2 py-0.5 text-[11px] font-bold"
+                  >Optimización NPT</span
+                >
+              </div>
+
+              <div
+                class="bg-neutral-950 border-primary-800 flex items-center justify-between rounded-xl border p-3.5"
+              >
+                <div
+                  class="flex items-center gap-3 text-xs font-semibold text-white"
+                >
+                  <span class="material-symbols-outlined text-primary-400 text-[18px]">school</span>
+                  <span>Desarrollo de Talento Local</span>
+                </div>
+                <span
+                  class="bg-primary-400/20 text-primary-400 rounded px-2 py-0.5 text-[11px] font-bold"
+                  >Capacitación Técnica</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUESTRO PROPÓSITO & ESTÁNDARES INTERNACIONALES (BOCETO EXACTO) -->
+  <section class="relative overflow-hidden py-20">
+    <div class="mx-auto max-w-7xl space-y-16 px-4 sm:px-6 lg:px-8">
+      <!-- PURPOSE BOX FROM SKETCH -->
+      <div
+        class="glass-card border-primary-400/40 from-neutral-800 via-neutral-900 to-neutral-800 relative overflow-hidden rounded-3xl border bg-gradient-to-r p-8 text-center shadow-2xl sm:p-12"
+      >
+        <div
+          class="bg-primary-400/10 pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full blur-3xl"
+        >
+        </div>
+
+        <span
+          class="text-primary-400 mb-2 block text-xs font-black uppercase tracking-widest"
+        >
+          NUESTRO PROPÓSITO
+        </span>
+          <h2 class="mt-2 text-balance text-3xl font-bold text-pearl-100 md:text-4xl md:leading-tight mx-auto max-w-4xl">
+          "Contribuir a una industria energética más segura, eficiente,
+          responsable y tecnológicamente avanzada, generando valor sostenible
+          para Venezuela."
+        </h2>
+      </div>
+
+      <!-- STANDARDS & CERTIFICATIONS FROM SKETCH -->
+      <div>
+        <div class="mx-auto mb-10 max-w-2xl text-center">
+          <span
+            class="text-primary-400 text-xs font-bold uppercase tracking-widest"
+            >Gobernanza y Calidad</span
+          >
+          <h3 class="mt-1 text-balance text-3xl font-bold text-pearl-100 md:text-4xl md:leading-tight mx-auto max-w-4xl">
+            Regidos por Estándares Nacionales e Internacionales
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6 sm:grid-cols-3 ">
+          <!-- ISO 9001 -->
+          <div
+            class="glass-card border-primary-800 hover:border-primary-400 group rounded-2xl border p-6 text-center transition-all duration-300"
+          >
+            <div
+              class="bg-neutral-900 border-primary-400/50 text-primary-400 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border text-2xl shadow-lg transition-transform group-hover:scale-110"
+            >
+              <span class="material-symbols-outlined text-[24px]">workspace_premium</span>
+            </div>
+            <h4 class="text-base font-extrabold text-white">ISO 9001:2015</h4>
+            <p
+              class="text-neutral-400 mt-1 text-[11px] font-semibold uppercase"
+            >
+              Gestión de la Calidad
+            </p>
+          </div>
+
+          <!-- ISO 14001 -->
+          <div
+            class="glass-card border-primary-800 hover:border-primary-400 group rounded-2xl border p-6 text-center transition-all duration-300"
+          >
+            <div
+              class="bg-neutral-900 border-primary-400/50 text-primary-400 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border text-2xl shadow-lg transition-transform group-hover:scale-110"
+            >
+              <span class="material-symbols-outlined text-[24px]">eco</span>
+            </div>
+            <h4 class="text-base font-extrabold text-white">ISO 14001:2015</h4>
+            <p
+              class="text-neutral-400 mt-1 text-[11px] font-semibold uppercase"
+            >
+              Gestión Ambiental
+            </p>
+          </div>
+
+          <!-- ISO 45001 -->
+          <div
+            class="glass-card border-primary-800 hover:border-primary-400 group rounded-2xl border p-6 text-center transition-all duration-300"
+          >
+            <div
+              class="bg-neutral-900 border-primary-400/50 text-primary-400 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border text-2xl shadow-lg transition-transform group-hover:scale-110"
+            >
+              <span class="material-symbols-outlined text-[24px]">shield_person</span>
+            </div>
+            <h4 class="text-base font-extrabold text-white">ISO 45001:2018</h4>
+            <p
+              class="text-neutral-400 mt-1 text-[11px] font-semibold uppercase"
+            >
+              Seguridad y Salud
+            </p>
+          </div>
+
+          <!-- API -->
+          <div
+            class="glass-card  lg:col-span-3 border-primary-800 hover:border-primary-400 group rounded-2xl border p-6 text-center transition-all duration-300"
+          >
+            <div
+              class="w-96 mx-auto mb-4 flex items-center justify-center bg-neutral-900 border-primary-400/50 text-primary-400 h-24 rounded-full border text-2xl shadow-lg transition-transform group-hover:scale-110">
+              <img
+                src="/img/AMERICAN PETROLEUM.avif"
+                alt="Logo American Petroleum Institute"
+                class="h-full w-full object-contain"
+              />
+            </div>
+            <h4 class="text-base font-extrabold text-white">API</h4>
+            <p
+              class="text-neutral-400 mt-1 text-[11px] font-semibold uppercase"
+            >
+              American Petroleum Institute
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </MainLayout>
+<style>
+  .glass-card {
+      background: rgba(29, 37, 35, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+</style>
