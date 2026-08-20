@@ -23,7 +23,7 @@ const navBarLinks = [
   { 
     name: "Memberships and Alliances", 
     type: "basic", 
-    url: "/#tech-partners" 
+    url: "/memberships-alliances" 
   },
   {
      name: "Contact", 
