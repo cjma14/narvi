@@ -52,12 +52,12 @@ const youtubeId = videoUrl ? getYouTubeId(videoUrl) : null;
       </h2>
       <!-- Subtitle of the section -->
       <p
-        class="mb-4 max-w-prose text-pretty font-light dark:text-neutral-400 sm:text-lg"
+        class="mb-4 pb-5 max-w-prose text-pretty font-light dark:text-neutral-400 sm:text-lg"
       >
         {subTitle}
       </p>
 
-      <div class="mb-16 mt-16 flex gap-10">
+      <!-- <div class="mb-16 mt-16 flex gap-10">
         <div class="">
           <p class="mb-3 text-5xl font-bold sm:text-5xl">35+</p>
           <p class="text-xl">{infoTitle1}</p>
@@ -68,7 +68,7 @@ const youtubeId = videoUrl ? getYouTubeId(videoUrl) : null;
           </p>
           <p class="text-xl">{infoTitle2}</p>
         </div>
-      </div>
+      </div> -->
       <!-- Conditional rendering of the Primary Call-To-Action button if 'btnExists' is true -->
       {btnExists ? <PrimaryCTA title={btnTitle} url={btnURL} /> : null}
     </div>

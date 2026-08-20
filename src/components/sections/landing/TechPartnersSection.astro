@@ -6,38 +6,72 @@ interface Partner {
 
 interface Props {
   title: string;
+  title2: string;
   partners: Partner[];
 }
 
-const { title, partners } = Astro.props;
+const { title, title2, partners } = Astro.props;
 ---
 
-<div id="tech-partners" class="border-y border-pearl-100/5 bg-neutral-900/40 px-4 sm:px-6 lg:px-8">
+<div
+  id="tech-partners"
+  class="border-y border-pearl-100/5 bg-neutral-900/40 px-4 sm:px-6 lg:px-8"
+>
   <section class="mx-auto max-w-screen-2xl py-12 sm:py-16 lg:py-20">
-    <div class="mx-auto mb-10 flex w-full flex-col items-center text-center">
-      <h2
-        class="text-balance text-2xl font-bold leading-tight text-pearl-100 sm:text-3xl md:text-4xl"
-      >
-        <Fragment set:html={title} />
-      </h2>
-    </div>
+    <div class="grid md:grid-cols-2">
+      <div class="md:border-r border-pearl-100/5 pr-4 sm:pr-6 lg:pr-8">
+        <div
+          class="mx-auto mb-10 flex w-full flex-col items-center text-center"
+        >
+          <h2
+            class="text-balance text-2xl font-bold leading-tight text-pearl-100 sm:text-3xl md:text-4xl"
+          >
+            <Fragment set:html={title} />
+          </h2>
+        </div>
 
-    <div class="swiper swiperTechPartners w-full overflow-hidden">
-      <div class="swiper-wrapper flex items-center justify-center">
-        {
-          partners.map((partner) => (
+        <div class="swiper swiperTechPartners w-full overflow-hidden">
+          <div class="swiper-wrapper flex items-center justify-center">
+            {
+              partners.map((partner) => (
+                <div class="swiper-slide slide-brand flex justify-center py-2">
+                  <div class="flex h-40 w-64 items-center justify-center rounded-2xl border border-neutral-800 bg-neutral-950/40 px-6 py-4 shadow-sm transition-all duration-500 hover:scale-105 hover:border-primary-400/40 hover:bg-neutral-900/60 hover:shadow-primary-400/5">
+                    <img
+                      class="h-full w-full object-contain transition-all duration-500 hover:opacity-100 hover:brightness-110 hover:grayscale-0"
+                      src={partner.src}
+                      alt={partner.alt}
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+      <div class="mx-auto mb-10 flex w-full flex-col items-center text-center">
+        <h2
+          class="text-balance text-2xl font-bold leading-tight text-pearl-100 sm:text-3xl md:text-4xl"
+        >
+          <Fragment set:html={title2} />
+        </h2>
+
+        <div class="swiper w-full overflow-hidden mt-10">
+          <div class="swiper-wrapper flex items-center justify-center">
             <div class="swiper-slide slide-brand flex justify-center py-2">
-              <div class="bg-neutral-950/40 border-neutral-800 hover:border-primary-400/40 hover:bg-neutral-900/60 flex h-40 w-64 items-center justify-center rounded-2xl border px-6 py-4 shadow-sm transition-all duration-500 hover:shadow-primary-400/5 hover:scale-105">
+              <div
+                class="flex h-40 w-64 items-center justify-center rounded-2xl border border-neutral-800 bg-neutral-950/40 px-6 py-4 shadow-sm transition-all duration-500 hover:scale-105 hover:border-primary-400/40 hover:bg-neutral-900/60 hover:shadow-primary-400/5"
+              >
                 <img
-                  class="h-full w-full object-contain filter brightness-95 grayscale opacity-75 transition-all duration-500 hover:grayscale-0 hover:opacity-100 hover:brightness-110"
-                  src={partner.src}
-                  alt={partner.alt}
+                  class="h-full w-full object-contain  transition-all duration-500 hover:opacity-100 hover:brightness-110 hover:grayscale-0"
+                  src="/img/clients/LOGO-QUANTRUE.png"
+                  alt="LOGO-QUANTRUE"
                   loading="lazy"
                 />
               </div>
             </div>
-          ))
-        }
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -76,10 +110,13 @@ const { title, partners } = Astro.props;
           spaceBetween: 40,
         },
       },
-      autoplay: slideCount > 4 ? {
-        delay: 4000,
-        disableOnInteraction: false,
-      } : false,
+      autoplay:
+        slideCount > 4
+          ? {
+              delay: 4000,
+              disableOnInteraction: false,
+            }
+          : false,
     });
   }
 </script>

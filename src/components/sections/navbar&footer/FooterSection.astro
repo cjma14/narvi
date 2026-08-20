@@ -13,8 +13,8 @@ const strings = Astro.currentLocale === "es" ? esStrings : enStrings;
 // Define the variables that will be used in this component
 const companyDescription: string =
   Astro.currentLocale === "es" 
-    ? "30 años de trayectoria técnica con tecnología de vanguardia para impulsar la productividad del sector Oil & Gas con máxima precisión y seguridad" 
-    : "30 years of technical experience with cutting-edge technology to drive productivity in the Oil & Gas sector with maximum precision and safety.";
+    ? "Liderando la nueva era energética con servicios avanzados de intervención a pozos."
+    : "Leading the new energy era with advanced well intervention services.";
 
 const privacyPolicy: string = 
   Astro.currentLocale === "es" ? "Política de Privacidad" : "Privacy Policy";
@@ -37,11 +37,11 @@ const termsOfService: string =
         
         <!-- Social Media Icons -->
         <div class="flex gap-3">
-          <FooterSocialLink url={strings.socialLinks.linkedin}>
+          <FooterSocialLink url="https://www.linkedin.com/company/narvi-enterprise/">
             <Icon name="linkedin" />
           </FooterSocialLink>
-          <FooterSocialLink url="mailto:info@narvi.corp">
-            <Icon name="mail" />
+          <FooterSocialLink url="https://www.instagram.com/narvi_ec?igsh=OHk0c3FxdTVhcnN6&igsi=OHk0c3FxdTVhcnN6">
+            <Icon name="instagram" />
           </FooterSocialLink>
         </div>
       </div>

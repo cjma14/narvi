@@ -1,0 +1,256 @@
+---
+// Import necessary components
+import MainLayout from "@/layouts/MainLayout.astro";
+import MainSection from "@components/ui/blocks/MainSection.astro";
+import { SITE } from "@data/constants";
+
+const pageTitle: string = `Memberships & Alliances | ${SITE.title}`;
+---
+
+<MainLayout
+  title={pageTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://narvi-ec.com/memberships-alliances",
+    url: "https://narvi-ec.com/memberships-alliances",
+    name: "Memberships & Alliances | Narvi EC",
+    description:
+      "Discover our strategic alliances and memberships that strengthen energy and industrial development.",
+    isPartOf: {
+      "@type": "WebSite",
+      url: "https://narvi-ec.com",
+      name: "Narvi Enterprise Corporation",
+      description:
+        "Narvi EC provides engineering and maintenance services across the Americas, optimizing operations in the energy sector.",
+    },
+    inLanguage: "en-US",
+  }}
+>
+  <MainSection
+    label="Narvi Alliances"
+    title="Memberships and <span class='text-primary-400'>Strategic Alliances</span>"
+    backgroundImg="/img/pozos.avif"
+  />
+
+  <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 mt-14 space-y-20 pb-24">
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-5 order-last lg:order-first flex flex-col justify-center items-center">
+        <div class="glass-card w-full max-w-md p-8 rounded-3xl border border-primary-800/80 hover:border-primary-400 transition-all duration-300 group shadow-2xl flex flex-col items-center">
+          <div class="relative w-full h-48 flex items-center justify-center bg-neutral-950/40 rounded-2xl border border-primary-900/50 p-6 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-tr from-primary-900/10 via-transparent to-transparent opacity-50"></div>
+            <img
+              src="/img/clients/logo de camara petrolera.avif"
+              alt="Venezuelan Oil Chamber logo"
+              class="max-w-[75%] max-h-32 object-contain group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="mt-6 text-center">
+            <span class="text-xs font-bold text-primary-400 uppercase tracking-widest block mb-1">Strategic Member</span>
+            <span class="text-white font-bold text-lg">Venezuelan Oil Chamber</span>
+            <p class="text-neutral-400 text-xs mt-2">
+              Active participation in the consolidation of national energy development.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-primary-800 text-primary-400 text-xs font-semibold uppercase">
+          <span class="material-symbols-outlined text-[16px]">handshake</span>
+          Strategic Member
+        </div>
+
+        <h2 class="text-3xl font-bold text-pearl-100 md:text-5xl md:leading-tight">
+          Venezuelan Oil Chamber
+        </h2>
+
+        <p class="text-sm md:text-base text-pearl-100/90 leading-relaxed">
+          At Narvi Enterprise Corporation, we are proud to be part of the Venezuelan Oil Chamber as a Strategic Member. This alliance represents our firm commitment to strengthening and reactivating the national energy sector by combining our technical expertise and operational capacity with a network of key industry players.
+        </p>
+
+        <div class="border-t border-primary-800/40 pt-6">
+          <h3 class="text-base md:text-xl font-bold text-white mb-4">
+            Why our alliance is a strategic pillar
+          </h3>
+
+          <p class="text-sm md:text-base text-pearl-100/90 leading-relaxed mb-6">
+            As specialists in well intervention and production services, our membership in the VOC allows us to connect our operational infrastructure — headquartered in El Tigre — with the highest standards of quality and industrial safety in the country.
+          </p>
+
+          <div class="space-y-4">
+            <div class="glass-card p-5 rounded-2xl border border-primary-800/40">
+              <p class="text-sm text-white leading-relaxed">
+                <span class="font-bold text-primary-400">- Excellence in Intervention:</span> We make available to the sector solutions for pumping, stimulation, and comprehensive well maintenance, designed to maximize productivity and ensure continuous operations.
+              </p>
+            </div>
+
+            <div class="glass-card p-5 rounded-2xl border border-primary-800/40">
+              <p class="text-sm text-white leading-relaxed">
+                <span class="font-bold text-primary-400">- Partners for the New Energy Era:</span> We understand the current challenges facing Venezuela and we are here to face them with technology, efficiency, and a consultative approach. We do not just provide services; we integrate solutions to ensure the sustainability of your assets.
+              </p>
+            </div>
+
+            <div class="glass-card p-5 rounded-2xl border border-primary-800/40">
+              <p class="text-sm text-white leading-relaxed">
+                <span class="font-bold text-primary-400">- Commitment to the Country:</span> This alliance underscores our responsibility in strengthening national projects, ensuring that each technical intervention is executed under rigorous safety, efficiency, and international standards.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-sm md:text-base text-pearl-100/90 italic border-l-2 border-primary-400 pl-4 pt-2">
+          At Narvi, we believe the future of energy in Venezuela is built through collaboration. As allies of the VOC, we work every day so that the operational excellence of our well services becomes the engine of success for our clients and the country.
+        </p>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-primary-800 text-primary-400 text-xs font-semibold uppercase">
+          <span class="material-symbols-outlined text-[16px]">handshake</span>
+          Strategic Member
+        </div>
+
+        <h2 class="text-3xl font-bold text-pearl-100 md:text-5xl md:leading-tight">
+          CONAPRI <span class="text-primary-400">(National Council for the Promotion of Investments)</span>
+        </h2>
+
+        <p class="text-pearl-100/90 text-sm md:text-base leading-relaxed">
+          At Narvi Enterprise Corporation, our alliance with the National Council for the Promotion of Investments (CONAPRI) reflects our global vision and our commitment to sustainable economic development in the country. As a company with international presence and a solid track record in advanced well intervention and production services, we understand that smart investment and business trust are essential drivers for the new energy era.
+        </p>
+
+        <div class="border-t border-primary-800/40 pt-6">
+          <h3 class="text-xl font-bold text-white mb-4">
+            Why CONAPRI is a strategic ally for us
+          </h3>
+          <p class="text-pearl-100/90 text-sm md:text-base leading-relaxed mb-6">
+            This alliance strengthens our ability to operate under the highest international standards while promoting a transparent, efficient, and growth-oriented business environment.
+          </p>
+
+          <div class="space-y-4">
+            <div class="glass-card p-5 rounded-2xl border border-primary-800/40">
+              <p class="text-sm text-white leading-relaxed">
+                <span class="font-bold text-primary-400">- Investment Promotion and Development:</span> Our participation in CONAPRI allows us to actively contribute to improving the investment climate, boosting the value of the oil and energy sector through our high-technology operations.
+              </p>
+            </div>
+
+            <div class="glass-card p-5 rounded-2xl border border-primary-800/40">
+              <p class="text-sm text-white leading-relaxed">
+                <span class="font-bold text-primary-400">- Global Vision, Local Impact:</span> By connecting our international technical expertise with local operational realities, Narvi contributes to raising the competitiveness of the sector through technology transfer and professionalization of well services.
+              </p>
+            </div>
+
+            <div class="glass-card p-5 rounded-2xl border border-primary-800/40">
+              <p class="text-sm text-white leading-relaxed">
+                <span class="font-bold text-primary-400">- Sustainability and Trust:</span> We share with CONAPRI the goal of fostering solid corporate relationships based on ethics, compliance, and the development of projects that promote productivity with global efficiency.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-pearl-100/90 italic border-l-2 border-primary-400 pl-4 text-sm md:text-base pt-2">
+          At Narvi Enterprise Corporation, we believe the future of investment and energy productivity in Venezuela is built on partnerships that promote operational excellence and investor confidence.
+        </p>
+      </div>
+
+      <div class="lg:col-span-5 flex flex-col justify-center items-center">
+        <div class="glass-card w-full max-w-md p-8 rounded-3xl border border-primary-800/80 hover:border-primary-400 transition-all duration-300 group shadow-2xl flex flex-col items-center">
+          <div class="relative w-full h-48 flex items-center justify-center bg-neutral-950/40 rounded-2xl border border-primary-900/50 p-6 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-tr from-primary-900/10 via-transparent to-transparent opacity-50"></div>
+            <img
+              src="/img/clients/Logo de CONAPRI.avif"
+              alt="CONAPRI logo"
+              class="max-w-[75%] max-h-32 object-contain group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="mt-6 text-center">
+            <span class="text-xs font-bold text-primary-400 uppercase tracking-widest block mb-1">Strategic Member</span>
+            <span class="text-white font-bold text-lg">National Council for the Promotion of Investments</span>
+            <p class="text-neutral-400 text-xs mt-2">
+              Strategic alignment for sustainable growth and investor confidence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8">
+      <div class="lg:col-span-5 order-last lg:order-first flex flex-col justify-center items-center">
+        <div class="glass-card w-full max-w-md p-8 rounded-3xl border border-primary-800/80 hover:border-primary-400 transition-all duration-300 group shadow-2xl flex flex-col items-center">
+          <div class="relative w-full h-48 flex items-center justify-center bg-neutral-950/40 rounded-2xl border border-primary-900/50 p-6 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-tr from-primary-900/10 via-transparent to-transparent opacity-50"></div>
+            <img
+              src="/img/clients/LOGO-QUANTRUE.png"
+              alt="Quantrue logo"
+              class="max-w-[70%] max-h-32 object-contain group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="mt-6 text-center">
+            <span class="text-xs font-bold text-primary-400 uppercase tracking-widest block mb-1">Technology Alliance</span>
+            <span class="text-white font-bold text-lg">Artificial Intelligence and GPS</span>
+            <p class="text-neutral-400 text-xs mt-2">
+              Technology applied to operational control and well service efficiency.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-primary-800 text-primary-400 text-xs font-semibold uppercase">
+          <span class="material-symbols-outlined text-[16px]">sensors</span>
+          Technology Alliance
+        </div>
+
+        <h2 class="text-3xl font-bold text-pearl-100 md:text-5xl md:leading-tight">
+          Quantrue
+        </h2>
+
+        <p class="text-pearl-100/90 text-sm md:text-base leading-relaxed">
+          Operational excellence is supported by digital innovation. Through our strategic alliance with Quantrue, we have integrated advanced Artificial Intelligence and real-time GPS monitoring solutions to transform the way we manage our well intervention and production services.
+        </p>
+
+        <div class="border-t border-primary-800/40 pt-6">
+          <h3 class="text-xl font-bold text-white mb-4">
+            Innovation serving operational efficiency
+          </h3>
+          <p class="text-pearl-100/90 text-sm md:text-base leading-relaxed mb-6">
+            This alliance is not just a technical implementation; it is the digitization of our field experience to deliver superior results to our clients.
+          </p>
+
+          <div class="space-y-4">
+            <div class="glass-card p-5 rounded-2xl border border-primary-800/40">
+              <p class="text-sm text-white leading-relaxed">
+                <span class="font-bold text-primary-400">- Intelligent Monitoring (AI):</span> We implement AI algorithms that process production data in real time, allowing us to predict behavior, optimize response times, and maximize efficiency in every intervention.
+              </p>
+            </div>
+
+            <div class="glass-card p-5 rounded-2xl border border-primary-800/40">
+              <p class="text-sm text-white leading-relaxed">
+                <span class="font-bold text-primary-400">- Traceability and GPS Control:</span> Thanks to Quantrue’s technology, we maintain absolute and visible control of our field assets and equipment. This ensures impeccable logistics, greater industrial safety, and total transparency in service execution.
+              </p>
+            </div>
+
+            <div class="glass-card p-5 rounded-2xl border border-primary-800/40">
+              <p class="text-sm text-white leading-relaxed">
+                <span class="font-bold text-primary-400">- Data-Driven Decisions:</span> We transform raw information into strategic decisions. This technological integration allows us to anticipate maintenance needs and adjust well operations with precision, reducing downtime.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-pearl-100/90 italic border-l-2 border-primary-400 pl-4 text-sm md:text-base pt-2">
+          For Narvi, technology is not an accessory; it is part of our DNA. In alliance with Quantrue, we are raising the industry standard by combining the strength of our teams with the precision of data intelligence to guarantee safer, smarter, and more productive operations.
+        </p>
+      </div>
+    </section>
+  </div>
+</MainLayout>
+
+<style>
+.glass-card {
+    background: rgba(29, 37, 35, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+</style>

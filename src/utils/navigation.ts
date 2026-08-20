@@ -45,16 +45,14 @@ const footerLinks = [
     section: "Contact",
     links: [
       { name: "Zona Industrial San José de Guanipa, Edo Anzoátegui. El Tigre, VE", type: 'basic', icon: 'location' },
-      { name: "info@narvi.corp", type: 'url', url: 'mailto:info@narvi.corp', icon: 'mail' },
-      { name: "Support 24/7", type: 'basic', icon: 'phone' },
+      { name: "info@narvienterprise.com", type: 'url', url: 'mailto:info@narvienterprise.com', icon: 'mail' },
+      { name: "+58 422-1906731", type: 'basic', icon: 'phone' },
     ],
   },
   {
-    section: "Location",
+    section: "Coverage",
     links: [
-      { name: "Houston, Texas (USA)", type: 'basic' },
-      { name: "El Tigre, Anzoategui (Venezuela)", type: 'basic' },
-      { name: "Panama City (Panama)", type: 'basic' },
+      { name: "North America", type: 'basic' },
       { name: "Latin America and the Caribbean", type: 'basic' },
     ],
   },

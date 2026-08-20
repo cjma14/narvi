@@ -23,7 +23,7 @@ const navBarLinks = [
   {
     name: "Membresias y Alianzas",
     type: "basic",
-    url: "/es#tech-partners" 
+    url: "/es/memberships-alliances" 
   },
   { 
     name: "Contacto", 
@@ -45,17 +45,15 @@ const footerLinks = [
     section: "Contacto",
     links: [
       { name: "Zona Industrial San José de Guanipa, Edo Anzoátegui. El Tigre, VE", type: 'basic', icon: 'location' },
-      { name: "info@narvi.corp", type: 'url', url: 'mailto:info@narvi.corp', icon: 'mail' },
-      { name: "Soporte 24/7", type: 'basic', icon: 'phone' },
+      { name: "info@narvienterprise.com", type: 'url', url: 'mailto:info@narvienterprise.com', icon: 'mail' },
+      { name: "+58 422-1906731", type: 'basic', icon: 'phone' },
     ],
   },
   {
-    section: "Ubicación",
+    section: "Cobertura",
     links: [
-      { name: "Houston, Texas (EE.UU.)", type: 'basic' },
-      { name: "El Tigre, Anzoátegui (Venezuela)", type: 'basic' },
-      { name: "Ciudad de Panamá (Panamá)", type: 'basic' },
-      { name: "Latinoamérica y el Caribe", type: 'basic' },
+      { name: "Norteamerica", type: 'basic' },
+      { name: "Latinoamerica y el Caribe", type: 'basic' },
     ],
   },
 ];

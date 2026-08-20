@@ -5,6 +5,7 @@ import MainSection from "@components/ui/blocks/MainSection.astro";
 import LeftSection from "@components/ui/blocks/LeftSection.astro";
 import RightSection from "@components/ui/blocks/RightSection.astro";
 import FeaturesStats from "@components/sections/features/FeaturesStats.astro";
+import FlagIcon from "@components/ui/FlagIcon.astro";
 
 // Import necessary images
 import { SITE } from "@data/constants";
@@ -35,7 +36,7 @@ const aboutItems: aboutItem[] = [
     subTitle:
       "Brindar un excelente servicio a todos nuestros clientes, garantizando que sus expectativas se cumplan y superen.",
     img: "/img/mission.jpg",
-    imgAlt: "Narvis staff offering advice",
+    imgAlt: "Narvi staff offering advice",
     btnExists: false,
   },
   {
@@ -45,7 +46,7 @@ const aboutItems: aboutItem[] = [
     subTitle:
       "Ser una empresa reconocida a nivel nacional e internacional por la excelente gestión de los servicios y productos que brindamos a nuestros clientes, con responsabilidad y eficiencia en cada proyecto.",
     img: "/img/vision.jpg",
-    imgAlt: "Cargamento de equipo para venta en Narvis llegando al puerto",
+    imgAlt: "Cargamento de equipo para venta en Narvi llegando al puerto",
     btnExists: false,
   },
   {
@@ -57,7 +58,7 @@ const aboutItems: aboutItem[] = [
     imgOne: "/img/values1.jpg",
     imgOneAlt: "Ingeniero Narvi haciendo su trabajo",
     imgTwo: "/img/values2.jpg",
-    imgTwoAlt: "Ingeniero de narvis supervisando una operación",
+    imgTwoAlt: "Ingeniero de Narvi supervisando una operación",
     items: [
       "Compromiso",
       "Responsabilidad",
@@ -94,7 +95,7 @@ const pageTitle: string = `Sobre nosotros | ${SITE.title}`;
   <!--MainSection is the introductory section of the page, it also contains a CTA button-->
   <MainSection
     label="Sobre nosotros"
-    title="Su socio confiable en petróleo y gas"
+    title="Un aliado confiable en la industria de petróleo y gas"
     backgroundImg="/img/backgorund3.jpg"
   />
 
@@ -149,14 +150,14 @@ const pageTitle: string = `Sobre nosotros | ${SITE.title}`;
             >
               <span class="material-symbols-outlined mi text-current text-[20px] transition-colors group-hover:text-white">emoji_events</span>
             </div>
-            <h3 class="text-primary-400 mb-1 text-2xl font-black">+30 Años</h3>
+            <h3 class="group-hover:text-primary-400 mb-2 text-md font-bold uppercase tracking-wider text-white transition-colors" >Trayectoria Técnica</h3>
             <p
               class="mb-2 text-md font-semibold uppercase tracking-wider text-white"
             >
-              Trayectoria Técnica
+              
             </p>
             <p class="text-neutral-400 text-sm leading-relaxed">
-              Experiencia acumulada en operaciones internacionales de alta
+              30 años de experiencia acumulada en operaciones internacionales de alta
               complejidad.
             </p>
           </div>
@@ -213,7 +214,7 @@ const pageTitle: string = `Sobre nosotros | ${SITE.title}`;
     <section class="py-20 relative rounded-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-balance text-2xl font-bold leading-tight text-pearl-100 sm:text-4xl">
+                <h2 class="text-balance text-3xl font-bold text-pearl-100 md:text-5xl md:leading-tight">
                     Fundamentos Estratégicos
                 </h2>
                 <p class="mt-4 text-pretty text-pearl-100/85 md:text-lg">
@@ -309,11 +310,11 @@ const pageTitle: string = `Sobre nosotros | ${SITE.title}`;
                         <span class="material-symbols-outlined mi text-[16px]">public</span>
                         Presencia Estratégica
                     </div>
-                    <h2 class="text-3xl sm:text-4xl font-black text-white">
+                    <h2 class="text-balance text-3xl font-bold text-pearl-100 md:text-5xl md:leading-tight">
                         Ecosistema Narvi
                     </h2>
                 </div>
-                <p class="text-sm text-neutral-400 max-w-md mt-4 md:mt-0">
+                <p class="text-pretty text-pearl-100/85 md:text-lg max-w-md mt-4 md:mt-0">
                     Infraestructura conectada internacionalmente para garantizar respuesta rápida y soporte logístico sin interrupciones.
                 </p>
             </div>
@@ -324,10 +325,13 @@ const pageTitle: string = `Sobre nosotros | ${SITE.title}`;
                 <div class="glass-card rounded-3xl p-8 border border-primary-800 hover:border-primary-400 transition-all duration-300 relative group overflow-hidden">
                     <div class="flex items-center justify-between mb-6">
                         <div class="flex items-center gap-3">
-                            <span class="text-2xl">🇺🇸</span>
-                            <h3 class="text-2xl font-bold text-white">USA</h3>
+                            <FlagIcon country="us" />
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">USA</h3>
+                                <span class="text-white text-sm">NARVI ENTERPRISE CORPORATION LLC</span>
+                            </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full bg-neutral-900 text-primary-400 text-xs font-bold border border-primary-800">
+                        <span class="absolute top-0 right-0 mt-3 mr-3 px-3 py-1 rounded-full bg-neutral-900 text-primary-400 text-xs font-bold border border-primary-800">
                             Hub Logístico
                         </span>
                     </div>
@@ -339,7 +343,7 @@ const pageTitle: string = `Sobre nosotros | ${SITE.title}`;
                                 Centro principal de gestión de la cadena de suministro (Supply Chain Management).
                             </p>
                         </div>
-                        <p class="text-xs text-neutral-400 leading-relaxed">
+                        <p class="text-sm text-pearl-100/85 md:text-base leading-relaxed">
                             Asegura la adquisición, control de calidad e importación de equipos técnicos pesados de alta especificación para todas las subsidiarias.
                         </p>
                     </div>
@@ -354,10 +358,13 @@ const pageTitle: string = `Sobre nosotros | ${SITE.title}`;
                 <div class="glass-card rounded-3xl p-8 border border-primary-800 hover:border-primary-400 transition-all duration-300 relative group overflow-hidden bg-gradient-to-b from-neutral-800 to-neutral-900">
                     <div class="flex items-center justify-between mb-6">
                         <div class="flex items-center gap-3">
-                            <span class="text-2xl">🇻🇪</span>
-                            <h3 class="text-2xl font-bold text-white">VENEZUELA</h3>
+                            <FlagIcon country="ve" />
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">VENEZUELA</h3>
+                                <span class="text-white text-sm">NARVI ENTERPRISE CORPORATION C.A</span>
+                            </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full bg-primary-400 text-slate-950 text-xs font-bold">
+                        <span class="absolute top-0 right-0 mt-3 mr-3 px-3 py-1 rounded-full bg-primary-400 text-slate-950 text-xs font-bold">
                             Base Técnica
                         </span>
                     </div>
@@ -369,7 +376,7 @@ const pageTitle: string = `Sobre nosotros | ${SITE.title}`;
                                 Centro operativo y de ejecución técnica para los servicios de bombeo a pozos.
                             </p>
                         </div>
-                        <p class="text-xs text-neutral-400 leading-relaxed">
+                        <p class="text-sm text-pearl-100/85 md:text-base leading-relaxed">
                             Infraestructura de talleres, laboratorios in-house y despliegue de flotas especializadas para operaciones en pozos activos.
                         </p>
                     </div>
@@ -384,10 +391,13 @@ const pageTitle: string = `Sobre nosotros | ${SITE.title}`;
                 <div class="glass-card rounded-3xl p-8 border border-primary-800 hover:border-primary-400 transition-all duration-300 relative group overflow-hidden">
                     <div class="flex items-center justify-between mb-6">
                         <div class="flex items-center gap-3">
-                            <span class="text-2xl">🇵🇦</span>
-                            <h3 class="text-2xl font-bold text-white">PANAMÁ</h3>
+                            <FlagIcon country="pa" />
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">PANAMÁ</h3>
+                                <span class="text-white text-sm">NARVI ENTERPRISE CORPORATION S.A</span>
+                            </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full bg-neutral-900 text-primary-400 text-xs font-bold border border-primary-800">
+                        <span class="absolute top-0 right-0 mt-3 mr-3 px-3 py-1 rounded-full bg-neutral-900 text-primary-400 text-xs font-bold border border-primary-800">
                             Sede Corporativa
                         </span>
                     </div>
@@ -399,8 +409,8 @@ const pageTitle: string = `Sobre nosotros | ${SITE.title}`;
                                 Punto estratégico bancario, corporativo y comercial.
                             </p>
                         </div>
-                        <p class="text-xs text-neutral-400 leading-relaxed">
-                            Centraliza la administración financiera internacional, structuración de contratos de gran escala y relaciones comerciales institucionales.
+                        <p class="text-sm text-pearl-100/85 md:text-base leading-relaxed">
+                            Centraliza la administración financiera internacional, estructuración de contratos de gran escala y relaciones comerciales institucionales.
                         </p>
                     </div>
 
@@ -421,7 +431,7 @@ const pageTitle: string = `Sobre nosotros | ${SITE.title}`;
                     <span class="material-symbols-outlined mi text-[16px]">timeline</span>
                     Trayectoria
                 </div>
-                <h2 class="text-balance text-2xl font-bold leading-tight text-pearl-100 sm:text-4xl">
+                <h2 class="text-balance text-3xl font-bold text-pearl-100 md:text-5xl md:leading-tight">
                     Nuestra Evolución
                 </h2>
                 <p class="mt-4 text-pretty text-pearl-100/85 md:text-lg">
@@ -443,7 +453,7 @@ const pageTitle: string = `Sobre nosotros | ${SITE.title}`;
                                 <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-950 text-neutral-400 border border-primary-800 font-bold">EE.UU.</span>
                             </div>
                             <h3 class="text-sm font-bold text-white mb-2">Fundación y Estructura</h3>
-                            <p class="text-xs text-neutral-400 leading-relaxed">
+                            <p class="text-sm text-pearl-100/85 md:text-base leading-relaxed">
                                 Establecimiento de la estructura corporativa y centro de cadena de suministro en EE.UU.
                             </p>
                         </div>
@@ -458,16 +468,16 @@ const pageTitle: string = `Sobre nosotros | ${SITE.title}`;
                         <div>
                             <div class="flex items-center justify-between mb-4">
                                 <span class="text-3xl font-black text-primary-400">2023</span>
-                                <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-950 text-neutral-400 border border-primary-800 font-bold">Panamá</span>
+                                <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-950 text-neutral-400 border border-primary-800 font-bold">Sudamérica</span>
                             </div>
-                            <h3 class="text-sm font-bold text-white mb-2">Gestión Financiera</h3>
-                            <p class="text-xs text-neutral-400 leading-relaxed">
-                                Consolidación de Panamá como hub bancario, commercial y legal del grupo.
+                            <h3 class="text-sm font-bold text-white mb-2">Red Logística y Alianzas</h3>
+                            <p class="text-sm text-pearl-100/85 md:text-base leading-relaxed">
+                                Alianzas estratégicas en México, Brasil, Ecuador y Colombia.
                             </p>
                         </div>
-                        <div class="mt-6 pt-3 border-t border-primary-800/40 text-[11px] text-primary-400 font-semibold flex items-center gap-1">
-                            <span class="material-symbols-outlined mi text-[16px]">check_circle</span>
-                            <span>Consolidación</span>
+                        <div class="mt-6 pt-3 border-t border-primary-800/40 text-[11px] text-neutral-400 font-semibold flex items-center gap-1">
+                            <span class="material-symbols-outlined mi text-[16px]">explore</span>
+                            <span>Proyección</span>
                         </div>
                     </div>
 
@@ -479,7 +489,7 @@ const pageTitle: string = `Sobre nosotros | ${SITE.title}`;
                                 <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-950 text-neutral-400 border border-primary-800 font-bold">Global</span>
                             </div>
                             <h3 class="text-sm font-bold text-white mb-2">Expansión Comercial</h3>
-                            <p class="text-xs text-neutral-400 leading-relaxed">
+                            <p class="text-sm text-pearl-100/85 md:text-base leading-relaxed">
                                 Entrada a mercados de Medio Oriente, África y reactivación en Venezuela.
                             </p>
                         </div>
@@ -490,38 +500,38 @@ const pageTitle: string = `Sobre nosotros | ${SITE.title}`;
                     </div>
 
                     <!-- Milestone 2025 -->
-                    <div class="glass-card p-6 rounded-2xl border border-primary-800 hover:border-primary-400 transition-all duration-300 flex flex-col justify-between group bg-neutral-900/80">
+                    <div class="glass-card p-6 rounded-2xl border border-primary-800 hover:border-primary-400 transition-all duration-300 flex flex-col justify-between group">
                         <div>
                             <div class="flex items-center justify-between mb-4">
                                 <span class="text-3xl font-black text-white group-hover:text-primary-400 transition-colors">2025</span>
-                                <span class="text-xs px-2.5 py-1 rounded-md bg-primary-400 text-slate-950 font-bold">Venezuela</span>
+                                <span class="text-xs px-2.5 py-1 rounded-md bg-primary-400 text-slate-950 font-bold">Panamá</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white mb-2">Gestión Financiera</h3>
+                            <p class="text-sm text-pearl-100/85 md:text-base leading-relaxed">
+                                Consolidación de Panamá como hub bancario, comercial y legal del grupo.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-3 border-t border-primary-800/40 text-[11px] text-primary-400 font-semibold flex items-center gap-1">
+                            <span class="material-symbols-outlined mi text-[16px]">check_circle</span>
+                            <span>Consolidación</span>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 2026 -->
+                    <div class="glass-card p-6 rounded-2xl border border-primary-800 hover:border-primary-400 transition-all duration-300 flex flex-col justify-between group  bg-neutral-900/80">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-3xl font-black text-primary-400">2026</span>
+                                <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-950 text-neutral-400 border border-primary-800 font-bold">Venezuela</span>
                             </div>
                             <h3 class="text-sm font-bold text-white mb-2">Despliegue Operativo</h3>
-                            <p class="text-xs text-neutral-400 leading-relaxed">
+                            <p class="text-sm text-pearl-100/85 md:text-base leading-relaxed">
                                 Ejecución directa en campo con equipos de bombeo a pozos e integración QHSE.
                             </p>
                         </div>
                         <div class="mt-6 pt-3 border-t border-primary-800/40 text-[11px] text-primary-400 font-semibold flex items-center gap-1">
                             <span class="material-symbols-outlined mi text-[16px] animate-spin">sync</span>
                             <span>Operación Activa</span>
-                        </div>
-                    </div>
-
-                    <!-- Milestone 2026 -->
-                    <div class="glass-card p-6 rounded-2xl border border-primary-800 hover:border-primary-400 transition-all duration-300 flex flex-col justify-between group">
-                        <div>
-                            <div class="flex items-center justify-between mb-4">
-                                <span class="text-3xl font-black text-primary-400">2026</span>
-                                <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-950 text-neutral-400 border border-primary-800 font-bold">Sudamérica</span>
-                            </div>
-                            <h3 class="text-sm font-bold text-white mb-2">Red Logística y Alianzas</h3>
-                            <p class="text-xs text-neutral-400 leading-relaxed">
-                                Alianzas estratégicas en México, Brasil, Ecuador y Colombia.
-                            </p>
-                        </div>
-                        <div class="mt-6 pt-3 border-t border-primary-800/40 text-[11px] text-neutral-400 font-semibold flex items-center gap-1">
-                            <span class="material-symbols-outlined mi text-[16px]">explore</span>
-                            <span>Proyección</span>
                         </div>
                     </div>
                 </div>
@@ -539,10 +549,10 @@ const pageTitle: string = `Sobre nosotros | ${SITE.title}`;
                         <span class="material-symbols-outlined mi text-[16px]">groups</span>
                         Liderazgo Técnico
                     </div>
-                    <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
+                    <h2 class="text-balance text-3xl font-bold text-pearl-100 md:text-5xl md:leading-tight">
                         Nuestro Liderazgo
                     </h2>
-                    <p class="text-base text-neutral-400 leading-relaxed">
+                    <p class="text-pretty text-pearl-100/85 md:text-lg leading-relaxed">
                         Con décadas de trayectoria probada en ingeniería de campo y gestión corporativa a nivel global, nuestro enfoque se destaca por la excelencia técnica, la disciplina operativa y el compromiso inquebrantable con la seguridad.
                     </p>
                     <div class="border-t border-primary-800/50 pt-6">

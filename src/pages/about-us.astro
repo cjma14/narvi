@@ -2,6 +2,7 @@
 // Import necessary components
 import MainLayout from "@/layouts/MainLayout.astro";
 import MainSection from "@components/ui/blocks/MainSection.astro";
+import FlagIcon from "@components/ui/FlagIcon.astro";
 
 // Import necessary images
 import { SITE } from "@data/constants";
@@ -32,7 +33,7 @@ const aboutItems: aboutItem[] = [
     subTitle:
       "Provide excellent service to all our clients, ensuring that their expectations are met and exceeded.",
     img: "/img/mission.jpg",
-    imgAlt: "Narvis staff offering advice",
+    imgAlt: "Narvi's staff offering advice",
     btnExists: false,
   },
   {
@@ -42,7 +43,7 @@ const aboutItems: aboutItem[] = [
     subTitle:
       "To be a company recognized nationally and internationally for the excellent management of services and products that we provide to our clients, with responsibility and efficiency in each project.",
     img: "/img/vision.jpg",
-    imgAlt: "Cargo of equipment for sale in Narvis arriving at the port",
+    imgAlt: "Cargo of equipment for sale in Narvi arriving at the port",
     btnExists: false,
   },
   {
@@ -54,7 +55,7 @@ const aboutItems: aboutItem[] = [
     imgOne: "/img/values1.jpg",
     imgOneAlt: "Engineer Narvi doing his job",
     imgTwo: "/img/values2.jpg",
-    imgTwoAlt: "Narvis engineer supervising an operation",
+    imgTwoAlt: "Narvi's engineer supervising an operation",
     items: [
       "Commitment",
       "Responsibility",
@@ -90,7 +91,7 @@ const pageTitle: string = `About us | ${SITE.title}`;
   <!--MainSection is the introductory section of the page, it also contains a CTA button-->
   <MainSection
     label="About us"
-    title="Your reliable partner in Oil & Gas"
+    title="A reliable ally in the oil and gas industry"
     backgroundImg="/img/backgorund3.jpg"
   />
 
@@ -131,12 +132,15 @@ const pageTitle: string = `About us | ${SITE.title}`;
             <div class="bg-neutral-900 border-primary-800 text-primary-400 group-hover:bg-primary-400 group-hover:text-white mb-5 flex h-12 w-12 items-center justify-center rounded-xl border transition-all">
               <span class="material-symbols-outlined mi text-current text-[20px] transition-colors group-hover:text-white">emoji_events</span>
             </div>
-            <h3 class="text-primary-400 mb-1 text-2xl font-black">+30 Years</h3>
-            <p class="mb-2 text-md font-semibold uppercase tracking-wider text-white">
+            <h3 class="group-hover:text-primary-400 mb-2 text-md font-bold uppercase tracking-wider text-white transition-colors">
               Technical Track Record
+            </h3>
+            <p class="mb-2 text-md font-semibold uppercase tracking-wider text-white">
+              
             </p>
             <p class="text-neutral-400 text-sm leading-relaxed">
-              Proven experience in high-complexity international operations.
+              30 years of accumulated experience in high-complexity international
+              operations.
             </p>
           </div>
 
@@ -175,7 +179,7 @@ const pageTitle: string = `About us | ${SITE.title}`;
     <section class="py-20 relative rounded-xl">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-16">
-          <h2 class="text-balance text-2xl font-bold leading-tight text-pearl-100 sm:text-4xl">
+          <h2 class="text-balance text-3xl font-bold text-pearl-100 md:text-5xl md:leading-tight">
             Strategic Foundations
           </h2>
           <p class="mt-4 text-pretty text-pearl-100/85 md:text-lg">
@@ -272,7 +276,7 @@ const pageTitle: string = `About us | ${SITE.title}`;
               Narvi Ecosystem
             </h2>
           </div>
-          <p class="text-sm text-neutral-400 max-w-md mt-4 md:mt-0">
+            <p class="text-pretty text-pearl-100/85 md:text-lg max-w-md mt-4 md:mt-0">
             Internationally connected infrastructure to ensure fast response
             and uninterrupted logistical support.
           </p>
@@ -282,10 +286,13 @@ const pageTitle: string = `About us | ${SITE.title}`;
           <div class="glass-card rounded-3xl p-8 border border-primary-800 hover:border-primary-400 transition-all duration-300 relative group overflow-hidden">
             <div class="flex items-center justify-between mb-6">
               <div class="flex items-center gap-3">
-                <span class="text-2xl">🇺🇸</span>
-                <h3 class="text-2xl font-bold text-white">USA</h3>
+                <FlagIcon country="us" />
+                <div>
+                  <h3 class="text-2xl font-bold text-white">USA</h3>
+                  <span class="text-white text-sm">NARVI ENTERPRISE CORPORATION LLC</span>
+                </div>
               </div>
-              <span class="px-3 py-1 rounded-full bg-neutral-900 text-primary-400 text-xs font-bold border border-primary-800">
+              <span class="absolute top-0 right-0 mt-3 mr-3 px-3 py-1 rounded-full bg-neutral-900 text-primary-400 text-xs font-bold border border-primary-800">
                 Logistics Hub
               </span>
             </div>
@@ -297,7 +304,7 @@ const pageTitle: string = `About us | ${SITE.title}`;
                   Main center for supply chain management.
                 </p>
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed">
+              <p class="text-sm text-pearl-100/85 md:text-base leading-relaxed">
                 Ensures procurement, quality control, and import of heavy,
                 highly specialized technical equipment for all subsidiaries.
               </p>
@@ -312,10 +319,13 @@ const pageTitle: string = `About us | ${SITE.title}`;
           <div class="glass-card rounded-3xl p-8 border border-primary-800 hover:border-primary-400 transition-all duration-300 relative group overflow-hidden bg-gradient-to-b from-neutral-800 to-neutral-900">
             <div class="flex items-center justify-between mb-6">
               <div class="flex items-center gap-3">
-                <span class="text-2xl">🇻🇪</span>
-                <h3 class="text-2xl font-bold text-white">VENEZUELA</h3>
+                <FlagIcon country="ve" />
+                <div>
+                  <h3 class="text-2xl font-bold text-white">VENEZUELA</h3>
+                  <span class="text-white text-sm">NARVI ENTERPRISE CORPORATION C.A</span>
+                </div>
               </div>
-              <span class="px-3 py-1 rounded-full bg-primary-400 text-slate-950 text-xs font-bold">
+              <span class="absolute top-0 right-0 mt-3 mr-3 px-3 py-1 rounded-full bg-primary-400 text-slate-950 text-xs font-bold">
                 Technical Base
               </span>
             </div>
@@ -328,7 +338,7 @@ const pageTitle: string = `About us | ${SITE.title}`;
                   pumping services.
                 </p>
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed">
+              <p class="text-sm text-pearl-100/85 md:text-base leading-relaxed">
                 Workshop infrastructure, in-house laboratories, and specialized
                 fleet deployment for active well operations.
               </p>
@@ -343,10 +353,13 @@ const pageTitle: string = `About us | ${SITE.title}`;
           <div class="glass-card rounded-3xl p-8 border border-primary-800 hover:border-primary-400 transition-all duration-300 relative group overflow-hidden">
             <div class="flex items-center justify-between mb-6">
               <div class="flex items-center gap-3">
-                <span class="text-2xl">🇵🇦</span>
-                <h3 class="text-2xl font-bold text-white">PANAMA</h3>
+                <FlagIcon country="pa" />
+                <div>
+                  <h3 class="text-2xl font-bold text-white">PANAMA</h3>
+                  <span class="text-white text-sm">NARVI ENTERPRISE CORPORATION S.A</span>
+                </div>
               </div>
-              <span class="px-3 py-1 rounded-full bg-neutral-900 text-primary-400 text-xs font-bold border border-primary-800">
+              <span class="absolute top-0 right-0 mt-3 mr-3 px-3 py-1 rounded-full bg-neutral-900 text-primary-400 text-xs font-bold border border-primary-800">
                 Corporate HQ
               </span>
             </div>
@@ -358,7 +371,7 @@ const pageTitle: string = `About us | ${SITE.title}`;
                   Strategic banking, corporate, and commercial center.
                 </p>
               </div>
-              <p class="text-xs text-neutral-400 leading-relaxed">
+              <p class="text-sm text-pearl-100/85 md:text-base leading-relaxed">
                 Centralizes international financial administration, large-scale
                 contract structuring, and institutional commercial relations.
               </p>
@@ -380,7 +393,7 @@ const pageTitle: string = `About us | ${SITE.title}`;
             <span class="material-symbols-outlined mi text-[16px]">timeline</span>
             Trajectory
           </div>
-          <h2 class="text-balance text-2xl font-bold leading-tight text-pearl-100 sm:text-4xl">
+          <h2 class="text-balance text-3xl font-bold text-pearl-100 md:text-5xl md:leading-tight">
             Our Evolution
           </h2>
           <p class="mt-4 text-pretty text-pearl-100/85 md:text-lg">
@@ -400,7 +413,7 @@ const pageTitle: string = `About us | ${SITE.title}`;
                   <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-950 text-neutral-400 border border-primary-800 font-bold">U.S.</span>
                 </div>
                 <h3 class="text-sm font-bold text-white mb-2">Foundation and Structure</h3>
-                <p class="text-xs text-neutral-400 leading-relaxed">
+                <p class="text-sm text-pearl-100/85 md:text-base leading-relaxed">
                   Establishment of the corporate structure and supply chain
                   center in the U.S.
                 </p>
@@ -415,17 +428,16 @@ const pageTitle: string = `About us | ${SITE.title}`;
               <div>
                 <div class="flex items-center justify-between mb-4">
                   <span class="text-3xl font-black text-primary-400">2023</span>
-                  <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-950 text-neutral-400 border border-primary-800 font-bold">Panama</span>
+                  <span class="text-xs px-2.5 py-1 ml-4 rounded-md bg-neutral-950 text-neutral-400 border border-primary-800 font-bold text-center">South America</span>
                 </div>
-                <h3 class="text-sm font-bold text-white mb-2">Financial Management</h3>
-                <p class="text-xs text-neutral-400 leading-relaxed">
-                  Consolidation of Panama as the group's banking, commercial,
-                  and legal hub.
+                <h3 class="text-sm font-bold text-white mb-2">Logistics Network and Alliances</h3>
+                <p class="text-sm text-pearl-100/85 md:text-base leading-relaxed">
+                  Strategic alliances in Mexico, Brazil, Ecuador, and Colombia.
                 </p>
               </div>
-              <div class="mt-6 pt-3 border-t border-primary-800/40 text-[11px] text-primary-400 font-semibold flex items-center gap-1">
-                <span class="material-symbols-outlined mi text-[16px]">check_circle</span>
-                <span>Consolidation</span>
+              <div class="mt-6 pt-3 border-t border-primary-800/40 text-[11px] text-neutral-400 font-semibold flex items-center gap-1">
+                <span class="material-symbols-outlined mi text-[16px]">explore</span>
+                <span>Outlook</span>
               </div>
             </div>
 
@@ -436,7 +448,7 @@ const pageTitle: string = `About us | ${SITE.title}`;
                   <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-950 text-neutral-400 border border-primary-800 font-bold">Global</span>
                 </div>
                 <h3 class="text-sm font-bold text-white mb-2">Commercial Expansion</h3>
-                <p class="text-xs text-neutral-400 leading-relaxed">
+                <p class="text-sm text-pearl-100/85 md:text-base leading-relaxed">
                   Entry into the Middle East and Africa, and reactivation in
                   Venezuela.
                 </p>
@@ -447,14 +459,32 @@ const pageTitle: string = `About us | ${SITE.title}`;
               </div>
             </div>
 
-            <div class="glass-card p-6 rounded-2xl border border-primary-800 hover:border-primary-400 transition-all duration-300 flex flex-col justify-between group bg-neutral-900/80">
+            <div class="glass-card p-6 rounded-2xl border border-primary-800 hover:border-primary-400 transition-all duration-300 flex flex-col justify-between group">
               <div>
                 <div class="flex items-center justify-between mb-4">
                   <span class="text-3xl font-black text-white group-hover:text-primary-400 transition-colors">2025</span>
-                  <span class="text-xs px-2.5 py-1 rounded-md bg-primary-400 text-slate-950 font-bold">Venezuela</span>
+                  <span class="text-xs px-2.5 py-1 rounded-md bg-primary-400 text-slate-950 font-bold">Panama</span>
+                </div>
+                <h3 class="text-sm font-bold text-white mb-2">Financial Management</h3>
+                <p class="text-sm text-pearl-100/85 md:text-base leading-relaxed">
+                  Consolidation of Panama as the group's banking, commercial,
+                  and legal hub.
+                </p>
+              </div>
+              <div class="mt-6 pt-3 border-t border-primary-800/40 text-[11px] text-primary-400 font-semibold flex items-center gap-1">
+                <span class="material-symbols-outlined mi text-[16px]">check_circle</span>
+                <span>Consolidation</span>
+              </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border border-primary-800 hover:border-primary-400 transition-all duration-300 flex flex-col justify-between group bg-neutral-900/80">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-3xl font-black text-primary-400">2026</span>
+                  <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-950 text-neutral-400 border border-primary-800 font-bold">Venezuela</span>
                 </div>
                 <h3 class="text-sm font-bold text-white mb-2">Operational Deployment</h3>
-                <p class="text-xs text-neutral-400 leading-relaxed">
+                <p class="text-sm text-pearl-100/85 md:text-base leading-relaxed">
                   Direct field execution with well pumping equipment and QHSE
                   integration.
                 </p>
@@ -462,23 +492,6 @@ const pageTitle: string = `About us | ${SITE.title}`;
               <div class="mt-6 pt-3 border-t border-primary-800/40 text-[11px] text-primary-400 font-semibold flex items-center gap-1">
                 <span class="material-symbols-outlined mi text-[16px] animate-spin">sync</span>
                 <span>Active Operation</span>
-              </div>
-            </div>
-
-            <div class="glass-card p-6 rounded-2xl border border-primary-800 hover:border-primary-400 transition-all duration-300 flex flex-col justify-between group">
-              <div>
-                <div class="flex items-center justify-between mb-4">
-                  <span class="text-3xl font-black text-primary-400">2026</span>
-                  <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-950 text-neutral-400 border border-primary-800 font-bold">South America</span>
-                </div>
-                <h3 class="text-sm font-bold text-white mb-2">Logistics Network and Alliances</h3>
-                <p class="text-xs text-neutral-400 leading-relaxed">
-                  Strategic alliances in Mexico, Brazil, Ecuador, and Colombia.
-                </p>
-              </div>
-              <div class="mt-6 pt-3 border-t border-primary-800/40 text-[11px] text-neutral-400 font-semibold flex items-center gap-1">
-                <span class="material-symbols-outlined mi text-[16px]">explore</span>
-                <span>Outlook</span>
               </div>
             </div>
           </div>
@@ -494,10 +507,10 @@ const pageTitle: string = `About us | ${SITE.title}`;
               <span class="material-symbols-outlined mi text-[16px]">groups</span>
               Technical Leadership
             </div>
-            <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
+            <h2 class="text-balance text-3xl font-bold text-pearl-100 md:text-5xl md:leading-tight">
               Our Leadership
             </h2>
-            <p class="text-base text-neutral-400 leading-relaxed">
+            <p class="text-pretty text-pearl-100/85 md:text-lg leading-relaxed">
               With decades of proven experience in field engineering and global
               corporate management, our approach stands out for technical
               excellence, operational discipline, and unwavering commitment to
