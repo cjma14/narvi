@@ -1,4 +1,10 @@
 export const languages = {
-    en: "English",
-    es: "Español",
+  en: {
+    label: "English",
+    flag: "🇺🇸",
+  },
+  es: {
+    label: "Español",
+    flag: "🇪🇸",
+  },
 };

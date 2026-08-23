@@ -22,7 +22,7 @@ const homeUrl = Astro.currentLocale === "es" ? "/es" : "/";
 >
   <!-- Navigation container -->
   <nav
-    class="relative w-full md:flex md:items-center md:justify-between lg:px-[10rem]"
+    class="relative w-full md:flex md:items-center md:justify-between lg:px-[6rem] xl:px-[10rem]"
     aria-label="Global"
   >
     <div class="flex items-center justify-between px-5 md:px-0">
@@ -86,7 +86,7 @@ const homeUrl = Astro.currentLocale === "es" ? "/es" : "/";
     >
       <!-- Navigation links container -->
       <div
-        class="navbar mt-5 flex flex-col gap-x-0 gap-y-4 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-x-4 lg:gap-x-8 md:gap-y-0 md:ps-7"
+        class="navbar mt-5 flex flex-col gap-x-0 gap-y-4 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-x-2 md:gap-y-0 md:ps-3 lg:gap-x-5 xl:gap-x-8 lg:ps-7"
       >
         <!-- Navigation links and Authentication component -->
         {strings.navBarLinks.map(link => {
@@ -101,7 +101,7 @@ const homeUrl = Astro.currentLocale === "es" ? "/es" : "/";
         <!-- Cotizar Ahora Button -->
         <a
           href={Astro.currentLocale === "es" ? "/es/contact" : "/contact"}
-          class="bg-primary-400 hover:bg-primary-500 text-white font-bold px-6 py-2.5 rounded-md transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(159,196,35,0.3)] hover:shadow-[0_0_25px_rgba(159,196,35,0.5)] whitespace-nowrap"
+          class="bg-primary-400 hover:bg-primary-500 text-white font-bold px-4 py-2 rounded-md text-[11px] sm:text-xs md:text-sm transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(159,196,35,0.3)] hover:shadow-[0_0_25px_rgba(159,196,35,0.5)] whitespace-nowrap"
         >
           {Astro.currentLocale === "es" ? "Cotizar Ahora" : "Get Quote"}
         </a>

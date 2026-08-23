@@ -1,13 +1,13 @@
 import ogImageSrc from "@images/social.png";
 
 export const SITE = {
-  title: "NARVI Enterprise Corporation",
+  title: "NARVI",
   tagline: "Equipos y Servicios para Petróleo, Gas e Industria",
-  description: "NARVI Enterprise Corporation - Proveedor líder de equipos, repuestos y soluciones para la industria energética e industrial (Oil & Gas). Más de 25 años de experiencia en Norteamérica y Latinoamérica.",
+  description: "NARVI - Proveedor líder de equipos, repuestos y soluciones para la industria energética e industrial (Oil & Gas). Más de 25 años de experiencia en Norteamérica y Latinoamérica.",
   description_short: "Equipos industriales Oil & Gas, maquinaria y servicios técnicos.",
   url: "https://narvi-ec.com",
   author: "Miguel Mogollón",
-  keywords: "NARVI Enterprise, equipo industrial, Oil & Gas, maquinaria energética, repuestos industriales, gestión de activos, servicios técnicos energéticos, Houston, Latinoamérica, equipos petroleros, suministro industrial, mantenimiento maquinaria, soluciones energéticas",
+  keywords: "NARVI, equipo industrial, Oil & Gas, maquinaria energética, repuestos industriales, gestión de activos, servicios técnicos energéticos, Houston, Latinoamérica, equipos petroleros, suministro industrial, mantenimiento maquinaria, soluciones energéticas",
 };
 
 export const SEO = {
@@ -34,7 +34,7 @@ export const SEO = {
 export const ORGANIZATION = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "NARVI Enterprise Corporation",
+  name: "NARVI",
   url: "https://narvi-ec.com/",
   logo: "https://narvi-ec.com/img/logo/logo_white.png",
   description: "Proveedor líder de equipos, maquinaria y servicios para la industria energética e industrial (Oil & Gas).",
