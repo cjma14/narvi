@@ -54,6 +54,21 @@ namespace App\Http\Controllers;
  *     name="Languages",
  *     description="Gestión de idiomas disponibles"
  * )
+ * 
+ * @OA\Tag(
+ *     name="News",
+ *     description="Gestión de noticias / blog (Admin)"
+ * )
+ * 
+ * @OA\Tag(
+ *     name="News Public",
+ *     description="Endpoints públicos de noticias"
+ * )
+ * 
+ * @OA\Tag(
+ *     name="Images",
+ *     description="Subida de imágenes (portada y cuerpo) con conversión a AVIF"
+ * )
  */
 abstract class Controller
 {

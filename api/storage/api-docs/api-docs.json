@@ -231,6 +231,99 @@
                 ]
             }
         },
+        "/api/images": {
+            "post": {
+                "tags": [
+                    "Images"
+                ],
+                "summary": "Subir imagen (portada o cuerpo)",
+                "description": "Sube una imagen JPG/PNG/AVIF, la convierte a AVIF y devuelve la URL absoluta. Para portadas valida proporción 3:1.",
+                "operationId": "6b7ebc376b155537f1858fc7f3e6038c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "image",
+                                    "type"
+                                ],
+                                "properties": {
+                                    "image": {
+                                        "description": "Archivo JPG, PNG o AVIF",
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "type": {
+                                        "description": "Tipo de imagen",
+                                        "type": "string",
+                                        "enum": [
+                                            "cover",
+                                            "body"
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Imagen subida exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Imagen subida exitosamente"
+                                        },
+                                        "image": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "url": {
+                                                    "type": "string",
+                                                    "example": "http://localhost:6650/storage/images/body/2026/08/01HXYZ.avif"
+                                                },
+                                                "width": {
+                                                    "type": "integer",
+                                                    "example": 1600
+                                                },
+                                                "height": {
+                                                    "type": "integer",
+                                                    "example": 900
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "example": "body"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "422": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/languages": {
             "get": {
                 "tags": [
@@ -279,6 +372,346 @@
                                 }
                             }
                         }
+                    }
+                }
+            }
+        },
+        "/api/news": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Listar noticias",
+                "description": "Lista paginada de noticias (admin). Incluye no publicadas. Usar with_trashed=1 para incluir eliminadas.",
+                "operationId": "9bfe744cf19dcb58e9ab9677c29ee6c7",
+                "parameters": [
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 15
+                        }
+                    },
+                    {
+                        "name": "with_trashed",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista de noticias"
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Crear noticia",
+                "description": "Crea una noticia. La portada se sube antes vía POST /api/images (type=cover) y se referencia con cover_image_id.",
+                "operationId": "1c0fdf6cc53f1508a87121ef9111be5b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "url_alias"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Nueva instalación en Ecuador"
+                                    },
+                                    "url_alias": {
+                                        "type": "string",
+                                        "example": "nueva-instalacion-ecuador"
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "example": "<p>Contenido HTML</p>"
+                                    },
+                                    "published": {
+                                        "type": "boolean",
+                                        "example": false
+                                    },
+                                    "cover_image_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "translations": {
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Noticia creada exitosamente"
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "422": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/news/{id}": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Obtener noticia para edición",
+                "operationId": "235a202c862ec6888f4129413c1f2bcd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalle de la noticia"
+                    },
+                    "404": {
+                        "description": "Noticia no encontrada"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Actualizar noticia",
+                "operationId": "11a73338ef61a1ffd2ab3771639f638e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "url_alias"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "url_alias": {
+                                        "type": "string"
+                                    },
+                                    "body": {
+                                        "type": "string"
+                                    },
+                                    "published": {
+                                        "type": "boolean"
+                                    },
+                                    "cover_image_id": {
+                                        "type": "integer"
+                                    },
+                                    "translations": {
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Noticia actualizada exitosamente"
+                    },
+                    "404": {
+                        "description": "Noticia no encontrada"
+                    },
+                    "422": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Eliminar noticia (soft delete)",
+                "description": "Marca la noticia como eliminada. Las imágenes se purgan físicamente a los 7 días.",
+                "operationId": "cd3235328b3ea2080e4d0a47986d4714",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Noticia eliminada exitosamente"
+                    },
+                    "404": {
+                        "description": "Noticia no encontrada"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/news/{id}/restore": {
+            "post": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Restaurar noticia eliminada",
+                "operationId": "c50e2ea8cfea0d34195c83cd307b7331",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Noticia restaurada exitosamente"
+                    },
+                    "404": {
+                        "description": "Noticia no encontrada"
+                    },
+                    "422": {
+                        "description": "No se puede restaurar (imágenes ya purgadas)"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/public/{lang}/news": {
+            "get": {
+                "tags": [
+                    "News Public"
+                ],
+                "summary": "Listar noticias públicas",
+                "description": "Noticias publicadas ordenadas por creación descendente",
+                "operationId": "764d37729399356a37e7408d6e8b5bdd",
+                "parameters": [
+                    {
+                        "name": "lang",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "es"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 15
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista de noticias publicadas"
+                    }
+                }
+            }
+        },
+        "/api/public/{lang}/news/{alias}": {
+            "get": {
+                "tags": [
+                    "News Public"
+                ],
+                "summary": "Obtener noticia pública por alias",
+                "operationId": "e1c6e8c80369941ba1a1e8ed461e7a92",
+                "parameters": [
+                    {
+                        "name": "lang",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "es"
+                        }
+                    },
+                    {
+                        "name": "alias",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "nueva-instalacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalle de la noticia"
+                    },
+                    "404": {
+                        "description": "Noticia no encontrada"
                     }
                 }
             }
@@ -455,6 +888,11 @@
                                             "type": "string",
                                             "example": "Alta calidad"
                                         }
+                                    },
+                                    "stock": {
+                                        "description": "Disponibilidad del producto (true = disponible, false = SOLD OUT)",
+                                        "type": "boolean",
+                                        "example": true
                                     },
                                     "translations": {
                                         "description": "Traducciones opcionales por código de idioma",
@@ -633,6 +1071,11 @@
                                             "type": "string",
                                             "example": "Característica actualizada"
                                         }
+                                    },
+                                    "stock": {
+                                        "description": "Disponibilidad del producto (true = disponible, false = SOLD OUT)",
+                                        "type": "boolean",
+                                        "example": true
                                     },
                                     "translations": {
                                         "description": "Traducciones opcionales por código de idioma",
@@ -1681,6 +2124,18 @@
         {
             "name": "Languages",
             "description": "Gestión de idiomas disponibles"
+        },
+        {
+            "name": "News",
+            "description": "Gestión de noticias / blog (Admin)"
+        },
+        {
+            "name": "News Public",
+            "description": "Endpoints públicos de noticias"
+        },
+        {
+            "name": "Images",
+            "description": "Subida de imágenes (portada y cuerpo) con conversión a AVIF"
         }
     ]
 }

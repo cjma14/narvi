@@ -52,3 +52,18 @@ Levanta los servicios con Laravel Sail:
 
 - API: http://localhost:6650
 - Documentación Swagger: http://localhost:6650/api/docs
+
+## Imágenes (News)
+
+Las imágenes de noticias se convierten a AVIF con **Imagick** + Intervention Image.
+
+> Nota: GD reporta `AVIF Support` en Sail, pero `imageavif()` escribe archivos vacíos. Por eso el driver activo es Imagick (ya incluido en Sail 8.4).
+
+En producción, el `coolify/Dockerfile` instala `libmagickwand-dev`, `libheif-dev`, `libavif-dev` y la extensión `imagick`.
+
+Comando de purga (programado diariamente a las 03:00):
+
+```bash
+./vendor/bin/sail artisan news:purge-images
+./vendor/bin/sail artisan news:purge-images --dry-run
+```
