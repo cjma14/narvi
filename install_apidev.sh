@@ -66,7 +66,7 @@ if [ -x "./vendor/bin/sail" ]; then
     echo ""
     echo "📍 Accede a la aplicación en:"
     echo "   - API: http://localhost:6650"
-    echo "   - Swagger: http://localhost:6650/api/docs"
+    echo "   - Documentación de la API (Scalar): http://localhost:6650/api/docs"
     echo ""
     echo "💡 Comandos útiles:"
     echo "   - Ver logs: ./api/vendor/bin/sail logs -f"

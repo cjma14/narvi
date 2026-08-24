@@ -51,7 +51,7 @@ Levanta los servicios con Laravel Sail:
 ## Acceso a la aplicación
 
 - API: http://localhost:6650
-- Documentación Swagger: http://localhost:6650/api/docs
+- Documentación de la API (Scalar): http://localhost:6650/api/docs
 
 ## Imágenes (News)
 

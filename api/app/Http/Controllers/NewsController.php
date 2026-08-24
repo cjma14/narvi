@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
-use App\Models\Translation;
 use App\Services\NewsImageSyncService;
 use Illuminate\Http\Request;
 
@@ -30,14 +29,10 @@ class NewsController extends Controller
     {
         $perPage = $request->input('per_page', 15);
 
-        $query = News::with(['cover', 'author:id,name,email'])
-            ->orderByDesc('created_at');
-
-        if ($request->boolean('with_trashed')) {
-            $query->withTrashed();
-        }
-
-        return response()->json($query->paginate($perPage), 200);
+        return response()->json(
+            News::forAdminList(withTrashed: $request->boolean('with_trashed'))->paginate($perPage),
+            200
+        );
     }
 
     /**
@@ -125,10 +120,8 @@ class NewsController extends Controller
      */
     public function show(string $id)
     {
-        $news = News::withTrashed()
-            ->with(['cover', 'bodyImages', 'author:id,name,email'])
-            ->find($id);
-            
+        $news = News::findWithRelations($id);
+
         if (!$news) {
             return response()->json(['message' => 'Noticia no encontrada'], 404);
         }
@@ -265,7 +258,7 @@ class NewsController extends Controller
      */
     public function restore(string $id)
     {
-        $news = News::onlyTrashed()->find($id);
+        $news = News::findTrashed($id);
 
         if (!$news) {
             return response()->json(['message' => 'Noticia no encontrada'], 404);
@@ -301,10 +294,7 @@ class NewsController extends Controller
     {
         $perPage = $request->input('per_page', 15);
 
-        $news = News::with(['cover', 'author:id,name'])
-            ->where('published', true)
-            ->orderByDesc('created_at')
-            ->paginate($perPage);
+        $news = News::forPublicList()->paginate($perPage);
 
         $news->getCollection()->transform(function ($item) use ($lang) {
             return $item->toPublicArray($lang, includeBody: false);
@@ -326,27 +316,7 @@ class NewsController extends Controller
      */
     public function showPublic(string $lang, string $alias)
     {
-        $news = News::with(['cover', 'author:id,name'])
-            ->where('published', true)
-            ->where('url_alias', $alias)
-            ->first();
-
-        if (!$news) {
-            $translation = Translation::where('field', 'url_alias')
-                ->where('value', $alias)
-                ->where('translatable_type', News::class)
-                ->whereHas('language', function ($query) use ($lang) {
-                    $query->where('code', $lang);
-                })
-                ->first();
-
-            if ($translation) {
-                $news = News::with(['cover', 'author:id,name'])
-                    ->where('published', true)
-                    ->where('id', $translation->translatable_id)
-                    ->first();
-            }
-        }
+        $news = News::findPublicByAlias($alias, $lang);
 
         if (!$news) {
             return response()->json(['message' => 'Noticia no encontrada'], 404);

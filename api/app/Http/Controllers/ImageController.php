@@ -17,7 +17,7 @@ class ImageController extends Controller
      * @OA\Post(
      *     path="/api/images",
      *     summary="Subir imagen (portada o cuerpo)",
-     *     description="Sube una imagen JPG/PNG/AVIF, la convierte a AVIF y devuelve la URL absoluta. Para portadas valida proporción 3:1.",
+     *     description="Sube una imagen JPG/PNG/AVIF, la convierte a AVIF y devuelve la URL absoluta.",
      *     tags={"Images"},
      *     security={{"bearerAuth": {}}},
      *     @OA\RequestBody(
