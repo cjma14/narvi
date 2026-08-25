@@ -8,4 +8,4 @@ Route::get('/', function () {
 });
 
 Route::get('/api/docs', [DocsController::class, 'reference'])->name('docs.reference');
-Route::get('/api/docs/openapi.json', [DocsController::class, 'openapi'])->name('docs.openapi');
+Route::get('/api/docs/openapi', [DocsController::class, 'openapi'])->name('docs.openapi');
