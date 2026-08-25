@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
     <script>
         Scalar.createApiReference('#app', {
-            url: '{{ route('docs.openapi') }}',
+            url: '/api/docs/openapi',
             persistAuth: true,
         })
     </script>
