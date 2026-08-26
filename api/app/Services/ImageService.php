@@ -70,6 +70,9 @@ class ImageService
         }
     }
 
+    /**
+     * Valida que la portada tenga al menos el ratio mínimo (ancho/alto).
+     */
     public function assertCoverRatio(UploadedFile $file, Closure $fail): void
     {
         $manager = new ImageManager(new Driver());
@@ -84,13 +87,14 @@ class ImageService
         }
 
         $ratio = $width / $height;
-        $expected = (float) config('images.cover_ratio', 3.0);
-        $tolerance = (float) config('images.cover_ratio_tolerance', 0.02);
+        $minRatio = (float) config('images.cover_min_ratio', 1.5);
 
-        if (abs($ratio - $expected) > ($expected * $tolerance)) {
+        if ($ratio < $minRatio) {
             $fail(sprintf(
-                'La portada debe tener proporción 3:1 (actual: %.2f:1).',
-                $ratio
+                'La portada debe tener proporción mínima %.2f:1 (actual: %d×%d px).',
+                $minRatio,
+                $width,
+                $height
             ));
         }
     }
