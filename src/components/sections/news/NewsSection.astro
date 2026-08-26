@@ -1,0 +1,144 @@
+---
+// Import necessary modules and components
+const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:6650';
+const lang = Astro.currentLocale || 'en';
+
+let newsList = [];
+
+try {
+  const response = await fetch(`${API_URL}/api/public/${lang}/news?per_page=3`);
+  if (response.ok) {
+    const data = await response.json();
+    newsList = data.data || [];
+  }
+} catch (error) {
+  console.error('[NewsSection] Error fetching public news:', error);
+}
+
+// Translations based on current locale
+const isEs = lang === 'es';
+const sectionTitle = isEs ? 'Últimas Noticias' : 'Latest News';
+const sectionSubtitle = isEs 
+  ? 'Infórmese sobre nuestros proyectos, innovaciones y el acontecer de la industria energética.' 
+  : 'Find out about our projects, innovations, and the latest news in the energy industry.';
+const readMoreText = isEs ? 'Leer más' : 'Read more';
+const authorPrefix = isEs ? 'Por' : 'By';
+const noNewsText = isEs ? 'No hay noticias publicadas en este momento.' : 'No news published at this moment.';
+const fallbackMessage = isEs 
+  ? 'En este momento no hay comunicados o noticias publicadas. Las actualizaciones recientes aparecerán en esta sección.'
+  : 'There are currently no statements or news published. Recent updates will appear in this section.';
+const viewAllText = isEs ? 'Ver todas las noticias' : 'View all news';
+const viewAllUrl = isEs ? '/es/news' : '/news';
+
+// Format published date
+const formatDate = (dateStr: string) => {
+  if (!dateStr) return '';
+  const date = new Date(dateStr);
+  return date.toLocaleDateString(isEs ? 'es-ES' : 'en-US', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
+};
+
+// Handle remote cover images with robust fallbacks
+const getImageUrl = (coverObj: any) => {
+  if (!coverObj || !coverObj.url) {
+    return '/img/default-image.avif';
+  }
+  if (coverObj.url.startsWith('http://') || coverObj.url.startsWith('https://')) {
+    return coverObj.url;
+  }
+  const leadingSlash = coverObj.url.startsWith('/') ? '' : '/';
+  return `${API_URL}${leadingSlash}${coverObj.url}`;
+};
+---
+
+<section class="mx-auto max-w-screen-2xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+  <div class="fade-up mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+    <div class="max-w-3xl">
+      <h2 class="text-balance text-3xl font-bold text-pearl-100 md:text-5xl md:leading-tight">
+        {sectionTitle}
+      </h2>
+      <p class="mt-4 text-pretty text-pearl-100/85 md:text-lg">
+        {sectionSubtitle}
+      </p>
+    </div>
+
+    {newsList.length > 0 && (
+      <a
+        href={viewAllUrl}
+        class="group inline-flex items-center justify-center gap-x-2 rounded-lg border border-transparent bg-primary-500 px-6 py-3 text-base font-bold text-neutral-900 shadow-[0_0_15px_rgba(159,196,35,0.3)] ring-zinc-500 transition-all duration-300 hover:cursor-pointer hover:bg-primary-600 hover:shadow-[0_0_25px_rgba(159,196,35,0.5)] focus-visible:ring active:bg-primary-500 disabled:pointer-events-none disabled:opacity-50 dark:focus:outline-none dark:ring-zinc-200"
+      >
+        {viewAllText}
+        <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+        </svg>
+      </a>
+    )}
+  </div>
+
+  {newsList.length > 0 ? (
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {newsList.map((item: any, index: number) => {
+        const coverSrc = getImageUrl(item.cover);
+        const detailUrl = isEs ? `/es/news/${item.url_alias}` : `/news/${item.url_alias}`;
+        return (
+          <article class="group flex flex-col overflow-hidden rounded-2xl border border-primary-500/15 bg-neutral-900/40 shadow-lg transition duration-300 hover:-translate-y-1 hover:border-primary-500/50">
+            <a href={detailUrl} class="relative block h-56 overflow-hidden bg-[#0f2722]">
+              <img
+                src={coverSrc}
+                alt={item.title}
+                loading={index === 0 ? "eager" : "lazy"}
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+              />
+            </a>
+
+            <div class="flex flex-1 flex-col p-6">
+              <div class="mb-3 flex items-center gap-4 text-xs text-pearl-100/60 font-medium">
+                {item.published_at && (
+                  <time datetime={item.published_at}>
+                    {formatDate(item.published_at)}
+                  </time>
+                )}
+                {item.author && (
+                  <span class="flex items-center gap-1">
+                    <span class="h-1 w-1 rounded-full bg-primary-500"></span>
+                    {authorPrefix} {item.author.name}
+                  </span>
+                )}
+              </div>
+
+              <h3 class="mb-4 text-xl font-bold leading-snug text-pearl-100 line-clamp-2 group-hover:text-primary-400 transition-colors">
+                <a href={detailUrl}>
+                  {item.title}
+                </a>
+              </h3>
+
+              <div class="mt-auto pt-4 border-t border-pearl-100/10">
+                <a
+                  href={detailUrl}
+                  class="inline-flex items-center gap-2 text-sm font-bold text-primary-500 hover:text-primary-400 transition-colors"
+                >
+                  {readMoreText}
+                  <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  ) : (
+    <div class="py-12 px-6 text-center border border-primary-500/15 bg-neutral-900/40 rounded-2xl md:py-16">
+      <svg class="mx-auto h-12 w-12 text-primary-500/80 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 4a2 2 0 00-2-2h-3m3 6h-3M9 10h.01M9 14h.01M12 14h.01M12 10h.01M12 18h.01M9 18h.01"></path>
+      </svg>
+      <p class="mx-auto max-w-xl text-balance text-lg text-pearl-100/70">
+        {fallbackMessage}
+      </p>
+    </div>
+  )}
+</section>

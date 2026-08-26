@@ -1,0 +1,12 @@
+---
+import AdminLayout from '../../admin/layouts/AdminLayout.astro';
+import NewsPageWrapper from '../../admin/modules/news/NewsPageWrapper';
+
+const breadcrumbs = [
+  { label: 'Noticias' },
+];
+---
+
+<AdminLayout title="Noticias" breadcrumbs={breadcrumbs}>
+  <NewsPageWrapper client:load />
+</AdminLayout>
