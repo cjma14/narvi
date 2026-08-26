@@ -62,7 +62,7 @@ export interface NewsPayload {
   url_alias: string;
   body: string;
   published: boolean;
-  cover_image_id: number | null;
+  cover_image_id?: number | null;
   translations: Record<string, NewsTranslationFields>;
 }
 

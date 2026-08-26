@@ -29,6 +29,7 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
   const [loadingNews, setLoadingNews] = useState(false);
   const [uploadingCover, setUploadingCover] = useState(false);
   const [coverPreviewUrl, setCoverPreviewUrl] = useState('');
+  const [coverRemoved, setCoverRemoved] = useState(false);
 
   const form = useForm<NewsFormData>({ defaultValues });
   const {
@@ -49,6 +50,7 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
     if (mode === 'create') {
       reset(defaultValues);
       setCoverPreviewUrl('');
+      setCoverRemoved(false);
       return;
     }
 
@@ -60,6 +62,7 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
       try {
         setLoadingNews(true);
         const detail = await newsService.getById(news.id);
+        const resolvedCoverImageId = detail.cover_image_id ?? detail.cover?.id ?? null;
 
         reset({
           title: detail.title || '',
@@ -69,9 +72,10 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
           url_alias_en: detail.translations_data?.en?.url_alias || detail.translations?.en?.url_alias || '',
           body_en: detail.translations_data?.en?.body || detail.translations?.en?.body || '',
           published: !!detail.published,
-          cover_image_id: detail.cover_image_id ? String(detail.cover_image_id) : '',
+          cover_image_id: resolvedCoverImageId ? String(resolvedCoverImageId) : '',
         });
         setCoverPreviewUrl(getImageUrl(detail.cover));
+        setCoverRemoved(false);
       } catch (error) {
         console.error('Error loading news:', error);
         toast.error(getErrorMessage(error, 'Error al cargar la noticia'));
@@ -115,6 +119,7 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
         shouldValidate: true,
       });
       setCoverPreviewUrl(getImageUrl(uploadedImage) || URL.createObjectURL(file));
+      setCoverRemoved(false);
       toast.success('Imagen de portada subida exitosamente');
     } catch (error) {
       console.error('Error uploading cover image:', error);
@@ -128,6 +133,7 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
   const handleRemoveCover = () => {
     setValue('cover_image_id', '', { shouldDirty: true, shouldValidate: true });
     setCoverPreviewUrl('');
+    setCoverRemoved(true);
   };
 
   const submitForm = handleSubmit(async (data) => {
@@ -144,9 +150,30 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
         url_alias: data.url_alias,
         body: data.body,
         published: data.published,
-        cover_image_id: data.cover_image_id ? Number(data.cover_image_id) : null,
         translations: {},
       };
+
+      const existingCoverImageId = news?.cover_image_id ?? news?.cover?.id;
+      const uploadedCoverImageId = data.cover_image_id ? Number(data.cover_image_id) : undefined;
+      const resolvedCoverImageId = (() => {
+        if (mode === 'create') {
+          return uploadedCoverImageId;
+        }
+
+        if (coverRemoved) {
+          return null;
+        }
+
+        if (uploadedCoverImageId) {
+          return uploadedCoverImageId;
+        }
+
+        return existingCoverImageId;
+      })();
+
+      if (resolvedCoverImageId !== undefined) {
+        payload.cover_image_id = resolvedCoverImageId;
+      }
 
       const enTranslations = {
         title: data.title_en.trim(),
