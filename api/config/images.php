@@ -28,12 +28,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Ratio de portada (ancho / alto) y tolerancia relativa
+    | Ratio mínimo de portada (ancho / alto)
     |--------------------------------------------------------------------------
-    | Ejemplo: 3.0 = 3:1. Con tolerancia 0.02 se acepta ±2%.
+    | Ejemplo: 1.5 = al menos 3:2 (p. ej. 1500×1000 px).
     */
-    'cover_ratio' => (float) env('IMAGES_COVER_RATIO', 3.0),
-    'cover_ratio_tolerance' => (float) env('IMAGES_COVER_RATIO_TOLERANCE', 0.02),
+    'cover_min_ratio' => (float) env('IMAGES_COVER_MIN_RATIO', 1.5),
 
     /*
     |--------------------------------------------------------------------------
