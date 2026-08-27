@@ -1,0 +1,176 @@
+---
+// News list page in English
+import MainLayout from "@/layouts/MainLayout.astro";
+
+const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:6650';
+const pageParam = Astro.url.searchParams.get('page') || '1';
+
+let newsData = {
+  data: [],
+  current_page: 1,
+  last_page: 1,
+  prev_page_url: null,
+  next_page_url: null,
+};
+
+try {
+  const response = await fetch(`${API_URL}/api/public/en/news?page=${pageParam}&per_page=9`);
+  if (response.ok) {
+    newsData = await response.json();
+  }
+} catch (error) {
+  console.error('[NewsIndex] Error fetching news:', error);
+}
+
+// Format published date
+const formatDate = (dateStr: string) => {
+  if (!dateStr) return '';
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
+};
+
+// Handle remote cover images with robust fallbacks
+const getImageUrl = (coverObj: any) => {
+  if (!coverObj || !coverObj.url) {
+    return '/img/default-image.avif';
+  }
+  if (coverObj.url.startsWith('http://') || coverObj.url.startsWith('https://')) {
+    return coverObj.url;
+  }
+  const leadingSlash = coverObj.url.startsWith('/') ? '' : '/';
+  return `${API_URL}${leadingSlash}${coverObj.url}`;
+};
+
+const currentPage = newsData.current_page || 1;
+const lastPage = newsData.last_page || 1;
+---
+
+<MainLayout title="News | NARVI">
+  <main class="mx-auto max-w-screen-2xl px-4 pb-16 pt-[6rem] sm:px-6 lg:px-8 lg:pb-24 lg:pt-[10rem]">
+    <!-- Header -->
+    <div class="mb-12 text-center">
+      <h1 class="text-balance text-4xl font-extrabold tracking-tight text-pearl-100 sm:text-5xl md:text-6xl">
+        Our News & Blog
+      </h1>
+      <p class="mx-auto mt-4 max-w-3xl text-pretty text-lg text-pearl-100/85">
+        Stay up-to-date with our latest projects, specialized services, and innovations in the energy and industrial sectors.
+      </p>
+    </div>
+
+    <!-- News Grid -->
+    {newsData.data && newsData.data.length > 0 ? (
+      <div>
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {newsData.data.map((item: any, index: number) => {
+            const coverSrc = getImageUrl(item.cover);
+            const detailUrl = `/news/${item.url_alias}`;
+            return (
+              <article class="group flex flex-col overflow-hidden rounded-2xl border border-primary-500/15 bg-neutral-900/40 shadow-lg transition duration-300 hover:-translate-y-1 hover:border-primary-500/50">
+                <a href={detailUrl} class="relative block h-56 overflow-hidden bg-[#0f2722]">
+                  <img
+                    src={coverSrc}
+                    alt={item.title}
+                    loading={index < 3 ? "eager" : "lazy"}
+                    class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                </a>
+
+                <div class="flex flex-1 flex-col p-6">
+                  <div class="mb-3 flex items-center gap-4 text-xs text-pearl-100/60 font-medium">
+                    {item.published_at && (
+                      <time datetime={item.published_at}>
+                        {formatDate(item.published_at)}
+                      </time>
+                    )}
+                    {item.author && (
+                      <span class="flex items-center gap-1">
+                        <span class="h-1 w-1 rounded-full bg-primary-500"></span>
+                        By {item.author.name}
+                      </span>
+                    )}
+                  </div>
+
+                  <h3 class="mb-4 text-xl font-bold leading-snug text-pearl-100 line-clamp-2 group-hover:text-primary-400 transition-colors">
+                    <a href={detailUrl}>
+                      {item.title}
+                    </a>
+                  </h3>
+
+                  <div class="mt-auto pt-4 border-t border-pearl-100/10">
+                    <a
+                      href={detailUrl}
+                      class="inline-flex items-center gap-2 text-sm font-bold text-primary-500 hover:text-primary-400 transition-colors"
+                    >
+                      Read more
+                      <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <!-- Pagination -->
+        {lastPage > 1 && (
+          <nav class="mt-12 flex items-center justify-center gap-2" aria-label="Pagination">
+            {currentPage > 1 ? (
+              <a
+                href={`?page=${currentPage - 1}`}
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-primary-500/20 bg-neutral-900/40 text-pearl-100 hover:bg-primary-500 hover:text-neutral-900 transition"
+              >
+                <span class="sr-only">Previous page</span>
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+              </a>
+            ) : (
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-primary-500/10 bg-neutral-900/10 text-pearl-100/30 cursor-not-allowed">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+              </span>
+            )}
+
+            <div class="flex items-center gap-1 text-sm text-pearl-100/80">
+              <span class="font-bold text-primary-500">{currentPage}</span>
+              <span>/</span>
+              <span>{lastPage}</span>
+            </div>
+
+            {currentPage < lastPage ? (
+              <a
+                href={`?page=${currentPage + 1}`}
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-primary-500/20 bg-neutral-900/40 text-pearl-100 hover:bg-primary-500 hover:text-neutral-900 transition"
+              >
+                <span class="sr-only">Next page</span>
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            ) : (
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-primary-500/10 bg-neutral-900/10 text-pearl-100/30 cursor-not-allowed">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            )}
+          </nav>
+        )}
+      </div>
+    ) : (
+      <div class="py-16 text-center border border-primary-500/15 bg-neutral-900/40 rounded-2xl">
+        <svg class="mx-auto h-12 w-12 text-pearl-100/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 4a2 2 0 00-2-2h-3m3 6h-3M9 10h.01M9 14h.01M12 14h.01M12 10h.01M12 18h.01M9 18h.01"></path>
+        </svg>
+        <p class="mt-4 text-lg text-pearl-100/60">No news published at this moment.</p>
+      </div>
+    )}
+  </main>
+</MainLayout>
