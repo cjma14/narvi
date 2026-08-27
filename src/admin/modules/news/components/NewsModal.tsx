@@ -201,14 +201,28 @@ export default function NewsModal({ isOpen, mode, news, onClose, onSuccess }: Ne
 
                         {!coverPreviewUrl ? (
                           <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
-                            <label htmlFor="cover-upload" className="cursor-pointer flex flex-col items-center">
-                              <svg className="w-10 h-10 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                              </svg>
-                              <span className="text-sm text-gray-600">
-                                {uploadingCover ? 'Subiendo portada...' : 'Adjuntar imagen de portada'}
-                              </span>
-                              <span className="text-xs text-gray-400 mt-1">Solo una imagen. JPG, PNG, WEBP</span>
+                            <label
+                              htmlFor="cover-upload"
+                              className={`flex flex-col items-center transition-opacity ${uploadingCover ? 'cursor-not-allowed opacity-80' : 'cursor-pointer'}`}
+                            >
+                              {uploadingCover ? (
+                                <>
+                                  <div className="relative mb-2 h-10 w-10">
+                                    <div className="absolute inset-0 rounded-full border-4 border-admin-secondary/20"></div>
+                                    <div className="absolute inset-0 animate-spin rounded-full border-4 border-transparent border-t-admin-secondary"></div>
+                                  </div>
+                                  <span className="text-sm font-medium text-admin-secondary">Subiendo portada...</span>
+                                  <span className="mt-1 text-xs text-gray-500">Espera un momento mientras procesamos la imagen</span>
+                                </>
+                              ) : (
+                                <>
+                                  <svg className="w-10 h-10 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                                  </svg>
+                                  <span className="text-sm text-gray-600">Adjuntar imagen de portada</span>
+                                  <span className="text-xs text-gray-400 mt-1">Solo una imagen. JPG, PNG, WEBP</span>
+                                </>
+                              )}
                             </label>
                             <input
                               id="cover-upload"
