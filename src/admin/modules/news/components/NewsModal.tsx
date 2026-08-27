@@ -7,7 +7,6 @@ import NewsRichTextEditor from './NewsRichTextEditor';
 export default function NewsModal({ isOpen, mode, news, onClose, onSuccess }: NewsModalProps) {
   const [currentLang, setCurrentLang] = useState<'es' | 'en'>('es');
   const [allowEditUrlAliasEs, setAllowEditUrlAliasEs] = useState(false);
-  const [allowEditUrlAliasEn, setAllowEditUrlAliasEn] = useState(false);
 
   const {
     body,
@@ -33,7 +32,6 @@ export default function NewsModal({ isOpen, mode, news, onClose, onSuccess }: Ne
 
     setCurrentLang('es');
     setAllowEditUrlAliasEs(false);
-    setAllowEditUrlAliasEn(false);
   }, [isOpen, mode, news?.id]);
 
   if (!isOpen) {
@@ -156,6 +154,9 @@ export default function NewsModal({ isOpen, mode, news, onClose, onSuccess }: Ne
                           {!allowEditUrlAliasEs && (
                             <p className="mt-1 text-xs text-gray-500">Haz clic en "Editar URL" para modificar este campo.</p>
                           )}
+
+                          <p className="text-xs text-gray-500">English: /{watch('url_alias') || 'tu-url'}</p>
+                          <p className="text-xs text-gray-500">Español: /es/{watch('url_alias') || 'tu-url'}</p>
                           {errors.url_alias && <p className="mt-1 text-sm text-red-600">{errors.url_alias.message}</p>}
                         </div>
                       </div>
@@ -174,33 +175,8 @@ export default function NewsModal({ isOpen, mode, news, onClose, onSuccess }: Ne
                           {errors.title_en && <p className="mt-1 text-sm text-red-600">{errors.title_en.message}</p>}
                         </div>
 
-                        <div>
-                          <div className="mb-1 flex items-center justify-between gap-3">
-                            <label htmlFor="url_alias_en" className="block text-sm font-medium text-gray-700">
-                              URL Alias
-                            </label>
-                            <button
-                              type="button"
-                              onClick={() => setAllowEditUrlAliasEn((prev) => !prev)}
-                              className="inline-flex items-center gap-1 rounded-md border border-gray-300 px-2.5 py-1 text-xs font-medium text-gray-700 hover:bg-gray-100 transition-colors"
-                            >
-                              <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                              </svg>
-                              {allowEditUrlAliasEn ? 'Lock URL' : 'Edit URL'}
-                            </button>
-                          </div>
-                          <input
-                            id="url_alias_en"
-                            type="text"
-                            {...register('url_alias_en')}
-                            disabled={!allowEditUrlAliasEn}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-admin-secondary focus:border-admin-secondary transition-colors disabled:bg-gray-100 disabled:text-gray-500 disabled:cursor-not-allowed"
-                          />
-                          {!allowEditUrlAliasEn && (
-                            <p className="mt-1 text-xs text-gray-500">Click "Edit URL" to modify this field.</p>
-                          )}
-                          {errors.url_alias_en && <p className="mt-1 text-sm text-red-600">{errors.url_alias_en.message}</p>}
+                        <div className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-600">
+                          La URL se comparte con español: /{watch('url_alias') || 'tu-url'}
                         </div>
                       </div>
 

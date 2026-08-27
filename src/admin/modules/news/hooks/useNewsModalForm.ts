@@ -40,7 +40,6 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
   } = form;
 
   const title = watch('title');
-  const titleEn = watch('title_en');
 
   useEffect(() => {
     if (!isOpen) {
@@ -94,14 +93,6 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
 
     setValue('url_alias', toSlug(title));
   }, [setValue, title]);
-
-  useEffect(() => {
-    if (!titleEn) {
-      return;
-    }
-
-    setValue('url_alias_en', toSlug(titleEn));
-  }, [setValue, titleEn]);
 
   const handleCoverUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -177,7 +168,7 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
 
       const enTranslations = {
         title: data.title_en.trim(),
-        url_alias: data.url_alias_en.trim(),
+        url_alias: data.url_alias.trim(),
         body: data.body_en,
       };
 
