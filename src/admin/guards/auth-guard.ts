@@ -166,6 +166,12 @@ export const PERMISSIONS = {
   PRODUCTS_CREATE: 'products.create',
   PRODUCTS_EDIT: 'products.edit',
   PRODUCTS_DELETE: 'products.delete',
+
+  // Noticias
+  NEWS_VIEW: 'news.view',
+  NEWS_CREATE: 'news.create',
+  NEWS_EDIT: 'news.edit',
+  NEWS_DELETE: 'news.delete',
 } as const;
 
 /**

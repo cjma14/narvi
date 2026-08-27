@@ -12,6 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Coolify / nginx terminan TLS delante; Laravel debe confiar en X-Forwarded-*
+        $middleware->trustProxies(at: '*');
+
         $middleware->alias([
             'db.transaction' => \App\Http\Middleware\DatabaseTransaction::class,
         ]);

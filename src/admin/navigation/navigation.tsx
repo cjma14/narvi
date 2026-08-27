@@ -136,6 +136,21 @@ export const adminNavigation: NavItem[] = [
     ],
   },
   {
+    label: 'Noticias',
+    href: '/admin/news',
+    icon: DocumentsIcon,
+    key: 'news',
+    permission: 'news.view',
+    children: [
+      {
+        label: 'Listado',
+        href: '/admin/news',
+        icon: ListIcon,
+        permission: 'news.view',
+      },
+    ],
+  },
+  {
     label: 'Usuarios',
     href: '/admin/users',
     icon: UsersIcon,

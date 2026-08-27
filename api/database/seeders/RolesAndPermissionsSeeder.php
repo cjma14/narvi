@@ -30,6 +30,12 @@ class RolesAndPermissionsSeeder extends Seeder
             'products.create',
             'products.edit',
             'products.delete',
+
+            // Permisos de noticias
+            'news.view',
+            'news.create',
+            'news.edit',
+            'news.delete',
         ];
 
         // Crear o actualizar permisos
@@ -54,6 +60,10 @@ class RolesAndPermissionsSeeder extends Seeder
                     'products.create',
                     'products.edit',
                     'products.delete',
+                    'news.view',
+                    'news.create',
+                    'news.edit',
+                    'news.delete',
                 ],
             ],
             'editor' => [
@@ -62,12 +72,16 @@ class RolesAndPermissionsSeeder extends Seeder
                     'products.view',
                     'products.create',
                     'products.edit',
+                    'news.view',
+                    'news.create',
+                    'news.edit',
                 ],
             ],
             'viewer' => [
                 'permissions' => [
                     'users.view',
                     'products.view',
+                    'news.view',
                 ],
             ],
         ];

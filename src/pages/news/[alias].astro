@@ -1,0 +1,172 @@
+---
+// Dynamic news detail page in English
+import MainLayout from "@/layouts/MainLayout.astro";
+
+const { alias } = Astro.params;
+const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:6650';
+
+let news = null;
+
+try {
+  const response = await fetch(`${API_URL}/api/public/en/news/${alias}`);
+  if (response.ok) {
+    const data = await response.json();
+    console.log(data)
+    news = data.news;
+  } else {
+    return Astro.redirect('/404');
+  }
+} catch (error) {
+  console.error('[NewsDetail] Error fetching news:', error);
+  return Astro.redirect('/404');
+}
+
+if (!news) {
+  return Astro.redirect('/404');
+}
+
+// Formatting dates
+const formatDate = (dateStr: string) => {
+  if (!dateStr) return '';
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+};
+
+const coverSrc = news.cover && news.cover.url
+  ? (news.cover.url.startsWith('http') ? news.cover.url : `${API_URL}${news.cover.url.startsWith('/') ? '' : '/'}${news.cover.url}`)
+  : '/img/default-image.avif';
+
+// Process rich text body to handle local/relative image URLs correctly
+const processedBody = news.body
+  ? news.body
+      .replace(/src="http:\/\/localhost\/storage\//g, `src="${API_URL}/storage/`)
+      .replace(/src="\/storage\//g, `src="${API_URL}/storage/`)
+  : "";
+---
+
+<MainLayout 
+  title={`${news.title} | NARVI`}
+  meta={news.body ? news.body.replace(/<[^>]*>/g, '').substring(0, 155) + '...' : ''}
+>
+  <main class="mx-auto max-w-4xl px-4 pb-16 pt-[6rem] sm:px-6 lg:px-8 lg:pb-24 lg:pt-[10rem]">
+    <!-- Breadcrumbs -->
+    <nav class="mb-6 flex" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3 text-sm font-medium text-pearl-100/60">
+        <li class="inline-flex items-center">
+          <a href="/" class="hover:text-primary-500 transition-colors">Home</a>
+        </li>
+        <li class="flex items-center">
+          <svg class="mx-2 h-3.5 w-3.5 text-pearl-100/40" aria-hidden="true" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+          </svg>
+          <a href="/news" class="hover:text-primary-500 transition-colors">News</a>
+        </li>
+        <li class="flex items-center max-w-xs truncate" aria-current="page">
+          <svg class="mx-2 h-3.5 w-3.5 text-pearl-100/40" aria-hidden="true" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+          </svg>
+          <span class="text-pearl-100/40 max-w-[200px] sm:max-w-none truncate">{news.title}</span>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- News Header -->
+    <header class="mb-8">
+      <div class="mb-4 flex flex-wrap items-center gap-4 text-xs font-semibold text-pearl-100/60 sm:text-sm">
+        {news.published_at && (
+          <time datetime={news.published_at}>
+            {formatDate(news.published_at)}
+          </time>
+        )}
+        {news.author && (
+          <span class="flex items-center gap-1.5">
+            <span class="h-1.5 w-1.5 rounded-full bg-primary-500"></span>
+            By {news.author.name}
+          </span>
+        )}
+      </div>
+
+      <h1 class="text-balance text-3xl font-extrabold tracking-tight text-pearl-100 sm:text-4xl md:text-5xl">
+        {news.title}
+      </h1>
+    </header>
+
+    <!-- Featured Image -->
+    <div class="relative mb-10 overflow-hidden rounded-2xl border border-primary-500/10 bg-[#0f2722] shadow-xl">
+      <img
+        src={coverSrc}
+        alt={news.title}
+        class="aspect-[16/9] w-full object-cover"
+      />
+    </div>
+
+    <!-- Article Content -->
+    <article class="news-content text-pretty text-lg font-light text-pearl-100/85">
+      <div set:html={processedBody} />
+    </article>
+
+    <!-- Footer Back Link -->
+    <div class="mt-12 border-t border-pearl-100/10 pt-8">
+      <a
+        href="/news"
+        class="inline-flex items-center gap-2 font-bold text-primary-500 hover:text-primary-400 hover:underline transition"
+      >
+        <svg class="h-4 w-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        Back to news
+      </a>
+    </div>
+  </main>
+</MainLayout>
+
+<style is:global>
+  .news-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+  .news-content h1, .news-content h2, .news-content h3, .news-content h4 {
+    color: #ffffff;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+  .news-content h1 { font-size: 2.25rem; }
+  .news-content h2 { font-size: 1.875rem; }
+  .news-content h3 { font-size: 1.5rem; }
+  .news-content h4 { font-size: 1.25rem; }
+  .news-content a {
+    color: #9fc423; /* primary-500 */
+    text-decoration: underline;
+  }
+  .news-content a:hover {
+    color: #b1d43a;
+  }
+  .news-content ul {
+    list-style-type: disc;
+    margin-left: 1.75rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+  }
+  .news-content ol {
+    list-style-type: decimal;
+    margin-left: 1.75rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+  }
+  .news-content li {
+    margin-bottom: 0.5rem;
+  }
+  .news-content img {
+    border-radius: 0.75rem;
+    margin: 2rem auto;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid rgba(159, 196, 35, 0.15);
+  }
+</style>

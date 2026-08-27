@@ -15,6 +15,9 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     libjpeg-dev \
     libfreetype6-dev \
+    libavif-dev \
+    libheif-dev \
+    libmagickwand-dev \
     libicu-dev \
     libssl-dev \
     libsasl2-dev \
@@ -24,7 +27,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Configurar e instalar extensiones PHP
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-avif \
     && docker-php-ext-install -j$(nproc) \
         pdo \
         pdo_mysql \
@@ -38,6 +41,10 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
         intl \
         ftp \
         opcache
+
+# Imagick: driver usado para conversión a AVIF (GD imageavif escribe vacíos en varios runtimes)
+RUN pecl install imagick \
+    && docker-php-ext-enable imagick
 
 # Configuración PHP personalizada
 RUN echo "opcache.enable=1" > /usr/local/etc/php/conf.d/custom.ini \
@@ -76,6 +83,9 @@ RUN git config --global --add safe.directory /var/www
 RUN DB_CONNECTION=sqlite DB_DATABASE=/tmp/temp.sqlite touch /tmp/temp.sqlite \
     && DB_CONNECTION=sqlite DB_DATABASE=/tmp/temp.sqlite composer install --no-dev --optimize-autoloader --no-interaction \
     && rm -f /tmp/temp.sqlite
+
+# Enlace simbólico de storage público
+RUN php artisan storage:link || true
 
 # Limpiar variables de entorno temporales
 RUN unset DB_CONNECTION DB_DATABASE 
