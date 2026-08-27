@@ -140,13 +140,13 @@ export const adminNavigation: NavItem[] = [
     href: '/admin/news',
     icon: DocumentsIcon,
     key: 'news',
-    // permission: 'news.view',
+    permission: 'news.view',
     children: [
       {
         label: 'Listado',
         href: '/admin/news',
         icon: ListIcon,
-        // permission: 'news.view',
+        permission: 'news.view',
       },
     ],
   },

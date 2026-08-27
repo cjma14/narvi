@@ -63,7 +63,7 @@ export default function NewsRichTextEditor({ value, onChange, error }: NewsRichT
     editorProps: {
       attributes: {
         class:
-          'min-h-[240px] p-4 focus:outline-none prose prose-sm max-w-none [&_h2]:text-xl [&_h2]:font-semibold [&_h3]:text-lg [&_h3]:font-semibold',
+          'min-h-[280px] max-h-[500px] overflow-y-auto p-4 focus:outline-none prose prose-sm max-w-none [&_h2]:text-xl [&_h2]:font-semibold [&_h3]:text-lg [&_h3]:font-semibold',
       },
     },
     onUpdate: ({ editor: currentEditor }) => {
@@ -130,9 +130,9 @@ export default function NewsRichTextEditor({ value, onChange, error }: NewsRichT
   }
 
   return (
-    <div>
-      <div className="border border-gray-300 rounded-lg overflow-hidden">
-        <div className="flex flex-wrap items-center gap-2 border-b border-gray-200 bg-gray-50 p-2">
+    <div className="flex-1 flex flex-col min-h-0">
+      <div className="flex-1 flex flex-col min-h-0 border border-gray-300 rounded-lg overflow-hidden">
+        <div className="flex flex-wrap items-center gap-2 border-b border-gray-200 bg-gray-50 p-2 sticky top-0 z-10 flex-shrink-0">
           <ToolbarButton
             label="Negrita"
             active={editor.isActive('bold')}
@@ -185,10 +185,10 @@ export default function NewsRichTextEditor({ value, onChange, error }: NewsRichT
           />
         </div>
 
-        <EditorContent editor={editor} />
+        <EditorContent editor={editor} className="flex-1 overflow-y-auto bg-white" />
       </div>
 
-      {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+      {error && <p className="mt-1 text-sm text-red-600 flex-shrink-0">{error}</p>}
     </div>
   );
 }

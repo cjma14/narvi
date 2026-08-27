@@ -168,15 +168,10 @@ export const PERMISSIONS = {
   PRODUCTS_DELETE: 'products.delete',
 
   // Noticias
-  // NEWS_VIEW: 'news.view',
-  // NEWS_CREATE: 'news.create',
-  // NEWS_EDIT: 'news.edit',
-  // NEWS_DELETE: 'news.delete',
-
-  NEWS_VIEW: 'products.view',
-  NEWS_CREATE: 'products.create',
-  NEWS_EDIT: 'products.edit',
-  NEWS_DELETE: 'products.delete',
+  NEWS_VIEW: 'news.view',
+  NEWS_CREATE: 'news.create',
+  NEWS_EDIT: 'news.edit',
+  NEWS_DELETE: 'news.delete',
 } as const;
 
 /**
