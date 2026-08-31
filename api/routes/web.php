@@ -7,5 +7,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/api/docs', [DocsController::class, 'reference'])->name('docs.reference');
-Route::get('/api/docs/openapi', [DocsController::class, 'openapi'])->name('docs.openapi');
+// Scalar/OpenAPI solo fuera de production (local, staging, etc.)
+if (! app()->environment('production')) {
+    Route::get('/api/docs', [DocsController::class, 'reference'])->name('docs.reference');
+    Route::get('/api/docs/openapi', [DocsController::class, 'openapi'])->name('docs.openapi');
+}
