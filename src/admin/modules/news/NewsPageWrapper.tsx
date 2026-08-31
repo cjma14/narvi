@@ -9,8 +9,7 @@ import { NewsTable } from './index';
 
 export default function NewsPageWrapper() {
   return (
-    // <ProtectedRoute permissions={['news.view']}></ProtectedRoute>
-    <ProtectedRoute>
+    <ProtectedRoute permissions={['news.view']}>
       <NewsTable />
     </ProtectedRoute>
   );

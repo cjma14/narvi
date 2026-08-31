@@ -110,15 +110,15 @@ class NewsService {
   /** Normaliza el detalle de una noticia. */
   private normalizeNewsDetailResponse(response: unknown): News {
     if (isRecord(response) && isRecord(response.news)) {
-      return response.news as News;
+      return response.news as unknown as News;
     }
 
     if (isRecord(response) && isRecord(response.data) && isRecord(response.data.news)) {
-      return response.data.news as News;
+      return response.data.news as unknown as News;
     }
 
     if (isRecord(response) && isRecord(response.data)) {
-      return response.data as News;
+      return response.data as unknown as News;
     }
 
     return response as News;
@@ -127,15 +127,15 @@ class NewsService {
   /** Normaliza la respuesta de subida de imágenes. */
   private normalizeUploadedImageResponse(response: unknown): UploadedNewsImage {
     if (isRecord(response) && isRecord(response.image)) {
-      return response.image as UploadedNewsImage;
+      return response.image as unknown as UploadedNewsImage;
     }
 
     if (isRecord(response) && isRecord(response.data) && isRecord(response.data.image)) {
-      return response.data.image as UploadedNewsImage;
+      return response.data.image as unknown as UploadedNewsImage;
     }
 
     if (isRecord(response) && isRecord(response.data)) {
-      return response.data as UploadedNewsImage;
+      return response.data as unknown as UploadedNewsImage;
     }
 
     return response as UploadedNewsImage;

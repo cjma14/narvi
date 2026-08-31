@@ -17,20 +17,37 @@ interface ToolbarButtonProps {
   label: string;
   active?: boolean;
   onClick: () => void;
+  disabled?: boolean;
+  loading?: boolean;
 }
 
-function ToolbarButton({ label, active = false, onClick }: ToolbarButtonProps) {
+function ToolbarButton({ label, active = false, onClick, disabled = false, loading = false }: ToolbarButtonProps) {
   return (
     <button
       type="button"
       onClick={onClick}
+      disabled={disabled}
       className={`px-3 py-1.5 text-xs font-medium rounded border transition-colors ${
         active
           ? 'bg-admin-secondary text-white border-admin-secondary'
-          : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+          : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-white'
       }`}
     >
-      {label}
+      <span className="inline-flex items-center gap-1.5">
+        {loading && (
+          <svg className="h-3.5 w-3.5 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" className="opacity-25" stroke="currentColor" strokeWidth="3" />
+            <path
+              d="M21 12a9 9 0 00-9-9"
+              className="opacity-90"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+          </svg>
+        )}
+        {label}
+      </span>
     </button>
   );
 }
@@ -63,7 +80,7 @@ export default function NewsRichTextEditor({ value, onChange, error }: NewsRichT
     editorProps: {
       attributes: {
         class:
-          'min-h-[240px] p-4 focus:outline-none prose prose-sm max-w-none [&_h2]:text-xl [&_h2]:font-semibold [&_h3]:text-lg [&_h3]:font-semibold',
+          'min-h-[280px] max-h-[500px] overflow-y-auto p-4 focus:outline-none prose prose-sm max-w-none [&_h2]:text-xl [&_h2]:font-semibold [&_h3]:text-lg [&_h3]:font-semibold',
       },
     },
     onUpdate: ({ editor: currentEditor }) => {
@@ -130,9 +147,9 @@ export default function NewsRichTextEditor({ value, onChange, error }: NewsRichT
   }
 
   return (
-    <div>
-      <div className="border border-gray-300 rounded-lg overflow-hidden">
-        <div className="flex flex-wrap items-center gap-2 border-b border-gray-200 bg-gray-50 p-2">
+    <div className="flex-1 flex flex-col min-h-0">
+      <div className="flex-1 flex flex-col min-h-0 border border-gray-300 rounded-lg overflow-hidden">
+        <div className="flex flex-wrap items-center gap-2 border-b border-gray-200 bg-gray-50 p-2 sticky top-0 z-10 flex-shrink-0">
           <ToolbarButton
             label="Negrita"
             active={editor.isActive('bold')}
@@ -171,6 +188,8 @@ export default function NewsRichTextEditor({ value, onChange, error }: NewsRichT
           <ToolbarButton
             label={isUploadingImage ? 'Subiendo imagen...' : 'Imagen'}
             onClick={openImagePicker}
+            disabled={isUploadingImage}
+            loading={isUploadingImage}
           />
           <ToolbarButton label="Deshacer" onClick={() => editor.chain().focus().undo().run()} />
           <ToolbarButton label="Rehacer" onClick={() => editor.chain().focus().redo().run()} />
@@ -185,10 +204,46 @@ export default function NewsRichTextEditor({ value, onChange, error }: NewsRichT
           />
         </div>
 
-        <EditorContent editor={editor} />
+        {isUploadingImage && (
+          <div className="flex items-center gap-2 border-b border-admin-secondary/20 bg-admin-secondary/10 px-3 py-2 text-sm text-admin-secondary">
+            <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" className="opacity-25" stroke="currentColor" strokeWidth="3" />
+              <path
+                d="M21 12a9 9 0 00-9-9"
+                className="opacity-90"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
+            </svg>
+            <span>Subiendo imagen al contenido...</span>
+          </div>
+        )}
+
+        <div className="relative flex-1 overflow-hidden">
+          <EditorContent editor={editor} className="h-full overflow-y-auto bg-white" />
+
+          {isUploadingImage && (
+            <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/70 backdrop-blur-[1px]">
+              <div className="flex items-center gap-2 rounded-full border border-admin-secondary/25 bg-white px-4 py-2 text-sm font-medium text-admin-secondary shadow-sm">
+                <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" className="opacity-25" stroke="currentColor" strokeWidth="3" />
+                  <path
+                    d="M21 12a9 9 0 00-9-9"
+                    className="opacity-90"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <span>Subiendo imagen...</span>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
-      {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+      {error && <p className="mt-1 text-sm text-red-600 flex-shrink-0">{error}</p>}
     </div>
   );
 }
