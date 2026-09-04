@@ -12,29 +12,6 @@ interface Props {
   title?: string;
 }
 
-type SocialPlatform = {
-  name: string;
-  url: string;
-  svg: string;
-};
-
-const socialPlatforms: SocialPlatform[] = [
-  {
-    name: "Facebook",
-    url: `https://www.facebook.com/share.php?u=${Astro.url}&title=${pageTitle}`,
-    svg: "facebook",
-  },
-  {
-    name: "X",
-    url: `https://twitter.com/home/?status=${pageTitle}${Astro.url}`,
-    svg: "x",
-  },
-  {
-    name: "LinkedIn",
-    url: `https://www.linkedin.com/shareArticle?mini=true&url=${Astro.url}&title=${pageTitle}`,
-    svg: "linkedIn",
-  },
-];
 ---
 
 <div
@@ -54,20 +31,7 @@ const socialPlatforms: SocialPlatform[] = [
     class="hs-dropdown-menu duration z-10 hidden w-72 divide-y divide-neutral-200 rounded-lg bg-neutral-50 p-2 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100 dark:divide-neutral-700 dark:border dark:border-neutral-700 dark:bg-neutral-800"
     aria-labelledby="hs-dropup"
   >
-    <div class="py-2 first:pt-0 last:pb-0">
-      {
-        socialPlatforms.map((platform) => (
-          <a
-            class="flex items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-200 focus:bg-neutral-100  focus:outline-none dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 "
-            href={platform.url}
-          >
-            <Icon name={platform.svg} />
-            Share on {platform.name}
-          </a>
-        ))
-      }
-    </div>
-    <div class="py-2 first:pt-0 last:pb-0">
+    <div class="py-2">
       <button
         type="button"
         class="js-clipboard hover:text-dark focus-visible:ring-secondary group inline-flex w-full items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-200 focus:bg-neutral-100 focus:outline-none focus-visible:outline-none focus-visible:ring-1 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
@@ -91,7 +55,7 @@ const socialPlatforms: SocialPlatform[] = [
         </svg>
 
         <svg
-          class="js-clipboard-success hidden h-4 w-4 text-neutral-700 dark:text-neutral-300"
+          class="js-clipboard-success hidden h-4 w-4 text-emerald-600 transition-colors duration-200 dark:text-emerald-400"
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -103,7 +67,7 @@ const socialPlatforms: SocialPlatform[] = [
         >
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
-        <span class="js-clipboard-success-text">Copy link</span>
+        <span class="js-clipboard-success-text transition-colors duration-200">Copy link</span>
       </button>
     </div>
   </div>
@@ -155,6 +119,8 @@ const socialPlatforms: SocialPlatform[] = [
             successElement.style.display = "block";
           }
 
+          el.classList.add("text-emerald-600", "dark:text-emerald-400");
+
           setTimeout(() => {
             if (successTextElement && oldSuccessText !== undefined) {
               successTextElement.textContent = oldSuccessText;
@@ -164,6 +130,8 @@ const socialPlatforms: SocialPlatform[] = [
               successElement.style.display = "";
               defaultElement.style.display = "";
             }
+
+            el.classList.remove("text-emerald-600", "dark:text-emerald-400");
           }, 800);
         });
       });
