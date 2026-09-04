@@ -65,11 +65,18 @@ class ProductImageController extends Controller
             $images = [$images];
         }
 
+        $maxKb = (int) config('images.max_upload_kb', 10240);
+        $maxMb = max(1, (int) round($maxKb / 1024));
+
         // Validar cada imagen
         foreach ($images as $image) {
-            $validator = validator(['image' => $image], [
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
-            ]);
+            $validator = validator(
+                ['image' => $image],
+                ['image' => "required|image|mimes:jpeg,png,jpg,gif,webp|max:{$maxKb}"],
+                [
+                    'image.max' => "La imagen no debe superar {$maxMb} MB.",
+                ]
+            );
 
             if ($validator->fails()) {
                 return response()->json([

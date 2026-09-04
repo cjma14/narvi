@@ -60,6 +60,9 @@ class ImageService
         return false;
     }
 
+    /**
+     * Rechaza archivos cuyo MIME no esté en la lista permitida.
+     */
     public function assertAllowedMime(UploadedFile $file, Closure $fail): void
     {
         $mime = $file->getMimeType();
@@ -71,30 +74,27 @@ class ImageService
     }
 
     /**
-     * Valida que la portada tenga al menos el ratio mínimo (ancho/alto).
+     * Valida que la portada tenga al menos el ancho mínimo configurado.
      */
-    public function assertCoverRatio(UploadedFile $file, Closure $fail): void
+    public function assertCoverDimensions(UploadedFile $file, Closure $fail): void
     {
         $manager = new ImageManager(new Driver());
         $image = $manager->read($file->getRealPath());
         $width = $image->width();
-        $height = $image->height();
 
-        if ($height <= 0) {
-            $fail('No se pudo determinar la proporción de la imagen.');
+        if ($width <= 0) {
+            $fail('No se pudo determinar el ancho de la imagen en píxeles.');
 
             return;
         }
 
-        $ratio = $width / $height;
-        $minRatio = (float) config('images.cover_min_ratio', 1.5);
+        $minWidth = (int) config('images.cover_min_width', 720);
 
-        if ($ratio < $minRatio) {
+        if ($width < $minWidth) {
             $fail(sprintf(
-                'La portada debe tener proporción mínima %.2f:1 (actual: %d×%d px).',
-                $minRatio,
-                $width,
-                $height
+                'La portada debe tener al menos %d px de ancho. Tu imagen mide %d px de ancho.',
+                $minWidth,
+                $width
             ));
         }
     }

@@ -51,7 +51,8 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        $maxKb = config('images.max_upload_kb', 10240);
+        $maxKb = (int) config('images.max_upload_kb', 10240);
+        $maxMb = max(1, (int) round($maxKb / 1024));
 
         $validated = $request->validate([
             'image' => [
@@ -68,10 +69,12 @@ class ImageController extends Controller
                         return;
                     }
 
-                    $this->imageService->assertCoverRatio($value, $fail);
+                    $this->imageService->assertCoverDimensions($value, $fail);
                 },
             ],
             'type' => 'required|string|in:cover,body',
+        ], [
+            'image.max' => "La imagen no debe superar {$maxMb} MB.",
         ]);
 
         $image = $this->imageService->store(

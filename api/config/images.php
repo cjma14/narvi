@@ -28,11 +28,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Ratio mínimo de portada (ancho / alto)
+    | Ancho mínimo de portada (px)
     |--------------------------------------------------------------------------
-    | Ejemplo: 1.5 = al menos 3:2 (p. ej. 1500×1000 px).
     */
-    'cover_min_ratio' => (float) env('IMAGES_COVER_MIN_RATIO', 1.5),
+    'cover_min_width' => (int) env('IMAGES_COVER_MIN_WIDTH', 720),
 
     /*
     |--------------------------------------------------------------------------
@@ -45,6 +44,7 @@ return [
     |--------------------------------------------------------------------------
     | Tamaño máximo de subida (KB)
     |--------------------------------------------------------------------------
+    | Laravel valida en KB; el mensaje al usuario se expresa en MB.
     */
     'max_upload_kb' => (int) env('IMAGES_MAX_UPLOAD_KB', 10240),
 
