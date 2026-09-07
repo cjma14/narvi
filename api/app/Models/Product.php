@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use App\Contracts\Translatable;
 use App\Traits\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Product extends Model implements Translatable
 {
     use HasTranslations;
 

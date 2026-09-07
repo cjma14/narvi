@@ -13,6 +13,7 @@ class Image extends Model
         'imageable_type',
         'imageable_id',
         'type',
+        'language_id',
         'path',
         'original_name',
         'width',
@@ -36,6 +37,11 @@ class Image extends Model
     public function imageable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function language(): BelongsTo
+    {
+        return $this->belongsTo(Language::class);
     }
 
     public function uploader(): BelongsTo

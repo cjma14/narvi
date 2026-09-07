@@ -39,4 +39,12 @@ class Language extends Model
     {
         return static::default()->first();
     }
+
+    /**
+     * Código del idioma por defecto (contenido en columnas base).
+     */
+    public static function defaultCode(): string
+    {
+        return static::getDefault()?->code ?? 'es';
+    }
 }

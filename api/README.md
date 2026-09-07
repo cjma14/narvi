@@ -52,6 +52,7 @@ Levanta los servicios con Laravel Sail:
 
 - API: http://localhost:6650
 - Documentación de la API (Scalar): http://localhost:6650/api/docs
+- phpMyAdmin: http://localhost:6651
 
 ## Imágenes (News)
 

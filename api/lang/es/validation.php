@@ -175,6 +175,9 @@ return [
         'body' => 'contenido',
         'type' => 'tipo',
         'cover_image_id' => 'imagen de portada',
+        'cover_image_ids' => 'imágenes de portada',
+        'cover_image_ids.es' => 'imagen de portada (es)',
+        'cover_image_ids.en' => 'imagen de portada (en)',
         'password_confirmation' => 'confirmación de contraseña',
     ],
 ];

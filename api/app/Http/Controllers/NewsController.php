@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Language;
 use App\Models\News;
 use App\Services\NewsImageSyncService;
 use Illuminate\Http\Request;
@@ -39,7 +40,7 @@ class NewsController extends Controller
      * @OA\Post(
      *     path="/api/news",
      *     summary="Crear noticia",
-     *     description="Crea una noticia. La portada se sube antes vía POST /api/images (type=cover) y se referencia con cover_image_id.",
+     *     description="Crea una noticia. Las portadas se suben vía POST /api/images (type=cover) y se referencian con cover_image_ids.{lang}.",
      *     tags={"News"},
      *     security={{"bearerAuth": {}}},
      *     @OA\RequestBody(
@@ -50,7 +51,7 @@ class NewsController extends Controller
      *             @OA\Property(property="url_alias", type="string", example="nueva-instalacion-ecuador"),
      *             @OA\Property(property="body", type="string", example="<p>Contenido HTML</p>"),
      *             @OA\Property(property="published", type="boolean", example=false),
-     *             @OA\Property(property="cover_image_id", type="integer", example=1),
+     *             @OA\Property(property="cover_image_ids", type="object", example={"es": 1, "en": 2}),
      *             @OA\Property(property="translations", type="object")
      *         )
      *     ),
@@ -67,6 +68,8 @@ class NewsController extends Controller
             'body' => 'nullable|string',
             'published' => 'nullable|boolean',
             'cover_image_id' => 'nullable|integer|exists:images,id',
+            'cover_image_ids' => 'nullable|array',
+            'cover_image_ids.*' => 'nullable|integer|exists:images,id',
             'translations' => 'nullable|array',
             'translations.*' => 'array',
             'translations.*.title' => 'nullable|string|max:255',
@@ -95,11 +98,11 @@ class NewsController extends Controller
 
         $this->imageSync->sync(
             $news,
-            $validated['cover_image_id'] ?? null,
+            $this->coverImageIdsFrom($validated),
             $validated['body'] ?? null
         );
 
-        $news->load(['cover', 'bodyImages', 'author:id,name,email']);
+        $news->load(['cover', 'covers.language', 'bodyImages', 'author:id,name,email']);
 
         return response()->json([
             'message' => 'Noticia creada exitosamente',
@@ -146,7 +149,7 @@ class NewsController extends Controller
      *             @OA\Property(property="url_alias", type="string"),
      *             @OA\Property(property="body", type="string"),
      *             @OA\Property(property="published", type="boolean"),
-     *             @OA\Property(property="cover_image_id", type="integer"),
+     *             @OA\Property(property="cover_image_ids", type="object", example={"es": 1, "en": null}),
      *             @OA\Property(property="translations", type="object")
      *         )
      *     ),
@@ -169,6 +172,8 @@ class NewsController extends Controller
             'body' => 'nullable|string',
             'published' => 'nullable|boolean',
             'cover_image_id' => 'nullable|integer|exists:images,id',
+            'cover_image_ids' => 'nullable|array',
+            'cover_image_ids.*' => 'nullable|integer|exists:images,id',
             'translations' => 'nullable|array',
             'translations.*' => 'array',
             'translations.*.title' => 'nullable|string|max:255',
@@ -201,15 +206,14 @@ class NewsController extends Controller
             }
         }
 
+        // Clave ausente = conservar; null = quitar. Sin cover_image_ids/cover_image_id = no tocar.
         $this->imageSync->sync(
             $news,
-            array_key_exists('cover_image_id', $validated)
-                ? ($validated['cover_image_id'] ?? null)
-                : $news->cover()->value('id'),
+            $this->coverImageIdsFrom($validated),
             $validated['body'] ?? null
         );
 
-        $news->load(['cover', 'bodyImages', 'author:id,name,email']);
+        $news->load(['cover', 'covers.language', 'bodyImages', 'author:id,name,email']);
 
         return response()->json([
             'message' => 'Noticia actualizada exitosamente',
@@ -271,7 +275,7 @@ class NewsController extends Controller
         }
 
         $news->restore();
-        $news->load(['cover', 'bodyImages', 'author:id,name,email']);
+        $news->load(['cover', 'covers.language', 'bodyImages', 'author:id,name,email']);
 
         return response()->json([
             'message' => 'Noticia restaurada exitosamente',
@@ -283,7 +287,7 @@ class NewsController extends Controller
      * @OA\Get(
      *     path="/api/public/{lang}/news",
      *     summary="Listar noticias públicas",
-     *     description="Noticias publicadas ordenadas por creación descendente",
+     *     description="Solo noticias con traducción (title) en el idioma. Textos vía HasTranslations; portada = la del lang o null.",
      *     tags={"News Public"},
      *     @OA\Parameter(name="lang", in="path", required=true, @OA\Schema(type="string", example="es")),
      *     @OA\Parameter(name="per_page", in="query", @OA\Schema(type="integer", default=15)),
@@ -294,7 +298,7 @@ class NewsController extends Controller
     {
         $perPage = $request->input('per_page', 15);
 
-        $news = News::forPublicList()->paginate($perPage);
+        $news = News::forPublicList($lang)->paginate($perPage);
 
         $news->getCollection()->transform(function ($item) use ($lang) {
             return $item->toPublicArray($lang, includeBody: false);
@@ -307,6 +311,7 @@ class NewsController extends Controller
      * @OA\Get(
      *     path="/api/public/{lang}/news/{alias}",
      *     summary="Obtener noticia pública por alias",
+     *     description="404 si no hay title en el idioma. Textos vía HasTranslations; portada = la del lang o null.",
      *     tags={"News Public"},
      *     @OA\Parameter(name="lang", in="path", required=true, @OA\Schema(type="string", example="es")),
      *     @OA\Parameter(name="alias", in="path", required=true, @OA\Schema(type="string", example="nueva-instalacion")),
@@ -325,5 +330,23 @@ class NewsController extends Controller
         return response()->json([
             'news' => $news->toPublicArray($lang),
         ], 200);
+    }
+
+    /**
+     * Normaliza portadas: cover_image_ids; cover_image_id = alias del idioma default.
+     *
+     * @param  array<string, mixed>  $validated
+     * @return array<string, int|null>
+     */
+    protected function coverImageIdsFrom(array $validated): array
+    {
+        $covers = $validated['cover_image_ids'] ?? [];
+        $default = Language::defaultCode();
+
+        if (array_key_exists('cover_image_id', $validated) && !array_key_exists($default, $covers)) {
+            $covers[$default] = $validated['cover_image_id'];
+        }
+
+        return $covers;
     }
 }
