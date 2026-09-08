@@ -6,6 +6,7 @@ use App\Models\Language;
 use App\Models\News;
 use App\Services\NewsImageSyncService;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class NewsController extends Controller
 {
@@ -64,7 +65,12 @@ class NewsController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'url_alias' => 'required|string|max:255|unique:news,url_alias',
+            'url_alias' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('news', 'url_alias')->whereNull('deleted_at'),
+            ],
             'body' => 'nullable|string',
             'published' => 'nullable|boolean',
             'cover_image_id' => 'nullable|integer|exists:images,id',
@@ -168,7 +174,12 @@ class NewsController extends Controller
 
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'url_alias' => 'required|string|max:255|unique:news,url_alias,' . $news->id,
+            'url_alias' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('news', 'url_alias')->ignore($news->id)->whereNull('deleted_at'),
+            ],
             'body' => 'nullable|string',
             'published' => 'nullable|boolean',
             'cover_image_id' => 'nullable|integer|exists:images,id',
