@@ -20,7 +20,10 @@ const defaultValues: NewsFormData = {
   url_alias_en: '',
   body_en: '',
   published: false,
-  cover_image_id: '',
+  cover_image_ids: {
+    es: '',
+    en: '',
+  },
 };
 
 /** Encapsula la lógica del formulario modal de noticias. */
@@ -28,8 +31,8 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
   const [loading, setLoading] = useState(false);
   const [loadingNews, setLoadingNews] = useState(false);
   const [uploadingCover, setUploadingCover] = useState(false);
-  const [coverPreviewUrl, setCoverPreviewUrl] = useState('');
-  const [coverRemoved, setCoverRemoved] = useState(false);
+  const [coverPreviewUrls, setCoverPreviewUrls] = useState<Record<'es' | 'en', string>>({ es: '', en: '' });
+  const [removedCovers, setRemovedCovers] = useState<Record<'es' | 'en', boolean>>({ es: false, en: false });
 
   const form = useForm<NewsFormData>({ defaultValues });
   const {
@@ -48,8 +51,8 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
 
     if (mode === 'create') {
       reset(defaultValues);
-      setCoverPreviewUrl('');
-      setCoverRemoved(false);
+      setCoverPreviewUrls({ es: '', en: '' });
+      setRemovedCovers({ es: false, en: false });
       return;
     }
 
@@ -61,7 +64,18 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
       try {
         setLoadingNews(true);
         const detail = await newsService.getById(news.id);
-        const resolvedCoverImageId = detail.cover_image_id ?? detail.cover?.id ?? null;
+        const coversByLanguage = (detail.covers || []).reduce<Record<'es' | 'en', News['cover']>>(
+          (covers, cover) => {
+            const language = cover.language?.code;
+
+            if (language === 'es' || language === 'en') {
+              covers[language] = cover;
+            }
+
+            return covers;
+          },
+          { es: null, en: null },
+        );
 
         reset({
           title: detail.title || '',
@@ -71,10 +85,16 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
           url_alias_en: detail.translations_data?.en?.url_alias || detail.translations?.en?.url_alias || '',
           body_en: detail.translations_data?.en?.body || detail.translations?.en?.body || '',
           published: !!detail.published,
-          cover_image_id: resolvedCoverImageId ? String(resolvedCoverImageId) : '',
+          cover_image_ids: {
+            es: coversByLanguage.es?.id ? String(coversByLanguage.es.id) : '',
+            en: coversByLanguage.en?.id ? String(coversByLanguage.en.id) : '',
+          },
         });
-        setCoverPreviewUrl(getImageUrl(detail.cover));
-        setCoverRemoved(false);
+        setCoverPreviewUrls({
+          es: getImageUrl(coversByLanguage.es),
+          en: getImageUrl(coversByLanguage.en),
+        });
+        setRemovedCovers({ es: false, en: false });
       } catch (error) {
         console.error('Error loading news:', error);
         toast.error(getErrorMessage(error, 'Error al cargar la noticia'));
@@ -94,7 +114,7 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
     setValue('url_alias', toSlug(title));
   }, [setValue, title]);
 
-  const handleCoverUpload = async (event: ChangeEvent<HTMLInputElement>) => {
+  const handleCoverUpload = async (language: 'es' | 'en', event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
 
     if (!file) {
@@ -105,12 +125,15 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
       setUploadingCover(true);
       const uploadedImage = await newsService.uploadCover(file);
 
-      setValue('cover_image_id', String(uploadedImage.id), {
+      setValue(`cover_image_ids.${language}`, String(uploadedImage.id), {
         shouldDirty: true,
         shouldValidate: true,
       });
-      setCoverPreviewUrl(getImageUrl(uploadedImage) || URL.createObjectURL(file));
-      setCoverRemoved(false);
+      setCoverPreviewUrls((previews) => ({
+        ...previews,
+        [language]: getImageUrl(uploadedImage) || URL.createObjectURL(file),
+      }));
+      setRemovedCovers((covers) => ({ ...covers, [language]: false }));
       toast.success('Imagen de portada subida exitosamente');
     } catch (error) {
       console.error('Error uploading cover image:', error);
@@ -121,10 +144,10 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
     }
   };
 
-  const handleRemoveCover = () => {
-    setValue('cover_image_id', '', { shouldDirty: true, shouldValidate: true });
-    setCoverPreviewUrl('');
-    setCoverRemoved(true);
+  const handleRemoveCover = (language: 'es' | 'en') => {
+    setValue(`cover_image_ids.${language}`, '', { shouldDirty: true, shouldValidate: true });
+    setCoverPreviewUrls((previews) => ({ ...previews, [language]: '' }));
+    setRemovedCovers((covers) => ({ ...covers, [language]: true }));
   };
 
   const submitForm = handleSubmit(async (data) => {
@@ -144,26 +167,21 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
         translations: {},
       };
 
-      const existingCoverImageId = news?.cover_image_id ?? news?.cover?.id;
-      const uploadedCoverImageId = data.cover_image_id ? Number(data.cover_image_id) : undefined;
-      const resolvedCoverImageId = (() => {
-        if (mode === 'create') {
-          return uploadedCoverImageId;
-        }
+      const coverImageIds = (['es', 'en'] as const).reduce<NonNullable<NewsPayload['cover_image_ids']>>(
+        (covers, language) => {
+          if (removedCovers[language]) {
+            covers[language] = null;
+          } else if (data.cover_image_ids[language]) {
+            covers[language] = Number(data.cover_image_ids[language]);
+          }
 
-        if (coverRemoved) {
-          return null;
-        }
+          return covers;
+        },
+        {},
+      );
 
-        if (uploadedCoverImageId) {
-          return uploadedCoverImageId;
-        }
-
-        return existingCoverImageId;
-      })();
-
-      if (resolvedCoverImageId !== undefined) {
-        payload.cover_image_id = resolvedCoverImageId;
+      if (Object.keys(coverImageIds).length > 0) {
+        payload.cover_image_ids = coverImageIds;
       }
 
       const enTranslations = {
@@ -198,8 +216,7 @@ export function useNewsModalForm({ isOpen, mode, news, onSuccess }: UseNewsModal
 
   return {
     body: watch('body'),
-    coverImageId: watch('cover_image_id'),
-    coverPreviewUrl,
+    coverPreviewUrls,
     form,
     handleCoverUpload,
     handleRemoveCover,

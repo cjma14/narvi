@@ -9,6 +9,9 @@ export interface NewsCover {
   path?: string;
   width?: number;
   height?: number;
+  language?: {
+    code?: string;
+  };
 }
 
 export interface UploadedNewsImage {
@@ -27,6 +30,7 @@ export interface News {
   author?: NewsAuthor;
   cover?: NewsCover | null;
   cover_image_id?: number | null;
+  covers?: NewsCover[];
   published?: boolean;
   translations?: Record<string, NewsTranslationFields>;
   translations_data?: Record<string, NewsTranslationFields>;
@@ -54,7 +58,7 @@ export interface NewsFormData {
   url_alias_en: string;
   body_en: string;
   published: boolean;
-  cover_image_id: string;
+  cover_image_ids: Record<'es' | 'en', string>;
 }
 
 export interface NewsPayload {
@@ -62,7 +66,7 @@ export interface NewsPayload {
   url_alias: string;
   body: string;
   published: boolean;
-  cover_image_id?: number | null;
+  cover_image_ids?: Partial<Record<'es' | 'en', number | null>>;
   translations: Record<string, NewsTranslationFields>;
 }
 
