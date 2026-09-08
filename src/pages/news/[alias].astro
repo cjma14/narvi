@@ -1,6 +1,7 @@
 ---
 // Dynamic news detail page in English
 import MainLayout from "@/layouts/MainLayout.astro";
+import SocialShare from "@/components/ui/buttons/SocialShare.astro";
 
 const { alias } = Astro.params;
 const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:6650';
@@ -108,6 +109,10 @@ const processedBody = news.body
     <article class="news-content text-pretty text-lg font-light text-pearl-100/85">
       <div set:html={processedBody} />
     </article>
+
+    <div class="mt-10">
+      <SocialShare pageTitle={news.title} />
+    </div>
 
     <!-- Footer Back Link -->
     <div class="mt-12 border-t border-pearl-100/10 pt-8">

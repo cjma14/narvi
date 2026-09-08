@@ -10,7 +10,7 @@ export default function NewsModal({ isOpen, mode, news, onClose, onSuccess }: Ne
 
   const {
     body,
-    coverPreviewUrl,
+    coverPreviewUrls,
     form: {
       register,
       watch,
@@ -183,12 +183,12 @@ export default function NewsModal({ isOpen, mode, news, onClose, onSuccess }: Ne
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">Cover Image</label>
 
-                        {coverPreviewUrl ? (
+                        {coverPreviewUrls[currentLang] ? (
                           <div className="mb-3 relative w-full max-w-xs">
-                            <img src={coverPreviewUrl} alt="Cover preview" className="w-full h-40 object-cover rounded-lg border border-gray-200" />
+                            <img src={coverPreviewUrls[currentLang]} alt="Cover preview" className="w-full h-40 object-cover rounded-lg border border-gray-200" />
                             <button
                               type="button"
-                              onClick={handleRemoveCover}
+                              onClick={() => handleRemoveCover(currentLang)}
                               className="absolute top-2 right-2 bg-red-600 text-white p-1.5 rounded-full hover:bg-red-700 transition-colors"
                               title="Quitar portada"
                             >
@@ -199,10 +199,10 @@ export default function NewsModal({ isOpen, mode, news, onClose, onSuccess }: Ne
                           </div>
                         ) : null}
 
-                        {!coverPreviewUrl ? (
+                        {!coverPreviewUrls[currentLang] ? (
                           <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
                             <label
-                              htmlFor="cover-upload"
+                              htmlFor={`cover-upload-${currentLang}`}
                               className={`flex flex-col items-center transition-opacity ${uploadingCover ? 'cursor-not-allowed opacity-80' : 'cursor-pointer'}`}
                             >
                               {uploadingCover ? (
@@ -225,10 +225,10 @@ export default function NewsModal({ isOpen, mode, news, onClose, onSuccess }: Ne
                               )}
                             </label>
                             <input
-                              id="cover-upload"
+                              id={`cover-upload-${currentLang}`}
                               type="file"
                               accept="image/*"
-                              onChange={handleCoverUpload}
+                              onChange={(event) => handleCoverUpload(currentLang, event)}
                               disabled={uploadingCover}
                               className="hidden"
                             />
@@ -239,7 +239,7 @@ export default function NewsModal({ isOpen, mode, news, onClose, onSuccess }: Ne
                           </div>
                         )}
 
-                        <input type="hidden" {...register('cover_image_id')} />
+                        <input type="hidden" {...register(`cover_image_ids.${currentLang}`)} />
                       </div>
                     </div>
 
