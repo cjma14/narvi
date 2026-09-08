@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Image;
+use App\Models\Language;
 use App\Models\News;
 use DOMDocument;
 use Illuminate\Support\Facades\Storage;
@@ -11,22 +12,38 @@ use Illuminate\Validation\ValidationException;
 class NewsImageSyncService
 {
     /**
-     * Vincula portada e imágenes del body a la noticia.
-     * Las imágenes que dejan de referenciarse quedan huérfanas (imageable_id = null).
+     * Vincula portadas por idioma e imágenes del body.
+     * Clave ausente en $coverImageIds = no tocar; null = desvincular.
+     *
+     * @param  array<string, int|null>  $coverImageIds
      */
-    public function sync(News $news, ?int $coverImageId, ?string $body): void
+    public function sync(News $news, array $coverImageIds, ?string $body): void
     {
-        $this->syncCover($news, $coverImageId);
+        foreach ($coverImageIds as $lang => $imageId) {
+            $this->syncCover($news, (string) $lang, $imageId);
+        }
+
         $this->syncBodyImages($news, $body);
     }
 
-    protected function syncCover(News $news, ?int $coverImageId): void
+    /**
+     * Asigna o quita la portada de un idioma.
+     */
+    protected function syncCover(News $news, string $lang, ?int $coverImageId): void
     {
-        $currentCover = $news->cover()->first();
+        $language = Language::query()->where('code', $lang)->first();
+
+        if (!$language) {
+            throw ValidationException::withMessages([
+                "cover_image_ids.{$lang}" => ["El idioma [{$lang}] no existe."],
+            ]);
+        }
+
+        $current = $news->covers()->where('language_id', $language->id)->first();
 
         if (!$coverImageId) {
-            if ($currentCover) {
-                $this->unlinkImage($currentCover);
+            if ($current) {
+                $this->unlinkImage($current);
             }
 
             return;
@@ -40,7 +57,7 @@ class NewsImageSyncService
 
         if (!$cover) {
             throw ValidationException::withMessages([
-                'cover_image_id' => ['La imagen de portada no existe o no es de tipo cover.'],
+                "cover_image_ids.{$lang}" => ['La imagen de portada no existe o no es de tipo cover.'],
             ]);
         }
 
@@ -52,24 +69,24 @@ class NewsImageSyncService
             )
         ) {
             throw ValidationException::withMessages([
-                'cover_image_id' => ['La imagen de portada ya está vinculada a otra entrada.'],
+                "cover_image_ids.{$lang}" => ['La imagen de portada ya está vinculada a otra entrada.'],
             ]);
         }
 
-        if ($currentCover && (int) $currentCover->id !== (int) $cover->id) {
-            $this->unlinkImage($currentCover);
+        if ($current && (int) $current->id !== (int) $cover->id) {
+            $this->unlinkImage($current);
         }
 
         $cover->update([
             'imageable_type' => News::class,
             'imageable_id' => $news->id,
+            'language_id' => $language->id,
         ]);
     }
 
     protected function syncBodyImages(News $news, ?string $body): void
     {
         $referencedPaths = $this->extractImagePathsFromHtml($body ?? '');
-
         $referencedIds = [];
 
         if (!empty($referencedPaths)) {
@@ -87,8 +104,6 @@ class NewsImageSyncService
                         && (int) $image->imageable_id === (int) $news->id
                     )
                 ) {
-                    // Imagen ya vinculada a otra noticia: se ignora (el HTML puede
-                    // reutilizar URLs, pero no reasignamos ownership forzosamente).
                     continue;
                 }
 
@@ -101,7 +116,6 @@ class NewsImageSyncService
             }
         }
 
-        // Desvincular body images que ya no están en el HTML
         $staleQuery = $news->bodyImages();
 
         if (!empty($referencedIds)) {
@@ -146,12 +160,10 @@ class NewsImageSyncService
 
     protected function urlToStoragePath(string $src, string $storagePrefix): ?string
     {
-        // URL absoluta del disco public: http://host/storage/images/...
         if (str_starts_with($src, $storagePrefix . '/')) {
             return ltrim(substr($src, strlen($storagePrefix)), '/');
         }
 
-        // Ruta relativa tipo /storage/images/... o storage/images/...
         if (preg_match('#(?:^|/)storage/(.+)$#', $src, $matches)) {
             return $matches[1];
         }
@@ -164,6 +176,7 @@ class NewsImageSyncService
         $image->update([
             'imageable_type' => null,
             'imageable_id' => null,
+            'language_id' => null,
         ]);
     }
 }

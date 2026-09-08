@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use App\Contracts\Translatable;
 use App\Traits\HasTranslations;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Product extends Model
+class Product extends Model implements Translatable
 {
-    use HasTranslations;
+    use HasTranslations, SoftDeletes;
 
     protected $fillable = [
         'title',
@@ -41,7 +45,7 @@ class Product extends Model
     /**
      * Get the product images
      */
-    public function images()
+    public function images(): HasMany
     {
         return $this->hasMany(ProductImage::class)->orderBy('order');
     }
